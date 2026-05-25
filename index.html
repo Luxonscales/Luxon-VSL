@@ -20,7 +20,7 @@
       --red:         #C1272D;
       --red-dim:     rgba(193,39,45,0.10);
       --green:       #22C55E;
-      --bg:          #080806;
+      --bg:          #050503;
       --surface:     #0E0E0C;
       --surface-2:   #141410;
       --border:      rgba(255,255,255,0.07);
@@ -64,19 +64,19 @@
       inset: 0;
       z-index: 0;
       pointer-events: none;
-      opacity: 0.55;
+      opacity: 1;
     }
     #bg-glow {
       position: fixed;
-      bottom: -120px;
+      bottom: -80px;
       left: 50%;
       transform: translateX(-50%);
-      width: 120vw;
-      height: 70vh;
-      background: radial-gradient(ellipse 80% 70% at 50% 100%,
-        rgba(212,175,55,0.22) 0%,
-        rgba(212,175,55,0.06) 45%,
-        transparent 72%);
+      width: 130vw;
+      height: 80vh;
+      background: radial-gradient(ellipse 75% 65% at 50% 100%,
+        rgba(212,175,55,0.38) 0%,
+        rgba(212,175,55,0.14) 40%,
+        transparent 68%);
       pointer-events: none;
       z-index: 0;
     }
@@ -89,8 +89,7 @@
       inset: 0;
       z-index: 9999;
       pointer-events: none;
-      opacity: 0.5;
-      mix-blend-mode: overlay;
+      opacity: 0.18;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
       background-size: 200px;
       animation: grain-anim 0.4s steps(2) infinite;
@@ -1105,8 +1104,8 @@ You're Already Booked
 
           function idx(r, c) { return r * (cols + 1) + c; }
 
-          ctx.strokeStyle = 'rgba(255,255,255,0.055)';
-          ctx.lineWidth = 0.7;
+          ctx.strokeStyle = 'rgba(255,255,255,0.09)';
+          ctx.lineWidth = 0.8;
           ctx.beginPath();
 
           for (var row = 0; row < rows; row++) {
