@@ -4,177 +4,147 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
-  <title>Luxon Agency - Pre-Call Briefing</title>
+  <title>You're Booked - Luxon Agency Pre-Call</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
   <style>
-    /* =========================================
-       DESIGN TOKENS — OKLCH
-    ========================================= */
+    /* ============================================
+       TOKENS
+    ============================================ */
     :root {
-      /* Brand colors */
-      --gold:          oklch(72.5% 0.148 86);
-      --gold-hover:    oklch(79% 0.148 86);
-      --gold-dim:      oklch(72.5% 0.148 86 / 0.12);
-      --gold-glow:     oklch(72.5% 0.148 86 / 0.28);
-      --red:           oklch(41.5% 0.185 27);
-      --red-tint:      oklch(41.5% 0.185 27 / 0.06);
-      --green:         oklch(74% 0.177 142);
-
-      /* Neutrals - warm tinted, no pure black/gray */
-      --bg:            oklch(4.5% 0.004 78);
-      --surface:       oklch(8% 0.004 78);
-      --surface-2:     oklch(10.5% 0.004 78);
-      --border:        oklch(14% 0.004 78);
-      --border-light:  oklch(14% 0.004 78 / 0.7);
-      --text:          oklch(93% 0.012 78);
-      --muted:         oklch(44% 0.012 60);
-      --muted-dim:     oklch(38% 0.008 60);
-
-      /* Typography */
-      --font-display: 'Bebas Neue', cursive;
-      --font-body:    'DM Sans', sans-serif;
-      --font-mono:    'JetBrains Mono', monospace;
-
-      /* Radii - single consistent system */
-      --radius:        16px;
-      --radius-pill:   999px;
-
-      /* Motion */
-      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-      --ease-standard: cubic-bezier(0.32, 0.72, 0, 1);
+      --gold:        #D4AF37;
+      --gold-light:  #F0C94A;
+      --gold-dim:    rgba(212,175,55,0.12);
+      --red:         #C1272D;
+      --red-dim:     rgba(193,39,45,0.10);
+      --green:       #22C55E;
+      --bg:          #080806;
+      --surface:     #0E0E0C;
+      --surface-2:   #141410;
+      --border:      rgba(255,255,255,0.07);
+      --border-gold: rgba(212,175,55,0.2);
+      --text:        #F0EBE0;
+      --muted:       #7A746E;
+      --font-display:'Bebas Neue', cursive;
+      --font-body:   'DM Sans', sans-serif;
+      --font-mono:   'JetBrains Mono', monospace;
+      --ease:        cubic-bezier(0.16,1,0.3,1);
     }
 
-    /* =========================================
+    /* ============================================
        RESET
-    ========================================= */
+    ============================================ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; font-size: 16px; }
     body {
       background: var(--bg);
       color: var(--text);
       font-family: var(--font-body);
-      line-height: 1.75;
-      overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      line-height: 1.6;
     }
     a { text-decoration: none; color: inherit; }
     img { max-width: 100%; display: block; }
 
-    /* =========================================
-       FILM GRAIN - fixed, pointer-events none
-    ========================================= */
+    /* ============================================
+       FILM GRAIN
+    ============================================ */
     #grain {
       position: fixed;
       inset: 0;
       z-index: 9999;
       pointer-events: none;
-      opacity: 0.55;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E");
-      background-repeat: repeat;
-      background-size: 220px;
+      opacity: 0.5;
       mix-blend-mode: overlay;
-      animation: grain-shift 0.4s steps(2) infinite;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 200px;
+      animation: grain-anim 0.4s steps(2) infinite;
     }
-    @keyframes grain-shift {
-      0%   { background-position: 0 0; }
-      33%  { background-position: -8% -12%; }
-      66%  { background-position: 10% 6%; }
-      100% { background-position: 0 0; }
+    @keyframes grain-anim {
+      0%  { background-position: 0 0; }
+      50% { background-position: -6% -8%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #grain { animation: none; }
+      .fade-up, .slide-in { opacity: 1 !important; transform: none !important; transition: none !important; }
+      .marquee-track { animation-play-state: paused; }
+      .pulse-dot { animation: none; }
+      .orb { animation: none; }
     }
 
-    /* =========================================
+    /* ============================================
        SCROLL REVEAL
-    ========================================= */
+    ============================================ */
     .fade-up {
       opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s var(--ease-out-expo),
-                  transform 0.8s var(--ease-out-expo);
+      transform: translateY(32px);
+      transition: opacity 0.75s var(--ease), transform 0.75s var(--ease);
     }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up.visible { opacity: 1; transform: none; }
 
-    @media (prefers-reduced-motion: reduce) {
-      .fade-up { opacity: 1; transform: none; transition: none; }
-      #grain { animation: none; }
-      .marquee-track { animation-play-state: paused; }
-      .hero-orb { animation: none; }
-      .pulse-dot { animation: none; }
-      .play-btn { animation: none; }
-      .scroll-arrow-inner { animation: none; }
-    }
-
-    /* =========================================
+    /* ============================================
        NAV
-    ========================================= */
+    ============================================ */
     #nav {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      height: 68px;
+      top: 0; left: 0; right: 0;
+      z-index: 500;
+      height: 64px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 clamp(20px, 5vw, 56px);
+      padding: 0 20px;
       border-bottom: 1px solid transparent;
-      transition:
-        border-color 0.5s var(--ease-out-expo),
-        backdrop-filter 0.5s var(--ease-out-expo),
-        background 0.5s var(--ease-out-expo);
+      transition: background 0.4s var(--ease), border-color 0.4s var(--ease), backdrop-filter 0.4s var(--ease);
     }
     #nav.scrolled {
-      border-bottom-color: oklch(72.5% 0.148 86 / 0.18);
-      backdrop-filter: blur(24px) saturate(180%);
-      -webkit-backdrop-filter: blur(24px) saturate(180%);
-      background: oklch(4.5% 0.004 78 / 0.88);
+      background: rgba(8,8,6,0.9);
+      border-bottom-color: var(--border-gold);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
     }
-
-    .nav-logo {
-      height: 34px;
+    .nav-logo-img {
+      height: 32px;
       width: auto;
-      object-fit: contain;
     }
-    .nav-logo-fallback {
+    .nav-logo-text {
       font-family: var(--font-display);
-      font-size: 21px;
-      letter-spacing: 0.14em;
+      font-size: 20px;
+      letter-spacing: 0.1em;
       color: var(--gold);
     }
-
     .nav-badge {
       display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 5px 14px 5px 10px;
-      border: 1px solid oklch(72.5% 0.148 86 / 0.22);
-      background: oklch(72.5% 0.148 86 / 0.07);
-      border-radius: var(--radius-pill);
+      gap: 7px;
+      padding: 5px 12px 5px 9px;
+      background: rgba(34,197,94,0.07);
+      border: 1px solid rgba(34,197,94,0.2);
+      border-radius: 999px;
       font-family: var(--font-mono);
-      font-size: 10.5px;
-      letter-spacing: 0.07em;
-      color: var(--gold);
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      color: #4ade80;
       white-space: nowrap;
     }
-
     .pulse-dot {
-      width: 7px;
-      height: 7px;
+      width: 7px; height: 7px;
       border-radius: 50%;
       background: var(--green);
       flex-shrink: 0;
-      animation: dot-pulse 2.2s ease-in-out infinite;
+      animation: pulse 2s ease-in-out infinite;
     }
-    @keyframes dot-pulse {
-      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 oklch(74% 0.177 142 / 0.5); }
-      55%       { opacity: 0.75; box-shadow: 0 0 0 5px oklch(74% 0.177 142 / 0); }
+    @keyframes pulse {
+      0%,100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.5); opacity:1; }
+      60%      { box-shadow: 0 0 0 5px rgba(34,197,94,0); opacity:0.7; }
     }
 
-    /* =========================================
+    /* ============================================
        HERO
-    ========================================= */
+    ============================================ */
     #hero {
       position: relative;
       min-height: 100dvh;
@@ -183,876 +153,835 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 120px clamp(20px, 5vw, 80px) 80px;
+      padding: 100px 20px 60px;
       overflow: hidden;
-      /* Gold grid — only in hero */
-      background-image:
-        linear-gradient(oklch(72.5% 0.148 86 / 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, oklch(72.5% 0.148 86 / 0.03) 1px, transparent 1px);
-      background-size: 68px 68px;
     }
 
-    .hero-orb {
+    .orb {
       position: absolute;
-      top: 50%;
+      top: 40%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: min(760px, 95vw);
-      height: min(760px, 95vw);
+      width: min(700px, 120vw);
+      height: min(700px, 120vw);
       border-radius: 50%;
       background: radial-gradient(circle,
-        oklch(72.5% 0.148 86 / 0.14) 0%,
-        oklch(72.5% 0.148 86 / 0.04) 45%,
-        transparent 70%);
+        rgba(212,175,55,0.11) 0%,
+        rgba(212,175,55,0.03) 45%,
+        transparent 68%);
       pointer-events: none;
-      animation: orb-breathe 8s ease-in-out infinite;
-      will-change: transform;
+      animation: orb-breathe 9s ease-in-out infinite;
     }
     @keyframes orb-breathe {
-      0%, 100% { transform: translate(-50%, -50%) scale(1);    opacity: 0.75; }
-      50%       { transform: translate(-50%, -50%) scale(1.18); opacity: 1; }
+      0%,100% { transform: translate(-50%,-50%) scale(1); }
+      50%      { transform: translate(-50%,-50%) scale(1.15); }
     }
 
     .hero-inner {
       position: relative;
-      z-index: 2;
-      max-width: 1140px;
+      z-index: 1;
       width: 100%;
+      max-width: 640px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
     }
 
-    /* Staggered hero-in keyframe */
-    @keyframes hero-in {
-      from { opacity: 0; transform: translateY(22px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .hero-label {
-      font-family: var(--font-mono);
-      font-size: 10.5px;
-      letter-spacing: 0.2em;
-      color: var(--muted);
-      text-transform: uppercase;
-      margin-bottom: 22px;
-      opacity: 0;
-      animation: hero-in 0.7s var(--ease-out-expo) 0.08s forwards;
-    }
-
-    .hero-confirmed-pill {
+    /* Qualifier pill — italic, LaunchOS style */
+    .qualifier-pill {
       display: inline-flex;
       align-items: center;
-      gap: 9px;
-      padding: 7px 18px 7px 11px;
-      background: oklch(74% 0.177 142 / 0.07);
-      border: 1px solid oklch(74% 0.177 142 / 0.22);
-      border-radius: var(--radius-pill);
-      font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      color: oklch(80% 0.177 142);
-      margin-bottom: 32px;
-      opacity: 0;
-      animation: hero-in 0.7s var(--ease-out-expo) 0.2s forwards;
+      padding: 8px 20px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 999px;
+      font-family: var(--font-body);
+      font-style: italic;
+      font-size: 14px;
+      color: rgba(240,235,224,0.75);
+      letter-spacing: 0.01em;
     }
 
-    /* H1 — extreme display scale */
+    /* Hero headline */
     .hero-h1 {
       font-family: var(--font-display);
-      font-size: clamp(52px, 11.5vw, 136px);
-      line-height: 0.9;
-      letter-spacing: 0.015em;
+      font-size: clamp(44px, 11vw, 72px);
+      line-height: 0.95;
+      letter-spacing: 0.02em;
       color: var(--text);
-      margin-bottom: 28px;
-      opacity: 0;
-      animation: hero-in 0.85s var(--ease-out-expo) 0.35s forwards;
     }
-    .hero-h1 .line-accent { color: var(--gold); }
-    /* First word bigger for extreme scale jump */
-    .hero-h1 .line-1 {
-      display: block;
-      font-size: clamp(64px, 14vw, 164px);
-      letter-spacing: -0.01em;
-      color: var(--text);
-      line-height: 0.88;
-    }
+    .hero-h1 .accent { color: var(--gold); }
 
-    .hero-sub {
-      font-size: clamp(16px, 1.9vw, 20px);
+    /* Hero body */
+    .hero-body {
+      font-size: clamp(15px, 4vw, 18px);
       color: var(--muted);
       max-width: 520px;
-      margin: 0 auto 52px;
       line-height: 1.65;
-      opacity: 0;
-      animation: hero-in 0.8s var(--ease-out-expo) 0.5s forwards;
     }
 
-    .scroll-arrow {
-      opacity: 0;
-      animation: hero-in 0.8s var(--ease-out-expo) 0.65s forwards;
-    }
-    .scroll-arrow-inner {
-      display: inline-flex;
+    /* Scroll arrow */
+    .scroll-hint {
+      display: flex;
       flex-direction: column;
       align-items: center;
       gap: 6px;
-      animation: arrow-bounce 2.6s ease-in-out infinite;
+      margin-top: 8px;
+      animation: bob 2.5s ease-in-out infinite;
+      opacity: 0.4;
     }
-    .scroll-arrow-inner svg { color: var(--gold); opacity: 0.55; }
-    @keyframes arrow-bounce {
-      0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(9px); }
+    @keyframes bob {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(7px); }
     }
 
-    /* =========================================
-       MARQUEE STRIP
-    ========================================= */
-    .marquee-wrap {
-      overflow: hidden;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 14px 0;
-      background: var(--surface);
-      user-select: none;
-    }
-    .marquee-track {
-      display: flex;
-      width: max-content;
-      animation: marquee-scroll 32s linear infinite;
-    }
-    .marquee-track:hover { animation-play-state: paused; }
-
-    .marquee-item {
+    /* ============================================
+       CTA BUTTON — Full-width pill, LaunchOS style
+    ============================================ */
+    .cta-btn {
       display: flex;
       align-items: center;
-      gap: 0;
-      flex-shrink: 0;
-      padding: 0 28px;
-      font-family: var(--font-mono);
-      font-size: 10px;
-      letter-spacing: 0.2em;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      max-width: 560px;
+      height: 62px;
+      background: var(--gold);
+      color: #080806;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--muted-dim);
-      white-space: nowrap;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.25s var(--ease), transform 0.2s var(--ease), box-shadow 0.25s var(--ease);
+      text-align: center;
     }
-    .marquee-sep {
-      color: var(--gold);
-      opacity: 0.4;
-      margin: 0 28px;
-      flex-shrink: 0;
-      font-family: var(--font-mono);
-      font-size: 10px;
+    .cta-btn:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(212,175,55,0.3);
     }
-    @keyframes marquee-scroll {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+    .cta-btn:active { transform: scale(0.98); }
+    .cta-btn .arrow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px; height: 32px;
+      background: rgba(8,8,6,0.15);
+      border-radius: 50%;
+      font-size: 16px;
+      transition: transform 0.2s var(--ease);
     }
+    .cta-btn:hover .arrow { transform: translateX(3px); }
 
-    /* =========================================
+    /* ============================================
        VIDEO SECTION
-    ========================================= */
+    ============================================ */
     #video {
-      padding: clamp(72px, 9vw, 128px) clamp(20px, 5vw, 60px);
+      padding: 0 20px 60px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 28px;
+      gap: 24px;
     }
 
-    /* Outer shell — double-bezel architecture */
-    .video-shell {
+    .video-wrapper {
       width: 100%;
-      max-width: 820px;
-      padding: 3px;
-      background: var(--border);
-      border-radius: calc(var(--radius) + 3px);
-      border: 1px solid var(--border-light);
-      transition:
-        border-color 0.45s var(--ease-out-expo),
-        box-shadow 0.45s var(--ease-out-expo);
-    }
-    .video-shell:hover {
-      border-color: oklch(72.5% 0.148 86 / 0.3);
-      box-shadow:
-        0 0 48px oklch(72.5% 0.148 86 / 0.1),
-        0 0 100px oklch(72.5% 0.148 86 / 0.05);
+      max-width: 720px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
     }
 
-    /* Inner core */
-    .video-card {
+    /* Gold header bar — LaunchOS style */
+    .video-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: var(--gold);
+      color: #080806;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.04em;
+      padding: 13px 20px;
+    }
+    .video-header svg { flex-shrink: 0; }
+
+    /* 16:9 video placeholder */
+    .video-body {
       background: var(--surface);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: inset 0 1px 0 oklch(100% 0 0 / 0.04);
       position: relative;
       cursor: pointer;
     }
-    .video-card::before {
+    .video-body::before {
       content: '';
       display: block;
       padding-top: 56.25%;
     }
-    .video-card-inner {
+    .video-body-inner {
       position: absolute;
       inset: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 16px;
-      /* Atmospheric background */
-      background:
-        radial-gradient(ellipse 60% 60% at 50% 50%,
-          oklch(72.5% 0.148 86 / 0.05) 0%,
-          transparent 70%);
+      gap: 14px;
+      background: radial-gradient(ellipse 55% 50% at 50% 50%,
+        rgba(212,175,55,0.06) 0%, transparent 70%);
     }
-
-    /* Video label - repositioned inside card */
-    .video-card-label {
-      position: absolute;
-      top: 20px;
-      left: 24px;
-      font-family: var(--font-mono);
-      font-size: 10px;
-      letter-spacing: 0.18em;
-      color: var(--gold);
-      text-transform: uppercase;
-      opacity: 0.7;
-    }
-
-    /* Timestamp */
-    .video-timestamp {
-      position: absolute;
-      bottom: 20px;
-      right: 24px;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      color: var(--muted);
-      background: oklch(4.5% 0.004 78 / 0.6);
-      padding: 3px 8px;
-      border-radius: 4px;
-    }
-
-    .play-btn {
+    .play-circle {
       animation: play-glow 3s ease-in-out infinite;
-      will-change: filter;
-      transition: transform 0.3s var(--ease-out-expo);
-    }
-    .video-card:hover .play-btn {
-      transform: scale(1.08);
     }
     @keyframes play-glow {
-      0%, 100% { filter: drop-shadow(0 0 10px oklch(72.5% 0.148 86 / 0.4)); }
-      50%       { filter: drop-shadow(0 0 28px oklch(72.5% 0.148 86 / 0.75)); }
+      0%,100% { filter: drop-shadow(0 0 8px rgba(212,175,55,0.35)); }
+      50%      { filter: drop-shadow(0 0 22px rgba(212,175,55,0.7)); }
     }
-
-    .play-label {
+    .video-body:hover .play-circle { transform: scale(1.06); transition: transform 0.3s var(--ease); }
+    .video-timestamp {
       font-family: var(--font-mono);
-      font-size: 10.5px;
-      letter-spacing: 0.16em;
+      font-size: 11px;
+      letter-spacing: 0.14em;
       color: var(--muted);
       text-transform: uppercase;
     }
 
     .video-disclaimer {
       font-style: italic;
-      font-size: 14.5px;
+      font-size: 14px;
       color: var(--muted);
-      max-width: 600px;
+      max-width: 520px;
       text-align: center;
-      line-height: 1.7;
+      line-height: 1.65;
     }
 
-    /* =========================================
-       BREAKDOWN — ASYMMETRIC GRID
-       Featured card (01) spans 2 rows.
-    ========================================= */
-    #breakdown {
-      padding: clamp(72px, 9vw, 128px) clamp(20px, 5vw, 60px);
-      max-width: 1200px;
-      margin: 0 auto;
+    /* ============================================
+       NICHE MARQUEE — social proof
+    ============================================ */
+    .marquee-section {
+      overflow: hidden;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+      padding: 16px 0;
+      margin-bottom: 0;
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 28s linear infinite;
+      gap: 0;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    .m-item {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 0 24px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .m-dot {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--gold);
+      opacity: 0.45;
+      flex-shrink: 0;
+      padding: 0 4px;
+    }
+    @keyframes marquee {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
 
-    .section-eyebrow {
+    /* ============================================
+       SECTION PILL BADGE
+    ============================================ */
+    .section-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 16px 7px 11px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 999px;
       font-family: var(--font-mono);
       font-size: 10.5px;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.14em;
+      color: var(--muted);
       text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 16px;
+    }
+    .badge-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .badge-dot--gold { background: var(--gold); }
+    .badge-dot--red  { background: var(--red); }
+
+    /* ============================================
+       SECTION SHARED
+    ============================================ */
+    .section {
+      padding: clamp(64px, 9vw, 120px) 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .section-inner {
+      width: 100%;
+      max-width: 640px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
     }
     .section-h2 {
       font-family: var(--font-display);
-      font-size: clamp(40px, 5.5vw, 72px);
+      font-size: clamp(38px, 8.5vw, 60px);
       line-height: 0.95;
       letter-spacing: 0.02em;
       color: var(--text);
+    }
+    .section-h2 .accent { color: var(--gold); }
+    .section-body {
+      font-size: clamp(15px, 3.5vw, 17px);
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 520px;
+    }
+
+    /* ============================================
+       PROCESS SECTION — vertical timeline
+    ============================================ */
+    #process {
+      padding: clamp(64px, 9vw, 120px) 20px;
+    }
+    .process-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 18px;
       margin-bottom: 52px;
     }
 
-    /* Asymmetric: featured card (col 1, 2 rows) + two compact (col 2) */
-    .cards-grid {
-      display: grid;
-      grid-template-columns: 3fr 2fr;
-      grid-template-rows: auto auto;
-      gap: 18px;
-    }
-
-    .breakdown-card {
-      background: var(--surface-2);
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      border-top: 2px solid var(--gold);
-      padding: 32px 28px;
-      position: relative;
-      transition:
-        transform 0.35s var(--ease-out-expo),
-        box-shadow 0.35s var(--ease-out-expo),
-        border-top-color 0.3s;
-    }
-    .breakdown-card:hover {
-      transform: translateY(-4px);
-      box-shadow:
-        0 20px 56px oklch(72.5% 0.148 86 / 0.1),
-        0 4px 16px oklch(0% 0 0 / 0.4);
-      border-top-color: var(--gold-hover);
-    }
-    .breakdown-card:active { transform: scale(0.99); }
-
-    /* Featured card spans 2 rows */
-    .breakdown-card--featured {
-      grid-row: span 2;
-      padding: 44px 36px;
+    .timeline {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
       display: flex;
       flex-direction: column;
-    }
-    .breakdown-card--featured .card-title {
-      font-size: clamp(26px, 2.8vw, 36px);
-    }
-    .breakdown-card--featured .card-body {
-      flex: 1;
-      font-size: 16px;
-      line-height: 1.75;
-    }
-    .breakdown-card--featured .card-num {
-      font-size: 12px;
+      gap: 0;
     }
 
-    .card-num {
+    .timeline-item {
+      display: flex;
+      gap: 20px;
+      position: relative;
+    }
+    /* Vertical line connecting steps */
+    .timeline-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 19px;
+      top: 40px;
+      bottom: -12px;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--gold), rgba(212,175,55,0.1));
+    }
+
+    .timeline-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0;
+      width: 40px;
+      padding-top: 2px;
+    }
+    .step-num {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--border-gold);
+      background: var(--surface-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-family: var(--font-mono);
-      font-size: 10.5px;
-      letter-spacing: 0.15em;
+      font-size: 12px;
+      letter-spacing: 0.06em;
       color: var(--gold);
-      margin-bottom: 18px;
+      flex-shrink: 0;
+      z-index: 1;
+    }
+
+    .timeline-content {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px 22px;
+      flex: 1;
+      margin-bottom: 16px;
+      text-align: left;
+      transition: border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+    }
+    .timeline-content:hover {
+      border-color: var(--border-gold);
+      box-shadow: 0 8px 32px rgba(212,175,55,0.08);
+    }
+    .step-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 8px;
       display: block;
     }
-    .card-title {
+    .step-title {
       font-family: var(--font-display);
-      font-size: clamp(20px, 2.2vw, 26px);
+      font-size: clamp(20px, 4.5vw, 26px);
       letter-spacing: 0.04em;
       color: var(--text);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       line-height: 1.05;
     }
-    .card-body {
+    .step-body {
       font-size: 14.5px;
       color: var(--muted);
       line-height: 1.7;
     }
 
-    /* =========================================
-       SCARCITY
-    ========================================= */
+    /* ============================================
+       SCARCITY SECTION
+    ============================================ */
     #scarcity {
-      background: var(--red-tint);
-      border-top: 1px solid oklch(41.5% 0.185 27 / 0.1);
-      border-bottom: 1px solid oklch(41.5% 0.185 27 / 0.1);
-      padding: clamp(80px, 10vw, 140px) clamp(20px, 5vw, 60px);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-    .scarcity-inner { max-width: 640px; }
-
-    .scarcity-icon {
-      margin: 0 auto 28px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      background: linear-gradient(180deg,
+        rgba(193,39,45,0.04) 0%,
+        transparent 100%);
+      border-top: 1px solid rgba(193,39,45,0.08);
+      border-bottom: 1px solid rgba(193,39,45,0.08);
     }
 
-    .scarcity-h3 {
-      font-family: var(--font-display);
-      font-size: clamp(40px, 6vw, 72px);
-      letter-spacing: 0.04em;
-      line-height: 0.92;
-      color: var(--text);
-      margin-bottom: 22px;
-    }
-    .scarcity-body {
-      font-size: clamp(15px, 1.8vw, 18px);
-      color: var(--muted);
-      line-height: 1.75;
-      margin-bottom: 20px;
-      max-width: 520px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .scarcity-note {
-      font-family: var(--font-mono);
-      font-size: 10.5px;
-      letter-spacing: 0.1em;
-      color: var(--muted-dim);
-    }
-
-    /* =========================================
-       FINAL CTA
-    ========================================= */
-    #cta {
+    /* ============================================
+       FINAL CTA SECTION
+    ============================================ */
+    #final-cta {
       position: relative;
-      padding: clamp(90px, 11vw, 150px) clamp(20px, 5vw, 60px);
-      text-align: center;
       overflow: hidden;
     }
-    .cta-orb {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: min(640px, 95vw);
-      height: min(640px, 95vw);
-      border-radius: 50%;
-      background: radial-gradient(circle,
-        oklch(72.5% 0.148 86 / 0.09) 0%,
-        oklch(72.5% 0.148 86 / 0.02) 55%,
-        transparent 72%);
-      pointer-events: none;
-      animation: orb-breathe 10s ease-in-out infinite;
-    }
-    .cta-inner {
-      position: relative;
-      z-index: 2;
-      max-width: 840px;
-      margin: 0 auto;
+    #final-cta .orb {
+      opacity: 0.6;
     }
     .cta-h2 {
       font-family: var(--font-display);
-      font-size: clamp(56px, 9vw, 112px);
-      letter-spacing: 0.03em;
+      font-size: clamp(52px, 12vw, 88px);
       line-height: 0.9;
-      color: var(--text);
-      margin-bottom: 20px;
-    }
-    .cta-body {
-      font-size: clamp(15px, 1.8vw, 18px);
-      color: var(--muted);
-      margin-bottom: 44px;
-      line-height: 1.7;
-    }
-
-    /* CTA button — button-in-button pattern */
-    .cta-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0;
-      background: var(--gold);
-      color: oklch(4.5% 0.004 78);
-      font-family: var(--font-body);
-      font-weight: 700;
-      font-size: 14px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 0 8px 0 28px;
-      height: 56px;
-      border-radius: var(--radius-pill);
-      cursor: pointer;
-      border: none;
-      transition:
-        background 0.3s var(--ease-out-expo),
-        transform 0.25s var(--ease-out-expo),
-        box-shadow 0.3s var(--ease-out-expo);
-    }
-    .cta-btn:hover {
-      background: var(--gold-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 14px 40px oklch(72.5% 0.148 86 / 0.32);
-    }
-    .cta-btn:active { transform: scale(0.98); }
-    .cta-btn-arrow {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: oklch(4.5% 0.004 78 / 0.15);
-      margin-left: 12px;
-      font-size: 16px;
-      transition: transform 0.25s var(--ease-out-expo);
-    }
-    .cta-btn:hover .cta-btn-arrow {
-      transform: translateX(2px) translateY(-1px);
-    }
-
-    .cta-note {
-      display: block;
-      font-size: 13px;
-      color: var(--muted-dim);
-      margin-top: 20px;
       letter-spacing: 0.02em;
+      color: var(--text);
     }
+    .cta-h2 .accent { color: var(--gold); }
 
-    /* =========================================
+    /* ============================================
        FOOTER
-    ========================================= */
+    ============================================ */
     footer {
-      background: oklch(3.5% 0.004 78);
+      background: #050503;
       border-top: 1px solid var(--border);
-      padding: 48px clamp(20px, 5vw, 60px) 56px;
+      padding: 40px 20px 48px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 18px;
+      gap: 16px;
+      text-align: center;
     }
-    .footer-logo {
-      height: 30px;
-      width: auto;
-      object-fit: contain;
-      opacity: 0.65;
-    }
-    .footer-logo-fallback {
+    .footer-logo { height: 28px; opacity: 0.6; }
+    .footer-logo-text {
       font-family: var(--font-display);
       font-size: 18px;
-      letter-spacing: 0.16em;
-      color: oklch(72.5% 0.148 86 / 0.55);
+      letter-spacing: 0.14em;
+      color: rgba(212,175,55,0.5);
     }
     .footer-copy {
       font-family: var(--font-mono);
       font-size: 10.5px;
-      letter-spacing: 0.12em;
-      color: var(--muted-dim);
-      text-transform: lowercase;
-      font-variant: small-caps;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      opacity: 0.55;
     }
 
-    /* =========================================
+    /* ============================================
        STICKY BOTTOM BAR
-    ========================================= */
+    ============================================ */
     #sticky-bar {
       position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 998;
+      bottom: 0; left: 0; right: 0;
+      z-index: 490;
       background: var(--gold);
-      padding: 12px clamp(16px, 4vw, 48px);
+      padding: 10px 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      gap: 12px;
       transform: translateY(110%);
-      transition: transform 0.55s var(--ease-out-expo);
+      transition: transform 0.5s var(--ease);
     }
-    #sticky-bar.visible { transform: translateY(0); }
-
+    #sticky-bar.show { transform: translateY(0); }
     .bar-text {
-      font-size: 13.5px;
-      font-weight: 500;
-      color: oklch(4.5% 0.004 78);
+      font-size: 13px;
+      font-weight: 600;
+      color: #080806;
       flex: 1;
       min-width: 0;
-      letter-spacing: 0.01em;
     }
-    .bar-right {
+    .bar-actions {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       flex-shrink: 0;
     }
-    .bar-btn {
+    .bar-cta {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      background: oklch(4.5% 0.004 78);
+      gap: 6px;
+      background: #080806;
       color: var(--gold);
+      font-family: var(--font-body);
       font-weight: 700;
       font-size: 11.5px;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.07em;
       text-transform: uppercase;
-      padding: 0 18px;
-      height: 40px;
-      border-radius: var(--radius-pill);
-      white-space: nowrap;
+      padding: 0 16px;
+      height: 38px;
       min-height: 44px;
-      min-width: 44px;
-      transition: background 0.25s, transform 0.2s;
+      border-radius: 999px;
+      white-space: nowrap;
+      transition: background 0.2s;
     }
-    .bar-btn:hover { background: oklch(8% 0.004 78); transform: translateY(-1px); }
-    .bar-dismiss {
+    .bar-cta:hover { background: #141410; }
+    .bar-close {
       background: none;
       border: none;
       cursor: pointer;
-      color: oklch(4.5% 0.004 78 / 0.45);
+      color: rgba(8,8,6,0.45);
       font-size: 22px;
       line-height: 1;
-      padding: 4px;
+      min-width: 44px;
+      min-height: 44px;
       display: flex;
       align-items: center;
       justify-content: center;
-      min-width: 44px;
-      min-height: 44px;
       transition: color 0.2s;
     }
-    .bar-dismiss:hover { color: oklch(4.5% 0.004 78 / 0.9); }
+    .bar-close:hover { color: rgba(8,8,6,0.9); }
 
-    /* =========================================
-       RESPONSIVE
-    ========================================= */
-    @media (max-width: 767px) {
-      /* Collapse asymmetric grid to single column */
-      .cards-grid {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-      }
-      .breakdown-card--featured {
-        grid-row: span 1;
-      }
-      .hero-h1 .line-1 {
-        font-size: clamp(60px, 17vw, 88px);
-      }
-      .hero-h1 {
-        font-size: clamp(44px, 12vw, 68px);
-      }
-      #sticky-bar {
-        flex-wrap: wrap;
-        gap: 8px;
-        padding: 12px 16px;
-      }
-      .bar-right { width: 100%; justify-content: flex-end; }
-      .bar-text { font-size: 12.5px; }
+    /* ============================================
+       RESPONSIVE OVERRIDES
+    ============================================ */
+    @media (min-width: 640px) {
+      #nav { padding: 0 32px; }
+      #video { padding: 0 32px 72px; }
+      #process { padding: clamp(64px, 9vw, 120px) 32px; }
+      .section { padding: clamp(64px, 9vw, 120px) 32px; }
+      #sticky-bar { padding: 12px 32px; }
     }
-
-    @media (max-width: 480px) {
-      .nav-badge .badge-text { display: none; }
-      .nav-badge { padding: 6px 8px; }
+    @media (max-width: 400px) {
+      .bar-text { font-size: 11.5px; }
+      .qualifier-pill { font-size: 12.5px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Film grain -->
   <div id="grain" aria-hidden="true"></div>
 
-  <!-- ==================== NAV ==================== -->
+  <!-- ===================== NAV ===================== -->
   <nav id="nav" role="navigation" aria-label="Main navigation">
-    <a href="#hero" aria-label="Luxon Agency">
+    <a href="#" aria-label="Luxon Agency - home">
       <img
         src="luxon_logo.png"
-        class="nav-logo"
+        class="nav-logo-img"
         alt="Luxon Agency"
-        onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+        onerror="this.style.display='none';document.getElementById('nav-logo-txt').style.display='block'"
       >
-      <span class="nav-logo-fallback" style="display:none">LUXON</span>
+      <span id="nav-logo-txt" class="nav-logo-text" style="display:none">LUXON</span>
     </a>
     <div class="nav-badge" role="status">
       <span class="pulse-dot" aria-hidden="true"></span>
-      <span class="badge-text">Call Confirmed &#10003;</span>
+      <span>Call Confirmed &#10003;</span>
     </div>
   </nav>
 
-  <!-- ==================== HERO ==================== -->
+  <!-- ===================== HERO ===================== -->
   <section id="hero" aria-label="Hero">
-    <div class="hero-orb" aria-hidden="true"></div>
+    <div class="orb" aria-hidden="true"></div>
+
     <div class="hero-inner">
-
-      <p class="hero-label">Luxon Agency &middot; Pre-Call Briefing</p>
-
-      <div class="hero-confirmed-pill" role="status">
-        <span class="pulse-dot" aria-hidden="true"></span>
-        Your Call Is Confirmed
+      <!-- Qualifier pill — italic, like LaunchOS -->
+      <div class="qualifier-pill">
+        HVAC &amp; Roofing Contractors Doing $50k+ Per Month
       </div>
 
+      <!-- Two-tone headline -->
       <h1 class="hero-h1">
-        <span class="line-1">You're Booked.</span>
-        Here's Exactly<br>
-        <span class="line-accent">What Happens Next.</span>
+        You're Booked.<br>
+        Here's Exactly What<br>
+        <span class="accent">Happens Next.</span>
       </h1>
 
-      <p class="hero-sub">
-        Watch the 90-second video below before our call. It makes our 15 minutes worth 10x more.
+      <p class="hero-body">
+        Watch the 90-second video below before our call. It makes our 15 minutes worth 10x more and puts you ahead of every contractor we talk to.
       </p>
 
-      <div class="scroll-arrow" aria-hidden="true">
-        <div class="scroll-arrow-inner">
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M9 3v12M3 9l6 6 6-6"/>
-          </svg>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ==================== MARQUEE STRIP ==================== -->
-  <div class="marquee-wrap" aria-hidden="true">
-    <div class="marquee-track">
-      <!-- Two copies for seamless loop -->
-      <span class="marquee-item">Results Guaranteed</span>
-      <span class="marquee-sep">&middot;</span>
-      <span class="marquee-item">One City. One Contractor.</span>
-      <span class="marquee-sep">&middot;</span>
-      <span class="marquee-item">Your Custom Campaign</span>
-      <span class="marquee-sep">&middot;</span>
-      <span class="marquee-item">Meta Ads + Google LSA</span>
-      <span class="marquee-sep">&middot;</span>
-      <span class="marquee-item">15 Minutes. Zero Pressure.</span>
-      <span class="marquee-sep">&middot;</span>
-      <span class="marquee-item">HVAC &amp; Roofing</span>
-      <span class="marquee-sep">&middot;</span>
-      <span class="marquee-item">Your Market. Right Now.</span>
-      <span class="marquee-sep">&middot;</span>
-      <!-- Copy 2 -->
-      <span class="marquee-item">Results Guaranteed</span>
-      <span class="marquee-sep">&middot;</span>
-      <span class="marquee-item">One City. One Contractor.</span>
-      <span class="marquee-sep">&middot;</span>
-      <span class="marquee-item">Your Custom Campaign</span>
-      <span class="marquee-sep">&middot;</span>
-      <span class="marquee-item">Meta Ads + Google LSA</span>
-      <span class="marquee-sep">&middot;</span>
-      <span class="marquee-item">15 Minutes. Zero Pressure.</span>
-      <span class="marquee-sep">&middot;</span>
-      <span class="marquee-item">HVAC &amp; Roofing</span>
-      <span class="marquee-sep">&middot;</span>
-      <span class="marquee-item">Your Market. Right Now.</span>
-      <span class="marquee-sep">&middot;</span>
-    </div>
-  </div>
-
-  <!-- ==================== VIDEO ==================== -->
-  <section id="video" aria-label="Pre-call video" class="fade-up">
-    <div class="video-shell">
-      <div class="video-card" role="button" tabindex="0" aria-label="Play 90-second overview video">
-        <!-- Inner content -->
-        <div class="video-card-inner">
-          <span class="video-card-label">Watch Before The Call</span>
-          <div class="play-btn" aria-hidden="true">
-            <svg width="84" height="84" viewBox="0 0 84 84" fill="none">
-              <circle cx="42" cy="42" r="41" stroke="oklch(72.5% 0.148 86)" stroke-width="1.5" fill="oklch(72.5% 0.148 86 / 0.07)"/>
-              <polygon points="34,27 63,42 34,57" fill="oklch(72.5% 0.148 86)"/>
-            </svg>
-          </div>
-          <p class="play-label">90-Second Overview</p>
-          <span class="video-timestamp">0:90</span>
-        </div>
-      </div>
-    </div>
-
-    <p class="video-disclaimer">
-      "No pitch. No pressure. Just the honest breakdown of what we do - and what you walk away with whether you sign up or not."
-    </p>
-  </section>
-
-  <!-- ==================== BREAKDOWN ==================== -->
-  <section id="breakdown" aria-label="What we cover on the call" class="fade-up">
-    <p class="section-eyebrow">The 15-Minute Breakdown</p>
-    <h2 class="section-h2">Here's Exactly What We Cover.</h2>
-
-    <div class="cards-grid">
-      <!-- Featured card: spans 2 rows -->
-      <article class="breakdown-card breakdown-card--featured">
-        <span class="card-num">01</span>
-        <h3 class="card-title">Your Market Right Now</h3>
-        <p class="card-body">
-          I show you what's actually working for contractors in your city right now.
-          Real campaigns. Real data. No theory, no guessing. You'll see exactly where
-          the leads are coming from and why the contractors getting them are getting them.
-        </p>
-      </article>
-
-      <!-- Compact cards: stack in column 2 -->
-      <article class="breakdown-card">
-        <span class="card-num">02</span>
-        <h3 class="card-title">Your Custom Campaign</h3>
-        <p class="card-body">I build your campaign structure live on the call - Meta ads and Google LSA tailored specifically to your niche and location.</p>
-      </article>
-
-      <article class="breakdown-card">
-        <span class="card-num">03</span>
-        <h3 class="card-title">The Guarantee</h3>
-        <p class="card-body">I walk you through exactly what we guarantee, what happens if we miss it, and what starting looks like. Zero pressure.</p>
-      </article>
-    </div>
-  </section>
-
-  <!-- ==================== SCARCITY ==================== -->
-  <section id="scarcity" aria-label="Limited availability" class="fade-up">
-    <div class="scarcity-inner">
-      <div class="scarcity-icon" aria-hidden="true">
-        <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
-          <path d="M26 3L49 26L26 49L3 26Z" stroke="oklch(72.5% 0.148 86)" stroke-width="1.5" fill="none"/>
-          <path d="M26 11L41 26L26 41L11 26Z" stroke="oklch(72.5% 0.148 86)" stroke-width="1" fill="oklch(72.5% 0.148 86 / 0.06)"/>
-        </svg>
-      </div>
-
-      <h3 class="scarcity-h3">One Contractor<br>Per City.</h3>
-      <p class="scarcity-body">
-        We only work with one HVAC and one roofing contractor per city. Your spot is held until our call - after that it goes to the next contractor on the list.
-      </p>
-      <p class="scarcity-note">Need to reschedule? Use the link in your confirmation email.</p>
-    </div>
-  </section>
-
-  <!-- ==================== FINAL CTA ==================== -->
-  <section id="cta" aria-label="Add to calendar" class="fade-up">
-    <div class="cta-orb" aria-hidden="true"></div>
-    <div class="cta-inner">
-      <h2 class="cta-h2">See You<br>On The Call.</h2>
-      <p class="cta-body">
-        If you have any questions before we talk - DM @luxonagency on Instagram.
-      </p>
+      <!-- Full-width CTA — LaunchOS style -->
       <a
         href="https://calendly.com/luxonscales/30min"
         target="_blank"
         rel="noopener noreferrer"
         class="cta-btn"
-        aria-label="Add to calendar - opens Calendly in new tab"
+        aria-label="Add to calendar"
       >
         Add To Calendar
-        <span class="cta-btn-arrow" aria-hidden="true">&#8594;</span>
+        <span class="arrow" aria-hidden="true">&#8594;</span>
       </a>
-      <span class="cta-note">15 minutes. No obligation. Your city, your campaign, your call.</span>
+
+      <!-- Scroll hint -->
+      <div class="scroll-hint" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 3v10M3 8l5 5 5-5"/>
+        </svg>
+      </div>
     </div>
   </section>
 
-  <!-- ==================== FOOTER ==================== -->
+  <!-- ===================== VIDEO ===================== -->
+  <section id="video" aria-label="Watch before the call" class="fade-up">
+    <div class="video-wrapper">
+      <!-- Gold header bar — LaunchOS style -->
+      <div class="video-header">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+          <path d="M6 4l7 4-7 4V4z"/>
+        </svg>
+        Watch This First &mdash; 90 Seconds
+      </div>
+
+      <!-- 16:9 video placeholder -->
+      <div
+        class="video-body"
+        role="button"
+        tabindex="0"
+        aria-label="Play 90-second overview video"
+      >
+        <div class="video-body-inner">
+          <div class="play-circle" aria-hidden="true">
+            <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+              <circle cx="40" cy="40" r="39" stroke="#D4AF37" stroke-width="1.5" fill="rgba(212,175,55,0.08)"/>
+              <polygon points="33,25 60,40 33,55" fill="#D4AF37"/>
+            </svg>
+          </div>
+          <p class="video-timestamp">90 seconds &middot; No pitch</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="video-disclaimer">
+      "No pitch. No pressure. Just the honest breakdown of what we do - and what you walk away with whether you sign or not."
+    </p>
+
+    <!-- CTA below video — LaunchOS pattern -->
+    <a
+      href="https://calendly.com/luxonscales/30min"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="cta-btn"
+    >
+      Add To Calendar
+      <span class="arrow" aria-hidden="true">&#8594;</span>
+    </a>
+  </section>
+
+  <!-- ===================== NICHE MARQUEE ===================== -->
+  <div class="marquee-section fade-up" aria-label="Niches we work with" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="m-item">HVAC</span><span class="m-dot">&middot;</span>
+      <span class="m-item">Roofing</span><span class="m-dot">&middot;</span>
+      <span class="m-item">Plumbing</span><span class="m-dot">&middot;</span>
+      <span class="m-item">Electrical</span><span class="m-dot">&middot;</span>
+      <span class="m-item">Landscaping</span><span class="m-dot">&middot;</span>
+      <span class="m-item">Home Services</span><span class="m-dot">&middot;</span>
+      <span class="m-item">Windows &amp; Doors</span><span class="m-dot">&middot;</span>
+      <span class="m-item">Gutters</span><span class="m-dot">&middot;</span>
+      <span class="m-item">Concrete</span><span class="m-dot">&middot;</span>
+      <span class="m-item">Painting</span><span class="m-dot">&middot;</span>
+      <!-- Duplicate for seamless loop -->
+      <span class="m-item">HVAC</span><span class="m-dot">&middot;</span>
+      <span class="m-item">Roofing</span><span class="m-dot">&middot;</span>
+      <span class="m-item">Plumbing</span><span class="m-dot">&middot;</span>
+      <span class="m-item">Electrical</span><span class="m-dot">&middot;</span>
+      <span class="m-item">Landscaping</span><span class="m-dot">&middot;</span>
+      <span class="m-item">Home Services</span><span class="m-dot">&middot;</span>
+      <span class="m-item">Windows &amp; Doors</span><span class="m-dot">&middot;</span>
+      <span class="m-item">Gutters</span><span class="m-dot">&middot;</span>
+      <span class="m-item">Concrete</span><span class="m-dot">&middot;</span>
+      <span class="m-item">Painting</span><span class="m-dot">&middot;</span>
+    </div>
+  </div>
+
+  <!-- ===================== PROCESS ===================== -->
+  <section id="process" class="fade-up" aria-label="What we cover on the call">
+    <div class="process-header">
+      <div class="section-badge">
+        <span class="badge-dot badge-dot--gold" aria-hidden="true"></span>
+        The 15-Minute Breakdown
+      </div>
+      <h2 class="section-h2">
+        Here's Exactly<br>
+        <span class="accent">What We Cover.</span>
+      </h2>
+      <p class="section-body">
+        Three things. Every call. Done in 15 minutes. No fluff, no bait-and-switch, no pressure close at the end.
+      </p>
+    </div>
+
+    <div class="timeline">
+      <!-- Step 01 -->
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <div class="step-num">01</div>
+        </div>
+        <div class="timeline-content">
+          <span class="step-label">Market Intelligence</span>
+          <h3 class="step-title">Your Market Right Now</h3>
+          <p class="step-body">
+            I show you what's actually working for contractors in your city right now. Real campaigns. Real data. No theory, no guessing. You'll see exactly where the leads are coming from.
+          </p>
+        </div>
+      </div>
+
+      <!-- Step 02 -->
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <div class="step-num">02</div>
+        </div>
+        <div class="timeline-content">
+          <span class="step-label">Live Build</span>
+          <h3 class="step-title">Your Custom Campaign</h3>
+          <p class="step-body">
+            I build your campaign structure live on the call - Meta ads and Google LSA tailored specifically to your niche and location. You keep it whether you work with us or not.
+          </p>
+        </div>
+      </div>
+
+      <!-- Step 03 -->
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <div class="step-num">03</div>
+        </div>
+        <div class="timeline-content">
+          <span class="step-label">No Pressure</span>
+          <h3 class="step-title">The Guarantee</h3>
+          <p class="step-body">
+            I walk you through exactly what we guarantee, what happens if we miss it, and what starting looks like for your business. You decide if it makes sense. Zero pressure.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SCARCITY ===================== -->
+  <section id="scarcity" class="section fade-up" aria-label="Limited availability">
+    <div class="section-inner">
+      <div class="section-badge">
+        <span class="badge-dot badge-dot--red" aria-hidden="true"></span>
+        Limited Availability
+      </div>
+
+      <h2 class="section-h2">
+        One Contractor<br>
+        <span class="accent">Per City.</span>
+      </h2>
+
+      <p class="section-body">
+        We only work with one HVAC and one roofing contractor per city. Your spot is held until our call - after that it goes to the next contractor on the list.
+      </p>
+
+      <p style="font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.1em; color: var(--muted); opacity: 0.6;">
+        Need to reschedule? Use the link in your confirmation email.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================== FINAL CTA ===================== -->
+  <section id="final-cta" class="section fade-up" aria-label="Book your call">
+    <div class="orb" aria-hidden="true"></div>
+
+    <div class="section-inner" style="position:relative; z-index:1;">
+      <div class="section-badge">
+        <span class="badge-dot badge-dot--gold" aria-hidden="true"></span>
+        You're Already Booked
+      </div>
+
+      <h2 class="cta-h2">
+        See You<br>
+        <span class="accent">On The Call.</span>
+      </h2>
+
+      <p class="section-body">
+        If you have any questions before we talk - DM @luxonagency on Instagram.
+      </p>
+
+      <a
+        href="https://calendly.com/luxonscales/30min"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="cta-btn"
+        aria-label="Add to calendar"
+      >
+        Add To Calendar
+        <span class="arrow" aria-hidden="true">&#8594;</span>
+      </a>
+
+      <p style="font-size: 13px; color: var(--muted); opacity: 0.65;">
+        15 minutes. No obligation. Your city, your campaign, your call.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
   <footer role="contentinfo">
     <img
       src="luxon_logo.png"
       class="footer-logo"
       alt="Luxon Agency"
-      onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+      onerror="this.style.display='none';document.getElementById('footer-logo-txt').style.display='block'"
     >
-    <span class="footer-logo-fallback" style="display:none">LUXON</span>
+    <span id="footer-logo-txt" class="footer-logo-text" style="display:none">LUXON</span>
     <p class="footer-copy">&#169; 2026 Luxon Agency &middot; Build Better. Grow Faster.</p>
   </footer>
 
-  <!-- ==================== STICKY BOTTOM BAR ==================== -->
+  <!-- ===================== STICKY BAR ===================== -->
   <div id="sticky-bar" role="complementary" aria-label="Calendar reminder">
-    <p class="bar-text">Don't forget - add this to your calendar before you leave.</p>
-    <div class="bar-right">
+    <p class="bar-text">Don't forget - add this to your calendar.</p>
+    <div class="bar-actions">
       <a
         href="https://calendly.com/luxonscales/30min"
         target="_blank"
         rel="noopener noreferrer"
-        class="bar-btn"
+        class="bar-cta"
         aria-label="Add to calendar"
       >
         Add To Calendar &#8594;
       </a>
-      <button class="bar-dismiss" id="bar-dismiss" aria-label="Dismiss reminder">
-        &times;
-      </button>
+      <button class="bar-close" id="bar-close" aria-label="Dismiss">&times;</button>
     </div>
   </div>
 
@@ -1060,54 +989,44 @@
     (function () {
       'use strict';
 
-      /* NAV — activate blur/border on scroll */
+      // NAV scroll
       var nav = document.getElementById('nav');
-      function handleScroll() {
-        nav.classList.toggle('scrolled', window.scrollY > 50);
-      }
-      window.addEventListener('scroll', handleScroll, { passive: true });
-      handleScroll();
+      window.addEventListener('scroll', function () {
+        nav.classList.toggle('scrolled', window.scrollY > 48);
+      }, { passive: true });
 
-      /* SCROLL REVEAL — IntersectionObserver fade-up */
-      var fadeEls = document.querySelectorAll('.fade-up');
+      // SCROLL REVEAL
+      var els = document.querySelectorAll('.fade-up');
       if ('IntersectionObserver' in window) {
-        var revealObserver = new IntersectionObserver(function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-              revealObserver.unobserve(entry.target);
+        var obs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) {
+              e.target.classList.add('visible');
+              obs.unobserve(e.target);
             }
           });
-        }, { threshold: 0.1 });
-        fadeEls.forEach(function (el) { revealObserver.observe(el); });
+        }, { threshold: 0.08 });
+        els.forEach(function (el) { obs.observe(el); });
       } else {
-        fadeEls.forEach(function (el) { el.classList.add('visible'); });
+        els.forEach(function (el) { el.classList.add('visible'); });
       }
 
-      /* STAGGERED CARDS — delay on each card */
-      document.querySelectorAll('.breakdown-card').forEach(function (card, i) {
-        card.style.transitionDelay = (i * 0.1) + 's';
-      });
-
-      /* STICKY BAR — appear after 3s, sessionStorage dismiss */
+      // STICKY BAR — show after 3s, dismiss to sessionStorage
       var bar = document.getElementById('sticky-bar');
-      var dismissBtn = document.getElementById('bar-dismiss');
-      if (!sessionStorage.getItem('luxon-bar-v1')) {
-        setTimeout(function () { bar.classList.add('visible'); }, 3000);
+      var closeBtn = document.getElementById('bar-close');
+      if (!sessionStorage.getItem('luxon-bar')) {
+        setTimeout(function () { bar.classList.add('show'); }, 3000);
       }
-      dismissBtn.addEventListener('click', function () {
-        bar.classList.remove('visible');
-        sessionStorage.setItem('luxon-bar-v1', '1');
+      closeBtn.addEventListener('click', function () {
+        bar.classList.remove('show');
+        sessionStorage.setItem('luxon-bar', '1');
       });
 
-      /* VIDEO CARD — keyboard support */
-      var videoCard = document.querySelector('.video-card');
-      if (videoCard) {
-        videoCard.addEventListener('keydown', function (e) {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            videoCard.click();
-          }
+      // VIDEO card keyboard
+      var vcard = document.querySelector('.video-body');
+      if (vcard) {
+        vcard.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); vcard.click(); }
         });
       }
 
