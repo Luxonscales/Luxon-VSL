@@ -45,9 +45,41 @@
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
       line-height: 1.6;
+      isolation: isolate;
+    }
+    /* All main content sits above mesh/glow layers */
+    #nav, #hero, #video, .marquee-section,
+    #process, #scarcity, #final-cta, footer, #sticky-bar {
+      position: relative;
+      z-index: 1;
     }
     a { text-decoration: none; color: inherit; }
     img { max-width: 100%; display: block; }
+
+    /* ============================================
+       MESH BACKGROUND + GOLD GLOW
+    ============================================ */
+    #bg-mesh {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.55;
+    }
+    #bg-glow {
+      position: fixed;
+      bottom: -120px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120vw;
+      height: 70vh;
+      background: radial-gradient(ellipse 80% 70% at 50% 100%,
+        rgba(212,175,55,0.22) 0%,
+        rgba(212,175,55,0.06) 45%,
+        transparent 72%);
+      pointer-events: none;
+      z-index: 0;
+    }
 
     /* ============================================
        FILM GRAIN
@@ -188,12 +220,14 @@
       gap: 20px;
     }
 
-    /* Qualifier pill — italic, LaunchOS style */
+    /* Qualifier pill — italic, glass */
     .qualifier-pill {
       display: inline-flex;
       align-items: center;
       padding: 8px 20px;
-      background: rgba(255,255,255,0.05);
+      background: rgba(14,14,12,0.5);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border: 1px solid rgba(255,255,255,0.1);
       border-radius: 999px;
       font-family: var(--font-body);
@@ -294,7 +328,9 @@
       max-width: 720px;
       border-radius: 16px;
       overflow: hidden;
-      border: 1px solid var(--border);
+      border: 1px solid rgba(255,255,255,0.09);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
     }
 
     /* Gold header bar — LaunchOS style */
@@ -402,15 +438,16 @@
     }
 
     /* ============================================
-       SECTION PILL BADGE
+       SECTION PILL BADGE — no dots
     ============================================ */
     .section-badge {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 7px 16px 7px 11px;
-      background: var(--surface-2);
-      border: 1px solid var(--border);
+      padding: 7px 18px;
+      background: rgba(14,14,12,0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.09);
       border-radius: 999px;
       font-family: var(--font-mono);
       font-size: 10.5px;
@@ -418,13 +455,6 @@
       color: var(--muted);
       text-transform: uppercase;
     }
-    .badge-dot {
-      width: 7px; height: 7px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-    .badge-dot--gold { background: var(--gold); }
-    .badge-dot--red  { background: var(--red); }
 
     /* ============================================
        SECTION SHARED
@@ -525,8 +555,10 @@
     }
 
     .timeline-content {
-      background: var(--surface-2);
-      border: 1px solid var(--border);
+      background: rgba(14,14,12,0.55);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.08);
       border-radius: 14px;
       padding: 24px 22px;
       flex: 1;
@@ -535,7 +567,7 @@
       transition: border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
     }
     .timeline-content:hover {
-      border-color: var(--border-gold);
+      border-color: rgba(212,175,55,0.25);
       box-shadow: 0 8px 32px rgba(212,175,55,0.08);
     }
     .step-label {
@@ -702,6 +734,8 @@
 </head>
 <body>
 
+  <canvas id="bg-mesh" aria-hidden="true"></canvas>
+  <div id="bg-glow" aria-hidden="true"></div>
   <div id="grain" aria-hidden="true"></div>
 
   <!-- ===================== NAV ===================== -->
@@ -840,8 +874,7 @@
   <section id="process" class="fade-up" aria-label="What we cover on the call">
     <div class="process-header">
       <div class="section-badge">
-        <span class="badge-dot badge-dot--gold" aria-hidden="true"></span>
-        The 15-Minute Breakdown
+The 15-Minute Breakdown
       </div>
       <h2 class="section-h2">
         Here's Exactly<br>
@@ -901,8 +934,7 @@
   <section id="scarcity" class="section fade-up" aria-label="Limited availability">
     <div class="section-inner">
       <div class="section-badge">
-        <span class="badge-dot badge-dot--red" aria-hidden="true"></span>
-        Limited Availability
+Limited Availability
       </div>
 
       <h2 class="section-h2">
@@ -926,8 +958,7 @@
 
     <div class="section-inner" style="position:relative; z-index:1;">
       <div class="section-badge">
-        <span class="badge-dot badge-dot--gold" aria-hidden="true"></span>
-        You're Already Booked
+You're Already Booked
       </div>
 
       <h2 class="cta-h2">
@@ -1029,6 +1060,94 @@
           if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); vcard.click(); }
         });
       }
+
+      // TRIANGULATED MESH BACKGROUND
+      (function () {
+        var canvas = document.getElementById('bg-mesh');
+        var ctx = canvas.getContext('2d');
+
+        function resize() {
+          canvas.width  = window.innerWidth;
+          canvas.height = window.innerHeight;
+          draw();
+        }
+
+        function draw() {
+          var W = canvas.width;
+          var H = canvas.height;
+          ctx.clearRect(0, 0, W, H);
+
+          // Build a grid of jittered points
+          var cols = 10;
+          var rows = 8;
+          var cellW = W / cols;
+          var cellH = H / rows;
+          var pts = [];
+
+          // Seeded pseudo-random for stable pattern
+          var seed = 42;
+          function rand() {
+            seed = (seed * 9301 + 49297) % 233280;
+            return seed / 233280;
+          }
+
+          for (var r = 0; r <= rows; r++) {
+            for (var c = 0; c <= cols; c++) {
+              var jx = (r === 0 || r === rows) ? 0 : (rand() - 0.5) * cellW * 1.1;
+              var jy = (c === 0 || c === cols) ? 0 : (rand() - 0.5) * cellH * 1.1;
+              pts.push({
+                x: c * cellW + jx,
+                y: r * cellH + jy,
+                r: r, c: c
+              });
+            }
+          }
+
+          function idx(r, c) { return r * (cols + 1) + c; }
+
+          ctx.strokeStyle = 'rgba(255,255,255,0.055)';
+          ctx.lineWidth = 0.7;
+          ctx.beginPath();
+
+          for (var row = 0; row < rows; row++) {
+            for (var col = 0; col < cols; col++) {
+              var tl = pts[idx(row,   col)];
+              var tr = pts[idx(row,   col+1)];
+              var bl = pts[idx(row+1, col)];
+              var br = pts[idx(row+1, col+1)];
+
+              // Two triangles per cell, alternating diagonal direction
+              if ((row + col) % 2 === 0) {
+                // Top-left, top-right, bottom-left
+                ctx.moveTo(tl.x, tl.y);
+                ctx.lineTo(tr.x, tr.y);
+                ctx.lineTo(bl.x, bl.y);
+                ctx.closePath();
+                // Top-right, bottom-right, bottom-left
+                ctx.moveTo(tr.x, tr.y);
+                ctx.lineTo(br.x, br.y);
+                ctx.lineTo(bl.x, bl.y);
+                ctx.closePath();
+              } else {
+                // Top-left, top-right, bottom-right
+                ctx.moveTo(tl.x, tl.y);
+                ctx.lineTo(tr.x, tr.y);
+                ctx.lineTo(br.x, br.y);
+                ctx.closePath();
+                // Top-left, bottom-right, bottom-left
+                ctx.moveTo(tl.x, tl.y);
+                ctx.lineTo(br.x, br.y);
+                ctx.lineTo(bl.x, bl.y);
+                ctx.closePath();
+              }
+            }
+          }
+          ctx.stroke();
+        }
+
+        resize();
+        window.addEventListener('resize', resize, { passive: true });
+      }());
 
     }());
   </script>
