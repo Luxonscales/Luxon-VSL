@@ -204,6 +204,8 @@
       transition: transform 0.2s var(--ease);
     }
     .cta:hover .arr { transform: translateX(3px); }
+    .arr-lg { width: 40px; height: 40px; font-size: 20px; }
+    #hero-cta:hover .arr-lg { transform: translateY(3px); }
 
     /* ===================== VIDEO ===================== */
     #video {
@@ -374,11 +376,27 @@
     }
     .t-body { font-size: 14.5px; color: var(--muted); line-height: 1.72; }
 
+    /* ===================== HAZARD BADGE ===================== */
+    .badge-hazard {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 9px 20px;
+      background: rgba(193,39,45,0.12);
+      border: 1px solid rgba(193,39,45,0.45);
+      border-radius: 999px;
+      font-family: var(--f-mono); font-size: 10px;
+      letter-spacing: 0.16em; color: #f87171; text-transform: uppercase;
+      box-shadow: 0 0 20px rgba(193,39,45,0.15);
+    }
+    .hazard-icon {
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
     /* ===================== SCARCITY ===================== */
     #scarcity {
-      background: linear-gradient(180deg, rgba(193,39,45,0.05) 0%, transparent 100%);
-      border-top: 1px solid rgba(193,39,45,0.1);
-      border-bottom: 1px solid rgba(193,39,45,0.1);
+      background: linear-gradient(180deg, rgba(193,39,45,0.07) 0%, transparent 100%);
+      border-top: 1px solid rgba(193,39,45,0.12);
+      border-bottom: 1px solid rgba(193,39,45,0.12);
     }
 
     /* ===================== FINAL CTA ===================== */
@@ -464,7 +482,7 @@
   <!-- HERO -->
   <section id="hero">
     <div class="hero-inner">
-      <div class="q-pill">For HVAC &amp; Roofing Contractors Ready to Scale</div>
+      <div class="q-pill">For Home Service Contractors Ready to Scale</div>
 
       <h1 class="hero-h1">
         You're Booked.<br>
@@ -476,9 +494,9 @@
         Watch the 90-second video below before our call. It makes our 15 minutes worth 10x more.
       </p>
 
-      <a href="https://calendly.com/luxonscales/30min" target="_blank" rel="noopener noreferrer" class="cta">
-        Add To Calendar
-        <span class="arr" aria-hidden="true">&#8594;</span>
+      <a href="#video" id="hero-cta" class="cta" aria-label="Scroll to video">
+        Watch The Video
+        <span class="arr arr-lg" aria-hidden="true">&#8595;</span>
       </a>
 
       <div class="scroll-hint" aria-hidden="true">
@@ -509,10 +527,6 @@
       </div>
     </div>
     <p class="vid-note">"No pitch. No pressure. Just the honest breakdown of what we do - and what you walk away with whether you sign or not."</p>
-    <a href="https://calendly.com/luxonscales/30min" target="_blank" rel="noopener noreferrer" class="cta">
-      Add To Calendar
-      <span class="arr" aria-hidden="true">&#8594;</span>
-    </a>
   </section>
 
   <!-- MARQUEE -->
@@ -577,9 +591,18 @@
   <!-- SCARCITY -->
   <section id="scarcity" class="section reveal">
     <div class="s-inner">
-      <div class="badge">Limited Availability</div>
+      <div class="badge-hazard">
+        <span class="hazard-icon" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M7 1L13 12H1L7 1Z" stroke="#f87171" stroke-width="1.2" stroke-linejoin="round" fill="rgba(193,39,45,0.2)"/>
+            <path d="M7 5.5V8" stroke="#f87171" stroke-width="1.3" stroke-linecap="round"/>
+            <circle cx="7" cy="10" r="0.7" fill="#f87171"/>
+          </svg>
+        </span>
+        Limited Availability
+      </div>
       <h2 class="s-h2">One Contractor<br><span class="gold">Per City.</span></h2>
-      <p class="s-body">We only work with one HVAC and one roofing contractor per city. Your spot is held until our call - after that it goes to the next contractor on the list.</p>
+      <p class="s-body">I only take on one HVAC and one roofing contractor per city - that's just how we keep the results high. Your spot is locked in for now, so I'll see you on the call.</p>
       <p style="font-family:var(--f-mono);font-size:10px;letter-spacing:0.1em;color:var(--muted);opacity:0.55;">Need to reschedule? Use the link in your confirmation email.</p>
     </div>
   </section>
@@ -589,12 +612,12 @@
     <div class="s-inner">
       <div class="badge">You're Already Booked</div>
       <h2 class="cta-h">See You<br><span class="gold">On The Call.</span></h2>
-      <p class="s-body">If you have any questions before we talk - text me at <a href="sms:5595580886" style="color:var(--gold);">559-558-0886</a>.</p>
-      <a href="https://calendly.com/luxonscales/30min" target="_blank" rel="noopener noreferrer" class="cta">
-        Add To Calendar
+      <p class="s-body">If you have any questions before we talk, text me at <a href="sms:5595580886" style="color:var(--gold);white-space:nowrap;">559-558-0886</a>.</p>
+      <a id="gcal-btn" href="#" class="cta" aria-label="Add to your calendar">
+        Add To My Calendar
         <span class="arr" aria-hidden="true">&#8594;</span>
       </a>
-      <p style="font-size:13px;color:var(--muted);opacity:0.6;">15 minutes. No obligation. Your city, your campaign, your call.</p>
+      <p style="font-size:13px;color:var(--muted);opacity:0.6;">Opens your calendar app directly - just set the time from your confirmation email.</p>
     </div>
   </section>
 
@@ -610,7 +633,7 @@
   <div id="bar" role="complementary">
     <p class="bar-t">Don't forget - add this to your calendar before you leave.</p>
     <div class="bar-r">
-      <a href="https://calendly.com/luxonscales/30min" target="_blank" rel="noopener noreferrer" class="bar-btn">Add To Calendar &#8594;</a>
+      <a href="#" id="bar-cal" class="bar-btn">Add To Calendar &#8594;</a>
       <button class="bar-x" id="bar-x" aria-label="Dismiss">&times;</button>
     </div>
   </div>
@@ -622,6 +645,49 @@
     /* ---------- NAV ---------- */
     var nav = document.getElementById('nav');
     window.addEventListener('scroll', function(){ nav.classList.toggle('stuck', scrollY > 50); }, {passive:true});
+
+    /* ---------- HERO CTA: smooth scroll to video ---------- */
+    var heroCta = document.getElementById('hero-cta');
+    if(heroCta){
+      heroCta.addEventListener('click', function(e){
+        e.preventDefault();
+        var vid = document.getElementById('video');
+        if(vid){ vid.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    }
+
+    /* ---------- GOOGLE CALENDAR BUTTON ---------- */
+    var gcalBtn = document.getElementById('gcal-btn');
+    var barCalBtn = document.getElementById('bar-cal');
+    function openCalendar(e){
+      e.preventDefault();
+      // Build ICS file and trigger download - works natively on iOS, Android, Mac, Windows
+      var ics = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//Luxon Agency//Discovery Call//EN',
+        'BEGIN:VEVENT',
+        'SUMMARY:Luxon Agency - Discovery Call',
+        'DESCRIPTION:Your call with Luxon Agency is booked. Check your Calendly confirmation email for the exact time.\\nQuestions? Text 559-558-0886.',
+        'DURATION:PT30M',
+        'BEGIN:VALARM',
+        'TRIGGER:-PT60M',
+        'ACTION:DISPLAY',
+        'DESCRIPTION:Luxon Agency call in 1 hour',
+        'END:VALARM',
+        'END:VEVENT',
+        'END:VCALENDAR'
+      ].join('\r\n');
+      var blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url; a.download = 'luxon-agency-call.ics';
+      document.body.appendChild(a); a.click();
+      document.body.removeChild(a);
+      setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
+    }
+    if(gcalBtn){ gcalBtn.addEventListener('click', openCalendar); }
+    if(barCalBtn){ barCalBtn.addEventListener('click', openCalendar); }
 
     /* ---------- SCROLL REVEAL ---------- */
     var revEls = document.querySelectorAll('.reveal');
