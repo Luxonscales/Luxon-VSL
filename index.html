@@ -514,16 +514,15 @@
         <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><path d="M4 2.5l8 4.5-8 4.5V2.5z"/></svg>
         Watch This First - 90 Seconds
       </div>
-      <div class="vid-player" role="button" tabindex="0" aria-label="Play overview video">
-        <div class="vid-inner">
-          <div class="play-btn" aria-hidden="true">
-            <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
-              <circle cx="40" cy="40" r="38.5" stroke="#D4AF37" stroke-width="1.5" fill="rgba(212,175,55,0.07)"/>
-              <polygon points="33,25 60,40 33,55" fill="#D4AF37"/>
-            </svg>
-          </div>
-          <p class="vid-tag">90 Seconds &middot; No Pitch</p>
-        </div>
+      <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
+        <iframe
+          src="https://www.loom.com/embed/866c3c30355d49bf8a10c2100149ce24?autoplay=0&hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true"
+          frameborder="0"
+          webkitallowfullscreen
+          mozallowfullscreen
+          allowfullscreen
+          style="position:absolute;top:0;left:0;width:100%;height:100%;">
+        </iframe>
       </div>
     </div>
     <p class="vid-note">"No pitch. No pressure. Just the honest breakdown of what we do - and what you walk away with whether you sign or not."</p>
@@ -574,7 +573,7 @@
         <div class="t-card">
           <span class="t-label">Live Build</span>
           <h3 class="t-title">Your Custom Campaign</h3>
-          <p class="t-body">I build your campaign structure live on the call - Meta ads and Google LSA tailored to your niche and location. You keep it whether you work with us or not.</p>
+          <p class="t-body">I walk you through the exact campaign structure I'd build for your business - Meta ads and Google LSA tailored to your niche and city. You'll leave knowing exactly what needs to happen, whether we work together or not.</p>
         </div>
       </div>
       <div class="t-item">
@@ -613,11 +612,11 @@
       <div class="badge">You're Already Booked</div>
       <h2 class="cta-h">See You<br><span class="gold">On The Call.</span></h2>
       <p class="s-body">If you have any questions before we talk, text me at <a href="sms:5595580886" style="color:var(--gold);white-space:nowrap;">559-558-0886</a>.</p>
-      <a id="gcal-btn" href="#" class="cta" aria-label="Add to your calendar">
+      <a id="gcal-btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Call+with+Luxon+Agency&details=Use+the+link+in+your+confirmation+email+to+join.&duration=1500" target="_blank" rel="noopener" class="cta" aria-label="Add to your calendar">
         Add To My Calendar
         <span class="arr" aria-hidden="true">&#8594;</span>
       </a>
-      <p style="font-size:13px;color:var(--muted);opacity:0.6;">Opens your calendar app directly - just set the time from your confirmation email.</p>
+      <p style="font-size:13px;color:var(--muted);opacity:0.6;">Opens Google Calendar in a new tab - add your confirmed call time from your Calendly email.</p>
     </div>
   </section>
 
@@ -633,7 +632,7 @@
   <div id="bar" role="complementary">
     <p class="bar-t">Don't forget - add this to your calendar before you leave.</p>
     <div class="bar-r">
-      <a href="#" id="bar-cal" class="bar-btn">Add To Calendar &#8594;</a>
+      <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Call+with+Luxon+Agency&details=Use+the+link+in+your+confirmation+email+to+join.&duration=1500" target="_blank" rel="noopener" id="bar-cal" class="bar-btn">Add To Calendar &#8594;</a>
       <button class="bar-x" id="bar-x" aria-label="Dismiss">&times;</button>
     </div>
   </div>
@@ -656,38 +655,6 @@
       });
     }
 
-    /* ---------- GOOGLE CALENDAR BUTTON ---------- */
-    var gcalBtn = document.getElementById('gcal-btn');
-    var barCalBtn = document.getElementById('bar-cal');
-    function openCalendar(e){
-      e.preventDefault();
-      // Build ICS file and trigger download - works natively on iOS, Android, Mac, Windows
-      var ics = [
-        'BEGIN:VCALENDAR',
-        'VERSION:2.0',
-        'PRODID:-//Luxon Agency//Discovery Call//EN',
-        'BEGIN:VEVENT',
-        'SUMMARY:Luxon Agency - Discovery Call',
-        'DESCRIPTION:Your call with Luxon Agency is booked. Check your Calendly confirmation email for the exact time.\\nQuestions? Text 559-558-0886.',
-        'DURATION:PT30M',
-        'BEGIN:VALARM',
-        'TRIGGER:-PT60M',
-        'ACTION:DISPLAY',
-        'DESCRIPTION:Luxon Agency call in 1 hour',
-        'END:VALARM',
-        'END:VEVENT',
-        'END:VCALENDAR'
-      ].join('\r\n');
-      var blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
-      var url = URL.createObjectURL(blob);
-      var a = document.createElement('a');
-      a.href = url; a.download = 'luxon-agency-call.ics';
-      document.body.appendChild(a); a.click();
-      document.body.removeChild(a);
-      setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
-    }
-    if(gcalBtn){ gcalBtn.addEventListener('click', openCalendar); }
-    if(barCalBtn){ barCalBtn.addEventListener('click', openCalendar); }
 
     /* ---------- SCROLL REVEAL ---------- */
     var revEls = document.querySelectorAll('.reveal');
@@ -704,9 +671,6 @@
     if(!sessionStorage.getItem('lb')){ setTimeout(function(){ bar.classList.add('show'); }, 3000); }
     barX.addEventListener('click', function(){ bar.classList.remove('show'); sessionStorage.setItem('lb','1'); });
 
-    /* ---------- VIDEO KEYBOARD ---------- */
-    var vp = document.querySelector('.vid-player');
-    if(vp){ vp.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); vp.click(); } }); }
 
     /* ---------- TRIANGULATED MESH ---------- */
     (function(){
