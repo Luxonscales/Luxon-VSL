@@ -320,32 +320,57 @@
     }
 
     /* ===================== PROOF ===================== */
-    .proof-grid {
-      width: 100%; max-width: 1140px; margin-top: 8px;
-      display: grid; grid-template-columns: repeat(3,1fr); gap: 20px;
-      text-align: left;
-    }
+    .proof-slider { position: relative; width: 100%; max-width: 380px; margin: 8px auto 0; }
+    .proof-viewport { overflow: hidden; border-radius: 14px; }
+    .proof-track { display: flex; transition: transform 0.5s var(--ease); }
+    .proof-slide { flex: 0 0 100%; min-width: 0; }
     .proof-card {
       background: rgba(10,10,8,0.6);
       backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: 14px; padding: 22px;
       display: flex; flex-direction: column; gap: 16px;
+      text-align: left;
       transition: border-color 0.35s var(--ease), box-shadow 0.35s var(--ease);
     }
     .proof-card:hover { border-color: rgba(212,175,55,0.22); box-shadow: 0 8px 40px rgba(0,0,0,0.5); }
-    .proof-img { width: 100%; border-radius: 10px; object-fit: cover; aspect-ratio: 4/5; }
+    .proof-img { width: 100%; border-radius: 10px; object-fit: cover; aspect-ratio: 9/16; }
     .proof-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
     .proof-name { font-weight: 700; font-size: 15px; color: var(--text); }
     .proof-tag {
       font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.12em;
       color: var(--gold); text-transform: uppercase; white-space: nowrap; opacity: 0.85;
     }
+    .proof-quote { font-style: italic; font-size: 14.5px; color: var(--text); line-height: 1.6; }
+    .proof-quote-by {
+      display: block; margin-top: 6px; font-style: normal;
+      font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.08em;
+      color: var(--gold); text-transform: uppercase;
+    }
     .proof-stats { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px 10px; }
     .proof-stat-num { font-family: var(--f-display); font-size: clamp(20px,4vw,24px); color: var(--gold); line-height: 1; }
     .proof-stat-label { font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; margin-top: 4px; }
-    @media (max-width: 760px) {
-      .proof-grid { grid-template-columns: 1fr; max-width: 420px; }
+    .proof-arrow {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 38px; height: 38px; border-radius: 50%;
+      background: rgba(10,10,8,0.8); border: 1px solid var(--border-g);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold); cursor: pointer; z-index: 2; padding: 0;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .proof-arrow:hover { background: rgba(212,175,55,0.15); }
+    .proof-arrow.prev { left: -14px; }
+    .proof-arrow.next { right: -14px; }
+    .proof-dots { display: flex; justify-content: center; gap: 8px; margin-top: 18px; }
+    .proof-dot {
+      width: 7px; height: 7px; border-radius: 50%; padding: 0;
+      background: rgba(255,255,255,0.18); border: none; cursor: pointer;
+      transition: background 0.25s, transform 0.25s;
+    }
+    .proof-dot.active { background: var(--gold); transform: scale(1.3); }
+    @media (max-width: 560px) {
+      .proof-arrow { display: none; }
     }
 
     /* ===================== TIMELINE ===================== */
@@ -564,49 +589,73 @@
       <h2 class="s-h2">Proof Over <span class="gold">Promises.</span></h2>
       <p class="s-body">These aren't projections - they're live ad accounts, pulled straight from Meta Ads Manager.</p>
     </div>
-    <div class="proof-grid">
-      <article class="proof-card">
-        <img class="proof-img" src="proof-painters-co.jpg" alt="Professional Painters Co. ad creative"
-          loading="lazy" onerror="this.remove()">
-        <div class="proof-head">
-          <span class="proof-name">Professional Painters Co.</span>
-          <span class="proof-tag">Active Client</span>
+    <div class="proof-slider">
+      <button class="proof-arrow prev" aria-label="Previous result">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2L3 7l6 5"/></svg>
+      </button>
+      <div class="proof-viewport">
+        <div class="proof-track">
+          <div class="proof-slide">
+            <article class="proof-card">
+              <img class="proof-img" src="proof-painters-co.jpg" alt="Professional Painters Co. ad creative"
+                loading="lazy" onerror="this.remove()">
+              <div class="proof-head">
+                <span class="proof-name">Professional Painters Co.</span>
+                <span class="proof-tag">Active Client</span>
+              </div>
+              <p class="proof-quote">"Honestly, I didn't think this was going to work. Now I regret not starting with Luxon sooner."<span class="proof-quote-by">Owner, Professional Painters Co.</span></p>
+              <div class="proof-stats">
+                <div><div class="proof-stat-num">65</div><div class="proof-stat-label">Leads (Form)</div></div>
+                <div><div class="proof-stat-num">$11.24</div><div class="proof-stat-label">Cost / Lead</div></div>
+                <div><div class="proof-stat-num">$730.87</div><div class="proof-stat-label">Amount Spent</div></div>
+                <div><div class="proof-stat-num">32.3K</div><div class="proof-stat-label">Reach</div></div>
+              </div>
+            </article>
+          </div>
+          <div class="proof-slide">
+            <article class="proof-card">
+              <img class="proof-img" src="proof-kinetic.jpg" alt="Kinetic Auto Detailing ad creative"
+                loading="lazy" onerror="this.remove()">
+              <div class="proof-head">
+                <span class="proof-name">Kinetic Auto Detailing</span>
+                <span class="proof-tag">25 Days In</span>
+              </div>
+              <p class="proof-quote">"I was nervous to pull the trigger. The second the leads started coming in, I was just grateful I did."<span class="proof-quote-by">Owner, Kinetic Auto Detailing</span></p>
+              <div class="proof-stats">
+                <div><div class="proof-stat-num">28</div><div class="proof-stat-label">Leads (Form)</div></div>
+                <div><div class="proof-stat-num">$9.65</div><div class="proof-stat-label">Cost / Lead</div></div>
+                <div><div class="proof-stat-num">$270.09</div><div class="proof-stat-label">Amount Spent</div></div>
+                <div><div class="proof-stat-num">16.9K</div><div class="proof-stat-label">Reach</div></div>
+              </div>
+            </article>
+          </div>
+          <div class="proof-slide">
+            <article class="proof-card">
+              <img class="proof-img" src="proof-galvanbarber-co.jpg" alt="GalvanBarber Co. ad creative"
+                loading="lazy" onerror="this.remove()">
+              <div class="proof-head">
+                <span class="proof-name">GalvanBarber Co.</span>
+                <span class="proof-tag">First 30 Days</span>
+              </div>
+              <p class="proof-quote">"I was a new barber with money to spend and no idea where to put it. Now I'm booked out every week."<span class="proof-quote-by">Owner, GalvanBarber Co.</span></p>
+              <div class="proof-stats">
+                <div><div class="proof-stat-num">29</div><div class="proof-stat-label">Leads (Form)</div></div>
+                <div><div class="proof-stat-num">$14.69</div><div class="proof-stat-label">Cost / Lead</div></div>
+                <div><div class="proof-stat-num">$425.98</div><div class="proof-stat-label">Amount Spent</div></div>
+                <div><div class="proof-stat-num">$15</div><div class="proof-stat-label">Daily Budget</div></div>
+              </div>
+            </article>
+          </div>
         </div>
-        <div class="proof-stats">
-          <div><div class="proof-stat-num">65</div><div class="proof-stat-label">Leads (Form)</div></div>
-          <div><div class="proof-stat-num">$11.24</div><div class="proof-stat-label">Cost / Lead</div></div>
-          <div><div class="proof-stat-num">$730.87</div><div class="proof-stat-label">Amount Spent</div></div>
-          <div><div class="proof-stat-num">32.3K</div><div class="proof-stat-label">Reach</div></div>
-        </div>
-      </article>
-      <article class="proof-card">
-        <img class="proof-img" src="proof-kinetic.jpg" alt="Kinetic Auto Detailing ad creative"
-          loading="lazy" onerror="this.remove()">
-        <div class="proof-head">
-          <span class="proof-name">Kinetic Auto Detailing</span>
-          <span class="proof-tag">25 Days In</span>
-        </div>
-        <div class="proof-stats">
-          <div><div class="proof-stat-num">28</div><div class="proof-stat-label">Leads (Form)</div></div>
-          <div><div class="proof-stat-num">$9.65</div><div class="proof-stat-label">Cost / Lead</div></div>
-          <div><div class="proof-stat-num">$270.09</div><div class="proof-stat-label">Amount Spent</div></div>
-          <div><div class="proof-stat-num">16.9K</div><div class="proof-stat-label">Reach</div></div>
-        </div>
-      </article>
-      <article class="proof-card">
-        <img class="proof-img" src="proof-galvanbarber-co.jpg" alt="GalvanBarber Co. ad creative"
-          loading="lazy" onerror="this.remove()">
-        <div class="proof-head">
-          <span class="proof-name">GalvanBarber Co.</span>
-          <span class="proof-tag">First 30 Days</span>
-        </div>
-        <div class="proof-stats">
-          <div><div class="proof-stat-num">29</div><div class="proof-stat-label">Leads (Form)</div></div>
-          <div><div class="proof-stat-num">$14.69</div><div class="proof-stat-label">Cost / Lead</div></div>
-          <div><div class="proof-stat-num">$425.98</div><div class="proof-stat-label">Amount Spent</div></div>
-          <div><div class="proof-stat-num">$15</div><div class="proof-stat-label">Daily Budget</div></div>
-        </div>
-      </article>
+      </div>
+      <button class="proof-arrow next" aria-label="Next result">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 2l6 5-6 5"/></svg>
+      </button>
+    </div>
+    <div class="proof-dots" role="tablist" aria-label="Select result to view">
+      <button class="proof-dot active" aria-label="Show result 1"></button>
+      <button class="proof-dot" aria-label="Show result 2"></button>
+      <button class="proof-dot" aria-label="Show result 3"></button>
     </div>
   </section>
 
@@ -736,6 +785,48 @@
         if(vid){ vid.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
       });
     }
+
+    /* ---------- PROOF CAROUSEL ---------- */
+    (function(){
+      var slider = document.querySelector('.proof-slider');
+      if(!slider) return;
+      var track = slider.querySelector('.proof-track');
+      var slides = slider.querySelectorAll('.proof-slide');
+      var dots = document.querySelectorAll('.proof-dot');
+      var prevBtn = slider.querySelector('.proof-arrow.prev');
+      var nextBtn = slider.querySelector('.proof-arrow.next');
+      var i = 0, n = slides.length, timer;
+
+      function go(idx){
+        i = (idx + n) % n;
+        track.style.transform = 'translateX(-' + (i * 100) + '%)';
+        dots.forEach(function(d, di){ d.classList.toggle('active', di === i); });
+      }
+      function next(){ go(i + 1); }
+      function prev(){ go(i - 1); }
+      function play(){ stop(); timer = setInterval(next, 6000); }
+      function stop(){ if(timer){ clearInterval(timer); } }
+
+      dots.forEach(function(d, di){ d.addEventListener('click', function(){ go(di); play(); }); });
+      if(prevBtn){ prevBtn.addEventListener('click', function(){ prev(); play(); }); }
+      if(nextBtn){ nextBtn.addEventListener('click', function(){ next(); play(); }); }
+
+      slider.addEventListener('mouseenter', stop);
+      slider.addEventListener('mouseleave', play);
+
+      var startX = null;
+      track.addEventListener('touchstart', function(e){ startX = e.touches[0].clientX; stop(); }, {passive:true});
+      track.addEventListener('touchend', function(e){
+        if(startX === null) return;
+        var dx = e.changedTouches[0].clientX - startX;
+        if(Math.abs(dx) > 40){ dx < 0 ? next() : prev(); }
+        startX = null;
+        play();
+      }, {passive:true});
+
+      go(0);
+      play();
+    })();
 
 
     /* ---------- SCROLL REVEAL ---------- */
