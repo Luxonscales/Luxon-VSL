@@ -10,7 +10,9 @@ Home service contractors (HVAC, roofing) who just booked a discovery call with L
 
 ## Product Purpose
 
-Pre-call warmup landing page. Confirm the booking, calm the skepticism, deliver a 90-second video that sets the frame for the call, and get them to add the event to their calendar. Success = contractor shows up to the call prepared and mentally bought in.
+Pre-call page. Someone has already booked; this is what they land on between booking and the call. It confirms the booking, plays a short video, sets expectations for the twenty to thirty minutes, tells them what to have ready, and prints the account numbers so Luxon is proven before a stranger asks for money. No pricing and no second call to action, because the call is already booked.
+
+The single metric this page moves is SHOW RATE.
 
 ## Brand Personality
 
@@ -23,8 +25,8 @@ Generic purple-gradient SaaS landing pages. Contractor websites with stock photo
 ## Design Principles
 
 1. **Authority through restraint** - less movement, more confidence. Premium brands don't beg.
-2. **Specificity builds trust** - concrete copy over marketing vague. "One contractor per city" beats "exclusive."
-3. **Urgency without desperation** - scarcity is real, not manufactured. Show it once, cleanly.
+2. **Specificity builds trust** - concrete copy over marketing vague. Only verified figures ever appear, trade named and client never.
+3. **Preparation over persuasion** - someone who arrives with their numbers is the whole game. No scarcity, no urgency devices.
 4. **The call is the conversion** - everything on this page serves one job: get them to show up.
 5. **Gold is used sparingly** - when gold appears, it means something. Not decoration.
 
