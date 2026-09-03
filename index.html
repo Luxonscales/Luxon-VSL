@@ -6,16 +6,18 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Your call is confirmed &middot; Luxon</title>
 <meta name="description" content="Pre-call briefing. What happens on the call, what to have ready, and a few of the accounts we're running.">
+<link rel="icon" href="brand/luxon-x-gold.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400..900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
    Luxon pre-call page.
-   Type and structure stay in the luxon-services family: mono
-   lowercase markers with a red tick, ruled sections, numbered
-   rows, no identical cards. The display face is a Didone,
-   chosen to match the LUXON wordmark's own letterforms.
+   Type and structure stay in the luxon-services family: Archivo
+   over IBM Plex, mono lowercase markers with a red tick, ruled
+   sections, numbered rows, no identical cards. Same stack as the
+   sales pages on purpose. Changing faces between them is the
+   fastest way to look like two different companies.
    Moved onto a dark ground with a gold floor light.
    Gold is reserved for figures and the one button.
    One job: get them to show up.
@@ -34,7 +36,7 @@
   --soft:#A8A49D;
   --faint:#6E6A63;
 
-  --display:'Bodoni Moda',Didot,'Times New Roman',serif;
+  --display:'Archivo',system-ui,sans-serif;
   --body:'IBM Plex Sans',system-ui,sans-serif;
   --mono:'IBM Plex Mono',ui-monospace,monospace;
 
@@ -47,7 +49,7 @@
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 body{
   margin:0;background:var(--bg);color:var(--text);
-  font-family:var(--body);font-size:17px;line-height:1.62;font-weight:300;
+  font-family:var(--body);font-size:17px;line-height:1.62;
   -webkit-font-smoothing:antialiased;overflow-x:hidden;
 }
 img{max-width:100%;display:block}
@@ -83,10 +85,10 @@ img{max-width:100%;display:block}
 @media(max-width:860px){.wrap::before{display:none}}
 
 /* ---------- type ---------- */
-h1,h2,h3{font-family:var(--display);margin:0;font-weight:600;
-  letter-spacing:-.012em;line-height:1.08}
-h2{font-size:clamp(1.95rem,4.4vw,3.1rem);margin-bottom:16px;letter-spacing:-.018em}
-h3{font-size:1.2rem;font-weight:600;line-height:1.3;letter-spacing:-.004em}
+h1,h2,h3{font-family:var(--display);font-variation-settings:'wdth' 82;margin:0;
+  font-weight:700;letter-spacing:-.015em;line-height:1.05}
+h2{font-size:clamp(1.9rem,4.2vw,2.9rem);margin-bottom:16px}
+h3{font-size:1.22rem;font-variation-settings:'wdth' 88;font-weight:700;line-height:1.28;letter-spacing:-.005em}
 p{margin:0 0 15px;max-width:62ch;color:var(--soft)}
 p.lead{color:var(--text);font-weight:400}
 strong{font-weight:600;color:var(--text)}
@@ -124,7 +126,7 @@ section.vsl::before{display:none}
    the video itself letterboxes inside a 4:3 box. Leave this at 56.25%. */
 .vsl{padding:clamp(30px,5vw,52px) 0 clamp(44px,7vw,76px)}
 .vsl h1{font-size:clamp(2.1rem,6vw,3.6rem);max-width:15ch;
-  margin-bottom:clamp(22px,3.2vw,32px);letter-spacing:-.02em}
+  margin-bottom:clamp(22px,3.2vw,32px);font-variation-settings:'wdth' 80}
 .player{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;
   border:1px solid rgba(212,175,55,.18);background:#000;
   box-shadow:0 0 0 1px rgba(0,0,0,.6),0 34px 90px -30px rgba(212,175,55,.22),
@@ -138,15 +140,15 @@ section.vsl::before{display:none}
 .row:first-of-type{border-top:0}
 .row-n{font-family:var(--mono);font-size:12px;color:var(--gold-dim);padding-top:6px;letter-spacing:.06em}
 .row p{margin:8px 0 0;font-size:16px}
-.row .said{font-family:var(--display);font-weight:600;
-  font-size:clamp(1.2rem,2.8vw,1.5rem);color:var(--text);line-height:1.3}
+.row .said{font-family:var(--display);font-variation-settings:'wdth' 86;font-weight:700;
+  font-size:clamp(1.18rem,2.7vw,1.45rem);color:var(--text);line-height:1.28}
 
 /* ---------- three things to have ready ---------- */
 .ready{margin-top:10px;border-top:1px solid var(--rule)}
 .mrow{display:grid;grid-template-columns:38px 1fr;gap:18px;align-items:baseline;
   padding:22px 0;border-bottom:1px solid var(--rule)}
-.mrow .q{font-family:var(--display);font-weight:600;
-  font-size:clamp(1.12rem,2.8vw,1.45rem);color:var(--text);line-height:1.3}
+.mrow .q{font-family:var(--display);font-variation-settings:'wdth' 86;font-weight:700;
+  font-size:clamp(1.1rem,2.7vw,1.4rem);color:var(--text);line-height:1.28}
 .blank{grid-column:2;height:0;border-bottom:2px solid var(--red);opacity:.5;margin-top:16px;
   transform-origin:left;transform:scaleX(0);transition:transform .9s var(--ease)}
 .on .blank{transform:scaleX(1)}
@@ -180,21 +182,22 @@ section.vsl::before{display:none}
 .on .figs>div:nth-child(1)>i{transition-delay:.30s}
 .on .figs>div:nth-child(2)>i{transition-delay:.40s}
 .on .figs>div:nth-child(3)>i{transition-delay:.50s}
-.figs b{display:block;font-family:var(--display);font-weight:500;
-  font-size:clamp(1.7rem,7vw,2.9rem);line-height:1;letter-spacing:-.025em;
-  background:linear-gradient(160deg,var(--gold-hi),var(--gold) 42%,var(--gold-dim));
+.figs b{display:block;font-family:var(--display);font-variation-settings:'wdth' 78;
+  font-weight:800;font-size:clamp(1.85rem,7.4vw,3.1rem);line-height:1;letter-spacing:-.03em;
+  background:linear-gradient(160deg,var(--gold-hi),var(--gold) 44%,#B9932C);
   -webkit-background-clip:text;background-clip:text;color:transparent;
-  font-variant-numeric:lining-nums tabular-nums}
+  /* tabular so $10.95, $9.49, $18.71 and $22.94 stack on the decimal */
+  font-variant-numeric:lining-nums tabular-nums;font-feature-settings:'tnum' 1}
 /* the benchmark is a range, not a single figure: give it its own
    size so it holds one line beside the two real numbers */
-.figs b.alt{font-size:clamp(1.15rem,4.4vw,1.8rem);white-space:nowrap}
+.figs b.alt{font-size:clamp(1.2rem,4.6vw,1.9rem);white-space:nowrap;letter-spacing:-.02em}
 .figs i{display:block;font-style:normal;font-family:var(--mono);font-size:10px;
   letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-top:10px}
 .why{font-size:16.5px;color:var(--soft);max-width:56ch;margin:0}
 
 /* screenshots are verification, not the thing people read */
 .shot{margin:24px 0 0;max-width:400px}
-.shot img{border:1px solid var(--rule);opacity:.55;filter:saturate(.85);
+.shot img{border:1px solid var(--rule);opacity:.78;filter:saturate(.9);
   transition:opacity .35s var(--ease),filter .35s var(--ease),border-color .35s var(--ease)}
 .shot:hover img,.shot:focus-within img{opacity:1;filter:none;border-color:rgba(212,175,55,.34)}
 .shot figcaption{font-family:var(--mono);font-size:10px;letter-spacing:.1em;
@@ -212,7 +215,8 @@ section.vsl::before{display:none}
 .creatives .shot img{opacity:.92}
 
 /* ---------- what people say ---------- */
-.says{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;margin-top:28px}
+.says{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;margin-top:28px;align-items:start}
+.says .shot.wide{grid-column:1/-1;max-width:640px}
 .says .shot{margin:0;max-width:none}
 .says .shot img{opacity:.92}
 
@@ -293,7 +297,7 @@ body.ready .vlen{opacity:1;transform:none;transition-delay:.40s}
 <div class="wrap">
 
   <header class="mast">
-    <img src="brand/luxon-wordmark-gold-on-dark.png" alt="Luxon" width="564" height="132">
+    <img src="brand/luxon-wordmark-gold-on-dark.png" alt="Luxon" width="900" height="195">
     <div class="docket">
       <b>Your call is confirmed</b>
       Pre-call briefing
@@ -453,7 +457,7 @@ body.ready .vlen{opacity:1;transform:none;transition-delay:.40s}
           <span>screenshot pending</span>
           <code>accounts/landscaping-platform-split.png</code>
         </div>
-        <figcaption>Ads Manager, platform split</figcaption>
+        <figcaption>Per creative, per platform</figcaption>
       </figure>
     </div>
   </section>
@@ -521,7 +525,7 @@ body.ready .vlen{opacity:1;transform:none;transition-delay:.40s}
         <span>screenshot pending</span>
         <code>accounts/landscaping-capi-workflow.png</code>
       </div>
-      <figcaption>Conversions API, landscaping account</figcaption>
+      <figcaption>Conversions API workflow</figcaption>
     </figure>
   </section>
 
@@ -533,37 +537,36 @@ body.ready .vlen{opacity:1;transform:none;transition-delay:.40s}
     <h2>What people say.</h2>
 
     <div class="says">
-      <figure class="shot">
+      <figure class="shot wide">
         <div class="pend" data-src="testimonials/written-id-hire-you.png">
           <span>testimonial pending</span>
           <code>testimonials/written-id-hire-you.png</code>
         </div>
-      </figure>
-      <figure class="shot">
-        <div class="pend" data-src="testimonials/cindy-20-leads-overnight.png">
-          <span>testimonial pending</span>
-          <code>testimonials/cindy-20-leads-overnight.png</code>
-        </div>
+        <figcaption>On the site build</figcaption>
       </figure>
       <figure class="shot">
         <div class="pend" data-src="client-texts/booked-5-hours-after-launch.png">
           <span>client text pending</span>
           <code>client-texts/booked-5-hours-after-launch.png</code>
         </div>
+        <figcaption>Five hours after launch</figcaption>
       </figure>
       <figure class="shot">
         <div class="pend" data-src="client-texts/appreciate-all-your-help.png">
           <span>client text pending</span>
           <code>client-texts/appreciate-all-your-help.png</code>
         </div>
+        <figcaption>Unprompted</figcaption>
       </figure>
       <figure class="shot">
         <div class="pend" data-src="client-texts/client-blowing-up-mexico.png">
           <span>client text pending</span>
           <code>client-texts/client-blowing-up-mexico.png</code>
         </div>
+        <figcaption>Account running while the owner was away</figcaption>
       </figure>
     </div>
+
   </section>
 
   <!-- =================== CLOSE ===================
@@ -585,7 +588,7 @@ body.ready .vlen{opacity:1;transform:none;transition-delay:.40s}
   </section>
 
   <footer>
-    <img src="brand/luxon-wordmark-gold-on-dark.png" alt="Luxon" width="564" height="132">
+    <img src="brand/luxon-wordmark-gold-on-dark.png" alt="Luxon" width="900" height="195">
     <p>Luxon &middot; Build better. Grow faster.</p>
   </footer>
 
