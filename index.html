@@ -267,6 +267,16 @@ section.vsl::before{display:none}
 .creatives .shot{margin:0;max-width:none}
 .creatives .shot img{opacity:.92}
 
+/* ---------- the one moving testimonial ----------
+   Deliberately quieter than the VSL frame at the top: no gold glow and
+   no shadow, because nothing on this page should compete with the video
+   the whole thing is built around. */
+.vtest{margin:28px 0 0;max-width:680px}
+.vtest video{width:100%;height:auto;display:block;background:#000;
+  border:1px solid var(--rule)}
+.vtest figcaption{font-family:var(--mono);font-size:11px;letter-spacing:.06em;
+  color:var(--faint);margin-top:11px;line-height:1.65}
+
 /* ---------- what people say ---------- */
 .says{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:26px;margin-top:28px;align-items:start}
 .says .shot.wide{grid-column:1/-1;max-width:680px}
@@ -637,6 +647,15 @@ body.ready .vlen{opacity:1;transform:none;transition-delay:.40s}
   <section class="reveal">
     <p class="marker">what people say</p>
     <h2>What people say.</h2>
+
+    <figure class="vtest">
+      <video controls preload="none" playsinline
+             poster="video/client-call-poster.jpg"
+             width="1280" height="720">
+        <source src="video/client-call.mp4" type="video/mp4">
+      </video>
+      <figcaption>A client on a call. Forty seconds. Captions are burned in, so it plays fine on mute.</figcaption>
+    </figure>
 
     <div class="says">
       <figure class="shot wide">
