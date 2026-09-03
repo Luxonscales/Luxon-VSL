@@ -161,6 +161,27 @@ section.vsl::before{display:none}
 #numbers{scroll-margin-top:22px}
 @media(prefers-reduced-motion:reduce){.skip span,.skip:hover span{transform:none;transition:none}}
 
+/* ---------- light rooms ----------
+   Full bleed warm off-white, using the same edge to edge technique the
+   bands already use. Recoloured by scoping the existing custom properties
+   rather than rewriting the rules, so nothing structural moves. Gold is
+   dropped to near black in here: at 12px on #F5F2ED it does not carry. */
+.light::after{content:"";position:absolute;inset:0;left:50%;width:100vw;
+  transform:translateX(-50%);z-index:-1;background:#F5F2ED}
+.light{
+  /* body resolves color:var(--text) at body level, so descendants inherit the
+     computed dark value and never see this override. Re-declare it here so the
+     whole subtree re-resolves. */
+  color:var(--text);
+  --text:#141210;
+  --soft:#4A4640;
+  --faint:#6B665E;
+  --rule:#D6D0C4;
+  --rule-soft:#E3DED3;
+  --gold-dim:#141210;
+}
+.light .marker::before{background:var(--red)}
+
 /* ---------- numbered rows: the call, and the diagnosis ---------- */
 .row{display:grid;grid-template-columns:38px 1fr;gap:18px;
   padding:22px 0;border-top:1px solid var(--rule-soft)}
@@ -418,8 +439,7 @@ body.ready .vlen{opacity:1;transform:none;transition-delay:.40s}
   <!-- =================== WHAT HAPPENS ON THE CALL ===================
        Sets the expectation so they turn up prepared instead of braced
        for a pitch. This is the section that moves show rate most. -->
-  <section class="reveal band">
-    <p class="marker">the call</p>
+  <section class="reveal light">
     <h2>What actually happens on it.</h2>
     <p class="lead">Twenty to thirty minutes. Four things, in this order.</p>
 
@@ -457,7 +477,6 @@ body.ready .vlen{opacity:1;transform:none;transition-delay:.40s}
        Preparation is the single biggest lever on show rate. The ruled
        blanks are the same pattern the closer uses on the services page. -->
   <section class="reveal band">
-    <p class="marker">before we talk</p>
     <h2>Three things to have ready.</h2>
     <p>You do not need exact figures. Close enough is fine.</p>
 
@@ -486,7 +505,6 @@ body.ready .vlen{opacity:1;transform:none;transition-delay:.40s}
        page. Trade named, client never. Screenshots sit under the figures
        at reduced weight: they are for the one person in twenty who checks. -->
   <section class="reveal" id="numbers">
-    <p class="marker">the accounts</p>
     <h2>A few of the accounts we're running.</h2>
     <p class="sub">Client testimonials are being filmed this month. I'd rather show you numbers now and faces later.</p>
 
@@ -562,8 +580,7 @@ body.ready .vlen{opacity:1;transform:none;transition-delay:.40s}
   <!-- =================== THE DIAGNOSIS ===================
        The actual differentiator. Three real findings, no client named.
        Sibling of the "where it breaks" section on the services page. -->
-  <section class="reveal band">
-    <p class="marker">what we usually find</p>
+  <section class="reveal light">
     <h2>Three complaints, and what they turned out to be.</h2>
 
     <div class="row">
@@ -598,7 +615,6 @@ body.ready .vlen{opacity:1;transform:none;transition-delay:.40s}
        the only closed shape on the page, because it is the only closed
        idea on the page. -->
   <section class="reveal band">
-    <p class="marker">what actually makes it work</p>
     <h2>Running the ad is the easy part.</h2>
     <p class="lead">Anyone can put money behind a post. What decides whether it works is everything around it, and most of that happens before a dollar is spent.</p>
 
@@ -639,7 +655,6 @@ body.ready .vlen{opacity:1;transform:none;transition-delay:.40s}
        Short. The creative images do the work here; they are the only
        evidence for the videography claim, which is otherwise a sentence. -->
   <section class="reveal band">
-    <p class="marker">what we build</p>
     <h2>What we actually build.</h2>
     <p>Creative is shot on location at your jobs. Not stock.</p>
 
@@ -673,8 +688,7 @@ body.ready .vlen{opacity:1;transform:none;transition-delay:.40s}
   <!-- =================== WHAT PEOPLE SAY ===================
        Written, until the filmed ones land. Cropped to the message
        itself: no names, no profile pictures. -->
-  <section class="reveal">
-    <p class="marker">what people say</p>
+  <section class="reveal light">
     <h2>What people say.</h2>
 
     <figure class="vtest">
@@ -724,7 +738,6 @@ body.ready .vlen{opacity:1;transform:none;transition-delay:.40s}
        Rescheduling is invited on purpose: someone who moves the call
        is worth far more than someone who quietly does not turn up. -->
   <section class="reveal close">
-    <p class="marker">see you then</p>
     <h2>Your call is confirmed.</h2>
     <p class="lead">Put it somewhere you will see it. That is most of the battle.</p>
 
