@@ -145,6 +145,22 @@ section.vsl::before{display:none}
 .player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .vlen{font-family:var(--mono);font-size:12.5px;color:var(--faint);margin:14px 0 0;max-width:none}
 
+/* ---------- skip link ----------
+   For the person who does not want to read. Deliberately not gold and
+   deliberately not a button shape you would confuse with the calendar:
+   this moves you down the page, it does not ask you for anything. Gold
+   stays reserved for the one thing on this page that is a real ask. */
+.skip{display:inline-flex;align-items:center;gap:9px;margin-top:20px;
+  padding:11px 18px;border:1px solid var(--rule);border-radius:2px;
+  font-family:var(--mono);font-size:12px;letter-spacing:.04em;
+  color:var(--soft);text-decoration:none;
+  transition:border-color .25s var(--ease),color .25s var(--ease),background .25s var(--ease)}
+.skip:hover{border-color:rgba(212,175,55,.45);color:var(--text);background:rgba(212,175,55,.05)}
+.skip span{transition:transform .25s var(--ease)}
+.skip:hover span{transform:translateY(2px)}
+#numbers{scroll-margin-top:22px}
+@media(prefers-reduced-motion:reduce){.skip span,.skip:hover span{transform:none;transition:none}}
+
 /* ---------- numbered rows: the call, and the diagnosis ---------- */
 .row{display:grid;grid-template-columns:38px 1fr;gap:18px;
   padding:22px 0;border-top:1px solid var(--rule-soft)}
@@ -396,6 +412,7 @@ body.ready .vlen{opacity:1;transform:none;transition-delay:.40s}
         allowfullscreen></iframe>
     </div>
     <p class="vlen">Just over a minute. It covers what we do, so the call does not have to.</p>
+    <a class="skip" href="#numbers">Skip to the numbers <span aria-hidden="true">&darr;</span></a>
   </section>
 
   <!-- =================== WHAT HAPPENS ON THE CALL ===================
@@ -468,7 +485,7 @@ body.ready .vlen{opacity:1;transform:none;transition-delay:.40s}
        to it. Nobody is stood next to this one, so the numbers go on the
        page. Trade named, client never. Screenshots sit under the figures
        at reduced weight: they are for the one person in twenty who checks. -->
-  <section class="reveal">
+  <section class="reveal" id="numbers">
     <p class="marker">the accounts</p>
     <h2>A few of the accounts we're running.</h2>
     <p class="sub">Client testimonials are being filmed this month. I'd rather show you numbers now and faces later.</p>
