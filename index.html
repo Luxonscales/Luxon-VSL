@@ -220,6 +220,46 @@ section.vsl::before{display:none}
   text-transform:uppercase;color:var(--gold-dim)}
 .pend code{font-family:var(--mono);font-size:11.5px;color:var(--faint);word-break:break-all}
 
+/* ---------- the loop: the page's one closed shape ---------- */
+.loop{position:relative;margin-top:30px;padding-left:clamp(46px,9vw,62px)}
+/* the rail the four stations sit on */
+.loop::before{content:"";position:absolute;left:clamp(19px,3.9vw,26px);top:10px;bottom:10px;width:1px;
+  background:linear-gradient(to bottom,var(--gold),rgba(212,175,55,.42) 62%,rgba(212,175,55,.12));
+  transform-origin:top;transform:scaleY(0);transition:transform 1.2s var(--ease) .1s}
+.on .loop::before{transform:scaleY(1)}
+/* the return path: bracketed back from the last station to the first */
+.loop-return{position:absolute;left:0;top:2px;bottom:2px;width:clamp(13px,2.6vw,18px);
+  border:1px dashed rgba(212,175,55,.34);border-right:0;border-radius:12px 0 0 12px;
+  opacity:0;transition:opacity .8s var(--ease) 1s}
+.on .loop-return{opacity:1}
+.loop-label{position:absolute;left:-2px;top:50%;font-family:var(--mono);font-size:9.5px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--gold-dim);white-space:nowrap;
+  transform:rotate(180deg) translateY(50%);writing-mode:vertical-rl;
+  opacity:0;transition:opacity .8s var(--ease) 1.15s}
+.on .loop-label{opacity:1}
+
+.stn{position:relative;padding:20px 0}
+.stn+.stn{border-top:1px solid var(--rule-soft)}
+/* square node on the rail, never a round dot */
+.stn::before{content:"";position:absolute;
+  left:calc(clamp(19px,3.9vw,26px) - clamp(46px,9vw,62px) - 3px);top:32px;
+  width:7px;height:7px;background:var(--gold);
+  transform:scale(0);transition:transform .5s var(--ease)}
+.on .stn::before{transform:scale(1)}
+.on .stn:nth-of-type(1)::before{transition-delay:.30s}
+.on .stn:nth-of-type(2)::before{transition-delay:.46s}
+.on .stn:nth-of-type(3)::before{transition-delay:.62s}
+.on .stn:nth-of-type(4)::before{transition-delay:.78s}
+.stn-n{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.13em;
+  color:var(--gold-dim);margin-bottom:7px}
+.stn h3{margin-bottom:7px}
+.stn p{margin:0;font-size:16px}
+@media(prefers-reduced-motion:reduce){
+  .loop::before,.on .loop::before{transform:scaleY(1);transition:none}
+  .loop-return,.on .loop-return,.loop-label,.on .loop-label{opacity:1;transition:none}
+  .stn::before,.on .stn::before{transform:scale(1);transition:none}
+}
+
 /* ---------- what we build ---------- */
 .creatives{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));
   gap:20px;margin:28px 0 0}
@@ -510,6 +550,50 @@ body.ready .vlen{opacity:1;transform:none;transition-delay:.40s}
     </div>
 
     <p class="lead" style="margin-top:26px">None of those needed better targeting or a bigger budget.</p>
+  </section>
+
+  <!-- =================== THE LOOP ===================
+       The mechanism. Everything else on this page is a ruled row, so the
+       one genuinely cyclical idea gets drawn as a cycle: a rail down the
+       four stations and a return path bracketing back to the top. It is
+       the only closed shape on the page, because it is the only closed
+       idea on the page. -->
+  <section class="reveal">
+    <p class="marker">what actually makes it work</p>
+    <h2>Running the ad is the easy part.</h2>
+    <p class="lead">Anyone can put money behind a post. What decides whether it works is everything around it, and most of that happens before a dollar is spent.</p>
+
+    <div class="loop">
+      <span class="loop-return" aria-hidden="true"></span>
+      <span class="loop-label" aria-hidden="true">feeds the next round</span>
+
+      <div class="stn">
+        <span class="stn-n">01</span>
+        <h3>The research</h3>
+        <p>Who is actually buying, what they have already tried, and the words they use when they call you. Written down before anything gets designed.</p>
+      </div>
+
+      <div class="stn">
+        <span class="stn-n">02</span>
+        <h3>The creative</h3>
+        <p>A hook is a specific checkable fact, not a claim. &ldquo;Can&rsquo;t remember the last time you had it swept&rdquo; makes someone stop and answer it in their head. &ldquo;Quality service you can trust&rdquo; asks nothing, so nothing happens.</p>
+      </div>
+
+      <div class="stn">
+        <span class="stn-n">03</span>
+        <h3>The campaign</h3>
+        <p>Structure, budget and placements set so the system has room to learn. Plenty of accounts are built so it never gets the chance.</p>
+      </div>
+
+      <div class="stn">
+        <span class="stn-n">04</span>
+        <h3>The signal you send back</h3>
+        <p>What Meta is told after the lead lands. This is the part almost nobody does, and it is the part that decides everything upstream of it.</p>
+      </div>
+    </div>
+
+    <p class="lead" style="margin-top:30px">Meta goes looking for more of whatever you tell it is good. Send it every lead and it finds you more of every lead, including the ones that waste your morning. Send it the ones that actually booked, and it goes looking for those.</p>
+    <p>That is what scaling on Meta actually is. Not a bigger budget.</p>
   </section>
 
   <!-- =================== WHAT WE ACTUALLY BUILD ===================
