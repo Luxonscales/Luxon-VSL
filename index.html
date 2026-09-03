@@ -26,7 +26,7 @@
 :root{
   --bg:#060606;
   --panel:#111111;
-  --rule:#262626;
+  --rule:#2E2E2E;
   --rule-soft:#1A1A1A;
   --gold:#D4AF37;
   --gold-hi:#F0D77A;
@@ -51,6 +51,9 @@ body{
   margin:0;background:var(--bg);color:var(--text);
   font-family:var(--body);font-size:17px;line-height:1.62;
   -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  /* the faint ruling of the services sheet, inverted for a dark ground */
+  background-image:repeating-linear-gradient(
+    to bottom,transparent 0 31px,rgba(255,255,255,.020) 31px 32px);
 }
 img{max-width:100%;display:block}
 
@@ -60,17 +63,25 @@ img{max-width:100%;display:block}
    digital black, and a vignette to pull the eye to the middle. */
 #glow,#grain,#vig{position:fixed;inset:0;pointer-events:none;z-index:0}
 #glow{
-  inset:auto 0 0 0;height:78vh;
+  inset:auto 0 0 0;height:92vh;
   background:
-    radial-gradient(ellipse 62% 78% at 50% 118%,rgba(212,175,55,.30) 0%,
-      rgba(212,175,55,.13) 34%,rgba(212,175,55,.035) 60%,transparent 78%);
+    radial-gradient(ellipse 66% 82% at 50% 116%,rgba(212,175,55,.54) 0%,
+      rgba(212,175,55,.25) 32%,rgba(212,175,55,.09) 58%,transparent 82%);
   animation:breathe 14s var(--ease) infinite alternate;
+}
+/* a low warm wash so the top of the page is lit too, not a black box */
+#wash{position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse 82% 46% at 50% -8%,rgba(212,175,55,.20) 0%,
+      rgba(212,175,55,.07) 40%,transparent 68%),
+    /* a slow warm lift down the middle so the long scroll is never a black void */
+    linear-gradient(180deg,rgba(255,255,255,.028) 0%,rgba(255,255,255,.012) 45%,transparent 100%);
 }
 @keyframes breathe{from{opacity:.72;transform:translateY(8px) scale(1)}
                    to  {opacity:1;  transform:translateY(0)   scale(1.05)}}
-#vig{background:radial-gradient(ellipse 90% 62% at 50% 42%,transparent 40%,rgba(0,0,0,.55) 100%)}
+#vig{background:radial-gradient(ellipse 100% 76% at 50% 46%,transparent 66%,rgba(0,0,0,.26) 100%)}
 #grain{
-  opacity:.05;mix-blend-mode:overlay;
+  opacity:.045;mix-blend-mode:overlay;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
@@ -159,7 +170,7 @@ section.vsl::before{display:none}
 .sub{font-size:16.5px;color:var(--soft);max-width:56ch;margin:0 0 10px}
 .acct{position:relative;padding:clamp(26px,4vw,34px) 0 clamp(26px,4vw,34px) clamp(20px,3.4vw,30px);
   margin-top:20px;border-top:1px solid var(--rule);
-  background:linear-gradient(180deg,rgba(255,255,255,.022),transparent 62%);
+  background:linear-gradient(180deg,rgba(255,255,255,.038),transparent 66%);
   transition:background .4s var(--ease)}
 .acct::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;
   background:linear-gradient(to bottom,var(--gold),rgba(212,175,55,.06));
@@ -196,7 +207,8 @@ section.vsl::before{display:none}
 .why{font-size:16.5px;color:var(--soft);max-width:56ch;margin:0}
 
 /* screenshots are verification, not the thing people read */
-.shot{margin:24px 0 0;max-width:400px}
+.shot{margin:24px 0 0;max-width:440px}
+@media(max-width:760px){.acct .shot{max-width:none}}
 .shot img{border:1px solid var(--rule);opacity:.78;filter:saturate(.9);
   transition:opacity .35s var(--ease),filter .35s var(--ease),border-color .35s var(--ease)}
 .shot:hover img,.shot:focus-within img{opacity:1;filter:none;border-color:rgba(212,175,55,.34)}
@@ -211,12 +223,17 @@ section.vsl::before{display:none}
 /* ---------- what we build ---------- */
 .creatives{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));
   gap:20px;margin:28px 0 0}
+@media(max-width:560px){.creatives{grid-template-columns:1fr;max-width:340px}}
 .creatives .shot{margin:0;max-width:none}
 .creatives .shot img{opacity:.92}
 
 /* ---------- what people say ---------- */
-.says{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;margin-top:28px;align-items:start}
-.says .shot.wide{grid-column:1/-1;max-width:640px}
+.says{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:26px;margin-top:28px;align-items:start}
+.says .shot.wide{grid-column:1/-1;max-width:680px}
+@media(max-width:760px){
+  .says{grid-template-columns:1fr;gap:30px}
+  .says .shot,.says .shot.wide{max-width:none}
+}
 .says .shot{margin:0;max-width:none}
 .says .shot img{opacity:.92}
 
@@ -291,6 +308,7 @@ body.ready .vlen{opacity:1;transform:none;transition-delay:.40s}
 <body>
 
 <div id="glow" aria-hidden="true"></div>
+<div id="wash" aria-hidden="true"></div>
 <div id="vig" aria-hidden="true"></div>
 <div id="grain" aria-hidden="true"></div>
 
@@ -559,11 +577,11 @@ body.ready .vlen{opacity:1;transform:none;transition-delay:.40s}
         <figcaption>Unprompted</figcaption>
       </figure>
       <figure class="shot">
-        <div class="pend" data-src="client-texts/client-blowing-up-mexico.png">
+        <div class="pend" data-src="client-texts/new-client-first-week.png">
           <span>client text pending</span>
-          <code>client-texts/client-blowing-up-mexico.png</code>
+          <code>client-texts/new-client-first-week.png</code>
         </div>
-        <figcaption>Account running while the owner was away</figcaption>
+        <figcaption>New account, first customer</figcaption>
       </figure>
     </div>
 
