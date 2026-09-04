@@ -24,7 +24,7 @@
    ============================================================ */
 
 :root{
-  --bg:#121110;
+  --bg:#171310;
   --panel:#1A1918;
   --rule:#302E2B;
   --rule-soft:#1F1E1C;
@@ -62,14 +62,6 @@ img{max-width:100%;display:block}
                    to  {opacity:1;  transform:translateY(0)   scale(1.05)}}
 
 .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut);position:relative;z-index:1}
-/* the red margin rule down the left edge of the sheet */
-.wrap::before{
-  content:"";position:absolute;top:0;bottom:0;
-  left:calc(var(--gut) - 14px);width:1px;
-  background:var(--red);
-  opacity:.28;
-}
-@media(max-width:860px){.wrap::before{display:none}}
 
 /* ---------- type ---------- */
 h1,h2,h3{font-family:var(--display);font-variation-settings:'wdth' 82;margin:0;
@@ -91,13 +83,15 @@ strong{font-weight:600;color:var(--text)}
   transform-origin:left;transform:scaleX(0);transition:transform .7s var(--ease) .1s}
 .on .marker::before,.marker.on::before{transform:scaleX(1)}
 
-/* every section opens on a hairline that draws itself in */
-section{padding:clamp(56px,8vw,104px) 0;position:relative}
-section::before{
-  content:"";position:absolute;top:0;left:0;right:0;height:1px;
-  background:var(--rule);
-  transform-origin:left;transform:scaleX(0);transition:transform 1.1s var(--ease)}
-section.on::before{transform:scaleX(1)}
+/* ---------- sections are blocks, not text on a page ----------
+   Every section paints its own ground edge to edge. Solid fills only, so
+   one block cuts hard into the next with nothing between them: no
+   hairline, no fade, no overlap. The generous padding is the point, the
+   empty space above and below is what makes each one read as its own
+   room rather than a run of paragraphs. */
+section{padding:clamp(104px,17vw,220px) 0;position:relative}
+section::after{content:"";position:absolute;inset:0;left:50%;width:100vw;
+  transform:translateX(-50%);z-index:-1;pointer-events:none;background:var(--bg)}
 section.vsl::before{display:none}
 
 /* ---------- masthead ---------- */
@@ -142,8 +136,7 @@ section.vsl::before{display:none}
    bands already use. Recoloured by scoping the existing custom properties
    rather than rewriting the rules, so nothing structural moves. Gold is
    dropped to near black in here: at 12px on #F5F2ED it does not carry. */
-.light::after{content:"";position:absolute;inset:0;left:50%;width:100vw;
-  transform:translateX(-50%);z-index:-1;background:#F5F2ED}
+.light::after{background:#F4F1EA}
 .light{
   /* body resolves color:var(--text) at body level, so descendants inherit the
      computed dark value and never see this override. Re-declare it here so the
@@ -237,17 +230,6 @@ label.q{cursor:pointer}
   text-transform:uppercase;color:var(--gold-dim)}
 .pend code{font-family:var(--mono);font-size:11.5px;color:var(--faint);word-break:break-all}
 
-/* ---------- act bands ----------
-   The page alternates between what we claim and what proves it. The
-   claim sections sit on a faintly lifted ground and the evidence
-   sections sit on the base, so the eye gets a rhythm and the proof
-   always lands on the darker, quieter floor. Full bleed, so the band
-   reads as a change of room rather than a box on the page. */
-.band::after{content:"";position:absolute;inset:0;left:50%;width:100vw;
-  transform:translateX(-50%);z-index:-1;pointer-events:none;
-  background:#191817}
-/* consecutive bands are one act, so only the first one gets the seam */
-.band+.band::after{background:#191817}
 
 /* ---------- the loop: the page's one closed shape ---------- */
 .loop{position:relative;margin-top:30px;padding-left:clamp(46px,9vw,62px)}
@@ -368,7 +350,6 @@ body.ready .vlen{opacity:1;transform:none;transition-delay:.40s}
   html{scroll-behavior:auto}
     .reveal>*,.reveal.on>*{opacity:1;transform:none;transition:none}
   .marker::before,.on .marker::before{transform:scaleX(1);transition:none}
-  section::before,section.on::before{transform:scaleX(1);transition:none}
   .acct::before,.on .acct::before{transform:scaleY(1);transition:none}
   .figs>div>*,.on .figs>div>*{transform:none;transition:none}
   .cta:hover::after{animation:none}
@@ -449,7 +430,7 @@ body.ready .vlen{opacity:1;transform:none;transition-delay:.40s}
   <!-- =================== THREE THINGS TO HAVE READY ===================
        Preparation is the single biggest lever on show rate. The ruled
        blanks are the same pattern the closer uses on the services page. -->
-  <section class="reveal band">
+  <section class="reveal">
     <h2>Three things to have ready.</h2>
     <p>You do not need exact figures. Close enough is fine.</p>
 
@@ -590,7 +571,7 @@ body.ready .vlen{opacity:1;transform:none;transition-delay:.40s}
        four stations and a return path bracketing back to the top. It is
        the only closed shape on the page, because it is the only closed
        idea on the page. -->
-  <section class="reveal band">
+  <section class="reveal">
     <h2>Running the ad is the easy part.</h2>
     <p class="lead">Anyone can put money behind a post. What decides whether it works is everything around it, and most of that happens before a dollar is spent.</p>
 
@@ -630,7 +611,7 @@ body.ready .vlen{opacity:1;transform:none;transition-delay:.40s}
   <!-- =================== WHAT WE ACTUALLY BUILD ===================
        Short. The creative images do the work here; they are the only
        evidence for the videography claim, which is otherwise a sentence. -->
-  <section class="reveal band">
+  <section class="reveal">
     <h2>What we actually build.</h2>
     <p>Creative is shot on location at your jobs. Not stock.</p>
 
