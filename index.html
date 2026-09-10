@@ -151,6 +151,40 @@ section.vsl::before{display:none}
 }
 .light .marker::before{background:var(--red)}
 
+/* ---------- the play affordance ----------
+   Native controls on a poster read as a file, not an invitation. One
+   target covering the whole frame, so a thumb anywhere on the video
+   starts it, with the runtime on the button itself: nobody presses play
+   without knowing what they are committing to. */
+.player{position:relative;
+  /* uncapped, a 16:9 frame is 809px tall on a 1440 screen and pushes itself
+     under the fold. The whole point of this section is that the video is the
+     first thing they see, so the frame is capped to fit above it. */
+  max-width:min(100%,860px);margin-left:auto;margin-right:auto}
+.play{position:absolute;inset:0;width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(10,8,7,.34);border:0;cursor:pointer;
+  transition:background .3s var(--ease)}
+.play:hover{background:rgba(10,8,7,.2)}
+.play-ico{width:74px;height:74px;border-radius:50%;background:var(--gold);
+  display:block;position:relative;
+  box-shadow:0 10px 40px -8px rgba(0,0,0,.7);
+  transition:transform .3s var(--ease)}
+.play-ico::after{content:"";position:absolute;top:50%;left:54%;transform:translate(-50%,-50%);
+  border-style:solid;border-width:13px 0 13px 21px;border-color:transparent transparent transparent #12100E}
+.play:hover .play-ico{transform:scale(1.06)}
+/* the runtime sits in a corner: centred under the button it collides with
+   the burned in lower third on the frame */
+.play-len{position:absolute;right:12px;bottom:12px;
+  padding:5px 9px;background:rgba(10,8,7,.72);
+  font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:#F2EFE9}
+.play[hidden]{display:none}
+
+/* the aggregate, sat directly under the player */
+.topline{max-width:62ch;margin:18px 0 0;font-size:16px;color:var(--soft)}
+.topline b{color:var(--gold);font-weight:700;
+  font-variant-numeric:tabular-nums;font-feature-settings:'tnum' 1}
+
 /* ---------- numbered rows: the call, and the diagnosis ---------- */
 .row{display:grid;grid-template-columns:38px 1fr;gap:18px;
   padding:22px 0;border-top:1px solid var(--rule-soft)}
@@ -381,12 +415,21 @@ body.ready .vlen{opacity:1;transform:none;transition-delay:.40s}
   <section class="vsl">
     <h1>Watch this before we talk.</h1>
     <div class="player">
-      <video controls preload="metadata" playsinline
+      <video id="vsl" preload="metadata" playsinline
              poster="video/vsl-poster.jpg" width="1920" height="1080">
         <source src="video/vsl.mp4" type="video/mp4">
       </video>
+      <button class="play" id="playbtn" type="button" aria-label="Play the video, 1 minute 37 seconds">
+        <span class="play-ico" aria-hidden="true"></span>
+        <span class="play-len">1:37</span>
+      </button>
     </div>
-    <p class="vlen">About a minute and a half. Captions are burned in, so it plays fine on mute.</p>
+    <p class="vlen">A minute and a half. Captions are burned in, so it plays fine on mute.</p>
+
+    <!-- The one hard number, above the fold, before they have scrolled
+         anywhere. Every account it comes from is further down. -->
+    <p class="topline"><b>429 leads</b> across four accounts. The screenshots are below.</p>
+
     <a class="skip" href="#numbers">Click to skip to results <span aria-hidden="true">&darr;</span></a>
   </section>
 
@@ -443,15 +486,15 @@ body.ready .vlen{opacity:1;transform:none;transition-delay:.40s}
       </div>
       <div class="mrow">
         <div class="row-n">02</div>
-        <label class="q" for="q2">Roughly how many of ten callers actually book.</label>
+        <label class="q" for="q2">Roughly how many jobs you are doing a month.</label>
         <input class="blank" id="q2" type="text" inputmode="numeric"
-               autocomplete="off" spellcheck="false" placeholder="e.g. 3 of 10">
+               autocomplete="off" spellcheck="false" placeholder="e.g. 8 to 10">
       </div>
       <div class="mrow">
         <div class="row-n">03</div>
-        <label class="q" for="q3">Whether anyone else is part of the decision.</label>
+        <label class="q" for="q3">Who answers when a lead comes in.</label>
         <input class="blank" id="q3" type="text" inputmode="text"
-               autocomplete="off" spellcheck="false" placeholder="e.g. my wife, my partner">
+               autocomplete="off" spellcheck="false" placeholder="e.g. me, or my office manager">
       </div>
     </div>
   </section>
@@ -796,6 +839,21 @@ body.ready .vlen{opacity:1;transform:none;transition-delay:.40s}
         {weekday:'long', month:'long', day:'numeric', hour:'numeric', minute:'2-digit'});
       if(lead) lead.textContent = when + '. It is already in the diary.';
     }catch(e){}
+  }());
+
+
+  /* The poster carries a play button rather than native controls. Controls
+     only appear once they have chosen to watch, so the resting state is an
+     invitation instead of a widget. */
+  (function(){
+    var v=document.getElementById('vsl'), btn=document.getElementById('playbtn');
+    if(!v||!btn) return;
+    function start(){
+      btn.hidden=true; v.controls=true;
+      var pr=v.play(); if(pr&&pr.catch) pr.catch(function(){});
+    }
+    btn.addEventListener('click', start);
+    v.addEventListener('play', function(){ btn.hidden=true; v.controls=true; });
   }());
 
   /* Quiet reveal. Sections resolve in sequence, then stop moving. */
