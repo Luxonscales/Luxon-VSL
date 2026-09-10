@@ -250,6 +250,23 @@ label.q{cursor:pointer}
   letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-top:10px}
 .why{font-size:16.5px;color:var(--soft);max-width:56ch;margin:0}
 
+
+/* ---------- the benchmark, drawn ----------
+   A published trade range is the one claim in this section that is a
+   comparison, so it stops being a third stat cell in the same weight as
+   everything else. Track runs 0 to $45, the range the trade pays is hatched
+   from 55% along it, and this account sits at 42%, visibly left of it. */
+.bench{max-width:420px;margin:24px 0 30px}
+.bench-track{position:relative;height:8px;background:var(--rule-soft);border:1px solid var(--rule)}
+.bench-range{position:absolute;top:0;bottom:0;left:55.6%;right:0;
+  background:repeating-linear-gradient(45deg,#5A5148 0 3px,transparent 3px 6px)}
+.bench-mark{position:absolute;top:-5px;bottom:-5px;left:41.6%;width:3px;background:var(--gold)}
+.bench-key{display:flex;justify-content:space-between;gap:14px;margin-top:13px;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase}
+.bench-us{color:var(--gold)}
+.bench-us b{font-weight:500}
+.bench-them{color:var(--faint);text-align:right}
+
 /* screenshots are verification, not the thing people read */
 .shot{margin:24px 0 0;max-width:440px}
 @media(max-width:760px){.acct .shot{max-width:none}}
@@ -347,6 +364,9 @@ label.q{cursor:pointer}
 @keyframes sheen{to{left:120%}}
 .cta span{transition:transform .3s var(--ease)}
 .cta:hover span{transform:translateX(4px)}
+.resched{color:var(--gold);text-decoration:underline;text-underline-offset:3px;
+  text-decoration-thickness:1px;padding:2px 0}
+.resched:hover{text-decoration-thickness:2px}
 .fine{font-family:var(--mono);font-size:12.5px;color:var(--faint);max-width:52ch;line-height:1.7}
 
 footer{padding:38px 0 52px;border-top:1px solid var(--rule);
@@ -517,11 +537,11 @@ body.ready .vlen{opacity:1;transform:none;transition-delay:.40s}
       </div>
       <p class="why">That is the whole spend, not a good week pulled out of it.</p>
       <figure class="shot">
-        <div class="pend" data-src="accounts/surrogacy-243-leads-1095-cpl.png" data-alt="Meta Ads Manager showing 243 leads at $10.95 per lead">
+        <div class="pend" data-src="accounts/surrogacy-243-leads-1095-cpl.png" data-full="accounts/surrogacy-243-leads-1095-cpl-full.png" data-alt="Meta Ads Manager showing 243 leads at $10.95 per lead">
           <span>screenshot pending</span>
           <code>accounts/surrogacy-243-leads-1095-cpl.png</code>
         </div>
-        <figcaption>Ads Manager</figcaption>
+        <figcaption>Ads Manager &middot; 24 Jul to 2 Sep &middot; tap for the full table</figcaption>
       </figure>
     </div>
 
@@ -534,11 +554,11 @@ body.ready .vlen{opacity:1;transform:none;transition-delay:.40s}
       </div>
       <p class="why">Five months on the same account. The cost per lead held the whole way.</p>
       <figure class="shot">
-        <div class="pend" data-src="accounts/barbershop-152-leads-949-cpl.png" data-alt="Meta Ads Manager showing 152 leads at $9.49 per lead">
+        <div class="pend" data-src="accounts/barbershop-152-leads-949-cpl.png" data-full="accounts/barbershop-152-leads-949-cpl-full.png" data-alt="Meta Ads Manager showing 152 leads at $9.49 per lead">
           <span>screenshot pending</span>
           <code>accounts/barbershop-152-leads-949-cpl.png</code>
         </div>
-        <figcaption>Ads Manager</figcaption>
+        <figcaption>Ads Manager &middot; 3 Apr to 2 Sep &middot; tap for the full table</figcaption>
       </figure>
     </div>
 
@@ -547,15 +567,26 @@ body.ready .vlen{opacity:1;transform:none;transition-delay:.40s}
       <div class="figs">
         <div><b>25</b><i>Leads</i></div>
         <div><b>$18.71</b><i>Per lead</i></div>
-        <div><b class="alt">$25 to $45</b><i>Trade benchmark</i></div>
+      </div>
+
+      <div class="bench" role="img"
+           aria-label="Cost per lead of 18 dollars 71, against a trade benchmark of 25 to 45 dollars a lead">
+        <div class="bench-track">
+          <span class="bench-range"></span>
+          <span class="bench-mark"></span>
+        </div>
+        <div class="bench-key">
+          <span class="bench-us"><b>$18.71</b> this account</span>
+          <span class="bench-them">$25 to $45 the trade</span>
+        </div>
       </div>
       <p class="why">The going rate in this trade is twenty five to forty five a lead. This one sits under it.</p>
       <figure class="shot">
-        <div class="pend" data-src="accounts/chimney-25-leads-1871-cpl.png" data-alt="Meta Ads Manager showing 25 leads at $18.71 per lead">
+        <div class="pend" data-src="accounts/chimney-25-leads-1871-cpl.png" data-full="accounts/chimney-25-leads-1871-cpl-full.png" data-alt="Meta Ads Manager showing 25 leads at $18.71 per lead">
           <span>screenshot pending</span>
           <code>accounts/chimney-25-leads-1871-cpl.png</code>
         </div>
-        <figcaption>Ads Manager</figcaption>
+        <figcaption>Ads Manager &middot; 13 Aug to 2 Sep &middot; tap for the full table</figcaption>
       </figure>
     </div>
 
@@ -747,7 +778,10 @@ body.ready .vlen{opacity:1;transform:none;transition-delay:.40s}
     </a>
     <p class="fine" id="gcal-note" hidden>Opens Google Calendar with your time already filled in.</p>
 
-    <p class="fine">If something comes up, move the call rather than skipping it. Use the reschedule link in that same email and pick another time.</p>
+    <p class="fine" id="resched-fallback">If something comes up, move the call rather than skipping it. Use the reschedule link in that same email and pick another time.</p>
+    <p class="fine" id="resched-live" hidden>Something come up?
+      <a class="resched" id="reschedlink" href="#" target="_blank" rel="noopener">Move the call</a>
+      rather than skipping it. A new time beats a no show, every time.</p>
   </section>
 
   <footer>
@@ -770,7 +804,14 @@ body.ready .vlen{opacity:1;transform:none;transition-delay:.40s}
     probe.onload = function(){
       var img = document.createElement('img');
       img.src = src; img.alt = slot.getAttribute('data-alt') || ''; img.loading = 'lazy';
-      if(slot.parentNode) slot.parentNode.replaceChild(img, slot);
+      var full = slot.getAttribute('data-full');
+      var node = img;
+      if(full){
+        var a = document.createElement('a');
+        a.href = full; a.target = '_blank'; a.rel = 'noopener';
+        a.appendChild(img); node = a;
+      }
+      if(slot.parentNode) slot.parentNode.replaceChild(node, slot);
     };
     probe.src = src;
   });
@@ -854,6 +895,24 @@ body.ready .vlen{opacity:1;transform:none;transition-delay:.40s}
     }
     btn.addEventListener('click', start);
     v.addEventListener('play', function(){ btn.hidden=true; v.controls=true; });
+  }());
+
+
+  /* Rescheduling, when the booking tool hands us a link. Same idea as the
+     calendar button: a real one tap option if the URL carries it, and the
+     original wording about the email if it does not. Nothing invented. */
+  (function(){
+    var q=new URLSearchParams(location.search);
+    var url=null, keys=['reschedule_url','invitee_reschedule_url','rescheduleUrl','reschedule'];
+    for(var i=0;i<keys.length;i++){ var v=q.get(keys[i]); if(v){ url=v; break; } }
+    if(!url) return;
+    var ok=false;
+    try{ var u=new URL(url, location.href); ok=(u.protocol==='https:'); }catch(e){ ok=false; }
+    if(!ok) return;
+    var a=document.getElementById('reschedlink');
+    var live=document.getElementById('resched-live'), fb=document.getElementById('resched-fallback');
+    if(!a||!live||!fb) return;
+    a.href=url; live.hidden=false; fb.hidden=true;
   }());
 
   /* Quiet reveal. Sections resolve in sequence, then stop moving. */
