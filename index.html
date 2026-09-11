@@ -334,6 +334,10 @@ label.q{cursor:pointer}
    no shadow, because nothing on this page should compete with the video
    the whole thing is built around. */
 .vtest{margin:28px 0 0;max-width:680px}
+/* the founder interview is 9:16. capped so it reads as a clip, not a phone
+   standing in the middle of the page. */
+.vtest-tall{max-width:340px}
+.vtest-tall video{aspect-ratio:9/16;object-fit:cover;width:100%;height:auto}
 .vtest video{width:100%;height:auto;display:block;background:#000;
   border:1px solid var(--rule)}
 .vtest figcaption{font-family:var(--mono);font-size:11px;letter-spacing:.06em;
@@ -446,10 +450,6 @@ body.ready .vlen{opacity:1;transform:none;transition-delay:.40s}
     </div>
     <p class="vlen">A minute and a half. Captions are burned in, so it plays fine on mute.</p>
 
-    <!-- The one hard number, above the fold, before they have scrolled
-         anywhere. Every account it comes from is further down. -->
-    <p class="topline"><b>429 leads</b> across four accounts. The screenshots are below.</p>
-
     <a class="skip" href="#numbers">Click to skip to results <span aria-hidden="true">&darr;</span></a>
   </section>
 
@@ -526,7 +526,7 @@ body.ready .vlen{opacity:1;transform:none;transition-delay:.40s}
        at reduced weight: they are for the one person in twenty who checks. -->
   <section class="reveal" id="numbers">
     <h2>A few of the accounts we're running.</h2>
-    <p class="sub">Client testimonials are being filmed this month. I'd rather show you numbers now and faces later.</p>
+    <p class="sub">Every figure here is one account and one date window, with the export beside it. Nothing is added up.</p>
 
     <div class="acct">
       <span class="trade">Surrogacy agency</span>
@@ -721,6 +721,16 @@ body.ready .vlen{opacity:1;transform:none;transition-delay:.40s}
        itself: no names, no profile pictures. -->
   <section class="reveal light">
     <h2>What people say.</h2>
+
+    <figure class="vtest vtest-tall">
+      <video controls preload="metadata" playsinline
+             poster="video/surrogacy-founder-poster.jpg"
+             width="720" height="1280">
+        <source src="video/surrogacy-founder-720.mp4" type="video/mp4">
+        <track kind="captions" srclang="en" label="English" src="video/surrogacy-founder.vtt" default>
+      </video>
+      <figcaption>A client, on camera. She runs the surrogacy agency in the first account below. Three and a half minutes, captions on.</figcaption>
+    </figure>
 
     <figure class="vtest">
       <video controls preload="none" playsinline
