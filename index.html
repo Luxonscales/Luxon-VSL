@@ -526,6 +526,20 @@ section.light.reveal > h2::before{color:var(--gold-dim)}
   body.has-dock footer{padding-bottom:104px}
 }
 
+
+/* A .pend slot is a build-time reminder, not something a prospect should ever
+   read. The script above swaps it for the real image the moment the file
+   exists; until then the whole figure stays out of the page. (19 Sep 2026:
+   "SCREENSHOT PENDING accounts/chimney-50-leads.png" shipped as literal text
+   on the live page. Never again.) */
+figure.shot:has(.pend){display:none}
+
+/* [hidden] must win. The calendar button and the reschedule line are hidden
+   until the booking tool passes a real time, but .cta sets display:inline-flex
+   and .fine sets display:block, both of which out-specify the attribute's
+   default style. The result: "Add to Google Calendar" rendered on every visit
+   with href="#", doing nothing. (Caught on the live page, 19 Sep 2026.) */
+[hidden]{display:none !important}
 </style>
 </head>
 <body>
@@ -695,23 +709,12 @@ section.light.reveal > h2::before{color:var(--gold-dim)}
         </div>
         <figcaption>Ads Manager &middot; 13 Aug to 2 Sep &middot; tap for the full table</figcaption>
       </figure>
-      <!-- The figures above are the 13 Aug to 2 Sep export and stay pinned to
-           it. The account has kept running since, so the current count goes
-           on separately with its own export slot, rather than being written
-           over a screenshot that says 25. -->
-      <!-- PLACEHOLDER: the fresh Ads Manager export for the current window. Drop it
-           at accounts/chimney-50-leads.png and the slot below fills itself in. Cost
-           per lead is deliberately not stated for this window: nobody has an export
-           for it yet. -->
+      <!-- The figures above are pinned to the 13 Aug to 2 Sep export. The
+           account has kept running since, so the current count goes on its
+           own line rather than being written over a screenshot that says 25.
+           When the fresh export arrives it gets its own figure here. -->
       <p class="why"><b>Same account, as of 19 Sep: 50 leads.</b> The figures above are the 13 Aug to 2 Sep window they were exported from.</p>
       <p class="why"><b>$14,000 in revenue so far, confirmed by the client.</b> Reported by the client, not by Meta. Meta cannot see closed jobs.</p>
-      <figure class="shot">
-        <div class="pend" data-src="accounts/chimney-50-leads.png" data-full="accounts/chimney-50-leads-full.png" data-alt="Meta Ads Manager showing 50 leads on the chimney sweep account">
-          <span>screenshot pending</span>
-          <code>accounts/chimney-50-leads.png</code>
-        </div>
-        <figcaption>Ads Manager &middot; current window &middot; tap for the full table</figcaption>
-      </figure>
     </div>
 
     <div class="acct">
