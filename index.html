@@ -252,7 +252,6 @@ label.q{cursor:pointer}
   letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-top:10px}
 .why{font-size:16.5px;color:var(--soft);max-width:56ch;margin:0}
 
-
 /* ---------- the benchmark, drawn ----------
    A published trade range is the one claim in this section that is a
    comparison, so it stops being a third stat cell in the same weight as
@@ -282,7 +281,6 @@ label.q{cursor:pointer}
 .pend span{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;
   text-transform:uppercase;color:var(--gold-dim)}
 .pend code{font-family:var(--mono);font-size:11.5px;color:var(--faint);word-break:break-all}
-
 
 /* ---------- the loop: the page's one closed shape ---------- */
 .loop{position:relative;margin-top:30px;padding-left:clamp(46px,9vw,62px)}
@@ -532,7 +530,6 @@ section.light.reveal > h2::before{color:var(--gold-dim)}
 </head>
 <body>
 
-
 <div class="wrap">
 
   <header class="mast">
@@ -698,6 +695,22 @@ section.light.reveal > h2::before{color:var(--gold-dim)}
         </div>
         <figcaption>Ads Manager &middot; 13 Aug to 2 Sep &middot; tap for the full table</figcaption>
       </figure>
+      <!-- The figures above are the 13 Aug to 2 Sep export and stay pinned to
+           it. The account has kept running since, so the current count goes
+           on separately with its own export slot, rather than being written
+           over a screenshot that says 25. -->
+      <!-- PLACEHOLDER: the fresh Ads Manager export for the current window. Drop it
+           at accounts/chimney-50-leads.png and the slot below fills itself in. Cost
+           per lead is deliberately not stated for this window: nobody has an export
+           for it yet. -->
+      <p class="why"><b>Same account, as of 19 Sep: 50 leads.</b> The figures above are the 13 Aug to 2 Sep window they were exported from.</p>
+      <figure class="shot">
+        <div class="pend" data-src="accounts/chimney-50-leads.png" data-full="accounts/chimney-50-leads-full.png" data-alt="Meta Ads Manager showing 50 leads on the chimney sweep account">
+          <span>screenshot pending</span>
+          <code>accounts/chimney-50-leads.png</code>
+        </div>
+        <figcaption>Ads Manager &middot; current window &middot; tap for the full table</figcaption>
+      </figure>
     </div>
 
     <div class="acct">
@@ -715,6 +728,7 @@ section.light.reveal > h2::before{color:var(--gold-dim)}
         </div>
         <figcaption>Ads Manager &middot; 12 Aug to 10 Sep &middot; tap for the full view</figcaption>
       </figure>
+      <p class="why"><b>Over $80,000 of work in the pipeline, confirmed by the client.</b> Reported by the client, not by Meta. Meta cannot see closed jobs.</p>
     </div>
   </section>
 
@@ -796,15 +810,32 @@ section.light.reveal > h2::before{color:var(--gold-dim)}
        Short. The creative images do the work here; they are the only
        evidence for the videography claim, which is otherwise a sentence. -->
   <section class="reveal">
-    <h2>What we actually build.</h2>
-    <p>Creative is shot on location at your jobs. Not stock.</p>
+    <h2>A few examples of what we do.</h2>
+    <p>Every one of these was shot on location at a client's job. No stock footage.</p>
 
     <div class="creatives">
       <figure class="shot">
-        <img src="creative/landscaping-ad-static.jpg" width="1122" height="1402" loading="lazy"
-             alt="Static ad: a backyard by day on the left and lit at night on the right. Built for the day, designed for the night.">
-        <figcaption>Landscaping, the static</figcaption>
+        <video controls preload="metadata" playsinline width="720" height="1280"
+               poster="video/ad-1-poster.jpg" aria-label="An outdoor living ad: a concrete patio poured and formed, then the finished yard at night.">
+          <source src="video/ad-1.mp4" type="video/mp4">
+        </video>
+        <figcaption>Outdoor living. The slab going in, then the finished space. Twenty four seconds. Captions are burned in, so it plays fine on mute.</figcaption>
       </figure>
+      <figure class="shot">
+        <video controls preload="metadata" playsinline width="720" height="1280"
+               poster="video/ad-2-poster.jpg" aria-label="An outdoor living ad: the owner on a finished patio at dusk, lit wall behind him.">
+          <source src="video/ad-2.mp4" type="video/mp4">
+        </video>
+        <figcaption>Outdoor living, filmed at dusk on a finished job. Forty one seconds. Captions are burned in, so it plays fine on mute.</figcaption>
+      </figure>
+      <figure class="shot">
+        <video controls preload="metadata" playsinline width="720" height="1280"
+               poster="video/ad-3-poster.jpg" aria-label="A chimney sweep ad: the owner outside a house, then a blocked flue on camera.">
+          <source src="video/ad-3.mp4" type="video/mp4">
+        </video>
+        <figcaption>Chimney sweep, filmed on the job. Twenty three seconds. Captions are burned in, so it plays fine on mute.</figcaption>
+      </figure>
+      
       <figure class="shot">
         <video controls preload="metadata" playsinline width="720" height="1280" poster="video/landscaping-ad-1-poster.jpg">
           <source src="video/landscaping-ad-1.mp4" type="video/mp4">
@@ -812,13 +843,7 @@ section.light.reveal > h2::before{color:var(--gold-dim)}
         </video>
         <figcaption>Landscaping, the video ad, first cut</figcaption>
       </figure>
-      <figure class="shot">
-        <video controls preload="metadata" playsinline width="720" height="1280" poster="video/landscaping-ad-2-poster.jpg">
-          <source src="video/landscaping-ad-2.mp4" type="video/mp4">
-          <track kind="captions" srclang="en" label="English" src="video/landscaping-ad-2.vtt" default>
-        </video>
-        <figcaption>Landscaping, the video ad, second cut</figcaption>
-      </figure>
+      
       <figure class="shot">
         <div class="pend" data-src="creative/landscaping-60000-hook.png" data-alt="Landscaping ad creative, client filmed on site">
           <span>creative pending</span>
@@ -826,13 +851,7 @@ section.light.reveal > h2::before{color:var(--gold-dim)}
         </div>
         <figcaption>Landscaping, live campaign</figcaption>
       </figure>
-      <figure class="shot">
-        <div class="pend" data-src="creative/chimney-cant-remember-hook.png" data-alt="Chimney sweep ad creative, client filmed on site">
-          <span>creative pending</span>
-          <code>creative/chimney-cant-remember-hook.png</code>
-        </div>
-        <figcaption>Chimney sweep, live campaign</figcaption>
-      </figure>
+      
     </div>
 
     <p style="margin-top:30px">Conversion tracking is wired back to Meta, so the budget follows the ads that book work.</p>
@@ -980,7 +999,6 @@ section.light.reveal > h2::before{color:var(--gold-dim)}
     probe.src = src;
   });
 
-
   /* The three answers persist on this device, so if they fill them in now and
      come back to the page before the call, their numbers are still there. */
   try{
@@ -993,7 +1011,6 @@ section.light.reveal > h2::before{color:var(--gold-dim)}
       });
     });
   }catch(e){}
-
 
   /* Add to calendar, with the time already on it.
      The old version linked to a bare Google Calendar template with no dates,
@@ -1046,7 +1063,6 @@ section.light.reveal > h2::before{color:var(--gold-dim)}
     }catch(e){}
   }());
 
-
   /* The poster carries a play button rather than native controls. Controls
      only appear once they have chosen to watch, so the resting state is an
      invitation instead of a widget. */
@@ -1060,7 +1076,6 @@ section.light.reveal > h2::before{color:var(--gold-dim)}
     btn.addEventListener('click', start);
     v.addEventListener('play', function(){ btn.hidden=true; v.controls=true; });
   }());
-
 
   /* Rescheduling, when the booking tool hands us a link. Same idea as the
      calendar button: a real one tap option if the URL carries it, and the
