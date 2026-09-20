@@ -58,8 +58,10 @@ img{max-width:100%;display:block}
    Three fixed layers under everything: a gold floor light that the
    page appears to stand on, a fine grain so the flats are not dead
    digital black, and a vignette to pull the eye to the middle. */
-/* a low warm wash so the top of the page is lit too, not a black box */
-                   to  {opacity:1;  transform:translateY(0)   scale(1.05)}}
+/* NOTE (19 Sep 2026): an orphaned keyframe fragment sat here, ending in
+   a stray closing brace. CSS error recovery swallowed the rule that
+   follows it, so .wrap lost its gutter and every line of text on a
+   phone ran into the edge of the screen. Debris removed. */
 
 .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut);position:relative;z-index:1}
 
@@ -421,6 +423,111 @@ body.ready .vlen{opacity:1;transform:none;transition-delay:.40s}
   .mast img{width:104px}
   .acct{padding-left:16px}
 }
+
+/* ============================================================
+   MOBILE AND DISPLAY PASS (19 Sep 2026)
+   On a phone this page was 16,000px of 17px body copy with the
+   video boxed inside the gutter and no persistent action. This
+   block changes presentation only: not one figure, claim or line
+   of copy is touched. Written to sit last so it overrides the
+   rules above without editing them.
+
+   Reference: the Cali Cuztomz build. What carries there is heavy
+   uppercase display type, media that runs edge to edge on a phone,
+   a numbered rhythm, and one action pinned to the bottom of the
+   screen. Gold stays rationed to figures and the single ask.
+   ============================================================ */
+
+/* atmosphere, restored. The comment at the top of the sheet describes
+   three fixed layers; the rules themselves went with the debris that
+   was removed above, so the page had been rendering on a flat ground.
+   Kept low: a floor light under the dark rooms and a soft vignette.
+   The light rooms paint over both, which is intended. ------------- */
+body::before,
+body::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none}
+body::before{background:radial-gradient(130% 62% at 50% 106%,
+  rgba(212,175,55,.17) 0%, rgba(212,175,55,.055) 40%, transparent 70%)}
+body::after{background:radial-gradient(112% 78% at 50% 42%,
+  transparent 46%, rgba(0,0,0,.42) 100%)}
+
+/* type: wide, heavy, uppercase. Archivo at wdth 110 is the same face
+   the page already loads, so this costs nothing at runtime. -------- */
+.vsl h1,
+section h2{
+  text-transform:uppercase;
+  font-weight:800;
+  font-variation-settings:'wdth' 110;
+  letter-spacing:-.022em;
+  text-wrap:balance;
+}
+.vsl h1{font-size:clamp(2.6rem,10.5vw,4.6rem);line-height:.95;max-width:13ch}
+section h2{font-size:clamp(2.05rem,8.4vw,3.4rem);line-height:.98;margin-bottom:18px}
+
+/* a numbered rhythm down the page, so a long scroll has landmarks.
+   Counter only: no copy decision, nothing to keep in sync. --------- */
+body{counter-reset:sec}
+section.reveal{counter-increment:sec}
+section.reveal > h2::before{
+  content:counter(sec,decimal-leading-zero);
+  display:block;margin-bottom:14px;
+  font-family:var(--mono);font-size:12px;font-weight:500;
+  letter-spacing:.26em;color:var(--gold);
+  font-variation-settings:normal;
+}
+section.light.reveal > h2::before{color:var(--gold-dim)}
+
+/* the scroll progress hairline, and the pinned action --------------- */
+.prog{position:fixed;inset:0 0 auto 0;height:2px;z-index:80;
+  background:linear-gradient(90deg,var(--gold-dim),var(--gold-hi));
+  transform:scaleX(0);transform-origin:0 50%;pointer-events:none}
+.dock{position:fixed;inset:auto 0 0 0;z-index:70;
+  padding:12px var(--gut) calc(12px + env(safe-area-inset-bottom));
+  background:rgba(16,13,11,.92);backdrop-filter:blur(10px);
+  border-top:1px solid var(--rule);
+  transform:translateY(120%);transition:transform .45s var(--ease)}
+.dock.is-up{transform:translateY(0)}
+.dock .cta{width:100%;justify-content:center;margin:0}
+@media(min-width:761px){
+  .dock{padding-left:0;padding-right:0;display:flex;justify-content:center}
+  .dock .cta{width:auto;min-width:320px}
+}
+@media(prefers-reduced-motion:reduce){.dock{transition:none}}
+
+@media(max-width:760px){
+  /* the video, the exports and the ad creatives run to both edges.
+     A 350px column inside a 390px screen is what made the proof
+     unreadable and the page feel like a document. ------------------ */
+  .player,
+  .acct .shot,
+  .build figure{
+    /* negative margins only. Letting width stay auto means the box
+       resolves to the exact viewport, with no arithmetic to get wrong
+       and no horizontal scroll if the gutter clamp changes. */
+    margin-left:calc(var(--gut) * -1);
+    margin-right:calc(var(--gut) * -1);
+    width:auto;
+    max-width:none;
+  }
+  .player video,
+  .acct .shot img,
+  .build img{width:100%;max-width:none}
+  .player{border-left:0;border-right:0}
+
+  /* shorter rooms. Same copy, less dead space between it. ---------- */
+  section{padding:clamp(58px,11vw,92px) 0}
+  .vsl{padding:18px 0 40px}
+  body{font-size:16.5px;line-height:1.58}
+  section p{max-width:38ch}
+
+  /* one full-width tap target, not a link floating in a paragraph. - */
+  .skip{width:100%;justify-content:center;min-height:52px;font-size:13px}
+  .cta{width:100%;justify-content:center;min-height:56px}
+
+  /* the dock covers the last lines of the page unless the floor
+     is raised by exactly its height. ------------------------------- */
+  body.has-dock footer{padding-bottom:104px}
+}
+
 </style>
 </head>
 <body>
@@ -841,6 +948,13 @@ body.ready .vlen{opacity:1;transform:none;transition-delay:.40s}
 
 </div>
 
+<!-- Progress hairline and the pinned action. The dock is empty and
+     off-screen until the calendar button proves it has a real time on
+     it: a bar that says "add to calendar" and opens an empty event is
+     the kind of small lie this page exists to avoid. -->
+<div class="prog" id="prog" aria-hidden="true"></div>
+<div class="dock" id="dock" aria-hidden="true"></div>
+
 <script>
 (function(){
   'use strict';
@@ -983,6 +1097,54 @@ body.ready .vlen{opacity:1;transform:none;transition-delay:.40s}
      rather than waiting on a scroll that may never happen. */
   requestAnimationFrame(function(){ document.body.classList.add('ready'); });
 }());
+</script>
+
+<script>
+(function(){
+  'use strict';
+  var prog = document.getElementById('prog');
+  var dock = document.getElementById('dock');
+  var vsl  = document.querySelector('.vsl');
+  var gcal = document.getElementById('gcal');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Progress hairline. rAF-throttled so it never runs more than once a
+     frame on a 16,000px page. */
+  if(prog){
+    var tick = false;
+    var draw = function(){
+      var d = document.documentElement;
+      var max = d.scrollHeight - d.clientHeight;
+      prog.style.transform = 'scaleX(' + (max > 0 ? (d.scrollTop || window.pageYOffset) / max : 0) + ')';
+      tick = false;
+    };
+    addEventListener('scroll', function(){ if(!tick){ tick = true; requestAnimationFrame(draw); } }, {passive:true});
+    draw();
+  }
+
+  /* The dock mirrors the one real ask. The calendar button is only
+     un-hidden by the block above when the booking tool passed a time,
+     so if it is still hidden there is nothing honest to pin. */
+  if(dock && gcal && !gcal.hidden){
+    var btn = gcal.cloneNode(true);
+    btn.id = 'dockcta';
+    btn.removeAttribute('hidden');
+    dock.appendChild(btn);
+    dock.setAttribute('aria-hidden','false');
+    document.body.classList.add('has-dock');
+
+    var show = function(on){ dock.classList.toggle('is-up', on); };
+    if('IntersectionObserver' in window && vsl && !reduce){
+      /* up once the video has scrolled away, down again at the close
+         section, where the real button is already on screen. */
+      new IntersectionObserver(function(e){ show(!e[0].isIntersecting); },
+        {rootMargin:'-120px 0px 0px 0px'}).observe(vsl);
+      var close = document.querySelector('.close');
+      if(close) new IntersectionObserver(function(e){ if(e[0].isIntersecting) show(false); },
+        {threshold:0.25}).observe(close);
+    } else { show(true); }
+  }
+})();
 </script>
 </body>
 </html>
