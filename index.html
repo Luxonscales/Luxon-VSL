@@ -533,6 +533,10 @@ section.light.reveal > h2::before{color:var(--gold-dim)}
    default style. The result: "Add to Google Calendar" rendered on every visit
    with href="#", doing nothing. (Caught on the live page, 19 Sep 2026.) */
 [hidden]{display:none !important}
+
+/* the link out to the account walkthrough: gold, underlined, a full tap target */
+a.more{display:inline-flex;align-items:center;gap:8px;min-height:44px;color:var(--gold);text-decoration:underline;text-underline-offset:4px;text-decoration-color:rgba(212,175,55,.45);font-weight:600}
+a.more:hover{color:var(--gold-hi);text-decoration-color:currentColor}
 </style>
 </head>
 <body>
@@ -641,6 +645,7 @@ section.light.reveal > h2::before{color:var(--gold-dim)}
   <section class="reveal" id="numbers">
     <h2>A few of the accounts we're running.</h2>
     <p class="sub">One account, one date window, the export beside it. Nothing is added up.</p>
+    <p class="sub"><a class="more" href="/walkthrough">Want to see inside one? Watch the six minute account walkthrough <span aria-hidden="true">&rarr;</span></a></p>
 
     <div class="acct">
       <span class="trade">Surrogacy agency</span>
