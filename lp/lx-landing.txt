@@ -19,7 +19,8 @@
      ===================================================================== -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,600..900&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,600..900&family=Inter:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,600..900&family=Inter:wght@400;500;600&display=swap"></noscript>
 
 <style>
 /* ---------- tokens and a reset that stops at the wrapper ---------- */
@@ -99,7 +100,7 @@
 
 /* ---------- 1 · hero ---------- */
 .lx-lp .lx-lp-hero{position:relative;padding-block:clamp(40px,8vw,96px) clamp(64px,10vw,120px)}
-.lx-lp .lx-lp-hero::before{content:"";position:absolute;inset:-20% -30% auto auto;width:80vmax;height:80vmax;z-index:-1;pointer-events:none;
+.lx-lp .lx-lp-hero::before{content:"";position:absolute;top:-30vmax;right:-30vmax;width:80vmax;height:80vmax;z-index:-1;pointer-events:none;
   background:radial-gradient(closest-side,rgba(201,165,92,.14),rgba(201,165,92,0) 70%)}
 .lx-lp .lx-lp-hero__grid{display:grid;gap:44px;align-items:center}
 .lx-lp .lx-lp-hero__copy > *{animation:lx-rise .9s var(--lx-ease) both}
@@ -150,8 +151,8 @@
 @media (min-width:1080px){.lx-lp .lx-lp-proof{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .lx-lp .lx-lp-card{display:flex;flex-direction:column;background:var(--lx-card);border:1px solid var(--lx-line);border-radius:var(--lx-r);overflow:hidden}
 .lx-lp .lx-lp-shot{position:relative;display:block;width:100%;aspect-ratio:16/10;overflow:hidden;background:#0e0d0b;border-bottom:1px solid var(--lx-line)}
-.lx-lp .lx-lp-shot img{width:100%;height:100%;object-fit:cover;object-position:left top;transition:transform .7s var(--lx-ease)}
-.lx-lp .lx-lp-shot:hover img{transform:scale(1.03)}
+.lx-lp .lx-lp-shot img{width:100%;height:100%;object-fit:cover;object-position:center;transform:scale(var(--z,1));transition:transform .7s var(--lx-ease)}
+.lx-lp .lx-lp-shot:hover img{transform:scale(calc(var(--z,1) * 1.04))}
 .lx-lp .lx-lp-shot__hint{position:absolute;right:10px;bottom:10px;padding:6px 10px;border-radius:6px;
   background:rgba(20,18,16,.82);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--lx-text)}
 .lx-lp .lx-lp-shot:disabled{cursor:default}
@@ -184,6 +185,54 @@
 .lx-lp .lx-lp-guar li{display:grid;grid-template-columns:2.6rem 1fr;gap:10px;padding:14px 0;border-top:1px solid var(--lx-line);font-size:16.5px}
 .lx-lp .lx-lp-guar li:first-child{border-top:0}
 .lx-lp .lx-lp-guar li b{font-family:var(--lx-display);font-weight:800;font-size:14px;letter-spacing:.16em;color:var(--lx-gold);padding-top:3px}
+
+
+/* ---------- proof: the walkthrough block ---------- */
+.lx-lp .lx-lp-walk{margin-top:26px;max-width:900px}
+.lx-lp .lx-lp-walk figcaption{margin-top:12px;font-size:14.5px;color:var(--lx-muted)}
+
+/* ---------- apply + book ---------- */
+.lx-lp .lx-lp-apply{padding:56px 16px 72px;scroll-margin-top:24px}
+.lx-lp .lx-lp-apply__in{max-width:720px;margin:0 auto}
+.lx-lp .lx-lp-survey{display:block;width:100%;min-height:470px;border:0;background:transparent}
+.lx-lp .lx-lp-already{margin-top:14px;text-align:center}
+.lx-lp .lx-lp-already button{min-height:44px;padding:0 10px;font-size:14px;color:var(--lx-muted);text-decoration:underline;text-underline-offset:4px}
+.lx-lp .lx-lp-already button:hover{color:var(--lx-text)}
+.lx-lp .lx-lp-book{margin-top:44px;padding-top:40px;border-top:1px solid var(--lx-line);scroll-margin-top:24px}
+.lx-lp .lx-lp-book:focus{outline:none}
+.lx-lp .lx-lp-book .lx-lp-eyebrow span{color:var(--lx-gold)}
+.lx-lp .lx-lp-cal{margin-top:26px;min-height:760px;border-radius:var(--lx-r);overflow:hidden;background:#fff}
+.lx-lp .lx-lp-cal iframe{display:block;width:100%;min-height:760px;border:0}
+
+
+/* ---------- decided before paint, so nothing jumps once the script runs ---------- */
+.lx-lp .lx-if-nobook{display:none}
+.lx-lp[data-lx-calendar^="["] .lx-if-book{display:none}
+.lx-lp[data-lx-calendar^="["] .lx-if-nobook{display:inline}
+.lx-lp .lx-lp-hero__media:has(.lx-lp-embed[data-lx-embed^="["]){display:none}
+.lx-lp .lx-lp-hero__panel{display:none}
+.lx-lp .lx-lp-hero__grid:has(.lx-lp-embed[data-lx-embed^="["]) .lx-lp-hero__panel{display:block}
+.lx-lp [data-lx-hide-if-empty]:has(.lx-lp-embed[data-lx-embed^="["]){display:none}
+.lx-lp .lx-lp-survey-slot{min-height:470px}
+
+
+/* ---------- hero: guarantee line, friction reducers, proof panel ---------- */
+.lx-lp .lx-lp-guar-line{display:flex;align-items:flex-start;gap:10px;margin-top:18px;max-width:40ch;font-weight:600;font-size:15px;line-height:1.45;color:var(--lx-gold)}
+.lx-lp .lx-lp-guar-line svg{flex:none;width:18px;height:18px;margin-top:1px}
+.lx-lp .lx-lp-trust{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:20px}
+.lx-lp .lx-lp-trust li{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;color:var(--lx-muted)}
+.lx-lp .lx-lp-trust svg{width:15px;height:15px;color:var(--lx-gold)}
+.lx-lp .lx-lp-hero__panel{position:relative;padding:24px 22px 18px;border:1px solid rgba(201,165,92,.32);border-radius:var(--lx-r);
+  background:linear-gradient(165deg,rgba(201,165,92,.08),rgba(201,165,92,0) 45%),var(--lx-card);box-shadow:0 40px 90px -40px rgba(0,0,0,.85)}
+.lx-lp .lx-lp-panel__head{display:flex;align-items:center;gap:10px;font-size:11.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--lx-muted)}
+.lx-lp .lx-lp-dot{width:8px;height:8px;border-radius:50%;background:#3fbf6a;box-shadow:0 0 0 4px rgba(63,191,106,.18)}
+.lx-lp .lx-lp-panel__rows{margin-top:14px}
+.lx-lp .lx-lp-panel__rows li{display:grid;grid-template-columns:clamp(6.4rem,22vw,7.6rem) 1fr;align-items:baseline;gap:16px;padding:16px 0;border-top:1px solid var(--lx-line)}
+.lx-lp .lx-lp-panel__rows b{font-family:var(--lx-display);font-weight:800;font-stretch:78%;font-variation-settings:"wdth" 78;font-size:clamp(2rem,7vw,2.6rem);line-height:.95;color:var(--lx-gold);font-variant-numeric:tabular-nums}
+.lx-lp .lx-lp-panel__rows span{font-weight:600;font-size:15.5px;line-height:1.3}
+.lx-lp .lx-lp-panel__rows i{display:block;margin-top:4px;font-style:normal;font-weight:400;font-size:12.5px;color:var(--lx-faint)}
+.lx-lp .lx-lp-panel__link{display:inline-flex;align-items:center;min-height:44px;margin-top:4px;font-size:13.5px;font-weight:600;color:var(--lx-text);text-decoration:underline;text-decoration-color:rgba(201,165,92,.5);text-underline-offset:4px}
+.lx-lp .lx-lp-panel__link:hover{color:var(--lx-gold-hi)}
 
 /* ---------- 4 · how it works ---------- */
 .lx-lp .lx-lp-steps{display:grid;gap:14px;margin-top:44px;counter-reset:lx-step}
@@ -291,7 +340,16 @@
 }
 </style>
 
-<div class="lx-lp" data-lx-root data-lx-apply="#apply" data-lx-copy2="1" data-lx-rev="1">
+<!-- CONFIG: fill these four, then flip SHOW_JZ_PROOF to "true" once the client approves.
+       data-lx-calendar = GHL booking widget URL, e.g. https://api.leadconnectorhq.com/widget/booking/XXXXXXXX
+       data-lx-pixel    = Meta Pixel ID (numbers only). Leave as-is if the pixel is in GHL funnel settings.
+       data-lx-email    = the contact address shown in the footer.
+       data-lx-show-jz  = "true" shows the outdoor living proof card (also needs its screenshot and dates). -->
+<div class="lx-lp" data-lx-root data-lx-apply="#apply" data-lx-copy2="1" data-lx-rev="1"
+     data-lx-calendar="[GHL_CALENDAR_EMBED_URL]"
+     data-lx-pixel="[META_PIXEL_ID]"
+     data-lx-email="[REAL_CONTACT_EMAIL]"
+     data-lx-show-jz="false">
 
   <header class="lx-lp-top">
     <div class="lx-lp-wrap"><img class="lx-lp-logo" src="https://call.luxonmarketing.com/brand/luxon-wordmark-gold-on-dark.png" alt="Luxon" width="900" height="195" decoding="async"></div>
@@ -304,12 +362,27 @@
         <div class="lx-lp-hero__copy">
           <p class="lx-lp-eyebrow">Meta ads for outdoor living, remodeling and roofing companies</p>
           <h1 id="lx-h1" class="lx-lp-h1">Leads that only called you.</h1>
-          <p class="lx-lp-lede">Not five contractors. Not a shared list. Homeowners in your area who saw your work, wanted it, and asked for you by name. Every number below is straight out of a client's Ads Manager, dates included.</p>
+          <p class="lx-lp-lede">Meta ads for outdoor living, remodeling and roofing companies doing $10,000+ jobs. Every number on this page comes straight out of a client's Ads Manager, with the dates on it.</p>
           <div class="lx-lp-actions">
-            <a class="lx-lp-btn" href="/apply" data-lx-cta>Apply now<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="lx-lp-btn" href="/apply" data-lx-cta>See if you qualify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
-          <p class="lx-lp-micro">A few quick questions. Under a minute. If it's not a fit, we'll say so before we ask for your number.</p>
+          <p class="lx-lp-guar-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>20 qualified leads in 30 days, or we work free until you get them.</span></p>
+          <p class="lx-lp-micro"><span class="lx-if-book">About 2 minutes. If it's a fit, you'll pick a call time right away.</span><span class="lx-if-nobook">About 2 minutes. If it's a fit, someone from our team calls you to set a time.</span></p>
+          <ul class="lx-lp-trust" aria-label="What you keep">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Your ad account stays yours</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Filmed at your real jobs</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Every number shown is real</li>
+          </ul>
         </div>
+        <aside class="lx-lp-hero__panel" aria-label="Results from client ad accounts">
+          <p class="lx-lp-panel__head"><span class="lx-lp-dot" aria-hidden="true"></span>Straight from client Ads Manager</p>
+          <ul class="lx-lp-panel__rows">
+            <li><b>$16.03</b><span>per lead<i>Landscaping · campaign rebuilt 4 Sep</i></span></li>
+            <li><b>$80K+</b><span>of jobs in the pipeline<i>Same landscaping account · client reported</i></span></li>
+            <li><b>243</b><span>leads at $10.95 each<i>Surrogacy agency · 24 Jul to 2 Sep 2026</i></span></li>
+          </ul>
+          <a class="lx-lp-panel__link" href="#lx-proof">See the screenshots</a>
+        </aside>
         <div class="lx-lp-hero__media">
           <div class="lx-lp-embed" data-lx-eager data-lx-ratio="4/5" data-lx-label="Hero video"
                data-lx-embed="[HERO VIDEO URL]"
@@ -318,28 +391,28 @@
       </div>
     </section>
 
-    <!-- 2 · WHO THIS IS FOR -->
-    <section class="lx-lp-sec" aria-labelledby="lx-who">
-      <div class="lx-lp-wrap">
-        <p class="lx-lp-eyebrow" data-lx-reveal><span>01</span>Who this is for</p>
-        <h2 id="lx-who" class="lx-lp-h2" data-lx-reveal>If one job is worth $5,000 or more, this is built for you.</h2>
-        <ul class="lx-lp-chips" aria-label="Trades we work with" data-lx-reveal style="--lx-d:.08s">
-          <li>Outdoor Living</li>
-          <li>Remodeling</li>
-          <li>Roofing</li>
-        </ul>
-      </div>
-    </section>
 
     <!-- 3 · PROOF -->
     <section class="lx-lp-sec lx-lp-sec--card" aria-labelledby="lx-proof">
       <div class="lx-lp-wrap">
-        <p class="lx-lp-eyebrow" data-lx-reveal><span>02</span>Proof</p>
+        <p class="lx-lp-eyebrow" data-lx-reveal><span>01</span>Proof</p>
         <h2 id="lx-proof" class="lx-lp-h2" data-lx-reveal>The numbers. Not our version of them.</h2>
         <div class="lx-lp-proof">
+          <!-- SHOW_JZ_PROOF: stays hidden until data-lx-show-jz="true" AND the screenshot and dates are filled. -->
+          <article class="lx-lp-card" data-lx-flag="jz" data-lx-reveal hidden>
+            <button class="lx-lp-shot" type="button" data-lx-zoom data-lx-slot aria-label="Enlarge the outdoor living ad account screenshot">
+              <img class="lx-lp-media" data-lx-src="[JZ_PROOF_SCREENSHOT]" alt="Meta Ads Manager, outdoor living account in Fresno: ad spend of $275 behind two signed projects over $100K." width="1600" height="1000" loading="lazy" decoding="async">
+              <span class="lx-lp-shot__hint">Tap to enlarge</span>
+            </button>
+            <div class="lx-lp-card__body">
+              <p class="lx-lp-stat">$275 → 2 projects over $100K signed</p>
+              <p class="lx-lp-stat-label">Ad spend to signed projects</p>
+              <p class="lx-lp-context">Outdoor living, Fresno · [START DATE] to [END DATE] 2026</p>
+            </div>
+          </article>
           <article class="lx-lp-card" data-lx-reveal>
-            <button class="lx-lp-shot" type="button" data-lx-zoom data-lx-slot aria-label="Enlarge the first ad account screenshot">
-              <img class="lx-lp-media" data-lx-src="https://call.luxonmarketing.com/lp/proof-landscaping.png" alt="Meta Ads Manager, landscaping account, 12 Aug to 10 Sep 2026: the campaign rebuilt on 4 Sep at 11 leads for $16.03 each, and the earlier campaign at 12 leads for $35.55 each." width="1600" height="1000" loading="lazy" decoding="async">
+            <button class="lx-lp-shot" type="button" data-lx-zoom data-lx-slot aria-label="Enlarge the landscaping ad account screenshot">
+              <img class="lx-lp-media" data-lx-src="https://call.luxonmarketing.com/lp/proof-landscaping.png" style="--z:1.06" alt="Meta Ads Manager, landscaping account, 12 Aug to 10 Sep 2026: the campaign rebuilt on 4 Sep at 11 leads for $16.03 each, and the earlier campaign at 12 leads for $35.55 each." width="1600" height="1000" loading="lazy" decoding="async">
               <span class="lx-lp-shot__hint">Tap to enlarge</span>
             </button>
             <div class="lx-lp-card__body">
@@ -350,20 +423,8 @@
             </div>
           </article>
           <article class="lx-lp-card" data-lx-reveal style="--lx-d:.08s">
-            <button class="lx-lp-shot" type="button" data-lx-zoom data-lx-slot aria-label="Enlarge the second ad account screenshot">
-              <img class="lx-lp-media" data-lx-src="https://call.luxonmarketing.com/lp/proof-surrogacy.png" alt="Meta Ads Manager, surrogacy agency account, 24 Jul to 2 Sep 2026: 243 leads, $2,661.13 spent, $10.95 per lead." width="1600" height="1000" loading="lazy" decoding="async">
-              <span class="lx-lp-shot__hint">Tap to enlarge</span>
-            </button>
-            <div class="lx-lp-card__body">
-              <p class="lx-lp-stat">243</p>
-              <p class="lx-lp-stat-label">Leads at $10.95 each</p>
-              <p class="lx-lp-rev">$28K in revenue in the first month</p>
-              <p class="lx-lp-context">Surrogacy agency · 24 Jul to 2 Sep 2026</p>
-            </div>
-          </article>
-          <article class="lx-lp-card" data-lx-reveal style="--lx-d:.16s">
-            <button class="lx-lp-shot" type="button" data-lx-zoom data-lx-slot aria-label="Enlarge the third ad account screenshot">
-              <img class="lx-lp-media" data-lx-src="https://call.luxonmarketing.com/lp/proof-chimney.png" alt="Meta Ads Manager, chimney sweep account, 13 Aug to 2 Sep 2026: 25 leads, $467.83 spent, $18.71 per lead." width="1600" height="1000" loading="lazy" decoding="async">
+            <button class="lx-lp-shot" type="button" data-lx-zoom data-lx-slot aria-label="Enlarge the chimney sweep ad account screenshot">
+              <img class="lx-lp-media" data-lx-src="https://call.luxonmarketing.com/lp/proof-chimney.png" style="--z:1.32" alt="Meta Ads Manager, chimney sweep account, 13 Aug to 2 Sep 2026: 25 leads, $467.83 spent, $18.71 per lead." width="1600" height="1000" loading="lazy" decoding="async">
               <span class="lx-lp-shot__hint">Tap to enlarge</span>
             </button>
             <div class="lx-lp-card__body">
@@ -373,8 +434,28 @@
               <p class="lx-lp-context">Chimney sweep · 13 Aug to 2 Sep 2026</p>
             </div>
           </article>
+          <article class="lx-lp-card" data-lx-reveal style="--lx-d:.16s">
+            <button class="lx-lp-shot" type="button" data-lx-zoom data-lx-slot aria-label="Enlarge the surrogacy agency ad account screenshot">
+              <img class="lx-lp-media" data-lx-src="https://call.luxonmarketing.com/lp/proof-surrogacy.png" style="--z:1.4" alt="Meta Ads Manager, surrogacy agency account, 24 Jul to 2 Sep 2026: 243 leads, $2,661.13 spent, $10.95 per lead." width="1600" height="1000" loading="lazy" decoding="async">
+              <span class="lx-lp-shot__hint">Tap to enlarge</span>
+            </button>
+            <div class="lx-lp-card__body">
+              <p class="lx-lp-stat">243</p>
+              <p class="lx-lp-stat-label">Leads at $10.95 each</p>
+              <p class="lx-lp-rev">$28K in revenue in the first month</p>
+              <p class="lx-lp-context">Surrogacy agency · 24 Jul to 2 Sep 2026</p>
+            </div>
+          </article>
         </div>
-        <p class="lx-lp-note" data-lx-reveal>Lead counts and cost per lead are pulled straight from each client's Meta Ads Manager over the dates shown. Revenue and pipeline figures are reported by the client. Tap a screenshot to see it full size.</p>
+        <!-- WALKTHROUGH: hides itself until data-lx-embed holds the 90 second cut. -->
+        <figure class="lx-lp-walk" data-lx-hide-if-empty data-lx-reveal>
+          <div class="lx-lp-embed" data-lx-ratio="16/9" data-lx-label="Ad account walkthrough"
+               data-lx-embed="[WALKTHROUGH_90S_URL]"
+               data-lx-poster="https://call.luxonmarketing.com/video/ad-walkthrough-poster.jpg"
+               data-lx-captions="[WALKTHROUGH_90S_VTT, optional]"></div>
+          <figcaption>Watch a live client account (90 sec). Real campaigns, real leads, real budgets. Client details blurred.</figcaption>
+        </figure>
+        <p class="lx-lp-note" data-lx-reveal>Each figure is one client's account over the dates shown, read straight off their Meta Ads Manager. Project values are reported by the client and shared with their permission.</p>
       </div>
     </section>
 
@@ -382,7 +463,7 @@
     <!-- 3b · THE GUARANTEE: the same offer the ads and the calls lead with -->
     <section class="lx-lp-sec" aria-labelledby="lx-guar">
       <div class="lx-lp-wrap">
-        <p class="lx-lp-eyebrow" data-lx-reveal><span>03</span>The guarantee</p>
+        <p class="lx-lp-eyebrow" data-lx-reveal><span>02</span>The guarantee</p>
         <h2 id="lx-guar" class="lx-lp-h2" data-lx-reveal>20 qualified leads in 30 days. Or we work free until you get them.</h2>
         <p class="lx-lp-lede" data-lx-reveal>A qualified lead is a real homeowner in your service area asking about the work you do. We agree that definition with you in writing before launch.</p>
         <div class="lx-lp-guar" data-lx-reveal style="--lx-d:.08s">
@@ -393,6 +474,9 @@
             <li><b>03</b>You approve new ads within 48 hours.</li>
           </ol>
         </div>
+        <div class="lx-lp-actions" data-lx-reveal>
+          <a class="lx-lp-btn" href="#apply" data-lx-cta>See if you qualify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
         <p class="lx-lp-note" data-lx-reveal>The guarantee covers leads. Booked jobs and revenue depend on your follow-up and your close rate, so they aren't part of it. Full terms are agreed in writing before launch.</p>
       </div>
     </section>
@@ -400,23 +484,23 @@
     <!-- 4 · HOW IT WORKS -->
     <section class="lx-lp-sec lx-lp-sec--card" aria-labelledby="lx-how">
       <div class="lx-lp-wrap">
-        <p class="lx-lp-eyebrow" data-lx-reveal><span>04</span>How it works</p>
+        <p class="lx-lp-eyebrow" data-lx-reveal><span>03</span>How it works</p>
         <h2 id="lx-how" class="lx-lp-h2" data-lx-reveal>Three steps. No pitch deck.</h2>
         <ol class="lx-lp-steps">
           <li class="lx-lp-step" data-lx-reveal>
             <span class="lx-lp-step__n">01</span>
             <h3 class="lx-lp-h3">Apply</h3>
-            <p>A few quick questions about your trade and your jobs.</p>
+            <p>Five quick questions about your trade, your team and your jobs.</p>
           </li>
           <li class="lx-lp-step" data-lx-reveal style="--lx-d:.08s">
             <span class="lx-lp-step__n">02</span>
-            <h3 class="lx-lp-h3">We call and open a live account</h3>
-            <p>You see a real client's ad account on screen, plus what your competitors are running right now.</p>
+            <h3 class="lx-lp-h3"><span class="lx-if-book">Book your call</span><span class="lx-if-nobook">We call you</span></h3>
+            <p><span class="lx-if-book">If it's a fit, pick a time right away. On the call you'll see a live client ad account and what your competitors are running right now.</span><span class="lx-if-nobook">If it's a fit, we call you to set a time. On the call you'll see a live client ad account and what your competitors are running right now.</span></p>
           </li>
           <li class="lx-lp-step" data-lx-reveal style="--lx-d:.16s">
             <span class="lx-lp-step__n">03</span>
-            <h3 class="lx-lp-h3">We launch</h3>
-            <p>We film at your jobs, build the campaign, and tell Meta which leads actually booked so it finds more of them.</p>
+            <h3 class="lx-lp-h3">Launch</h3>
+            <p>We film at your jobs, build the campaign, and tell Meta which leads actually booked.</p>
           </li>
         </ol>
       </div>
@@ -426,7 +510,7 @@
     <section class="lx-lp-sec" aria-labelledby="lx-ads">
       <div class="lx-lp-wrap lx-lp-ad">
         <div class="lx-lp-ad__copy">
-          <p class="lx-lp-eyebrow" data-lx-reveal><span>05</span>The ads</p>
+          <p class="lx-lp-eyebrow" data-lx-reveal><span>04</span>The ads</p>
           <h2 id="lx-ads" class="lx-lp-h2" data-lx-reveal>Shot at real jobs. Not stock footage.</h2>
           <p class="lx-lp-lede" data-lx-reveal>Filmed on a finished outdoor living project. Cut for a phone. Captions on, so it works on mute.</p>
           <p class="lx-lp-micro" data-lx-reveal>Outdoor living · 26 seconds</p>
@@ -442,13 +526,13 @@
     <!-- 5 · STANDARDS -->
     <section class="lx-lp-sec lx-lp-sec--card" aria-labelledby="lx-fit">
       <div class="lx-lp-wrap">
-        <p class="lx-lp-eyebrow" data-lx-reveal><span>06</span>Who we work with</p>
+        <p class="lx-lp-eyebrow" data-lx-reveal><span>05</span>Who we work with</p>
         <h2 id="lx-fit" class="lx-lp-h2" data-lx-reveal>We turn people away on purpose.</h2>
         <div class="lx-lp-fit">
           <div class="lx-lp-fit__col lx-lp-fit__col--yes" data-lx-reveal>
             <h3 class="lx-lp-fit__title">Good fit</h3>
             <ul>
-              <li>One job is worth $5,000 or more to you.</li>
+              <li>One job is worth $10,000 or more to you.</li>
               <li>You do outdoor living, remodeling or roofing.</li>
               <li>Someone can call every new lead within 5 minutes.</li>
               <li>You can spend at least $50 a day on ads.</li>
@@ -457,7 +541,7 @@
           <div class="lx-lp-fit__col lx-lp-fit__col--no" data-lx-reveal style="--lx-d:.08s">
             <h3 class="lx-lp-fit__title">Not a fit</h3>
             <ul>
-              <li>Your average job is under $5,000.</li>
+              <li>Your average job is under $10,000.</li>
               <li>Nobody can call a new lead within 5 minutes.</li>
               <li>You can't put $50 a day into ads yet.</li>
               <li>You're just looking, with no plan to start.</li>
@@ -471,7 +555,7 @@
     <!-- 7 · TESTIMONIALS: two clients, on camera, in their own words -->
     <section class="lx-lp-sec" aria-labelledby="lx-testi">
       <div class="lx-lp-wrap">
-        <p class="lx-lp-eyebrow" data-lx-reveal><span>07</span>In their words</p>
+        <p class="lx-lp-eyebrow" data-lx-reveal><span>06</span>In their words</p>
         <h2 id="lx-testi" class="lx-lp-h2" data-lx-reveal>Two clients. On camera. Unscripted.</h2>
         <div class="lx-lp-testis">
           <figure class="lx-lp-tcard" data-lx-reveal>
@@ -501,14 +585,15 @@
     <!-- 8 · FAQ -->
     <section class="lx-lp-sec lx-lp-sec--card" aria-labelledby="lx-faq">
       <div class="lx-lp-wrap">
-        <p class="lx-lp-eyebrow" data-lx-reveal><span>08</span>Questions</p>
+        <p class="lx-lp-eyebrow" data-lx-reveal><span>07</span>Questions</p>
         <h2 id="lx-faq" class="lx-lp-h2" data-lx-reveal>Straight answers.</h2>
         <div class="lx-lp-faq" data-lx-reveal>
-          <details><summary>How much does it cost?</summary><div class="lx-lp-faq__a"><p>Ad spend starts at $50 a day, about $1,500 a month, paid straight to Meta. Our fee depends on your trade and your area, and you'll know the full number on the call before you decide anything.</p></div></details>
+          <details><summary>How much does it cost?</summary><div class="lx-lp-faq__a"><p>Most clients invest from $1,200/month for management, plus ad spend paid directly to Meta from your own account (usually $1,000+/month). You'll know the exact numbers on the call, before you decide anything.</p></div></details>
           <details><summary>Do you guarantee results?</summary><div class="lx-lp-faq__a"><p>Yes. 20 qualified leads in your first 30 days, or we keep working for free until you get them. It holds as long as you spend at least $50 a day, call every lead within 5 minutes, and approve new ads within 48 hours. It covers leads, not booked jobs or revenue.</p></div></details>
+          <details><summary>How fast will I see leads?</summary><div class="lx-lp-faq__a"><p>Most accounts start getting leads in the first week. The first 30 to 90 days are about finding the ads and audience that bring booked jobs, not just leads.</p></div></details>
           <details><summary>Whose ad account is it?</summary><div class="lx-lp-faq__a"><p>Yours. The account, the ads and the data stay with you, whatever happens.</p></div></details>
           <details><summary>Who makes the ads?</summary><div class="lx-lp-faq__a"><p>We film them at your real jobs. No stock footage.</p></div></details>
-          <details><summary>What happens after I apply?</summary><div class="lx-lp-faq__a"><p>Someone from our team calls you. If it's a fit, we book a call where you see a live ad account and what your competitors are running right now.</p></div></details>
+          <details><summary>What happens after I apply?</summary><div class="lx-lp-faq__a"><p><span class="lx-if-book">If it looks like a fit, you'll pick a call time right away. We'll text you to confirm. On the call, you'll see a live ad account and what your competitors are running.</span><span class="lx-if-nobook">If it looks like a fit, someone from our team calls you to set a time. On the call, you'll see a live ad account and what your competitors are running.</span></p></div></details>
         </div>
       </div>
     </section>
@@ -518,7 +603,26 @@
       <div class="lx-lp-wrap">
         <h2 id="lx-close" class="lx-lp-h2" data-lx-reveal>Let's see if it works for your trade.</h2>
         <div class="lx-lp-actions" data-lx-reveal style="--lx-d:.08s">
-          <a class="lx-lp-btn" href="/apply" data-lx-cta>Apply now<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="lx-lp-btn" href="/apply" data-lx-cta>See if you qualify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- APPLY + BOOK. The survey lives here now; delete the separate survey element in GHL.
+         On a qualified submission GHL's survey reports the new contact to this page
+         (its own "set-sticky-contacts" message), and the calendar opens below. -->
+    <section id="apply" class="lx-lp-apply" data-moved="1" aria-labelledby="lx-apply-h">
+      <div class="lx-lp-apply__in">
+        <h2 id="lx-apply-h" class="lx-lp-sr">Apply</h2>
+        <div class="lx-lp-survey-slot" data-lx-survey="https://api.leadconnectorhq.com/widget/survey/yLy9BhLLwTJb4NzB6blk" data-lx-survey-id="yLy9BhLLwTJb4NzB6blk">
+          <noscript><iframe class="lx-lp-survey" src="https://api.leadconnectorhq.com/widget/survey/yLy9BhLLwTJb4NzB6blk" scrolling="no" id="yLy9BhLLwTJb4NzB6blk" title="Luxon Client Application"></iframe></noscript>
+        </div>
+        <p class="lx-lp-already" data-lx-booktoggle hidden><button type="button">Already applied? Show call times</button></p>
+        <div class="lx-lp-book" id="book" data-lx-book hidden tabindex="-1" aria-labelledby="lx-book-h">
+          <p class="lx-lp-eyebrow"><span>✓</span>Book your call</p>
+          <h2 id="lx-book-h" class="lx-lp-h2">Qualified? Pick your time below.</h2>
+          <p class="lx-lp-micro">We'll text you to confirm. 35 to 45 minutes. You'll see a live ad account on screen.</p>
+          <div class="lx-lp-cal" data-lx-cal></div>
         </div>
       </div>
     </section>
@@ -531,6 +635,7 @@
       <nav aria-label="Legal">
         <a href="/privacy-policy">Privacy Policy</a>
         <a href="/terms">Terms</a>
+        <a href="#" data-lx-mail hidden></a>
       </nav>
       <p>&copy; <span data-lx-year>2026</span> Luxon. All rights reserved.</p>
     </div>
@@ -546,7 +651,7 @@
 
   <!-- sticky bar: phones only, after the hero leaves the screen -->
   <div class="lx-lp lx-lp-sticky" data-lx-sticky aria-hidden="true" inert>
-    <a class="lx-lp-btn" href="/apply" data-lx-cta>Apply now<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <a class="lx-lp-btn" href="/apply" data-lx-cta>See if you qualify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
   </div>
 </div>
 
@@ -599,6 +704,7 @@
         if (slot.tagName === 'BUTTON') slot.disabled = true;
         return;
       }
+      if (img.closest('[data-lx-flag]')) return;   /* flagged cards load their image only when shown */
       img.src = src;
     });
 
@@ -620,10 +726,9 @@
       if (box.querySelector('video,iframe')) return;
       if (isPlaceholder(url)) {
         if (!preview) {
-          var holder = box.closest('.lx-lp-hero__media') || box;
+          var holder = box.closest('[data-lx-hide-if-empty]') || box.closest('.lx-lp-hero__media') || box;
           holder.hidden = true;
           var grid = box.closest('.lx-lp-hero__grid');
-          if (grid) grid.classList.add('is-solo');
           return;
         }
         box.classList.add('is-empty');
@@ -739,6 +844,141 @@
       } else { heroGone = true; sync(); }
     }
 
+
+    /* ---------- BOOKING FLOW ----------------------------------------------
+       How a submission is detected, from GHL's own embed script
+       (link.msgsndr.com/js/form_embed.js): when a survey or calendar captures
+       a contact, the frame posts ["set-sticky-contacts", key, frameId, ...]
+       and GHL marks that frame "leadCollected". That is the only
+       submission-shaped message GHL sends; there is no "submit" or "booked"
+       event. We match it to OUR frames by window, never by guessing names.
+       Run one test with ?lx-debug=1 and the console shows every message. */
+    var debug = /[?&]lx-debug=1(&|$)/.test(window.location.search);
+    var calUrl = root.getAttribute('data-lx-calendar');
+    var hasCal = !isPlaceholder(calUrl) && /^https:\/\//.test(calUrl);
+    var slot = root.querySelector('[data-lx-survey]');
+    var survey = null;
+    function loadEmbedScript() {
+      if (window.__ghl_message_handler_registered__ || document.querySelector('script[data-lx-embed-script]')) return;
+      var sc = document.createElement('script'); sc.src = 'https://link.msgsndr.com/js/form_embed.js'; sc.async = true; sc.setAttribute('data-lx-embed-script', '1');
+      document.body.appendChild(sc);
+    }
+    /* The survey frame is created as the visitor nears it (or taps Apply),
+       so its ~2 MB of GHL bot-check code stays off the first load. */
+    function loadSurvey() {
+      if (survey || !slot) return;
+      survey = document.createElement('iframe');
+      survey.className = 'lx-lp-survey';
+      survey.id = slot.getAttribute('data-lx-survey-id');
+      survey.title = 'Luxon Client Application';
+      survey.setAttribute('scrolling', 'no');
+      survey.src = slot.getAttribute('data-lx-survey');
+      slot.appendChild(survey);
+      loadEmbedScript();
+    }
+    if (slot) {
+      if (location.hash === '#apply' || !('IntersectionObserver' in window)) loadSurvey();
+      else {
+        var so = new IntersectionObserver(function (en) { if (en[0].isIntersecting) { so.disconnect(); loadSurvey(); } }, { rootMargin: '1400px 0px' });
+        so.observe(slot);
+      }
+    }
+    var book = root.querySelector('[data-lx-book]');
+    var toggle = root.querySelector('[data-lx-booktoggle]');
+    var calIframe = null, leadSent = false, schedSent = false, opened = false;
+
+    /* Without a calendar the page never promises "pick a time". Those lines
+       come in two versions, switched by CSS on data-lx-calendar before paint. */
+
+    /* An older copy of the survey may sit in its own GHL element. Two live
+       copies would mean two surveys and duplicate ids, so drop the outside one. */
+    each(document.querySelectorAll('iframe[src*="/widget/survey/"]'), function (f) {
+      if (root.contains(f) || (f.parentNode && f.parentNode.tagName === 'NOSCRIPT')) return;
+      var holder = f.closest('section') || f.parentNode;
+      if (holder && holder.parentNode) holder.parentNode.removeChild(holder);
+    });
+
+    function openBooking(focus) {
+      if (!hasCal || !book) return;
+      if (!opened) {
+        opened = true;
+        calIframe = document.createElement('iframe');
+        var cid = (calUrl.split('/').filter(Boolean).pop() || 'cal').replace(/[^\w-]/g, '').slice(0, 40);
+        calIframe.id = 'lx-cal-' + cid;
+        calIframe.title = 'Pick a call time';
+        calIframe.setAttribute('scrolling', 'no');
+        calIframe.src = calUrl;
+        root.querySelector('[data-lx-cal]').appendChild(calIframe);
+      }
+      book.hidden = false;
+      if (toggle) toggle.hidden = true;
+      if (focus) {
+        book.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+        try { book.focus({ preventScroll: true }); } catch (_) {}
+      }
+    }
+    if (hasCal && toggle) {
+      toggle.hidden = false;
+      toggle.querySelector('button').addEventListener('click', function () { openBooking(true); });
+    }
+
+    /* Meta pixel. Loads only if an ID is set here AND no pixel is already on
+       the page (GHL funnel settings), so PageView is never counted twice. */
+    var pixelId = (root.getAttribute('data-lx-pixel') || '').replace(/\D/g, '');
+    if (pixelId && !window.fbq) {
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      window.fbq('init', pixelId); window.fbq('track', 'PageView');
+    }
+    function track(name) {
+      var id = 'lx-' + name.toLowerCase() + '-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 8);
+      window['lxEventId' + name] = id;                 /* for server-side CAPI dedupe */
+      if (typeof window.fbq === 'function') window.fbq('track', name, {}, { eventID: id });
+      if (debug && window.console) console.info('[Luxon booking] ' + name + ' fired, eventID ' + id);
+    }
+
+    var GHL = /(^|\.)(leadconnectorhq\.com|msgsndr\.com|gohighlevel\.com)$/;
+    window.addEventListener('message', function (e) {
+      var host = ''; try { host = new URL(e.origin).hostname; } catch (_) {}
+      var d = e.data;
+      var fromSurvey = survey && e.source === survey.contentWindow;
+      var fromCal = calIframe && e.source === calIframe.contentWindow;
+      if (debug && (fromSurvey || fromCal || GHL.test(host)) && window.console)
+        console.info('[Luxon booking] message from ' + (fromSurvey ? 'survey' : fromCal ? 'calendar' : host), d);
+      if (!(fromSurvey || fromCal)) return;
+      /* mirrors GHL's own "leadCollected" branch: a real key (not the "_ud"
+         user-data key) plus a frame id rather than a cookie payload */
+      var captured = Array.isArray(d) && d[0] === 'set-sticky-contacts' && d[1] && d[1] !== '_ud' &&
+                     typeof d[2] === 'string' && !/^[\[{]/.test(d[2]);
+      if (!captured) return;
+      if (fromSurvey && !leadSent) { leadSent = true; track('Lead'); openBooking(true); }
+      else if (fromCal && !schedSent) { schedSent = true; track('Schedule'); }
+    });
+
+    /* Proof card behind a flag: shows only when switched on AND fully filled. */
+    each(root.querySelectorAll('[data-lx-flag="jz"]'), function (card) {
+      var on = root.getAttribute('data-lx-show-jz') === 'true';
+      var img = card.querySelector('img[data-lx-src]');
+      var filled = img && !isPlaceholder(img.getAttribute('data-lx-src')) && !/\[/.test(card.textContent);
+      card.hidden = !(on && filled);
+      if (!card.hidden && img && !img.getAttribute('src')) img.src = img.getAttribute('data-lx-src');
+    });
+
+    /* Footer email from config. */
+    var mail = root.getAttribute('data-lx-email') || '';
+    var ml = root.querySelector('[data-lx-mail]');
+    if (ml && /^[^\s@\[\]]+@[^\s@\[\]]+\.[a-z]{2,}$/i.test(mail)) { ml.href = 'mailto:' + mail; ml.textContent = mail; ml.hidden = false; }
+
+    /* Every Apply button, the sticky one included, glides to the survey. */
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[data-lx-cta]');
+      if (!a) return;
+      var target = document.getElementById('apply');
+      if (!target || (a.getAttribute('href') || '').indexOf('#apply') === -1) return;
+      e.preventDefault();
+      loadSurvey();
+      target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+    });
+
     /* Optional bits (the contact email) disappear on the live page while
        they still hold a placeholder, instead of printing brackets. */
     each(root.querySelectorAll('[data-lx-optional]'), function (el) {
@@ -753,6 +993,7 @@
     var left = [];
     var walk = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
     while (walk.nextNode()) { var t = walk.currentNode.nodeValue.match(/\[[^\]]{2,}\]/g); if (t) left = left.concat(t); }
+    ['data-lx-calendar', 'data-lx-pixel', 'data-lx-email'].forEach(function (a) { var v = root.getAttribute(a); if (v && /\[/.test(v)) left.push(a + ': ' + v); });
     each(root.querySelectorAll('[data-lx-src],[data-lx-embed],[data-lx-poster],a[href^="mailto:["]'), function (el) {
       ['data-lx-src', 'data-lx-embed', 'data-lx-poster', 'href'].forEach(function (a) {
         var v = el.getAttribute(a); if (v && /\[/.test(v)) left.push(v);

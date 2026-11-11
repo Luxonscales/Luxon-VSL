@@ -1,0 +1,42 @@
+<!-- =====================================================================
+     LUXON · "Not a fit" page. Paste into ONE Custom JS/HTML element on a
+     GHL funnel step at path /not-a-fit (full width, zero padding, noindex).
+     Scoped under .lx-nf; styles nothing outside it.
+     ===================================================================== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,700..900&family=Inter:wght@400;500;600&display=swap">
+<style>
+.lx-nf{--bg:#141210;--text:#F5F0E8;--muted:#A8A29E;--faint:#8C8580;--gold:#C9A55C;--gold-hi:#DAB977;--ink:#141210;--line:rgba(245,240,232,.10);--r:8px;--pad:clamp(20px,5.2vw,48px);
+  --display:"Archivo","Arial Narrow",Arial,sans-serif;--body:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  position:relative;isolation:isolate;min-height:100svh;background:var(--bg);color:var(--text);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;text-align:left;overflow-x:hidden;overflow-x:clip}
+.lx-nf *,.lx-nf *::before,.lx-nf *::after{box-sizing:border-box;margin:0;padding:0;border:0;font:inherit;color:inherit;letter-spacing:inherit;text-transform:inherit;background:transparent}
+.lx-nf a{text-decoration:none}
+.lx-nf :focus{outline:none}
+.lx-nf :focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:4px}
+.lx-nf::before{content:"";position:absolute;inset:-30% -40% auto auto;width:90vmax;height:90vmax;z-index:-1;pointer-events:none;background:radial-gradient(closest-side,rgba(201,165,92,.12),rgba(201,165,92,0) 70%)}
+.lx-nf .lx-nf-wrap{max-width:720px;margin-inline:auto;padding:clamp(28px,6vw,56px) var(--pad) clamp(64px,10vw,110px)}
+.lx-nf .lx-nf-mark{padding-bottom:22px;border-bottom:1px solid var(--line);line-height:0}
+.lx-nf .lx-nf-mark img{height:26px;width:auto;display:block}
+.lx-nf h1{margin-top:clamp(44px,9vw,80px);font-family:var(--display);font-weight:800;text-transform:uppercase;font-stretch:78%;font-variation-settings:"wdth" 78;font-size:clamp(2.5rem,10vw,4.6rem);line-height:.93;letter-spacing:-.01em;text-wrap:balance}
+.lx-nf p.lx-nf-body{margin-top:24px;max-width:46ch;font-size:clamp(1.06rem,1.5vw,1.22rem);color:var(--muted)}
+.lx-nf .lx-nf-btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;margin-top:34px;min-height:56px;padding:0 28px;border-radius:var(--r);background:var(--gold);color:var(--ink);font-weight:600;transition:background-color .3s,transform .3s}
+.lx-nf .lx-nf-btn:hover{background:var(--gold-hi);transform:translateY(-1px)}
+.lx-nf .lx-nf-btn svg{width:18px;height:18px}
+@media (max-width:599px){.lx-nf .lx-nf-btn{width:100%}}
+.lx-nf .lx-nf-foot{margin-top:56px;font-size:13px;color:var(--faint)}
+@media (prefers-reduced-motion:reduce){.lx-nf *{transition:none !important}}
+</style>
+
+<div class="lx-nf">
+  <div class="lx-nf-wrap">
+    <p class="lx-nf-mark"><img src="https://call.luxonmarketing.com/brand/luxon-wordmark-gold-on-dark.png" alt="Luxon" width="900" height="195"></p>
+    <main>
+      <h1>Thanks for applying, we appreciate you.</h1>
+      <p class="lx-nf-body">Right now we're only taking on companies with $10K+ jobs, a team behind them, and at least $1,000/month for ads. That's where our system works best, and we'd rather tell you straight than take your money. When you're there, come back. We'd love to talk.</p>
+      <a class="lx-nf-btn" href="https://call.luxonmarketing.com/video/ad-walkthrough.mp4" target="_blank" rel="noopener">Watch a live ad account walkthrough<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </main>
+    <p class="lx-nf-foot">&copy; <span data-lx-year>2026</span> Luxon</p>
+  </div>
+</div>
+<script>(function(){var y=document.querySelector('.lx-nf [data-lx-year]');if(y)y.textContent=new Date().getFullYear();})();</script>
