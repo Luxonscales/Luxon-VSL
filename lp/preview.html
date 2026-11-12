@@ -21,10 +21,18 @@
      ===================================================================== -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+<!-- Headings swap in (their fallback is metric-matched, so line breaks hold). Body text uses
+     display=optional: if Inter isn't ready at first paint, the matched fallback stays, so nothing reflows. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=optional" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap"></noscript>
 
 <style>
+/* metric-matched fallbacks: text keeps the same line breaks while the web fonts load, so nothing jumps */
+@font-face{font-family:"LX PJS Fallback";font-weight:100 599;src:local("Arial"),local("ArialMT"),local("Helvetica");size-adjust:104.2%;ascent-override:100%;descent-override:24%;line-gap-override:0%}
+@font-face{font-family:"LX PJS Fallback";font-weight:600 900;src:local("Arial Bold"),local("Arial-BoldMT"),local("Helvetica Bold");size-adjust:104.2%;ascent-override:100%;descent-override:24%;line-gap-override:0%}
+@font-face{font-family:"LX Inter Fallback";font-weight:100 549;src:local("Arial"),local("ArialMT"),local("Helvetica");size-adjust:101.5%;ascent-override:90.44%;descent-override:22.52%;line-gap-override:0%}
+@font-face{font-family:"LX Inter Fallback";font-weight:550 900;src:local("Arial Bold"),local("Arial-BoldMT"),local("Helvetica Bold");size-adjust:96%;ascent-override:90.44%;descent-override:22.52%;line-gap-override:0%}
 /* ---------- tokens and a reset that stops at the wrapper ---------- */
 .lx-lp{
   --lx-bg:#0A0A0B; --lx-bg-2:#0F0F11; --lx-card:#141416; --lx-card-2:#1A1A1D;
@@ -33,8 +41,8 @@
   --lx-gold:#C9A55C; --lx-gold-hi:#E8CB8A; --lx-gold-lo:#9C7C3C; --lx-ink:#0A0A0B;
   --lx-line:rgba(255,255,255,.08); --lx-line-2:rgba(255,255,255,.14); --lx-gold-line:rgba(201,165,92,.38);
   --lx-r:18px; --lx-r-sm:12px; --lx-pad:clamp(18px,5vw,40px); --lx-max:1180px;
-  --lx-display:"Plus Jakarta Sans","Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-  --lx-body:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --lx-display:"Plus Jakarta Sans","LX PJS Fallback",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  --lx-body:"Inter","LX Inter Fallback",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   --lx-ease:cubic-bezier(.16,1,.3,1);
   position:relative; isolation:isolate;
   background:var(--lx-bg); color:var(--lx-text);
@@ -126,15 +134,27 @@
 .lx-lp .lx-lp-hero__in > *:nth-child(n+4){animation:lx-rise 1s var(--lx-ease) both;animation-delay:.08s}
 .lx-lp .lx-lp-hero__in > *:nth-child(n+6){animation-delay:.18s}
 @keyframes lx-rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-.lx-lp .lx-lp-hero .lx-lp-h1{max-width:13ch}
+.lx-lp .lx-lp-hero .lx-lp-h1{max-width:20ch;font-size:clamp(2.15rem,6.4vw,4.3rem);line-height:1.04}
 .lx-lp .lx-lp-hero .lx-lp-lede{margin-inline:auto;max-width:52ch}
 .lx-lp .lx-lp-guar-pill{display:inline-flex;align-items:center;gap:10px;margin-top:22px;padding:10px 18px 10px 12px;border-radius:999px;
   border:1px solid var(--lx-gold-line);background:linear-gradient(180deg,rgba(201,165,92,.12),rgba(201,165,92,.04));
   font-size:14.5px;font-weight:600;line-height:1.35;color:var(--lx-gold-hi);text-align:left}
 .lx-lp .lx-lp-guar-pill svg{flex:none;width:22px;height:22px;padding:4px;border-radius:50%;background:rgba(201,165,92,.18);color:var(--lx-gold-hi);box-sizing:content-box}
+.lx-lp .lx-lp-q1{width:100%;max-width:640px;margin-top:30px}
+.lx-lp .lx-lp-q1__t{font-family:var(--lx-display);font-weight:700;font-size:15.5px;letter-spacing:-.01em}
+.lx-lp .lx-lp-q1__opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}
+@media (min-width:640px){.lx-lp .lx-lp-q1__opts{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.lx-lp .lx-lp-q1__opts button{min-height:60px;padding:0 12px;border-radius:14px;border:1px solid var(--lx-line-2);background:linear-gradient(180deg,var(--lx-glass-2),var(--lx-glass));
+  font-family:var(--lx-display);font-weight:700;font-size:16px;color:var(--lx-text);transition:border-color .25s,transform .25s var(--lx-ease),background-color .25s}
+.lx-lp .lx-lp-q1__opts button:hover{border-color:var(--lx-gold-line);transform:translateY(-2px)}
+.lx-lp .lx-lp-q1__opts button[aria-pressed="true"]{border-color:var(--lx-gold);background:linear-gradient(180deg,rgba(201,165,92,.22),rgba(201,165,92,.08));color:var(--lx-gold-hi)}
+.lx-lp .lx-lp-hero .lx-lp-actions{margin-top:22px}
+.lx-lp .lx-lp-jzline{display:flex;flex-wrap:wrap;justify-content:center;align-items:baseline;gap:4px 10px;margin-top:18px;font-size:14px;text-align:center}
+.lx-lp .lx-lp-jzline b{color:var(--lx-gold-hi);font-weight:700}
+.lx-lp .lx-lp-jzline span{color:var(--lx-faint);font-size:13px}
 .lx-lp .lx-lp-hero__media{width:100%;max-width:420px;margin-top:44px}
 .lx-lp .lx-lp-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;width:100%;max-width:1040px;margin-top:56px;text-align:left}
-@media (min-width:900px){.lx-lp .lx-lp-stats{grid-template-columns:1.3fr 1fr 1fr 1fr;gap:14px}}
+@media (min-width:900px){.lx-lp .lx-lp-stats{grid-template-columns:1.4fr 1fr 1fr;gap:14px;max-width:960px}.lx-lp[data-lx-show-jz-proof="false"] .lx-lp-stats{grid-template-columns:1fr 1fr;max-width:640px}}
 .lx-lp .lx-lp-stat-card{position:relative;padding:20px 18px 18px;border-radius:var(--lx-r);border:1px solid var(--lx-line);
   background:linear-gradient(180deg,var(--lx-glass-2),var(--lx-glass));-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 .lx-lp .lx-lp-stat-card b{display:block;font-family:var(--lx-display);font-weight:800;font-size:clamp(1.75rem,5.4vw,2.35rem);line-height:1;letter-spacing:-.03em;color:var(--lx-gold-hi);font-variant-numeric:tabular-nums}
@@ -281,7 +301,10 @@
 .lx-lp .lx-lp-card__body{padding:20px 14px 14px}
 .lx-lp .lx-lp-stat{font-family:var(--lx-display);font-weight:800;font-size:clamp(2.1rem,7vw,2.8rem);line-height:1;letter-spacing:-.03em;color:var(--lx-gold-hi);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
 .lx-lp .lx-lp-stat-label{margin-top:10px;font-weight:600;font-size:15px}
-.lx-lp .lx-lp-rev{margin-top:6px;font-weight:600;font-size:14.5px;color:var(--lx-gold)}
+.lx-lp .lx-lp-small{margin-top:10px;font-size:13.5px;color:var(--lx-muted)}
+.lx-lp .lx-lp-small b{color:var(--lx-text);font-weight:600}
+.lx-lp .lx-lp-card--lead{border-color:var(--lx-gold-line);background:radial-gradient(100% 80% at 0% 0%,rgba(201,165,92,.14),transparent 60%),linear-gradient(180deg,var(--lx-glass-2),var(--lx-glass))}
+.lx-lp .lx-lp-card--lead .lx-lp-shot.is-gone{display:none}
 .lx-lp .lx-lp-context{margin-top:8px;font-size:13px;color:var(--lx-faint)}
 .lx-lp .lx-lp-walk{margin:20px auto 0;max-width:900px}
 .lx-lp .lx-lp-walk figcaption{margin-top:12px;font-size:14px;color:var(--lx-muted);text-align:center}
@@ -303,6 +326,7 @@
 .lx-lp .lx-lp-guar__badge svg{width:30px;height:30px}
 .lx-lp .lx-lp-guar .lx-lp-h2{max-width:20ch;margin-inline:auto}
 .lx-lp .lx-lp-guar .lx-lp-lede{margin-inline:auto}
+.lx-lp .lx-lp-promise-note{margin-top:14px;color:var(--lx-text);font-weight:500}
 .lx-lp .lx-lp-terms{display:grid;gap:10px;margin-top:34px;text-align:left}
 @media (min-width:768px){.lx-lp .lx-lp-terms{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .lx-lp .lx-lp-terms li{padding:18px;border-radius:14px;border:1px solid var(--lx-line);background:rgba(10,10,11,.4);font-size:14.5px;line-height:1.45;color:var(--lx-muted)}
@@ -370,9 +394,10 @@
 .lx-lp .lx-lp-cal iframe{display:block;width:100%;min-height:760px;border:0}
 
 /* ---------- decided before paint, so nothing jumps once the script runs ---------- */
-.lx-lp .lx-if-nobook{display:none}
-.lx-lp[data-lx-calendar^="["] .lx-if-book{display:none}
-.lx-lp[data-lx-calendar^="["] .lx-if-nobook{display:inline}
+/* config flags, decided before paint */
+.lx-lp[data-lx-show-jz-proof="false"] [data-lx-jz]{display:none !important}
+.lx-lp[data-lx-show-guarantee="false"] [data-lx-guarantee]{display:none !important}
+.lx-lp:not([data-lx-show-non-trade-proof="true"]) [data-lx-nontrade]{display:none !important}
 .lx-lp .lx-lp-hero__media:has(.lx-lp-embed[data-lx-embed^="["]){display:none}
 .lx-lp [data-lx-hide-if-empty]:has(.lx-lp-embed[data-lx-embed^="["]){display:none}
 
@@ -408,7 +433,12 @@
 }
 </style>
 
-<!-- CONFIG: fill these four, then flip SHOW_JZ_PROOF to "true" once the client approves.
+<!-- CONFIG (all on the .lx-lp div below):
+       data-lx-show-jz-proof        SHOW_JZ_PROOF: "true" shows the $300 → $200K outdoor living result (hero line, hero card, proof card). "false" hides all three instantly.
+       data-lx-show-guarantee       SHOW_GUARANTEE: "true" shows "Our promise" and the guarantee FAQ.
+       data-lx-show-non-trade-proof SHOW_NON_TRADE_PROOF: "true" adds the surrogacy agency proof card (last). Default "false".
+       data-lx-jz-start / -end      JZ_START_DATE / JZ_END_DATE shown on the JZ proof card, e.g. "4 Oct". The date line stays hidden until both are filled.
+       data-lx-prefill-key          GHL field key of the survey's first question, to carry the hero answer into the survey. Empty = just open the survey.
        data-lx-calendar = GHL booking widget URL, e.g. https://api.leadconnectorhq.com/widget/booking/XXXXXXXX
        data-lx-pixel    = Meta Pixel ID (numbers only). Leave as-is if the pixel is in GHL funnel settings.
        data-lx-email    = the contact address shown in the footer.
@@ -417,7 +447,13 @@
      data-lx-calendar="[GHL_CALENDAR_EMBED_URL]"
      data-lx-pixel="[META_PIXEL_ID]"
      data-lx-email="luxon.ag3ncy@gmail.com"
-     data-lx-show-jz="false">
+     data-lx-show-jz="false"
+     data-lx-show-jz-proof="true"
+     data-lx-show-guarantee="true"
+     data-lx-show-non-trade-proof="false"
+     data-lx-jz-start="[JZ_START_DATE]"
+     data-lx-jz-end="[JZ_END_DATE]"
+     data-lx-prefill-key="">
 
   <header class="lx-lp-top" data-lx-top>
     <div class="lx-lp-wrap lx-lp-top__in">
@@ -431,24 +467,32 @@
     <section class="lx-lp-hero" data-lx-hero aria-labelledby="lx-h1">
       <div class="lx-lp-hero__bg" aria-hidden="true"></div>
       <div class="lx-lp-wrap lx-lp-hero__in">
-        <p class="lx-lp-kicker">For outdoor living, remodeling &amp; roofing</p>
-        <h1 id="lx-h1" class="lx-lp-h1">Leads that only <em class="lx-lp-gold">called you.</em></h1>
-        <p class="lx-lp-lede">Meta ads filmed at your real jobs, for companies doing <b>$10,000+ projects</b>. Every number below is a real client's: ad results straight from Ads Manager, job values as they reported them.</p>
+        <p class="lx-lp-kicker">For outdoor living, remodeling &amp; roofing companies</p>
+        <h1 id="lx-h1" class="lx-lp-h1">A predictable pipeline of <em class="lx-lp-gold">$25K+ projects,</em> without depending on referrals.</h1>
+        <p class="lx-lp-lede">Meta ads filmed at your real jobs, for established companies ready to grow. Every number on this page is a real client's: ad results straight from Ads Manager, job values as they reported them.</p>
+        <div class="lx-lp-q1" data-lx-q1>
+          <p class="lx-lp-q1__t" id="lx-q1-t">What's your average project size?</p>
+          <div class="lx-lp-q1__opts" role="group" aria-labelledby="lx-q1-t">
+            <button type="button" data-lx-size="Under $10,000">Under $10K</button>
+            <button type="button" data-lx-size="$10,000-$25,000">$10K–$25K</button>
+            <button type="button" data-lx-size="$25,000-$50,000">$25K–$50K</button>
+            <button type="button" data-lx-size="$50,000+">$50K+</button>
+          </div>
+        </div>
         <div class="lx-lp-actions">
           <a class="lx-lp-btn" href="/apply" data-lx-cta>See if you qualify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
-        <p class="lx-lp-assure"><span class="lx-lp-dot" aria-hidden="true"></span><span class="lx-if-book">2-minute application · Pick your call time right away</span><span class="lx-if-nobook">2-minute application · No pitch, no obligation</span></p>
-        <p class="lx-lp-guar-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6l7-3z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg><span>15 qualified leads in 30 days, or we work free until you get them.</span></p>
+        <p class="lx-lp-jzline" data-lx-jz><b>$300 in ad spend → $200K in signed projects</b><span>Outdoor living, Fresno · client-reported</span></p>
+        <p class="lx-lp-assure"><span class="lx-lp-dot" aria-hidden="true"></span>2-minute application · Pick your call time right away</p>
         <div class="lx-lp-hero__media">
           <div class="lx-lp-embed" data-lx-eager data-lx-ratio="4/5" data-lx-label="Hero video"
                data-lx-embed="[HERO VIDEO URL]"
                data-lx-poster="[HERO POSTER URL, 1080x1350]"></div>
         </div>
         <ul class="lx-lp-stats" aria-label="Results from client accounts">
-          <li class="lx-lp-stat-card lx-lp-stat-card--hot"><b>$200K</b><span>in jobs closed off $300 in ad spend</span><i>Outdoor living, Fresno · so far · client reported</i></li>
-          <li class="lx-lp-stat-card"><b>$16.03</b><span>per lead</span><i>Landscaping · campaign rebuilt 4 Sep</i></li>
-          <li class="lx-lp-stat-card"><b>$80K+</b><span>of jobs in the pipeline</span><i>Same landscaping account · client reported</i></li>
-          <li class="lx-lp-stat-card"><b>243</b><span>leads at $10.95 each</span><i>Surrogacy agency · 24 Jul to 2 Sep 2026</i></li>
+          <li class="lx-lp-stat-card lx-lp-stat-card--hot" data-lx-jz><b>$200K</b><span>in signed projects off $300 in ad spend</span><i>Outdoor living, Fresno · so far · client-reported</i></li>
+          <li class="lx-lp-stat-card"><b>$80K+</b><span>of jobs in the pipeline</span><i>Landscaping · client-reported</i></li>
+          <li class="lx-lp-stat-card"><b>$14K</b><span>in revenue so far</span><i>Chimney sweep · from 25 leads</i></li>
         </ul>
         <p class="lx-lp-stats-foot"><span>Straight from client accounts</span><a href="#lx-proof">See the screenshots</a></p>
         <a class="lx-lp-heroq" href="#lx-testi">
@@ -491,24 +535,24 @@
       </div>
     </section>
 
-    <!-- 3 · SOUND FAMILIAR? Tap what's true. -->
+    <!-- 3 · THIS IS FOR YOU IF… (tap to check) -->
     <section class="lx-lp-sec" aria-labelledby="lx-quiz">
       <div class="lx-lp-wrap lx-lp-quiz">
         <div class="lx-lp-head">
-          <p class="lx-lp-kicker" data-lx-reveal>Sound familiar?</p>
-          <h2 id="lx-quiz" class="lx-lp-h2" data-lx-reveal>Great work. <em class="lx-lp-gold">Unpredictable phone.</em></h2>
-          <p class="lx-lp-lede" data-lx-reveal>Most of the contractors we talk to aren't short on skill. They're short on a steady stream of homeowners who are ready to talk about a real project.</p>
+          <p class="lx-lp-kicker" data-lx-reveal>Who this is for</p>
+          <h2 id="lx-quiz" class="lx-lp-h2" data-lx-reveal>This is for you <em class="lx-lp-gold">if…</em></h2>
+          <p class="lx-lp-lede" data-lx-reveal>We work with established outdoor living, remodeling and roofing companies that already do great work and want a steadier flow of bigger projects.</p>
         </div>
         <div data-lx-quiz data-lx-reveal style="--lx-d:.08s">
           <div class="lx-lp-qlist" role="group" aria-label="Tap what's true for your business">
-            <button type="button" class="lx-lp-q" aria-pressed="false"><span>Most of our best jobs still come from <em>referrals</em>.</span><span class="lx-lp-q__box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></button>
-            <button type="button" class="lx-lp-q" aria-pressed="false"><span>We tried Facebook ads and got <em>tire kickers</em>.</span><span class="lx-lp-q__box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></button>
-            <button type="button" class="lx-lp-q" aria-pressed="false"><span>The leads we get are <em>shopping on price</em>.</span><span class="lx-lp-q__box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></button>
-            <button type="button" class="lx-lp-q" aria-pressed="false"><span>Our crew could handle <em>more work than we're booking</em>.</span><span class="lx-lp-q__box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></button>
-            <button type="button" class="lx-lp-q" aria-pressed="false"><span>I can't say where <em>next month's jobs</em> are coming from.</span><span class="lx-lp-q__box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></button>
-            <div class="lx-lp-qscore" aria-live="polite"><b data-lx-qn>0<small>/5</small></b><p data-lx-qmsg>Tap what's true for your business.</p></div>
+            <button type="button" class="lx-lp-q" aria-pressed="false"><span>You're doing <em>$500K–$5M a year</em> and want the next level</span><span class="lx-lp-q__box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></button>
+            <button type="button" class="lx-lp-q" aria-pressed="false"><span>Referrals are great, but you want <em>jobs you can count on</em> every month</span><span class="lx-lp-q__box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></button>
+            <button type="button" class="lx-lp-q" aria-pressed="false"><span>Your crews could handle <em>more $20K+ projects</em></span><span class="lx-lp-q__box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></button>
+            <button type="button" class="lx-lp-q" aria-pressed="false"><span>You'd rather <em>run your business</em> than run your marketing</span><span class="lx-lp-q__box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></button>
+            <button type="button" class="lx-lp-q" aria-pressed="false"><span>You want a partner who reports <em>real numbers, not excuses</em></span><span class="lx-lp-q__box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></button>
+            <div class="lx-lp-qscore" aria-live="polite"><b data-lx-qn>0<small>/5</small></b><p data-lx-qmsg>If you checked 3 or more, let's talk.</p></div>
           </div>
-          <div class="lx-lp-actions lx-lp-qcta" data-lx-qcta hidden>
+          <div class="lx-lp-actions lx-lp-qcta">
             <a class="lx-lp-btn" href="/apply" data-lx-cta>See if you qualify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
         </div>
@@ -593,16 +637,17 @@
           <h2 id="lx-proof" class="lx-lp-h2" data-lx-reveal>The numbers. <em class="lx-lp-gold">Not our version of them.</em></h2>
         </div>
         <div class="lx-lp-proof">
-          <!-- SHOW_JZ_PROOF: stays hidden until data-lx-show-jz="true" AND the screenshot and dates are filled. -->
-          <article class="lx-lp-card lx-lp-glass" data-lx-flag="jz" data-lx-reveal hidden>
-            <button class="lx-lp-shot" type="button" data-lx-zoom data-lx-slot aria-label="Enlarge the outdoor living ad account screenshot">
-              <img class="lx-lp-media" data-lx-src="[JZ_PROOF_SCREENSHOT]" alt="Meta Ads Manager, outdoor living account in Fresno: about $300 in ad spend behind $200K in closed jobs." width="1600" height="1000" loading="lazy" decoding="async">
+          <!-- SHOW_JZ_PROOF. The screenshot appears once data-lx-src is filled; the date line once both JZ dates are set. -->
+          <article class="lx-lp-card lx-lp-glass lx-lp-card--lead" data-lx-jz data-lx-reveal>
+            <button class="lx-lp-shot" type="button" data-lx-zoom data-lx-slot data-lx-optional-shot aria-label="Enlarge the outdoor living ad account screenshot">
+              <img class="lx-lp-media" data-lx-src="[JZ_PROOF_SCREENSHOT]" alt="Meta Ads Manager, outdoor living account in Fresno: about $300 in ad spend." width="1600" height="1000" loading="lazy" decoding="async">
               <span class="lx-lp-shot__hint">Tap to enlarge</span>
             </button>
             <div class="lx-lp-card__body">
-              <p class="lx-lp-stat">$300 → $200K in closed jobs</p>
-              <p class="lx-lp-stat-label">Ad spend to closed jobs, so far</p>
-              <p class="lx-lp-context">Outdoor living, Fresno · [START DATE] to [END DATE] 2026</p>
+              <p class="lx-lp-stat">$300 → $200K</p>
+              <p class="lx-lp-stat-label">in signed projects</p>
+              <p class="lx-lp-small">Client-reported project value · ad spend so far</p>
+              <p class="lx-lp-context">Outdoor living, Fresno<span data-lx-jz-dates hidden> · <span data-lx-jz-start-out></span> to <span data-lx-jz-end-out></span> 2026</span></p>
             </div>
           </article>
           <article class="lx-lp-card lx-lp-glass" data-lx-reveal>
@@ -611,34 +656,32 @@
               <span class="lx-lp-shot__hint">Tap to enlarge</span>
             </button>
             <div class="lx-lp-card__body">
-              <p class="lx-lp-stat">$16.03</p>
-              <p class="lx-lp-stat-label">Cost per lead, campaign rebuilt 4 Sep</p>
-              <p class="lx-lp-rev">$80K+ of jobs in the pipeline from those leads</p>
-              <p class="lx-lp-context">Landscaping · 12 Aug to 10 Sep 2026</p>
+              <p class="lx-lp-stat">$80K+</p>
+              <p class="lx-lp-small"><b>in jobs in the pipeline</b> · $16.03 per lead</p>
+              <p class="lx-lp-context">Landscaping · 12 Aug to 10 Sep 2026 · pipeline client-reported</p>
             </div>
           </article>
-          <article class="lx-lp-card lx-lp-glass" data-lx-reveal style="--lx-d:.08s">
+          <article class="lx-lp-card lx-lp-glass" data-lx-reveal>
             <button class="lx-lp-shot" type="button" data-lx-zoom data-lx-slot aria-label="Enlarge the chimney sweep ad account screenshot">
               <img class="lx-lp-media" data-lx-src="https://call.luxonmarketing.com/lp/proof-chimney.png" style="--z:1.32" alt="Meta Ads Manager, chimney sweep account, 13 Aug to 2 Sep 2026: 25 leads, $467.83 spent, $18.71 per lead." width="1600" height="1000" loading="lazy" decoding="async">
               <span class="lx-lp-shot__hint">Tap to enlarge</span>
             </button>
             <div class="lx-lp-card__body">
-              <p class="lx-lp-stat">$18.71</p>
-              <p class="lx-lp-stat-label">Cost per lead, 25 leads</p>
-              <p class="lx-lp-rev">$14K in revenue so far</p>
-              <p class="lx-lp-context">Chimney sweep · 13 Aug to 2 Sep 2026</p>
+              <p class="lx-lp-stat">$14K</p>
+              <p class="lx-lp-small"><b>in revenue so far</b> · $18.71 per lead · 25 leads</p>
+              <p class="lx-lp-context">Chimney sweep · 13 Aug to 2 Sep 2026 · revenue client-reported</p>
             </div>
           </article>
-          <article class="lx-lp-card lx-lp-glass" data-lx-reveal style="--lx-d:.16s">
+          <!-- SHOW_NON_TRADE_PROOF -->
+          <article class="lx-lp-card lx-lp-glass" data-lx-nontrade data-lx-reveal>
             <button class="lx-lp-shot" type="button" data-lx-zoom data-lx-slot aria-label="Enlarge the surrogacy agency ad account screenshot">
               <img class="lx-lp-media" data-lx-src="https://call.luxonmarketing.com/lp/proof-surrogacy.png" style="--z:1.4" alt="Meta Ads Manager, surrogacy agency account, 24 Jul to 2 Sep 2026: 243 leads, $2,661.13 spent, $10.95 per lead." width="1600" height="1000" loading="lazy" decoding="async">
               <span class="lx-lp-shot__hint">Tap to enlarge</span>
             </button>
             <div class="lx-lp-card__body">
-              <p class="lx-lp-stat">243</p>
-              <p class="lx-lp-stat-label">Leads at $10.95 each</p>
-              <p class="lx-lp-rev">$28K in revenue in the first month</p>
-              <p class="lx-lp-context">Surrogacy agency · 24 Jul to 2 Sep 2026</p>
+              <p class="lx-lp-stat">$28K</p>
+              <p class="lx-lp-small"><b>revenue in the first month</b> · 243 leads at $10.95</p>
+              <p class="lx-lp-context">Surrogacy agency · 24 Jul to 2 Sep 2026 · revenue client-reported</p>
             </div>
           </article>
         </div>
@@ -655,13 +698,14 @@
     </section>
 
     <!-- 7 · THE GUARANTEE -->
-    <section class="lx-lp-sec" aria-labelledby="lx-guar">
+    <section class="lx-lp-sec" aria-labelledby="lx-guar" data-lx-guarantee>
       <div class="lx-lp-wrap">
         <div class="lx-lp-guar" data-lx-reveal>
           <div class="lx-lp-guar__badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6l7-3z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div>
-          <p class="lx-lp-kicker">The guarantee</p>
+          <p class="lx-lp-kicker">Our promise</p>
           <h2 id="lx-guar" class="lx-lp-h2">15 qualified leads in 30 days. <em class="lx-lp-gold">Or we work free until you get them.</em></h2>
           <p class="lx-lp-lede">A qualified lead is a real homeowner in your service area asking about the work you do. We agree that definition with you in writing before launch.</p>
+          <p class="lx-lp-lede lx-lp-promise-note">Most of our clients care more about booked jobs than lead counts. So do we.</p>
           <ol class="lx-lp-terms" aria-label="It holds as long as">
             <li><b>$50 a day</b>You spend at least $50 a day on ads, paid straight to Meta.</li>
             <li><b>5-minute calls</b>Every new lead gets a call within 5 minutes.</li>
@@ -675,7 +719,7 @@
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Filmed at your real jobs</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Every number shown is real</li>
           </ul>
-          <p class="lx-lp-note">The guarantee covers leads. Booked jobs and revenue depend on your follow-up and your close rate, so they aren't part of it. Full terms are agreed in writing before launch.</p>
+          <p class="lx-lp-note">It covers leads, not booked jobs or revenue. Full terms agreed in writing before launch.</p>
         </div>
       </div>
     </section>
@@ -718,12 +762,12 @@
           <h2 id="lx-faq" class="lx-lp-h2" data-lx-reveal>Straight <em class="lx-lp-gold">answers.</em></h2>
         </div>
         <div class="lx-lp-faq" data-lx-reveal>
-          <details><summary>How much does it cost?</summary><div class="lx-lp-faq__a"><p>Most clients invest from $1,200/month for management, plus ad spend paid directly to Meta from your own account (usually $1,000+/month). You'll know the exact numbers on the call, before you decide anything.</p></div></details>
-          <details><summary>Do you guarantee results?</summary><div class="lx-lp-faq__a"><p>Yes. 15 qualified leads in your first 30 days, or we keep working for free until you get them. It holds as long as you spend at least $50 a day, call every lead within 5 minutes, and approve new ads within 48 hours. It covers leads, not booked jobs or revenue.</p></div></details>
+          <details><summary>How much does it cost?</summary><div class="lx-lp-faq__a"><p>Most clients invest from $1,200/month for management, plus ad spend paid directly to Meta from your own account, at least $50/day (about $1,500/month). You'll know the exact numbers on the call, before you decide anything.</p></div></details>
+          <details data-lx-guarantee><summary>Do you guarantee results?</summary><div class="lx-lp-faq__a"><p>Yes. 15 qualified leads in your first 30 days, or we keep working for free until you get them. It holds as long as you spend at least $50 a day, call every lead within 5 minutes, and approve new ads within 48 hours. It covers leads, not booked jobs or revenue.</p></div></details>
           <details><summary>How fast will I see leads?</summary><div class="lx-lp-faq__a"><p>Most accounts start getting leads in the first week. The first 30 to 90 days are about finding the ads and audience that bring booked jobs, not just leads.</p></div></details>
           <details><summary>Whose ad account is it?</summary><div class="lx-lp-faq__a"><p>Yours. The account, the ads and the data stay with you, whatever happens.</p></div></details>
           <details><summary>Who makes the ads?</summary><div class="lx-lp-faq__a"><p>We film them at your real jobs. No stock footage.</p></div></details>
-          <details><summary>What happens after I apply?</summary><div class="lx-lp-faq__a"><p><span class="lx-if-book">If it looks like a fit, you'll pick a call time right away. We'll text you to confirm. On the call, you'll see a live ad account and what your competitors are running.</span><span class="lx-if-nobook">If it looks like a fit, someone from our team calls you to set a time. On the call, you'll see a live ad account and what your competitors are running.</span></p></div></details>
+          <details><summary>What happens after I apply?</summary><div class="lx-lp-faq__a"><p>If it looks like a fit, you'll pick a call time right away. We'll text you to confirm. On the call, you'll see a live ad account and what your competitors are running.</p></div></details>
         </div>
       </div>
     </section>
@@ -733,7 +777,7 @@
       <div class="lx-lp-wrap">
         <div class="lx-lp-final__panel" data-lx-reveal>
           <h2 id="lx-close" class="lx-lp-h2">Let's see if it works <em class="lx-lp-gold">for your trade.</em></h2>
-          <p class="lx-lp-lede">Five quick questions. If it's a fit, you'll see a live client ad account on the call.</p>
+          <p class="lx-lp-lede">Five quick questions. If it's a fit, you'll pick your call time right away.</p>
           <div class="lx-lp-actions">
             <a class="lx-lp-btn" href="/apply" data-lx-cta>See if you qualify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
@@ -751,7 +795,7 @@
           <h2 id="lx-apply-h" class="lx-lp-h2">See if you <em class="lx-lp-gold">qualify.</em></h2>
           <ol class="lx-lp-mini" aria-label="What happens">
             <li><b>1</b>Answer 5 quick questions</li>
-            <li><b>2</b><span class="lx-if-book">Pick your call time</span><span class="lx-if-nobook">We call you to set a time</span></li>
+            <li><b>2</b>Pick your call time</li>
             <li><b>3</b>See a live ad account on the call</li>
           </ol>
         </div>
@@ -760,7 +804,7 @@
             <noscript><iframe class="lx-lp-survey" src="https://api.leadconnectorhq.com/widget/survey/yLy9BhLLwTJb4NzB6blk" scrolling="no" id="yLy9BhLLwTJb4NzB6blk" title="Luxon Client Application"></iframe></noscript>
           </div>
         </div>
-        <p class="lx-lp-consent">By submitting your information, you agree to receive calls and text messages from Luxon about your inquiry, including by automated means. Message frequency varies. Message &amp; data rates may apply. Reply STOP to opt out, HELP for help. We do not sell or share your mobile information with third parties for marketing purposes. See our <a href="/privacy">Privacy Policy</a> and <a href="/terms">Terms</a>.</p>
+        <p class="lx-lp-consent">By submitting your information, you agree to receive calls and text messages from Luxon about your inquiry, including by automated means. Message frequency varies. Message &amp; data rates may apply. Reply STOP to opt out, HELP for help. We do not sell or share your mobile information with third parties for marketing purposes. See our <a href="https://book.luxonmarketing.com/privacy">Privacy Policy</a> and <a href="https://book.luxonmarketing.com/terms">Terms</a>.</p>
         <p class="lx-lp-already" data-lx-booktoggle hidden><button type="button">Already applied? Show call times</button></p>
         <div class="lx-lp-book" id="book" data-lx-book hidden tabindex="-1" aria-labelledby="lx-book-h">
           <p class="lx-lp-kicker">Book your call</p>
@@ -777,8 +821,8 @@
     <div class="lx-lp-wrap lx-lp-foot__in">
       <p class="lx-lp-foot__brand"><img class="lx-lp-logo lx-lp-logo--sm" src="https://call.luxonmarketing.com/brand/luxon-wordmark-gold-on-dark.png" alt="Luxon" width="900" height="195" loading="lazy" decoding="async"></p>
       <nav aria-label="Legal">
-        <a href="/privacy">Privacy Policy</a>
-        <a href="/terms">Terms</a>
+        <a href="https://book.luxonmarketing.com/privacy">Privacy Policy</a>
+        <a href="https://book.luxonmarketing.com/terms">Terms</a>
         <a href="#" data-lx-mail hidden></a>
       </nav>
       <p>&copy; <span data-lx-year>2026</span> Luxon. All rights reserved.</p>
@@ -842,7 +886,7 @@
       var src = img.getAttribute('data-lx-src');
       var slot = img.closest('[data-lx-slot]') || img.parentNode;
       if (isPlaceholder(src)) {
-        if (!preview) { (slot.closest('.lx-lp-card, .lx-lp-photo') || slot).hidden = true; return; }
+        if (!preview) { (slot.hasAttribute('data-lx-optional-shot') ? slot : (slot.closest('.lx-lp-card, .lx-lp-photo') || slot)).hidden = true; return; }
         slot.classList.add('is-empty');
         slot.setAttribute('data-lx-need', src.replace(/^\s*\[|\]\s*$/g, ''));
         if (slot.tagName === 'BUTTON') slot.disabled = true;
@@ -1172,22 +1216,48 @@
     var quiz = root.querySelector('[data-lx-quiz]');
     if (quiz) {
       var qs = quiz.querySelectorAll('.lx-lp-q'), n = quiz.querySelector('[data-lx-qn]'),
-          msg = quiz.querySelector('[data-lx-qmsg]'), cta = quiz.querySelector('[data-lx-qcta]');
-      var copy = ["Tap what's true for your business.",
-        "Then you're exactly who we built this for.",
-        "Two out of five. That's a fixable pipeline.",
-        "That's exactly what we fix.",
-        "That's exactly what we fix. Let's talk.",
-        "All five. You're who we built this for."];
+          msg = quiz.querySelector('[data-lx-qmsg]'), cta = null;
+      var copy = null;
       Array.prototype.forEach.call(qs, function (b) {
         b.addEventListener('click', function () {
           b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
           var c = quiz.querySelectorAll('.lx-lp-q[aria-pressed="true"]').length;
           n.innerHTML = c + '<small>/5</small>';
-          msg.textContent = copy[c];
-          if (cta) cta.hidden = c === 0;
+          msg.textContent = c >= 3 ? "That's who we built this for. Let's talk." : "If you checked 3 or more, let's talk.";
         });
       });
+    }
+    /* Hero question: remember the answer, carry it into the survey if a field key is set, open the application. */
+    var q1 = root.querySelector('[data-lx-q1]');
+    if (q1) {
+      var key = (root.getAttribute('data-lx-prefill-key') || '').trim();
+      Array.prototype.forEach.call(q1.querySelectorAll('[data-lx-size]'), function (b) {
+        b.setAttribute('aria-pressed', 'false');
+        b.addEventListener('click', function () {
+          Array.prototype.forEach.call(q1.querySelectorAll('[data-lx-size]'), function (o) { o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); });
+          var val = b.getAttribute('data-lx-size');
+          try { sessionStorage.setItem('lx_project_size', val); } catch (_) {}
+          if (key && !/^\[/.test(key)) {
+            var slot = root.querySelector('[data-lx-survey]');
+            if (slot) {
+              var base = slot.getAttribute('data-lx-survey').split('?')[0];
+              var url = base + '?' + encodeURIComponent(key) + '=' + encodeURIComponent(val);
+              slot.setAttribute('data-lx-survey', url);
+              var ifr = slot.querySelector('iframe');
+              if (ifr) ifr.src = url;
+            }
+          }
+          var cta = root.querySelector('.lx-lp-hero a[data-lx-cta]');
+          if (cta) cta.click();
+        });
+      });
+    }
+    /* JZ dates: shown only when both are real values. */
+    var js = root.getAttribute('data-lx-jz-start') || '', je = root.getAttribute('data-lx-jz-end') || '';
+    if (js && je && !/^\s*\[/.test(js) && !/^\s*\[/.test(je)) {
+      Array.prototype.forEach.call(root.querySelectorAll('[data-lx-jz-start-out]'), function (e) { e.textContent = js; });
+      Array.prototype.forEach.call(root.querySelectorAll('[data-lx-jz-end-out]'), function (e) { e.textContent = je; });
+      Array.prototype.forEach.call(root.querySelectorAll('[data-lx-jz-dates]'), function (e) { e.hidden = false; });
     }
     var tl = root.querySelector('[data-lx-tl]');
     if (tl && 'IntersectionObserver' in window) {
