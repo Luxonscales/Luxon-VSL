@@ -19,18 +19,19 @@
      ===================================================================== -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,600..900&family=Inter:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,600..900&family=Inter:wght@400;500;600&display=swap"></noscript>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap"></noscript>
 
 <style>
 /* ---------- tokens and a reset that stops at the wrapper ---------- */
 .lx-lp{
-  --lx-bg:#141210; --lx-card:#1C1917; --lx-card-2:#23201C;
-  --lx-text:#F5F0E8; --lx-muted:#A8A29E; --lx-faint:#8C8580;
-  --lx-gold:#C9A55C; --lx-gold-hi:#DAB977; --lx-ink:#141210;
-  --lx-line:rgba(245,240,232,.10); --lx-line-2:rgba(245,240,232,.18);
-  --lx-r:8px; --lx-pad:clamp(20px,5.2vw,48px); --lx-max:1120px;
-  --lx-display:"Archivo","Arial Narrow","Helvetica Neue",Arial,sans-serif;
+  --lx-bg:#0A0A0B; --lx-bg-2:#0F0F11; --lx-card:#141416; --lx-card-2:#1A1A1D;
+  --lx-glass:rgba(255,255,255,.035); --lx-glass-2:rgba(255,255,255,.06);
+  --lx-text:#F7F4EE; --lx-muted:#A5A29C; --lx-faint:#8E8B85;
+  --lx-gold:#C9A55C; --lx-gold-hi:#E8CB8A; --lx-gold-lo:#9C7C3C; --lx-ink:#0A0A0B;
+  --lx-line:rgba(255,255,255,.08); --lx-line-2:rgba(255,255,255,.14); --lx-gold-line:rgba(201,165,92,.38);
+  --lx-r:18px; --lx-r-sm:12px; --lx-pad:clamp(18px,5vw,40px); --lx-max:1180px;
+  --lx-display:"Plus Jakarta Sans","Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
   --lx-body:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   --lx-ease:cubic-bezier(.16,1,.3,1);
   position:relative; isolation:isolate;
@@ -50,299 +51,330 @@
 .lx-lp a{text-decoration:none;cursor:pointer}
 .lx-lp button{cursor:pointer;-webkit-appearance:none;appearance:none}
 .lx-lp strong,.lx-lp b{font-weight:600}
+.lx-lp em{font-style:normal}
 .lx-lp [hidden]{display:none !important}
 .lx-lp :focus{outline:none}
-.lx-lp :focus-visible{outline:3px solid var(--lx-gold);outline-offset:3px;border-radius:4px}
+.lx-lp :focus-visible{outline:3px solid var(--lx-gold);outline-offset:3px;border-radius:6px}
 .lx-lp .lx-lp-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* ---------- layout ---------- */
 .lx-lp .lx-lp-wrap{width:100%;max-width:var(--lx-max);margin-inline:auto;padding-inline:var(--lx-pad)}
-.lx-lp .lx-lp-sec{position:relative;padding-block:clamp(72px,11vw,128px);border-top:1px solid var(--lx-line)}
-.lx-lp .lx-lp-sec--card{background:var(--lx-card)}
+.lx-lp .lx-lp-sec{position:relative;padding-block:clamp(64px,8.5vw,108px)}
+.lx-lp .lx-lp-sec + .lx-lp-sec::before{content:"";position:absolute;top:0;left:50%;width:min(var(--lx-max),92%);height:1px;transform:translateX(-50%);
+  background:linear-gradient(90deg,transparent,var(--lx-line-2),transparent)}
+.lx-lp .lx-lp-head{text-align:center;max-width:820px;margin-inline:auto}
+.lx-lp .lx-lp-head .lx-lp-lede{margin-inline:auto}
 
 /* ---------- type ---------- */
-.lx-lp .lx-lp-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:22px;
-  font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--lx-gold)}
-.lx-lp .lx-lp-eyebrow span{color:var(--lx-faint);font-variant-numeric:tabular-nums}
-.lx-lp .lx-lp-h1,.lx-lp .lx-lp-h2,.lx-lp .lx-lp-display{
-  font-family:var(--lx-display); font-weight:800; text-transform:uppercase;
-  font-stretch:78%; font-variation-settings:"wdth" 78;
-  letter-spacing:-.01em; text-wrap:balance; overflow-wrap:break-word;
-}
-.lx-lp .lx-lp-h1{font-size:clamp(2.75rem,11.4vw,5.9rem);line-height:.92}
-.lx-lp .lx-lp-h2{font-size:clamp(2.1rem,7.4vw,3.9rem);line-height:.96;max-width:18ch}
-.lx-lp .lx-lp-h3{font-weight:600;font-size:1.14rem;line-height:1.35}
-.lx-lp .lx-lp-lede{margin-top:22px;max-width:42ch;font-size:clamp(1.06rem,1.35vw,1.22rem);line-height:1.6;color:var(--lx-muted)}
-.lx-lp .lx-lp-muted{color:var(--lx-muted)}
+.lx-lp .lx-lp-kicker{display:inline-flex;align-items:center;justify-content:center;gap:14px;margin-bottom:22px;
+  font-size:12px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--lx-gold)}
+.lx-lp .lx-lp-kicker::before,.lx-lp .lx-lp-kicker::after{content:"";width:28px;height:1px;background:linear-gradient(90deg,transparent,var(--lx-gold))}
+.lx-lp .lx-lp-kicker::after{transform:scaleX(-1)}
+.lx-lp .lx-lp-h1,.lx-lp .lx-lp-h2{font-family:var(--lx-display);font-weight:800;letter-spacing:-.035em;text-wrap:balance;overflow-wrap:break-word}
+.lx-lp .lx-lp-h1{font-size:clamp(2.7rem,9.6vw,5.6rem);line-height:1.0}
+.lx-lp .lx-lp-h2{font-size:clamp(2rem,6.2vw,3.5rem);line-height:1.06}
+.lx-lp .lx-lp-h3{font-family:var(--lx-display);font-weight:700;font-size:1.12rem;line-height:1.35;letter-spacing:-.01em}
+.lx-lp .lx-lp-gold{display:inline;background:linear-gradient(100deg,var(--lx-gold-hi) 0%,var(--lx-gold) 45%,#B48A3E 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--lx-gold)}
+.lx-lp .lx-lp-lede{margin-top:22px;max-width:46ch;font-size:clamp(1.05rem,1.4vw,1.2rem);line-height:1.62;color:var(--lx-muted)}
+.lx-lp .lx-lp-lede b{color:var(--lx-text);font-weight:600}
 .lx-lp .lx-lp-micro{margin-top:14px;font-size:13.5px;color:var(--lx-faint)}
+.lx-lp .lx-lp-note{margin:28px auto 0;max-width:70ch;font-size:13.5px;color:var(--lx-faint);text-align:center}
 
-/* ---------- buttons ---------- */
+/* ---------- buttons: gold pill with an arrow chip ---------- */
 .lx-lp .lx-lp-btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:12px;
-  min-height:56px;padding:0 30px;border-radius:var(--lx-r);
-  background:var(--lx-gold);color:var(--lx-ink);
-  font-weight:600;font-size:16px;line-height:1.2;letter-spacing:.005em;text-align:center;
-  box-shadow:0 0 0 rgba(201,165,92,0);
-  transition:background-color .35s var(--lx-ease),transform .35s var(--lx-ease),box-shadow .35s var(--lx-ease);
+  position:relative;display:inline-flex;align-items:center;justify-content:center;gap:14px;
+  min-height:58px;padding:0 10px 0 28px;border-radius:999px;
+  background:linear-gradient(180deg,var(--lx-gold-hi),var(--lx-gold) 60%,#B8934B);color:var(--lx-ink);
+  font-family:var(--lx-display);font-weight:700;font-size:16.5px;line-height:1.2;letter-spacing:-.005em;text-align:center;
+  box-shadow:0 0 0 1px rgba(232,203,138,.5) inset,0 1px 0 rgba(255,255,255,.35) inset,0 14px 40px -12px rgba(201,165,92,.55),0 0 60px -10px rgba(201,165,92,.35);
+  transition:transform .35s var(--lx-ease),box-shadow .35s var(--lx-ease),filter .35s;
 }
 .lx-lp .lx-lp-btn svg{width:18px;height:18px;flex:none;transition:transform .35s var(--lx-ease)}
-.lx-lp .lx-lp-btn:hover{background:var(--lx-gold-hi);transform:translateY(-1px);box-shadow:0 14px 34px -14px rgba(201,165,92,.6)}
-.lx-lp .lx-lp-btn:hover svg{transform:translateX(4px)}
+.lx-lp .lx-lp-btn > svg{display:grid;box-sizing:content-box;width:18px;height:18px;padding:10px;border-radius:50%;background:var(--lx-ink);color:var(--lx-gold-hi)}
+.lx-lp .lx-lp-btn:hover{transform:translateY(-2px);filter:brightness(1.04);box-shadow:0 0 0 1px rgba(232,203,138,.6) inset,0 1px 0 rgba(255,255,255,.4) inset,0 20px 50px -12px rgba(201,165,92,.7),0 0 80px -6px rgba(201,165,92,.45)}
+.lx-lp .lx-lp-btn:hover svg{transform:translateX(3px)}
 .lx-lp .lx-lp-btn:active{transform:translateY(0)}
 .lx-lp .lx-lp-btn:focus-visible{outline-color:var(--lx-text)}
-.lx-lp .lx-lp-actions{margin-top:34px;display:flex;flex-wrap:wrap;gap:14px}
-@media (max-width:599px){.lx-lp .lx-lp-actions .lx-lp-btn{width:100%}}
+.lx-lp .lx-lp-btn--sm{min-height:44px;padding:0 20px;font-size:14.5px;box-shadow:0 0 0 1px rgba(232,203,138,.5) inset,0 8px 24px -10px rgba(201,165,92,.6)}
+.lx-lp .lx-lp-actions{margin-top:36px;display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+@media (max-width:599px){.lx-lp .lx-lp-actions .lx-lp-btn{width:100%;justify-content:space-between}}
+.lx-lp .lx-lp-assure{display:flex;align-items:center;justify-content:center;gap:9px;margin-top:16px;font-size:13.5px;color:var(--lx-muted);text-align:center}
+.lx-lp .lx-lp-dot{flex:none;width:8px;height:8px;border-radius:50%;background:#3fbf6a;box-shadow:0 0 0 4px rgba(63,191,106,.16)}
 
-/* ---------- top bar: a mark, not a menu. No exits off this page. ---------- */
-.lx-lp .lx-lp-top{position:relative;z-index:2;padding-block:22px;border-bottom:1px solid var(--lx-line)}
-.lx-lp .lx-lp-logo{height:26px;width:auto;display:block}
+/* ---------- top bar ---------- */
+.lx-lp .lx-lp-top{position:sticky;top:0;z-index:50;border-bottom:1px solid transparent;transition:background-color .35s,border-color .35s,backdrop-filter .35s}
+.lx-lp .lx-lp-top.is-stuck{background:rgba(10,10,11,.72);border-bottom-color:var(--lx-line);-webkit-backdrop-filter:blur(14px) saturate(1.2);backdrop-filter:blur(14px) saturate(1.2)}
+.lx-lp .lx-lp-top__in{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px}
+.lx-lp .lx-lp-logo{height:24px;width:auto;display:block}
 .lx-lp .lx-lp-logo--sm{height:20px;opacity:.85}
+@media (max-width:599px){.lx-lp .lx-lp-top .lx-lp-btn--sm{display:none}.lx-lp .lx-lp-top__in{justify-content:center;min-height:64px}}
 
 /* ---------- 1 · hero ---------- */
-.lx-lp .lx-lp-hero{position:relative;padding-block:clamp(40px,8vw,96px) clamp(64px,10vw,120px)}
-.lx-lp .lx-lp-hero::before{content:"";position:absolute;top:-30vmax;right:-30vmax;width:80vmax;height:80vmax;z-index:-1;pointer-events:none;
-  background:radial-gradient(closest-side,rgba(201,165,92,.14),rgba(201,165,92,0) 70%)}
-.lx-lp .lx-lp-hero__grid{display:grid;gap:44px;align-items:center}
-.lx-lp .lx-lp-hero__copy > *{animation:lx-rise .9s var(--lx-ease) both}
-.lx-lp .lx-lp-hero__copy > *:nth-child(2){animation-delay:.06s}
-.lx-lp .lx-lp-hero__copy > *:nth-child(3){animation-delay:.12s}
-.lx-lp .lx-lp-hero__copy > *:nth-child(4){animation-delay:.18s}
-.lx-lp .lx-lp-hero__copy > *:nth-child(5){animation-delay:.24s}
-@keyframes lx-rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-@media (min-width:900px){.lx-lp .lx-lp-hero__grid{grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:64px}.lx-lp .lx-lp-hero__grid.is-solo{grid-template-columns:minmax(0,1fr)}}
-.lx-lp .lx-lp-hero__grid.is-solo .lx-lp-h1{max-width:14ch}
+.lx-lp .lx-lp-hero{position:relative;padding-block:clamp(36px,7vw,88px) clamp(40px,6vw,72px);text-align:center;margin-top:-72px;padding-top:calc(72px + clamp(36px,7vw,88px))}
+.lx-lp .lx-lp-hero__bg{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.lx-lp .lx-lp-hero__bg::before{content:"";position:absolute;inset:0;
+  background-image:linear-gradient(var(--lx-line) 1px,transparent 1px),linear-gradient(90deg,var(--lx-line) 1px,transparent 1px);
+  background-size:64px 64px;background-position:center top;opacity:.55;
+  -webkit-mask-image:radial-gradient(ellipse 70% 55% at 50% 0%,#000 30%,transparent 75%);mask-image:radial-gradient(ellipse 70% 55% at 50% 0%,#000 30%,transparent 75%)}
+.lx-lp .lx-lp-hero__bg::after{content:"";position:absolute;left:50%;top:-38vmax;width:110vmax;height:70vmax;transform:translateX(-50%);
+  background:radial-gradient(closest-side,rgba(201,165,92,.22),rgba(201,165,92,.06) 55%,transparent 75%)}
+.lx-lp .lx-lp-hero__in{display:flex;flex-direction:column;align-items:center}
+/* headline and lede paint immediately (they are the LCP); the rest rises in */
+.lx-lp .lx-lp-hero__in > *:nth-child(n+4){animation:lx-rise 1s var(--lx-ease) both;animation-delay:.08s}
+.lx-lp .lx-lp-hero__in > *:nth-child(n+6){animation-delay:.18s}
+@keyframes lx-rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.lx-lp .lx-lp-hero .lx-lp-h1{max-width:13ch}
+.lx-lp .lx-lp-hero .lx-lp-lede{margin-inline:auto;max-width:52ch}
+.lx-lp .lx-lp-guar-pill{display:inline-flex;align-items:center;gap:10px;margin-top:22px;padding:10px 18px 10px 12px;border-radius:999px;
+  border:1px solid var(--lx-gold-line);background:linear-gradient(180deg,rgba(201,165,92,.12),rgba(201,165,92,.04));
+  font-size:14.5px;font-weight:600;line-height:1.35;color:var(--lx-gold-hi);text-align:left}
+.lx-lp .lx-lp-guar-pill svg{flex:none;width:22px;height:22px;padding:4px;border-radius:50%;background:rgba(201,165,92,.18);color:var(--lx-gold-hi);box-sizing:content-box}
+.lx-lp .lx-lp-hero__media{width:100%;max-width:420px;margin-top:44px}
+.lx-lp .lx-lp-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;width:100%;max-width:1040px;margin-top:56px;text-align:left}
+@media (min-width:900px){.lx-lp .lx-lp-stats{grid-template-columns:1.3fr 1fr 1fr 1fr;gap:14px}}
+.lx-lp .lx-lp-stat-card{position:relative;padding:20px 18px 18px;border-radius:var(--lx-r);border:1px solid var(--lx-line);
+  background:linear-gradient(180deg,var(--lx-glass-2),var(--lx-glass));-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.lx-lp .lx-lp-stat-card b{display:block;font-family:var(--lx-display);font-weight:800;font-size:clamp(1.75rem,5.4vw,2.35rem);line-height:1;letter-spacing:-.03em;color:var(--lx-gold-hi);font-variant-numeric:tabular-nums}
+.lx-lp .lx-lp-stat-card span{display:block;margin-top:10px;font-size:14px;font-weight:600;line-height:1.35}
+.lx-lp .lx-lp-stat-card i{display:block;margin-top:6px;font-style:normal;font-size:12px;line-height:1.4;color:var(--lx-faint)}
+.lx-lp .lx-lp-stat-card--hot{grid-column:1/-1;border-color:var(--lx-gold-line);
+  background:radial-gradient(120% 140% at 0% 0%,rgba(201,165,92,.18),transparent 55%),linear-gradient(180deg,var(--lx-glass-2),var(--lx-glass));
+  box-shadow:0 30px 80px -40px rgba(201,165,92,.45)}
+@media (min-width:900px){.lx-lp .lx-lp-stat-card--hot{grid-column:auto}}
+.lx-lp .lx-lp-stat-card--hot b{font-size:clamp(2.4rem,7vw,3rem)}
+.lx-lp .lx-lp-stats-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 18px;margin-top:18px;font-size:13px;color:var(--lx-faint)}
+.lx-lp .lx-lp-stats-foot a{color:var(--lx-text);font-weight:600;text-decoration:underline;text-decoration-color:rgba(201,165,92,.55);text-underline-offset:4px}
+.lx-lp .lx-lp-heroq{display:flex;align-items:center;gap:14px;margin-top:30px;max-width:560px;padding:12px 18px 12px 12px;border-radius:999px;
+  border:1px solid var(--lx-line);background:var(--lx-glass);text-align:left;transition:border-color .3s}
+.lx-lp .lx-lp-heroq:hover{border-color:var(--lx-gold-line)}
+.lx-lp .lx-lp-heroq__play{flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--lx-gold);color:var(--lx-ink)}
+.lx-lp .lx-lp-heroq__play svg{width:14px;height:14px;margin-left:2px}
+.lx-lp .lx-lp-heroq__t{display:block;font-size:14.5px;line-height:1.4;color:var(--lx-text)}
+.lx-lp .lx-lp-heroq__c{display:block;margin-top:2px;font-size:12px;color:var(--lx-muted)}
 
-/* ---------- video box (hero and testimonial) ---------- */
+/* ---------- video box ---------- */
 .lx-lp .lx-lp-embed{position:relative;width:100%;aspect-ratio:4/5;border-radius:var(--lx-r);overflow:hidden;
-  background:linear-gradient(160deg,#211d19,#161412);border:1px solid var(--lx-line);
-  box-shadow:0 40px 90px -40px rgba(0,0,0,.8),0 0 0 1px rgba(0,0,0,.4)}
+  background:linear-gradient(160deg,#1b1b1e,#111113);border:1px solid var(--lx-line);
+  box-shadow:0 40px 90px -40px rgba(0,0,0,.9)}
 .lx-lp .lx-lp-embed[data-lx-ratio="16/9"]{aspect-ratio:16/9}
 .lx-lp .lx-lp-embed[data-lx-ratio="9/16"]{aspect-ratio:9/16}
 .lx-lp .lx-lp-embed[data-lx-ratio="1/1"]{aspect-ratio:1/1}
 .lx-lp .lx-lp-embed__play{position:absolute;inset:0;width:100%;height:100%;display:grid;place-items:center}
 .lx-lp .lx-lp-embed__poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s var(--lx-ease),filter .5s}
-.lx-lp .lx-lp-embed__play:hover .lx-lp-embed__poster{transform:scale(1.025);filter:brightness(.92)}
-.lx-lp .lx-lp-embed__icon{position:relative;width:78px;height:78px;border-radius:50%;background:var(--lx-gold);
+.lx-lp .lx-lp-embed__play:hover .lx-lp-embed__poster{transform:scale(1.03);filter:brightness(.9)}
+.lx-lp .lx-lp-embed__icon{position:relative;width:68px;height:68px;border-radius:50%;
+  background:rgba(10,10,11,.45);border:1px solid rgba(255,255,255,.35);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
   box-shadow:0 18px 44px -12px rgba(0,0,0,.7);transition:transform .4s var(--lx-ease),background-color .3s}
-.lx-lp .lx-lp-embed__icon::after{content:"";position:absolute;left:52%;top:50%;transform:translate(-40%,-50%);
-  border-style:solid;border-width:12px 0 12px 19px;border-color:transparent transparent transparent var(--lx-ink)}
-.lx-lp .lx-lp-embed__play:hover .lx-lp-embed__icon{transform:scale(1.06);background:var(--lx-gold-hi)}
+.lx-lp .lx-lp-embed__icon::after{content:"";position:absolute;left:53%;top:50%;transform:translate(-40%,-50%);
+  border-style:solid;border-width:11px 0 11px 17px;border-color:transparent transparent transparent #fff}
+.lx-lp .lx-lp-embed__play:hover .lx-lp-embed__icon{transform:scale(1.08);background:var(--lx-gold);border-color:var(--lx-gold-hi)}
+.lx-lp .lx-lp-embed__play:hover .lx-lp-embed__icon::after{border-left-color:var(--lx-ink)}
 .lx-lp .lx-lp-embed__play:focus-visible{outline-offset:-4px}
 .lx-lp .lx-lp-embed__frame{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000;object-fit:contain}
 
-/* ---------- any slot still waiting for its media ---------- */
+/* ---------- any slot still waiting for its media (preview only) ---------- */
 .lx-lp [data-lx-slot].is-empty,.lx-lp .lx-lp-embed.is-empty{
   display:grid;place-items:center;text-align:center;padding:20px;
-  background:repeating-linear-gradient(135deg,rgba(245,240,232,.025) 0 12px,transparent 12px 24px),var(--lx-card);
+  background:repeating-linear-gradient(135deg,rgba(255,255,255,.025) 0 12px,transparent 12px 24px),var(--lx-card);
   border:1px dashed var(--lx-line-2)}
 .lx-lp [data-lx-slot].is-empty img{display:none}
 .lx-lp [data-lx-slot].is-empty::after,.lx-lp .lx-lp-embed.is-empty::after{
   content:attr(data-lx-need);max-width:28ch;font-size:12px;line-height:1.5;letter-spacing:.12em;text-transform:uppercase;color:var(--lx-faint)}
 
-/* ---------- 2 · who this is for ---------- */
-.lx-lp .lx-lp-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
-.lx-lp .lx-lp-chips li{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 20px;
-  border:1px solid var(--lx-line-2);border-radius:999px;background:var(--lx-card);font-weight:500;font-size:15.5px}
-.lx-lp .lx-lp-chips li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--lx-gold)}
+/* ---------- glass card, shared ---------- */
+.lx-lp .lx-lp-glass{border:1px solid var(--lx-line);border-radius:var(--lx-r);
+  background:linear-gradient(180deg,var(--lx-glass-2),var(--lx-glass));box-shadow:0 1px 0 rgba(255,255,255,.04) inset}
 
-/* ---------- 3 · proof ---------- */
-.lx-lp .lx-lp-proof{display:grid;gap:18px;margin-top:44px}
+/* ---------- testimonials ---------- */
+.lx-lp .lx-lp-testis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;max-width:720px;margin:44px auto 0}
+@media (min-width:900px){.lx-lp .lx-lp-testis{gap:24px}}
+.lx-lp .lx-lp-tcard{display:flex;flex-direction:column;padding:10px 10px 18px}
+.lx-lp .lx-lp-tcard .lx-lp-embed{border-radius:12px;border:0}
+.lx-lp .lx-lp-tcard figcaption{padding:16px 8px 0}
+.lx-lp .lx-lp-quote{font-family:var(--lx-display);font-weight:600;font-size:clamp(.95rem,2.6vw,1.2rem);line-height:1.4;letter-spacing:-.01em}
+.lx-lp .lx-lp-quote p::before{content:"\201C";color:var(--lx-gold)}
+.lx-lp .lx-lp-quote p::after{content:"\201D";color:var(--lx-gold)}
+.lx-lp .lx-lp-cite{margin-top:12px;font-size:12px;line-height:1.45;color:var(--lx-faint)}
+.lx-lp .lx-lp-cite b{display:block;color:var(--lx-muted);font-weight:600;font-size:13px}
+@media (max-width:599px){.lx-lp .lx-lp-tcard{padding:6px 6px 14px}.lx-lp .lx-lp-tcard figcaption{padding:12px 4px 0}}
+
+/* ---------- sound familiar? (tap what's true) ---------- */
+.lx-lp .lx-lp-quiz{display:grid;gap:40px;align-items:center}
+@media (min-width:960px){.lx-lp .lx-lp-quiz{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:72px}}
+.lx-lp .lx-lp-quiz .lx-lp-head{text-align:left;margin:0}
+@media (max-width:959px){.lx-lp .lx-lp-quiz .lx-lp-head{text-align:center;margin-inline:auto}.lx-lp .lx-lp-quiz .lx-lp-head .lx-lp-lede{margin-inline:auto}}
+.lx-lp .lx-lp-qlist{display:grid;gap:10px}
+.lx-lp .lx-lp-q{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;min-height:64px;padding:14px 16px 14px 18px;text-align:left;
+  border-radius:14px;border:1px solid var(--lx-line);background:linear-gradient(180deg,var(--lx-glass-2),var(--lx-glass));
+  font-size:15.5px;font-weight:500;line-height:1.4;transition:border-color .25s,background-color .25s,transform .25s var(--lx-ease)}
+.lx-lp .lx-lp-q:hover{border-color:var(--lx-line-2);transform:translateY(-1px)}
+.lx-lp .lx-lp-q em{color:var(--lx-gold-hi);font-weight:600}
+.lx-lp .lx-lp-q__box{flex:none;display:grid;place-items:center;width:26px;height:26px;border-radius:8px;border:1.5px solid var(--lx-line-2);transition:all .25s var(--lx-ease)}
+.lx-lp .lx-lp-q__box svg{width:15px;height:15px;opacity:0;transform:scale(.6);transition:all .25s var(--lx-ease);color:var(--lx-ink)}
+.lx-lp .lx-lp-q[aria-pressed="true"]{border-color:var(--lx-gold-line);background:linear-gradient(180deg,rgba(201,165,92,.14),rgba(201,165,92,.05))}
+.lx-lp .lx-lp-q[aria-pressed="true"] .lx-lp-q__box{background:var(--lx-gold);border-color:var(--lx-gold)}
+.lx-lp .lx-lp-q[aria-pressed="true"] .lx-lp-q__box svg{opacity:1;transform:none}
+.lx-lp .lx-lp-qscore{display:flex;align-items:center;gap:16px;margin-top:6px;padding:16px 18px;border-radius:14px;border:1px dashed var(--lx-line-2)}
+.lx-lp .lx-lp-qscore b{font-family:var(--lx-display);font-weight:800;font-size:2rem;line-height:1;color:var(--lx-gold-hi);font-variant-numeric:tabular-nums;min-width:2.6ch}
+.lx-lp .lx-lp-qscore b small{font-size:.9rem;color:var(--lx-faint)}
+.lx-lp .lx-lp-qscore p{font-size:15px;font-weight:600}
+.lx-lp .lx-lp-qcta{margin-top:14px;justify-content:flex-start}
+@media (max-width:959px){.lx-lp .lx-lp-qcta{justify-content:center}}
+
+/* ---------- how it works: timeline + phone ---------- */
+.lx-lp .lx-lp-flow{display:grid;gap:48px;margin-top:56px;align-items:start}
+@media (min-width:960px){.lx-lp .lx-lp-flow{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:72px}}
+.lx-lp .lx-lp-tl{position:relative;display:grid;gap:8px}
+.lx-lp .lx-lp-tl::before{content:"";position:absolute;left:27px;top:28px;bottom:28px;width:1px;background:linear-gradient(var(--lx-gold-line),var(--lx-line) 70%)}
+.lx-lp .lx-lp-tl li{position:relative;display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:center;padding:12px 16px 12px 0;border-radius:16px;border:1px solid transparent;transition:background-color .45s,border-color .45s}
+.lx-lp .lx-lp-tl__ico{position:relative;z-index:1;display:grid;place-items:center;width:56px;height:56px;border-radius:50%;border:1px solid var(--lx-line-2);background:var(--lx-bg-2);color:var(--lx-gold);transition:all .45s var(--lx-ease)}
+.lx-lp .lx-lp-tl__ico svg{width:22px;height:22px}
+.lx-lp .lx-lp-tl p{margin-top:3px;font-size:14.5px;color:var(--lx-muted)}
+.lx-lp .lx-lp-tl li.is-on{border-color:var(--lx-gold-line);background:linear-gradient(90deg,rgba(201,165,92,.12),rgba(201,165,92,.02))}
+.lx-lp .lx-lp-tl li.is-on .lx-lp-tl__ico{background:var(--lx-gold);color:var(--lx-ink);border-color:var(--lx-gold-hi);box-shadow:0 0 0 6px rgba(201,165,92,.14),0 10px 30px -8px rgba(201,165,92,.6)}
+.lx-lp .lx-lp-tl li:last-child .lx-lp-tl__ico{color:var(--lx-gold-hi)}
+.lx-lp .lx-lp-flow__phone{position:relative}
+@media (min-width:960px){.lx-lp .lx-lp-flow__phone{position:sticky;top:110px}}
+.lx-lp .lx-lp-flow__tag{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:14px;font-size:11.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--lx-muted)}
+.lx-lp .lx-lp-flow__tag .lx-lp-dot{background:#e5484d;box-shadow:0 0 0 4px rgba(229,72,77,.18)}
+.lx-lp .lx-lp-flow__cap{margin-top:14px;text-align:center;font-size:12.5px;color:var(--lx-faint)}
+
+/* ---------- phone frame ---------- */
+.lx-lp .lx-lp-phone{position:relative;width:100%;max-width:300px;margin-inline:auto;padding:9px;border-radius:40px;
+  background:linear-gradient(160deg,#2a2a2e,#121214 40%,#1c1c1f);
+  box-shadow:0 0 0 1px rgba(255,255,255,.08) inset,0 0 0 1px #000,0 50px 100px -40px rgba(0,0,0,.95),0 0 90px -30px rgba(201,165,92,.35)}
+.lx-lp .lx-lp-phone::before{content:"";position:absolute;top:18px;left:50%;z-index:3;width:30%;height:22px;transform:translateX(-50%);border-radius:999px;background:#000;pointer-events:none}
+.lx-lp .lx-lp-phone .lx-lp-embed{border-radius:32px;border:0;box-shadow:none}
+
+/* ---------- the ads ---------- */
+.lx-lp .lx-lp-reel{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;margin-top:52px}
+.lx-lp .lx-lp-reel__card{margin:0;display:flex;flex-direction:column;align-items:center;gap:16px}
+.lx-lp .lx-lp-reel__card .lx-lp-phone{max-width:260px;padding:7px;border-radius:34px}
+.lx-lp .lx-lp-reel__card .lx-lp-phone::before{top:14px;height:18px}
+.lx-lp .lx-lp-reel__card .lx-lp-phone .lx-lp-embed{border-radius:28px}
+.lx-lp .lx-lp-reel__card figcaption{text-align:center}
+.lx-lp .lx-lp-reel__card figcaption b{display:block;font-family:var(--lx-display);font-size:15px;font-weight:700}
+.lx-lp .lx-lp-reel__card figcaption span{display:block;margin-top:2px;font-size:12.5px;color:var(--lx-faint)}
+.lx-lp .lx-lp-swipe{display:none}
+@media (max-width:899px){
+  .lx-lp .lx-lp-reel{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin:28px calc(-1*var(--lx-pad)) 0;padding:0 var(--lx-pad) 10px;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-padding-inline:var(--lx-pad)}
+  .lx-lp .lx-lp-reel::-webkit-scrollbar{display:none}
+  .lx-lp .lx-lp-reel__card{flex:0 0 64%;scroll-snap-align:start}
+  .lx-lp .lx-lp-swipe{display:block;margin-top:20px;text-align:center;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--lx-gold)}
+}
+
+/* ---------- proof ---------- */
+.lx-lp .lx-lp-proof{display:grid;gap:16px;margin-top:52px}
 @media (min-width:768px){.lx-lp .lx-lp-proof{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (min-width:1080px){.lx-lp .lx-lp-proof{grid-template-columns:repeat(3,minmax(0,1fr))}}
-.lx-lp .lx-lp-card{display:flex;flex-direction:column;background:var(--lx-card);border:1px solid var(--lx-line);border-radius:var(--lx-r);overflow:hidden}
-.lx-lp .lx-lp-shot{position:relative;display:block;width:100%;aspect-ratio:16/10;overflow:hidden;background:#0e0d0b;border-bottom:1px solid var(--lx-line)}
+.lx-lp .lx-lp-card{display:flex;flex-direction:column;overflow:hidden;padding:8px}
+.lx-lp .lx-lp-shot{position:relative;display:block;width:100%;aspect-ratio:16/10;overflow:hidden;border-radius:12px;background:#0d0d0f}
 .lx-lp .lx-lp-shot img{width:100%;height:100%;object-fit:cover;object-position:center;transform:scale(var(--z,1));transition:transform .7s var(--lx-ease)}
 .lx-lp .lx-lp-shot:hover img{transform:scale(calc(var(--z,1) * 1.04))}
-.lx-lp .lx-lp-shot__hint{position:absolute;right:10px;bottom:10px;padding:6px 10px;border-radius:6px;
-  background:rgba(20,18,16,.82);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--lx-text)}
+.lx-lp .lx-lp-shot__hint{position:absolute;right:10px;bottom:10px;padding:6px 10px;border-radius:999px;
+  background:rgba(10,10,11,.75);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);font-size:11px;font-weight:600;letter-spacing:.06em;color:var(--lx-text)}
 .lx-lp .lx-lp-shot:disabled{cursor:default}
 .lx-lp .lx-lp-shot:disabled .lx-lp-shot__hint{display:none}
-.lx-lp .lx-lp-card__body{padding:26px 24px 28px}
-.lx-lp .lx-lp-stat{font-family:var(--lx-display);font-weight:800;font-stretch:78%;font-variation-settings:"wdth" 78;
-  font-size:clamp(2.3rem,9vw,3.3rem);line-height:.95;color:var(--lx-gold);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
-.lx-lp .lx-lp-stat-label{margin-top:12px;font-weight:600;font-size:15.5px}
-.lx-lp .lx-lp-context{margin-top:6px;font-size:13.5px;color:var(--lx-faint);letter-spacing:.02em}
-.lx-lp .lx-lp-note{margin-top:26px;font-size:13.5px;color:var(--lx-faint);max-width:70ch}
+.lx-lp .lx-lp-card__body{padding:20px 14px 14px}
+.lx-lp .lx-lp-stat{font-family:var(--lx-display);font-weight:800;font-size:clamp(2.1rem,7vw,2.8rem);line-height:1;letter-spacing:-.03em;color:var(--lx-gold-hi);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.lx-lp .lx-lp-stat-label{margin-top:10px;font-weight:600;font-size:15px}
+.lx-lp .lx-lp-rev{margin-top:6px;font-weight:600;font-size:14.5px;color:var(--lx-gold)}
+.lx-lp .lx-lp-context{margin-top:8px;font-size:13px;color:var(--lx-faint)}
+.lx-lp .lx-lp-walk{margin:20px auto 0;max-width:900px}
+.lx-lp .lx-lp-walk figcaption{margin-top:12px;font-size:14px;color:var(--lx-muted);text-align:center}
 
 /* lightbox: native dialog, so it sits in the top layer above anything GHL wraps around the page */
-.lx-lp .lx-lp-lightbox{width:min(96vw,1400px);max-width:none;max-height:92vh;margin:auto;padding:0;overflow:visible;
-  background:transparent;color:var(--lx-text)}
-.lx-lp .lx-lp-lightbox::backdrop{background:rgba(10,9,8,.9);backdrop-filter:blur(4px)}
-.lx-lp .lx-lp-lightbox img{width:100%;height:auto;max-height:86vh;object-fit:contain;border-radius:var(--lx-r);background:#0e0d0b}
-.lx-lp .lx-lp-lightbox__close{position:absolute;top:-52px;right:0;width:44px;height:44px;border-radius:50%;
-  display:grid;place-items:center;background:var(--lx-card);border:1px solid var(--lx-line-2)}
+.lx-lp .lx-lp-lightbox{width:min(96vw,1400px);max-width:none;max-height:92vh;margin:auto;padding:0;overflow:visible;background:transparent;color:var(--lx-text)}
+.lx-lp .lx-lp-lightbox::backdrop{background:rgba(5,5,6,.9);backdrop-filter:blur(4px)}
+.lx-lp .lx-lp-lightbox img{width:100%;height:auto;max-height:86vh;object-fit:contain;border-radius:14px;background:#0d0d0f}
+.lx-lp .lx-lp-lightbox__close{position:absolute;top:-52px;right:0;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--lx-card);border:1px solid var(--lx-line-2)}
 .lx-lp .lx-lp-lightbox__close svg{width:18px;height:18px}
 .lx-lp .lx-lp-lightbox[open]{animation:lx-fade .3s var(--lx-ease)}
 @keyframes lx-fade{from{opacity:0;transform:scale(.985)}to{opacity:1;transform:none}}
 
+/* ---------- guarantee ---------- */
+.lx-lp .lx-lp-guar{position:relative;max-width:980px;margin-inline:auto;padding:clamp(36px,6vw,64px) clamp(20px,5vw,56px);text-align:center;border-radius:28px;overflow:hidden;
+  border:1px solid var(--lx-gold-line);background:radial-gradient(90% 120% at 50% 0%,rgba(201,165,92,.16),transparent 60%),linear-gradient(180deg,var(--lx-glass-2),var(--lx-glass));
+  box-shadow:0 60px 120px -60px rgba(201,165,92,.4)}
+.lx-lp .lx-lp-guar__badge{display:grid;place-items:center;width:64px;height:64px;margin:0 auto 22px;border-radius:20px;background:linear-gradient(180deg,var(--lx-gold-hi),var(--lx-gold));color:var(--lx-ink);box-shadow:0 14px 40px -10px rgba(201,165,92,.7)}
+.lx-lp .lx-lp-guar__badge svg{width:30px;height:30px}
+.lx-lp .lx-lp-guar .lx-lp-h2{max-width:20ch;margin-inline:auto}
+.lx-lp .lx-lp-guar .lx-lp-lede{margin-inline:auto}
+.lx-lp .lx-lp-terms{display:grid;gap:10px;margin-top:34px;text-align:left}
+@media (min-width:768px){.lx-lp .lx-lp-terms{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.lx-lp .lx-lp-terms li{padding:18px;border-radius:14px;border:1px solid var(--lx-line);background:rgba(10,10,11,.4);font-size:14.5px;line-height:1.45;color:var(--lx-muted)}
+.lx-lp .lx-lp-terms b{display:block;margin-bottom:6px;font-family:var(--lx-display);font-size:1.05rem;font-weight:700;color:var(--lx-text)}
+.lx-lp .lx-lp-trust{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;margin-top:26px}
+.lx-lp .lx-lp-trust li{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;color:var(--lx-muted)}
+.lx-lp .lx-lp-trust svg{width:16px;height:16px;color:var(--lx-gold)}
 
-/* ---------- client-reported revenue line on a proof card ---------- */
-.lx-lp .lx-lp-rev{margin-top:6px;font-weight:600;font-size:15.5px;color:var(--lx-gold)}
+/* ---------- good fit / not a fit ---------- */
+.lx-lp .lx-lp-fit{display:grid;gap:16px;margin-top:52px}
+@media (min-width:768px){.lx-lp .lx-lp-fit{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.lx-lp .lx-lp-fit__col{padding:28px 24px}
+.lx-lp .lx-lp-fit__col--yes{border-color:var(--lx-gold-line);background:radial-gradient(100% 100% at 0% 0%,rgba(201,165,92,.1),transparent 60%),linear-gradient(180deg,var(--lx-glass-2),var(--lx-glass))}
+.lx-lp .lx-lp-fit__title{display:flex;align-items:center;gap:10px;margin-bottom:12px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase}
+.lx-lp .lx-lp-fit__col--yes .lx-lp-fit__title{color:var(--lx-gold)}
+.lx-lp .lx-lp-fit__col--no .lx-lp-fit__title{color:var(--lx-muted)}
+.lx-lp .lx-lp-fit li{position:relative;padding:13px 0 13px 34px;border-top:1px solid var(--lx-line);font-size:15.5px}
+.lx-lp .lx-lp-fit li:first-child{border-top:0}
+.lx-lp .lx-lp-fit__col--yes li::before{content:"";position:absolute;left:3px;top:20px;width:13px;height:7px;border-left:2px solid var(--lx-gold);border-bottom:2px solid var(--lx-gold);transform:rotate(-45deg)}
+.lx-lp .lx-lp-fit__col--no li{color:var(--lx-muted)}
+.lx-lp .lx-lp-fit__col--no li::before,.lx-lp .lx-lp-fit__col--no li::after{content:"";position:absolute;left:2px;top:24px;width:14px;height:2px;background:var(--lx-faint);transform:rotate(45deg)}
+.lx-lp .lx-lp-fit__col--no li::after{transform:rotate(-45deg)}
 
-/* ---------- 3b · the guarantee ---------- */
-.lx-lp .lx-lp-guar{margin-top:34px;max-width:720px;padding:28px 26px;border:1px solid rgba(201,165,92,.38);border-radius:var(--lx-r);background:var(--lx-card)}
-.lx-lp .lx-lp-guar .lx-lp-fit__title{color:var(--lx-gold)}
-.lx-lp .lx-lp-guar li{display:grid;grid-template-columns:2.6rem 1fr;gap:10px;padding:14px 0;border-top:1px solid var(--lx-line);font-size:16.5px}
-.lx-lp .lx-lp-guar li:first-child{border-top:0}
-.lx-lp .lx-lp-guar li b{font-family:var(--lx-display);font-weight:800;font-size:14px;letter-spacing:.16em;color:var(--lx-gold);padding-top:3px}
+/* ---------- FAQ ---------- */
+.lx-lp .lx-lp-faq{display:grid;gap:10px;max-width:820px;margin:48px auto 0}
+.lx-lp .lx-lp-faq details{border-radius:14px;border:1px solid var(--lx-line);background:linear-gradient(180deg,var(--lx-glass-2),var(--lx-glass));transition:border-color .3s}
+.lx-lp .lx-lp-faq details[open]{border-color:var(--lx-gold-line)}
+.lx-lp .lx-lp-faq summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:64px;padding:16px 18px 16px 22px;cursor:pointer;font-family:var(--lx-display);font-weight:600;font-size:16.5px;letter-spacing:-.01em}
+.lx-lp .lx-lp-faq summary::-webkit-details-marker{display:none}
+.lx-lp .lx-lp-faq summary::after{content:"";flex:none;width:30px;height:30px;border-radius:50%;border:1px solid var(--lx-line-2);
+  background:linear-gradient(var(--lx-gold),var(--lx-gold)) center/12px 2px no-repeat,linear-gradient(var(--lx-gold),var(--lx-gold)) center/2px 12px no-repeat;transition:transform .35s var(--lx-ease)}
+.lx-lp .lx-lp-faq details[open] summary::after{transform:rotate(45deg)}
+.lx-lp .lx-lp-faq__a{padding:0 60px 20px 22px;color:var(--lx-muted);font-size:15.5px}
+.lx-lp .lx-lp-faq details[open] .lx-lp-faq__a{animation:lx-rise .5s var(--lx-ease) both}
 
-
-/* ---------- proof: the walkthrough block ---------- */
-.lx-lp .lx-lp-walk{margin-top:26px;max-width:900px}
-.lx-lp .lx-lp-walk figcaption{margin-top:12px;font-size:14.5px;color:var(--lx-muted)}
+/* ---------- final CTA ---------- */
+.lx-lp .lx-lp-final{text-align:center}
+.lx-lp .lx-lp-final__panel{position:relative;overflow:hidden;max-width:1040px;margin-inline:auto;padding:clamp(48px,8vw,88px) clamp(20px,5vw,48px);border-radius:32px;border:1px solid var(--lx-line-2);
+  background:radial-gradient(70% 90% at 50% 110%,rgba(201,165,92,.28),transparent 70%),linear-gradient(180deg,var(--lx-glass-2),var(--lx-glass))}
+.lx-lp .lx-lp-final__panel::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(var(--lx-line) 1px,transparent 1px),linear-gradient(90deg,var(--lx-line) 1px,transparent 1px);background-size:48px 48px;
+  -webkit-mask-image:radial-gradient(ellipse 60% 70% at 50% 100%,#000,transparent 70%);mask-image:radial-gradient(ellipse 60% 70% at 50% 100%,#000,transparent 70%)}
+.lx-lp .lx-lp-final .lx-lp-h2{position:relative;margin-inline:auto;max-width:16ch}
+.lx-lp .lx-lp-final .lx-lp-lede{position:relative;margin-inline:auto}
 
 /* ---------- apply + book ---------- */
-.lx-lp .lx-lp-actions--center{justify-content:center;margin-top:40px}
-.lx-lp .lx-lp-sec--testi{padding-top:56px}
+.lx-lp .lx-lp-apply{padding:clamp(72px,10vw,112px) var(--lx-pad) clamp(72px,10vw,112px);scroll-margin-top:72px}
+.lx-lp .lx-lp-apply__in{max-width:760px;margin:0 auto}
 .lx-lp .lx-lp-apply__head{text-align:center;margin-bottom:28px}
-.lx-lp .lx-lp-apply__head .lx-lp-eyebrow{justify-content:center}
-.lx-lp .lx-lp-apply__head .lx-lp-eyebrow span{color:var(--lx-gold)}
-.lx-lp .lx-lp-mini{list-style:none;margin:22px 0 0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;font-size:14px;color:var(--lx-muted)}
-.lx-lp .lx-lp-mini li{display:flex;align-items:center;gap:8px}
-.lx-lp .lx-lp-mini b{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--lx-gold);color:#14110d;font-size:12px;font-weight:700}
-@media (max-width:599px){.lx-lp .lx-lp-mini{flex-direction:column;align-items:flex-start;width:max-content;margin-inline:auto}}
-.lx-lp .lx-lp-consent{margin:14px auto 0;max-width:620px;font-size:12.5px;line-height:1.55;color:var(--lx-faint);text-align:center}
+.lx-lp .lx-lp-mini{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:24px}
+.lx-lp .lx-lp-mini li{display:inline-flex;align-items:center;gap:9px;padding:8px 14px 8px 8px;border-radius:999px;border:1px solid var(--lx-line);background:var(--lx-glass);font-size:13.5px;color:var(--lx-muted)}
+.lx-lp .lx-lp-mini b{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--lx-gold);color:var(--lx-ink);font-size:12px;font-weight:700}
+.lx-lp .lx-lp-apply__card{padding:clamp(10px,2.4vw,22px);border-radius:24px;border:1px solid var(--lx-gold-line);
+  background:radial-gradient(80% 60% at 50% 0%,rgba(201,165,92,.1),transparent 70%),linear-gradient(180deg,var(--lx-glass-2),var(--lx-glass));box-shadow:0 50px 120px -60px rgba(201,165,92,.45)}
+.lx-lp .lx-lp-consent{margin:16px auto 0;max-width:640px;font-size:12px;line-height:1.55;color:var(--lx-faint);text-align:center}
 .lx-lp .lx-lp-consent a{text-decoration:underline;text-underline-offset:3px}
-.lx-lp .lx-lp-apply{padding:56px 16px 72px;scroll-margin-top:24px}
-.lx-lp .lx-lp-apply__in{max-width:720px;margin:0 auto}
-.lx-lp .lx-lp-survey{display:block;width:100%;min-height:470px;border:0;background:transparent}
+.lx-lp .lx-lp-survey{display:block;width:100%;min-height:340px;border:0;background:transparent}
+.lx-lp .lx-lp-survey-slot{min-height:340px}
 .lx-lp .lx-lp-already{margin-top:14px;text-align:center}
 .lx-lp .lx-lp-already button{min-height:44px;padding:0 10px;font-size:14px;color:var(--lx-muted);text-decoration:underline;text-underline-offset:4px}
 .lx-lp .lx-lp-already button:hover{color:var(--lx-text)}
-.lx-lp .lx-lp-book{margin-top:44px;padding-top:40px;border-top:1px solid var(--lx-line);scroll-margin-top:24px}
+.lx-lp .lx-lp-book{margin-top:44px;padding-top:40px;border-top:1px solid var(--lx-line);scroll-margin-top:80px;text-align:center}
 .lx-lp .lx-lp-book:focus{outline:none}
-.lx-lp .lx-lp-book .lx-lp-eyebrow span{color:var(--lx-gold)}
-.lx-lp .lx-lp-cal{margin-top:26px;min-height:760px;border-radius:var(--lx-r);overflow:hidden;background:#fff}
+.lx-lp .lx-lp-cal{margin-top:26px;min-height:760px;border-radius:16px;overflow:hidden;background:#fff}
 .lx-lp .lx-lp-cal iframe{display:block;width:100%;min-height:760px;border:0}
-
 
 /* ---------- decided before paint, so nothing jumps once the script runs ---------- */
 .lx-lp .lx-if-nobook{display:none}
 .lx-lp[data-lx-calendar^="["] .lx-if-book{display:none}
 .lx-lp[data-lx-calendar^="["] .lx-if-nobook{display:inline}
 .lx-lp .lx-lp-hero__media:has(.lx-lp-embed[data-lx-embed^="["]){display:none}
-.lx-lp .lx-lp-hero__panel{display:none}
-.lx-lp .lx-lp-hero__grid:has(.lx-lp-embed[data-lx-embed^="["]) .lx-lp-hero__panel{display:block}
 .lx-lp [data-lx-hide-if-empty]:has(.lx-lp-embed[data-lx-embed^="["]){display:none}
-.lx-lp .lx-lp-survey-slot{min-height:470px}
 
-
-/* ---------- hero: guarantee line, friction reducers, proof panel ---------- */
-.lx-lp .lx-lp-guar-line{display:flex;align-items:flex-start;gap:10px;margin-top:18px;max-width:40ch;font-weight:600;font-size:15px;line-height:1.45;color:var(--lx-gold)}
-.lx-lp .lx-lp-guar-line svg{flex:none;width:18px;height:18px;margin-top:1px}
-.lx-lp .lx-lp-trust{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:20px}
-.lx-lp .lx-lp-trust li{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;color:var(--lx-muted)}
-.lx-lp .lx-lp-trust svg{width:15px;height:15px;color:var(--lx-gold)}
-.lx-lp .lx-lp-hero__panel{position:relative;padding:24px 22px 18px;border:1px solid rgba(201,165,92,.32);border-radius:var(--lx-r);
-  background:linear-gradient(165deg,rgba(201,165,92,.08),rgba(201,165,92,0) 45%),var(--lx-card);box-shadow:0 40px 90px -40px rgba(0,0,0,.85)}
-.lx-lp .lx-lp-panel__head{display:flex;align-items:center;gap:10px;font-size:11.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--lx-muted)}
-.lx-lp .lx-lp-dot{width:8px;height:8px;border-radius:50%;background:#3fbf6a;box-shadow:0 0 0 4px rgba(63,191,106,.18)}
-.lx-lp .lx-lp-panel__rows{margin-top:14px}
-.lx-lp .lx-lp-panel__rows li{display:grid;grid-template-columns:clamp(6.4rem,22vw,7.6rem) 1fr;align-items:baseline;gap:16px;padding:16px 0;border-top:1px solid var(--lx-line)}
-.lx-lp .lx-lp-panel__rows b{font-family:var(--lx-display);font-weight:800;font-stretch:78%;font-variation-settings:"wdth" 78;font-size:clamp(2rem,7vw,2.6rem);line-height:.95;color:var(--lx-gold);font-variant-numeric:tabular-nums}
-.lx-lp .lx-lp-panel__rows span{font-weight:600;font-size:15.5px;line-height:1.3}
-.lx-lp .lx-lp-panel__rows i{display:block;margin-top:4px;font-style:normal;font-weight:400;font-size:12.5px;color:var(--lx-faint)}
-.lx-lp .lx-lp-panel__rows li.lx-lp-panel__hot{grid-template-columns:1fr;gap:8px}
-.lx-lp .lx-lp-panel__hot b{font-size:clamp(2.8rem,10vw,3.6rem)}
-.lx-lp .lx-lp-panel__link{display:inline-flex;align-items:center;min-height:44px;margin-top:4px;font-size:13.5px;font-weight:600;color:var(--lx-text);text-decoration:underline;text-decoration-color:rgba(201,165,92,.5);text-underline-offset:4px}
-.lx-lp .lx-lp-panel__link:hover{color:var(--lx-gold-hi)}
-
-/* ---------- 4 · how it works ---------- */
-.lx-lp .lx-lp-steps{display:grid;gap:14px;margin-top:44px;counter-reset:lx-step}
-.lx-lp .lx-lp-step{position:relative;padding:28px 24px;border:1px solid var(--lx-line);border-radius:var(--lx-r);background:var(--lx-bg)}
-.lx-lp .lx-lp-step__n{display:block;margin-bottom:18px;font-family:var(--lx-display);font-weight:800;font-size:15px;letter-spacing:.2em;color:var(--lx-gold)}
-.lx-lp .lx-lp-step p{margin-top:10px;color:var(--lx-muted);font-size:15.5px}
-@media (min-width:900px){
-  .lx-lp .lx-lp-steps{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-  .lx-lp .lx-lp-step:not(:last-child)::after{content:"";position:absolute;top:44px;right:-18px;width:18px;height:1px;background:var(--lx-line-2)}
-}
-
-/* ---------- 5 · good fit / not a fit ---------- */
-.lx-lp .lx-lp-fit{display:grid;gap:18px;margin-top:44px}
-@media (min-width:768px){.lx-lp .lx-lp-fit{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.lx-lp .lx-lp-fit__col{padding:30px 26px;border-radius:var(--lx-r);border:1px solid var(--lx-line);background:var(--lx-card)}
-.lx-lp .lx-lp-fit__col--yes{border-color:rgba(201,165,92,.38)}
-.lx-lp .lx-lp-fit__title{display:flex;align-items:center;gap:10px;margin-bottom:18px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase}
-.lx-lp .lx-lp-fit__col--yes .lx-lp-fit__title{color:var(--lx-gold)}
-.lx-lp .lx-lp-fit__col--no .lx-lp-fit__title{color:var(--lx-muted)}
-.lx-lp .lx-lp-fit li{position:relative;padding:14px 0 14px 34px;border-top:1px solid var(--lx-line);font-size:16px}
-.lx-lp .lx-lp-fit li:first-child{border-top:0}
-.lx-lp .lx-lp-fit__col--yes li::before{content:"";position:absolute;left:3px;top:21px;width:14px;height:8px;
-  border-left:2px solid var(--lx-gold);border-bottom:2px solid var(--lx-gold);transform:rotate(-45deg)}
-.lx-lp .lx-lp-fit__col--no li{color:var(--lx-muted)}
-.lx-lp .lx-lp-fit__col--no li::before,.lx-lp .lx-lp-fit__col--no li::after{content:"";position:absolute;left:2px;top:25px;width:15px;height:2px;background:var(--lx-faint);transform:rotate(45deg)}
-.lx-lp .lx-lp-fit__col--no li::after{transform:rotate(-45deg)}
-
-/* ---------- 6 · founder ---------- */
-.lx-lp .lx-lp-founder{display:grid;gap:36px;align-items:center}
-@media (min-width:900px){.lx-lp .lx-lp-founder{grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:64px}}
-.lx-lp .lx-lp-photo{position:relative;aspect-ratio:4/5;border-radius:var(--lx-r);overflow:hidden;background:var(--lx-card);border:1px solid var(--lx-line)}
-.lx-lp .lx-lp-photo img{width:100%;height:100%;object-fit:cover}
-.lx-lp .lx-lp-role{margin-top:10px;font-size:13px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--lx-gold)}
-.lx-lp .lx-lp-bio{margin-top:24px;max-width:56ch;color:var(--lx-muted);font-size:17px}
-.lx-lp .lx-lp-bio p + p{margin-top:14px}
-
-/* ---------- 4b · the ad example ---------- */
-.lx-lp .lx-lp-reel{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:40px}
-.lx-lp .lx-lp-reel__card{margin:0;display:flex;flex-direction:column;gap:12px}
-.lx-lp .lx-lp-reel__card figcaption{display:flex;flex-direction:column;gap:3px}
-.lx-lp .lx-lp-reel__card figcaption b{font-size:15px;color:var(--lx-text)}
-.lx-lp .lx-lp-reel__card figcaption span{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--lx-muted)}
-.lx-lp .lx-lp-swipe{display:none}
-@media (max-width:899px){
-  .lx-lp .lx-lp-reel{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:24px calc(-1*var(--lx-pad,16px)) 0;padding:0 var(--lx-pad,16px) 8px;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-padding-inline:var(--lx-pad,16px)}
-  .lx-lp .lx-lp-reel::-webkit-scrollbar{display:none}
-  .lx-lp .lx-lp-reel__card{flex:0 0 62%;scroll-snap-align:start}
-  .lx-lp .lx-lp-swipe{display:block;margin-top:18px;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--lx-gold)}
-}
-.lx-lp .lx-lp-heroq{display:block;margin-top:26px;padding:14px 16px;border:1px solid var(--lx-line-2);border-radius:var(--lx-r,12px);background:rgba(255,255,255,.03);text-decoration:none;color:inherit;max-width:520px;transition:border-color .2s}
-.lx-lp .lx-lp-heroq:hover{border-color:var(--lx-gold)}
-.lx-lp .lx-lp-heroq__t{display:block;font-size:15px;line-height:1.45;color:var(--lx-text)}
-.lx-lp .lx-lp-heroq__c{display:block;margin-top:6px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--lx-muted)}
-.lx-lp .lx-lp-ad{display:grid;gap:40px;align-items:center}
-.lx-lp .lx-lp-ad__media{width:100%;max-width:360px;margin-inline:auto}
-@media (min-width:900px){.lx-lp .lx-lp-ad{grid-template-columns:minmax(0,1fr) 360px;gap:72px}.lx-lp .lx-lp-ad__media{margin-inline:0}}
-
-/* ---------- 7 · testimonials ---------- */
-.lx-lp .lx-lp-embed[data-lx-ratio="9/16"]{max-width:360px;margin-inline:auto}
-.lx-lp .lx-lp-testis{display:grid;gap:56px;margin-top:44px}
-@media (min-width:900px){.lx-lp .lx-lp-testis{grid-template-columns:repeat(2,minmax(0,1fr));gap:48px}}
-@media (max-width:899px){
-  .lx-lp .lx-lp-testis{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:30px}
-  .lx-lp .lx-lp-tcard{gap:14px}
-  .lx-lp .lx-lp-tcard .lx-lp-quote{padding-top:22px;font-size:15px;line-height:1.3}
-  .lx-lp .lx-lp-tcard .lx-lp-quote::before{font-size:2.6rem;top:-6px}
-  .lx-lp .lx-lp-tcard .lx-lp-cite{margin-top:10px;font-size:10.5px;letter-spacing:.08em}
-}
-.lx-lp .lx-lp-tcard{display:flex;flex-direction:column;gap:30px}
-.lx-lp .lx-lp-tcard .lx-lp-embed{width:100%}
-.lx-lp .lx-lp-quote{position:relative;padding-top:38px;font-family:var(--lx-display);font-weight:700;text-transform:none;
-  font-stretch:90%;font-variation-settings:"wdth" 90;font-size:clamp(1.3rem,4.2vw,1.65rem);line-height:1.25;letter-spacing:-.005em}
-.lx-lp .lx-lp-quote::before{content:"\201C";position:absolute;top:-8px;left:-2px;font-size:4rem;line-height:1;color:var(--lx-gold)}
-.lx-lp .lx-lp-cite{margin-top:18px;font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--lx-muted)}
-
-/* ---------- 8 · FAQ ---------- */
-.lx-lp .lx-lp-faq{margin-top:40px;max-width:780px;border-top:1px solid var(--lx-line)}
-.lx-lp .lx-lp-faq details{border-bottom:1px solid var(--lx-line)}
-.lx-lp .lx-lp-faq summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:20px;
-  min-height:64px;padding:18px 0;cursor:pointer;font-weight:600;font-size:17px}
-.lx-lp .lx-lp-faq summary::-webkit-details-marker{display:none}
-.lx-lp .lx-lp-faq summary::after{content:"";flex:none;width:28px;height:28px;border-radius:50%;border:1px solid var(--lx-line-2);
-  background:linear-gradient(var(--lx-gold),var(--lx-gold)) center/12px 2px no-repeat,linear-gradient(var(--lx-gold),var(--lx-gold)) center/2px 12px no-repeat;
-  transition:transform .35s var(--lx-ease)}
-.lx-lp .lx-lp-faq details[open] summary::after{transform:rotate(45deg)}
-.lx-lp .lx-lp-faq summary:hover{color:var(--lx-gold-hi)}
-.lx-lp .lx-lp-faq__a{padding:0 44px 24px 0;color:var(--lx-muted);font-size:16px}
-.lx-lp .lx-lp-faq details[open] .lx-lp-faq__a{animation:lx-rise .5s var(--lx-ease) both}
-
-/* ---------- 9 · final CTA ---------- */
-.lx-lp .lx-lp-final{text-align:center;overflow:hidden}
-.lx-lp .lx-lp-final::before{content:"";position:absolute;left:50%;bottom:-60%;width:120vmax;height:80vmax;transform:translateX(-50%);z-index:-1;pointer-events:none;
-  background:radial-gradient(closest-side,rgba(201,165,92,.16),rgba(201,165,92,0) 72%)}
-.lx-lp .lx-lp-final .lx-lp-h2{margin-inline:auto;max-width:16ch}
-.lx-lp .lx-lp-final .lx-lp-actions{justify-content:center}
-
-/* ---------- 10 · footer ---------- */
+/* ---------- footer ---------- */
 .lx-lp .lx-lp-foot{padding-block:40px 44px;border-top:1px solid var(--lx-line);font-size:14px;color:var(--lx-faint)}
 .lx-lp .lx-lp-foot__in{display:grid;gap:10px}
 .lx-lp .lx-lp-foot__brand{line-height:0}
@@ -356,23 +388,21 @@
    transformed GHL container can never trap position:fixed) ---------- */
 .lx-lp.lx-lp-sticky{position:fixed;left:0;right:0;bottom:0;z-index:2147483000;
   padding:12px var(--lx-pad) calc(12px + env(safe-area-inset-bottom));
-  background:rgba(20,18,16,.92);border-top:1px solid var(--lx-line-2);
-  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  background:rgba(10,10,11,.8);border-top:1px solid var(--lx-line-2);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
   transform:translateY(110%);transition:transform .45s var(--lx-ease);overflow:visible}
 .lx-lp.lx-lp-sticky.is-up{transform:translateY(0)}
-.lx-lp.lx-lp-sticky .lx-lp-btn{width:100%}
+.lx-lp.lx-lp-sticky .lx-lp-btn{width:100%;justify-content:space-between}
 @media (min-width:768px){.lx-lp.lx-lp-sticky{display:none}}
 
-/* ---------- scroll reveal: only once the script is running, so a page
-   whose JS fails still shows every word ---------- */
-.lx-lp.lx-js [data-lx-reveal]{opacity:0;transform:translateY(20px);
+/* ---------- scroll reveal: only once the script is running ---------- */
+.lx-lp.lx-js [data-lx-reveal]{opacity:0;transform:translateY(22px);
   transition:opacity .9s var(--lx-ease),transform .9s var(--lx-ease);transition-delay:var(--lx-d,0s)}
 .lx-lp.lx-js [data-lx-reveal].is-in{opacity:1;transform:none}
 
 @media (prefers-reduced-motion:reduce){
   .lx-lp *,.lx-lp *::before,.lx-lp *::after{animation:none !important;transition:none !important}
   .lx-lp.lx-js [data-lx-reveal]{opacity:1;transform:none}
-  .lx-lp.lx-lp-sticky{transition:none}
 }
 </style>
 
@@ -387,93 +417,182 @@
      data-lx-email="luxon.ag3ncy@gmail.com"
      data-lx-show-jz="false">
 
-  <header class="lx-lp-top">
-    <div class="lx-lp-wrap"><img class="lx-lp-logo" src="https://call.luxonmarketing.com/brand/luxon-wordmark-gold-on-dark.png" alt="Luxon" width="900" height="195" decoding="async"></div>
+  <header class="lx-lp-top" data-lx-top>
+    <div class="lx-lp-wrap lx-lp-top__in">
+      <img class="lx-lp-logo" src="https://call.luxonmarketing.com/brand/luxon-wordmark-gold-on-dark.png" alt="Luxon" width="900" height="195" decoding="async">
+      <a class="lx-lp-btn lx-lp-btn--sm" href="/apply" data-lx-cta>See if you qualify</a>
+    </div>
   </header>
 
   <main>
     <!-- 1 · HERO -->
     <section class="lx-lp-hero" data-lx-hero aria-labelledby="lx-h1">
-      <div class="lx-lp-wrap lx-lp-hero__grid">
-        <div class="lx-lp-hero__copy">
-          <p class="lx-lp-eyebrow">Meta ads for outdoor living, remodeling and roofing companies</p>
-          <h1 id="lx-h1" class="lx-lp-h1">Leads that only called you.</h1>
-          <p class="lx-lp-lede">Meta ads for outdoor living, remodeling and roofing companies doing $10,000+ jobs. Every number on this page is a real client's: ad results straight from their Ads Manager, job values as they reported them.</p>
-          <div class="lx-lp-actions">
-            <a class="lx-lp-btn" href="/apply" data-lx-cta>See if you qualify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          </div>
-          <p class="lx-lp-guar-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>15 qualified leads in 30 days, or we work free until you get them.</span></p>
-          <p class="lx-lp-micro"><span class="lx-if-book">About 2 minutes. If it's a fit, you'll pick a call time right away.</span><span class="lx-if-nobook">About 2 minutes. If it's a fit, someone from our team calls you to set a time.</span></p>
-          <a class="lx-lp-heroq" href="#lx-testi">
-            <span class="lx-lp-heroq__t">"I've received over 200 leads. They're good quality leads."</span>
-            <span class="lx-lp-heroq__c">Founder, surrogacy agency · about a month in · watch ↓</span>
-          </a>
-          <ul class="lx-lp-trust" aria-label="What you keep">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Your ad account stays yours</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Filmed at your real jobs</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Every number shown is real</li>
-          </ul>
+      <div class="lx-lp-hero__bg" aria-hidden="true"></div>
+      <div class="lx-lp-wrap lx-lp-hero__in">
+        <p class="lx-lp-kicker">For outdoor living, remodeling &amp; roofing</p>
+        <h1 id="lx-h1" class="lx-lp-h1">Leads that only <em class="lx-lp-gold">called you.</em></h1>
+        <p class="lx-lp-lede">Meta ads filmed at your real jobs, for companies doing <b>$10,000+ projects</b>. Every number below is a real client's: ad results straight from Ads Manager, job values as they reported them.</p>
+        <div class="lx-lp-actions">
+          <a class="lx-lp-btn" href="/apply" data-lx-cta>See if you qualify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
-        <aside class="lx-lp-hero__panel" aria-label="Results from client accounts">
-          <p class="lx-lp-panel__head"><span class="lx-lp-dot" aria-hidden="true"></span>Real client results</p>
-          <ul class="lx-lp-panel__rows">
-            <li class="lx-lp-panel__hot"><b>$200K</b><span>in jobs closed off $300 in ad spend<i>Outdoor living, Fresno · so far · client reported</i></span></li>
-            <li><b>$16.03</b><span>per lead<i>Landscaping · campaign rebuilt 4 Sep</i></span></li>
-            <li><b>$80K+</b><span>of jobs in the pipeline<i>Same landscaping account · client reported</i></span></li>
-            <li><b>243</b><span>leads at $10.95 each<i>Surrogacy agency · 24 Jul to 2 Sep 2026</i></span></li>
-          </ul>
-          <a class="lx-lp-panel__link" href="#lx-proof">See the screenshots</a>
-        </aside>
+        <p class="lx-lp-assure"><span class="lx-lp-dot" aria-hidden="true"></span><span class="lx-if-book">2-minute application · Pick your call time right away</span><span class="lx-if-nobook">2-minute application · No pitch, no obligation</span></p>
+        <p class="lx-lp-guar-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6l7-3z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg><span>15 qualified leads in 30 days, or we work free until you get them.</span></p>
         <div class="lx-lp-hero__media">
           <div class="lx-lp-embed" data-lx-eager data-lx-ratio="4/5" data-lx-label="Hero video"
                data-lx-embed="[HERO VIDEO URL]"
                data-lx-poster="[HERO POSTER URL, 1080x1350]"></div>
         </div>
+        <ul class="lx-lp-stats" aria-label="Results from client accounts">
+          <li class="lx-lp-stat-card lx-lp-stat-card--hot"><b>$200K</b><span>in jobs closed off $300 in ad spend</span><i>Outdoor living, Fresno · so far · client reported</i></li>
+          <li class="lx-lp-stat-card"><b>$16.03</b><span>per lead</span><i>Landscaping · campaign rebuilt 4 Sep</i></li>
+          <li class="lx-lp-stat-card"><b>$80K+</b><span>of jobs in the pipeline</span><i>Same landscaping account · client reported</i></li>
+          <li class="lx-lp-stat-card"><b>243</b><span>leads at $10.95 each</span><i>Surrogacy agency · 24 Jul to 2 Sep 2026</i></li>
+        </ul>
+        <p class="lx-lp-stats-foot"><span>Straight from client accounts</span><a href="#lx-proof">See the screenshots</a></p>
+        <a class="lx-lp-heroq" href="#lx-testi">
+          <span class="lx-lp-heroq__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></span>
+          <span><span class="lx-lp-heroq__t">"I've received over 200 leads. They're good quality leads."</span>
+          <span class="lx-lp-heroq__c">Founder, surrogacy agency · about a month in · watch her video</span></span>
+        </a>
       </div>
     </section>
 
-
-    <!-- 7 · TESTIMONIALS: two clients, on camera, in their own words -->
-    <section class="lx-lp-sec lx-lp-sec--testi" aria-labelledby="lx-testi">
+    <!-- 2 · TESTIMONIALS -->
+    <section class="lx-lp-sec" aria-labelledby="lx-testi">
       <div class="lx-lp-wrap">
-        <p class="lx-lp-eyebrow" data-lx-reveal><span>01</span>In their words</p>
-        <h2 id="lx-testi" class="lx-lp-h2" data-lx-reveal>Hear it from them first.</h2>
+        <div class="lx-lp-head">
+          <p class="lx-lp-kicker" data-lx-reveal>In their words</p>
+          <h2 id="lx-testi" class="lx-lp-h2" data-lx-reveal>Hear it from them <em class="lx-lp-gold">first.</em></h2>
+        </div>
         <div class="lx-lp-testis">
-          <figure class="lx-lp-tcard" data-lx-reveal>
+          <figure class="lx-lp-tcard lx-lp-glass" data-lx-reveal>
             <div class="lx-lp-embed" data-lx-ratio="9/16" data-lx-label="Surrogacy agency testimonial"
                  data-lx-embed="https://call.luxonmarketing.com/video/surrogacy-founder-34s.mp4"
                  data-lx-poster="https://call.luxonmarketing.com/video/surrogacy-founder-34s-poster.jpg"
                  data-lx-captions="https://call.luxonmarketing.com/video/surrogacy-founder-34s.vtt"></div>
             <figcaption>
-              <blockquote class="lx-lp-quote"><p>It's been about a month that we started ads, and I've received over 200 leads. They're good quality leads. They're coming in every single day.</p></blockquote>
-              <p class="lx-lp-cite">Founder, surrogacy agency · 243 leads in 6 weeks · 34 seconds</p>
+              <blockquote class="lx-lp-quote"><p>I've received over 200 leads. They're good quality leads. They're coming in every single day.</p></blockquote>
+              <p class="lx-lp-cite"><b>Founder, surrogacy agency</b>243 leads in 6 weeks · 34 sec</p>
             </figcaption>
           </figure>
-          <figure class="lx-lp-tcard" data-lx-reveal style="--lx-d:.08s">
+          <figure class="lx-lp-tcard lx-lp-glass" data-lx-reveal style="--lx-d:.08s">
             <div class="lx-lp-embed" data-lx-ratio="9/16" data-lx-label="Landscaping owners testimonial"
                  data-lx-embed="https://call.luxonmarketing.com/video/landscaping-client-720.mp4"
                  data-lx-poster="https://call.luxonmarketing.com/lp/landscaping-owners-poster.jpg"
                  data-lx-captions="https://call.luxonmarketing.com/video/landscaping-client.vtt"></div>
             <figcaption>
               <blockquote class="lx-lp-quote"><p>You truly got to know us. Got to know our vision. You were always involved, very communicative.</p></blockquote>
-              <p class="lx-lp-cite">The two owners, landscaping · $16.03 per lead · 1 minute 19</p>
+              <p class="lx-lp-cite"><b>The two owners, landscaping</b>$16.03 per lead · 1 min 19</p>
             </figcaption>
           </figure>
-        </div>
-        <div class="lx-lp-actions lx-lp-actions--center" data-lx-reveal>
-          <a class="lx-lp-btn" href="#apply" data-lx-cta>See if you qualify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
     </section>
 
-    <!-- 3 · PROOF -->
-    <section class="lx-lp-sec lx-lp-sec--card" aria-labelledby="lx-proof">
+    <!-- 3 · SOUND FAMILIAR? Tap what's true. -->
+    <section class="lx-lp-sec" aria-labelledby="lx-quiz">
+      <div class="lx-lp-wrap lx-lp-quiz">
+        <div class="lx-lp-head">
+          <p class="lx-lp-kicker" data-lx-reveal>Sound familiar?</p>
+          <h2 id="lx-quiz" class="lx-lp-h2" data-lx-reveal>Great work. <em class="lx-lp-gold">Unpredictable phone.</em></h2>
+          <p class="lx-lp-lede" data-lx-reveal>Most of the contractors we talk to aren't short on skill. They're short on a steady stream of homeowners who are ready to talk about a real project.</p>
+        </div>
+        <div data-lx-quiz data-lx-reveal style="--lx-d:.08s">
+          <div class="lx-lp-qlist" role="group" aria-label="Tap what's true for your business">
+            <button type="button" class="lx-lp-q" aria-pressed="false"><span>Most of our best jobs still come from <em>referrals</em>.</span><span class="lx-lp-q__box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></button>
+            <button type="button" class="lx-lp-q" aria-pressed="false"><span>We tried Facebook ads and got <em>tire kickers</em>.</span><span class="lx-lp-q__box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></button>
+            <button type="button" class="lx-lp-q" aria-pressed="false"><span>The leads we get are <em>shopping on price</em>.</span><span class="lx-lp-q__box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></button>
+            <button type="button" class="lx-lp-q" aria-pressed="false"><span>Our crew could handle <em>more work than we're booking</em>.</span><span class="lx-lp-q__box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></button>
+            <button type="button" class="lx-lp-q" aria-pressed="false"><span>I can't say where <em>next month's jobs</em> are coming from.</span><span class="lx-lp-q__box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></button>
+            <div class="lx-lp-qscore" aria-live="polite"><b data-lx-qn>0<small>/5</small></b><p data-lx-qmsg>Tap what's true for your business.</p></div>
+          </div>
+          <div class="lx-lp-actions lx-lp-qcta" data-lx-qcta hidden>
+            <a class="lx-lp-btn" href="/apply" data-lx-cta>See if you qualify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 · HOW IT WORKS -->
+    <section class="lx-lp-sec" aria-labelledby="lx-how">
       <div class="lx-lp-wrap">
-        <p class="lx-lp-eyebrow" data-lx-reveal><span>02</span>Proof</p>
-        <h2 id="lx-proof" class="lx-lp-h2" data-lx-reveal>The numbers. Not our version of them.</h2>
+        <div class="lx-lp-head">
+          <p class="lx-lp-kicker" data-lx-reveal>Clear roles</p>
+          <h2 id="lx-how" class="lx-lp-h2" data-lx-reveal>We handle the ads. <em class="lx-lp-gold">You handle the job.</em></h2>
+        </div>
+        <div class="lx-lp-flow">
+          <ol class="lx-lp-tl" data-lx-tl>
+            <li class="is-on" data-lx-reveal><span class="lx-lp-tl__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3"/></svg></span><div><h3 class="lx-lp-h3">We film at your jobs</h3><p>Scripts, filming and editing, done in one session at your real projects.</p></div></li>
+            <li data-lx-reveal><span class="lx-lp-tl__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg></span><div><h3 class="lx-lp-h3">We put them in front of the right homeowners</h3><p>Your service area, people planning the kind of project you do.</p></div></li>
+            <li data-lx-reveal><span class="lx-lp-tl__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 13V5.5a1.5 1.5 0 013 0V12m0-1.5a1.5 1.5 0 013 0V12m0-1a1.5 1.5 0 013 0v4a6 6 0 01-6 6h-1a6 6 0 01-5-2.7L3.5 15a1.6 1.6 0 012.6-1.8L8 15"/></svg></span><div><h3 class="lx-lp-h3">Interested homeowners raise their hand</h3><p>They send their details right from the ad, with a few questions that screen out tire kickers.</p></div></li>
+            <li data-lx-reveal><span class="lx-lp-tl__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg></span><div><h3 class="lx-lp-h3">Leads hit your phone instantly</h3><p>Name, project and number, sent straight to you the moment they come in.</p></div></li>
+            <li data-lx-reveal><span class="lx-lp-tl__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><h3 class="lx-lp-h3">You call within 5 minutes and book the estimate</h3><p>Speed is what turns a lead into a booked visit. That's your part.</p></div></li>
+            <li data-lx-reveal><span class="lx-lp-tl__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V9m6 10V5m6 14v-7m4 7H2"/></svg></span><div><h3 class="lx-lp-h3">We tell Meta who actually booked</h3><p>So it finds more homeowners like your best jobs, and the leads keep getting better.</p></div></li>
+          </ol>
+          <div class="lx-lp-flow__phone" data-lx-reveal style="--lx-d:.1s">
+            <p class="lx-lp-flow__tag"><span class="lx-lp-dot" aria-hidden="true"></span>Real campaign · outdoor living</p>
+            <div class="lx-lp-phone">
+              <div class="lx-lp-embed" data-lx-ratio="9/16" data-lx-label="Example ad: owner on camera"
+                   data-lx-embed="https://call.luxonmarketing.com/video/ad-6.mp4"
+                   data-lx-poster="https://call.luxonmarketing.com/video/ad-6-poster.jpg"></div>
+            </div>
+            <p class="lx-lp-flow__cap">Written, filmed, edited and launched by Luxon.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 · THE ADS -->
+    <section class="lx-lp-sec" aria-labelledby="lx-ads">
+      <div class="lx-lp-wrap">
+        <div class="lx-lp-head">
+          <p class="lx-lp-kicker" data-lx-reveal>The work</p>
+          <h2 id="lx-ads" class="lx-lp-h2" data-lx-reveal>Shot at real jobs. <em class="lx-lp-gold">Not stock footage.</em></h2>
+          <p class="lx-lp-lede" data-lx-reveal>Real ads we filmed and edited for outdoor living clients. Cut for a phone, captions on so they work on mute, and the owner on camera when it helps.</p>
+        </div>
+        <p class="lx-lp-swipe" aria-hidden="true">Swipe for more →</p>
+        <div class="lx-lp-reel" aria-label="Example ads">
+          <figure class="lx-lp-reel__card" data-lx-reveal>
+            <div class="lx-lp-phone"><div class="lx-lp-embed" data-lx-ratio="9/16" data-lx-label="Example ad: Before and after"
+                 data-lx-embed="https://call.luxonmarketing.com/video/ad-4.mp4"
+                 data-lx-poster="https://call.luxonmarketing.com/video/ad-4-poster.jpg"></div></div>
+            <figcaption><b>Before and after</b><span>Outdoor living · 41 sec</span></figcaption>
+          </figure>
+          <figure class="lx-lp-reel__card" data-lx-reveal style="--lx-d:.06s">
+            <div class="lx-lp-phone"><div class="lx-lp-embed" data-lx-ratio="9/16" data-lx-label="Example ad: Owner on camera"
+                 data-lx-embed="https://call.luxonmarketing.com/video/ad-6.mp4"
+                 data-lx-poster="https://call.luxonmarketing.com/video/ad-6-poster.jpg"></div></div>
+            <figcaption><b>Owner on camera</b><span>Outdoor living · 42 sec</span></figcaption>
+          </figure>
+          <figure class="lx-lp-reel__card" data-lx-reveal style="--lx-d:.12s">
+            <div class="lx-lp-phone"><div class="lx-lp-embed" data-lx-ratio="9/16" data-lx-label="Example ad: Show the finished yard"
+                 data-lx-embed="https://call.luxonmarketing.com/video/ad-5.mp4"
+                 data-lx-poster="https://call.luxonmarketing.com/video/ad-5-poster.jpg"></div></div>
+            <figcaption><b>Show the finished yard</b><span>Outdoor living · 30 sec</span></figcaption>
+          </figure>
+          <figure class="lx-lp-reel__card" data-lx-reveal style="--lx-d:.18s">
+            <div class="lx-lp-phone"><div class="lx-lp-embed" data-lx-ratio="9/16" data-lx-label="Example ad: Finished project walk"
+                 data-lx-embed="https://call.luxonmarketing.com/video/ad-2.mp4"
+                 data-lx-poster="https://call.luxonmarketing.com/video/ad-2-poster.jpg"></div></div>
+            <figcaption><b>Finished project walk</b><span>Outdoor living · 26 sec</span></figcaption>
+          </figure>
+        </div>
+        <div class="lx-lp-actions" data-lx-reveal>
+          <a class="lx-lp-btn" href="/apply" data-lx-cta>Get ads like these<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6 · PROOF -->
+    <section class="lx-lp-sec" aria-labelledby="lx-proof">
+      <div class="lx-lp-wrap">
+        <div class="lx-lp-head">
+          <p class="lx-lp-kicker" data-lx-reveal>Proof</p>
+          <h2 id="lx-proof" class="lx-lp-h2" data-lx-reveal>The numbers. <em class="lx-lp-gold">Not our version of them.</em></h2>
+        </div>
         <div class="lx-lp-proof">
           <!-- SHOW_JZ_PROOF: stays hidden until data-lx-show-jz="true" AND the screenshot and dates are filled. -->
-          <article class="lx-lp-card" data-lx-flag="jz" data-lx-reveal hidden>
+          <article class="lx-lp-card lx-lp-glass" data-lx-flag="jz" data-lx-reveal hidden>
             <button class="lx-lp-shot" type="button" data-lx-zoom data-lx-slot aria-label="Enlarge the outdoor living ad account screenshot">
               <img class="lx-lp-media" data-lx-src="[JZ_PROOF_SCREENSHOT]" alt="Meta Ads Manager, outdoor living account in Fresno: about $300 in ad spend behind $200K in closed jobs." width="1600" height="1000" loading="lazy" decoding="async">
               <span class="lx-lp-shot__hint">Tap to enlarge</span>
@@ -484,7 +603,7 @@
               <p class="lx-lp-context">Outdoor living, Fresno · [START DATE] to [END DATE] 2026</p>
             </div>
           </article>
-          <article class="lx-lp-card" data-lx-reveal>
+          <article class="lx-lp-card lx-lp-glass" data-lx-reveal>
             <button class="lx-lp-shot" type="button" data-lx-zoom data-lx-slot aria-label="Enlarge the landscaping ad account screenshot">
               <img class="lx-lp-media" data-lx-src="https://call.luxonmarketing.com/lp/proof-landscaping.png" style="--z:1.06" alt="Meta Ads Manager, landscaping account, 12 Aug to 10 Sep 2026: the campaign rebuilt on 4 Sep at 11 leads for $16.03 each, and the earlier campaign at 12 leads for $35.55 each." width="1600" height="1000" loading="lazy" decoding="async">
               <span class="lx-lp-shot__hint">Tap to enlarge</span>
@@ -496,7 +615,7 @@
               <p class="lx-lp-context">Landscaping · 12 Aug to 10 Sep 2026</p>
             </div>
           </article>
-          <article class="lx-lp-card" data-lx-reveal style="--lx-d:.08s">
+          <article class="lx-lp-card lx-lp-glass" data-lx-reveal style="--lx-d:.08s">
             <button class="lx-lp-shot" type="button" data-lx-zoom data-lx-slot aria-label="Enlarge the chimney sweep ad account screenshot">
               <img class="lx-lp-media" data-lx-src="https://call.luxonmarketing.com/lp/proof-chimney.png" style="--z:1.32" alt="Meta Ads Manager, chimney sweep account, 13 Aug to 2 Sep 2026: 25 leads, $467.83 spent, $18.71 per lead." width="1600" height="1000" loading="lazy" decoding="async">
               <span class="lx-lp-shot__hint">Tap to enlarge</span>
@@ -508,7 +627,7 @@
               <p class="lx-lp-context">Chimney sweep · 13 Aug to 2 Sep 2026</p>
             </div>
           </article>
-          <article class="lx-lp-card" data-lx-reveal style="--lx-d:.16s">
+          <article class="lx-lp-card lx-lp-glass" data-lx-reveal style="--lx-d:.16s">
             <button class="lx-lp-shot" type="button" data-lx-zoom data-lx-slot aria-label="Enlarge the surrogacy agency ad account screenshot">
               <img class="lx-lp-media" data-lx-src="https://call.luxonmarketing.com/lp/proof-surrogacy.png" style="--z:1.4" alt="Meta Ads Manager, surrogacy agency account, 24 Jul to 2 Sep 2026: 243 leads, $2,661.13 spent, $10.95 per lead." width="1600" height="1000" loading="lazy" decoding="async">
               <span class="lx-lp-shot__hint">Tap to enlarge</span>
@@ -533,99 +652,41 @@
       </div>
     </section>
 
-
-    <!-- 3b · THE GUARANTEE: the same offer the ads and the calls lead with -->
+    <!-- 7 · THE GUARANTEE -->
     <section class="lx-lp-sec" aria-labelledby="lx-guar">
       <div class="lx-lp-wrap">
-        <p class="lx-lp-eyebrow" data-lx-reveal><span>03</span>The guarantee</p>
-        <h2 id="lx-guar" class="lx-lp-h2" data-lx-reveal>15 qualified leads in 30 days. Or we work free until you get them.</h2>
-        <p class="lx-lp-lede" data-lx-reveal>A qualified lead is a real homeowner in your service area asking about the work you do. We agree that definition with you in writing before launch.</p>
-        <div class="lx-lp-guar" data-lx-reveal style="--lx-d:.08s">
-          <h3 class="lx-lp-fit__title">It holds as long as</h3>
-          <ol>
-            <li><b>01</b>You spend at least $50 a day on ads, paid straight to Meta.</li>
-            <li><b>02</b>Every new lead gets a call within 5 minutes.</li>
-            <li><b>03</b>You approve new ads within 48 hours.</li>
+        <div class="lx-lp-guar" data-lx-reveal>
+          <div class="lx-lp-guar__badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6l7-3z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div>
+          <p class="lx-lp-kicker">The guarantee</p>
+          <h2 id="lx-guar" class="lx-lp-h2">15 qualified leads in 30 days. <em class="lx-lp-gold">Or we work free until you get them.</em></h2>
+          <p class="lx-lp-lede">A qualified lead is a real homeowner in your service area asking about the work you do. We agree that definition with you in writing before launch.</p>
+          <ol class="lx-lp-terms" aria-label="It holds as long as">
+            <li><b>$50 a day</b>You spend at least $50 a day on ads, paid straight to Meta.</li>
+            <li><b>5-minute calls</b>Every new lead gets a call within 5 minutes.</li>
+            <li><b>48-hour approvals</b>You approve new ads within 48 hours.</li>
           </ol>
-        </div>
-        <div class="lx-lp-actions" data-lx-reveal>
-          <a class="lx-lp-btn" href="#apply" data-lx-cta>See if you qualify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </div>
-        <p class="lx-lp-note" data-lx-reveal>The guarantee covers leads. Booked jobs and revenue depend on your follow-up and your close rate, so they aren't part of it. Full terms are agreed in writing before launch.</p>
-      </div>
-    </section>
-
-    <!-- 4 · HOW IT WORKS -->
-    <section class="lx-lp-sec lx-lp-sec--card" aria-labelledby="lx-how">
-      <div class="lx-lp-wrap">
-        <p class="lx-lp-eyebrow" data-lx-reveal><span>04</span>How it works</p>
-        <h2 id="lx-how" class="lx-lp-h2" data-lx-reveal>Three steps. No pitch deck.</h2>
-        <ol class="lx-lp-steps">
-          <li class="lx-lp-step" data-lx-reveal>
-            <span class="lx-lp-step__n">01</span>
-            <h3 class="lx-lp-h3">Apply</h3>
-            <p>Five quick questions about your trade, your team and your jobs.</p>
-          </li>
-          <li class="lx-lp-step" data-lx-reveal style="--lx-d:.08s">
-            <span class="lx-lp-step__n">02</span>
-            <h3 class="lx-lp-h3"><span class="lx-if-book">Book your call</span><span class="lx-if-nobook">We call you</span></h3>
-            <p><span class="lx-if-book">If it's a fit, pick a time right away. On the call you'll see a live client ad account and what your competitors are running right now.</span><span class="lx-if-nobook">If it's a fit, we call you to set a time. On the call you'll see a live client ad account and what your competitors are running right now.</span></p>
-          </li>
-          <li class="lx-lp-step" data-lx-reveal style="--lx-d:.16s">
-            <span class="lx-lp-step__n">03</span>
-            <h3 class="lx-lp-h3">Launch</h3>
-            <p>We film at your jobs, build the campaign, and tell Meta which leads actually booked.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- 4b · THE ADS: one example of the work itself -->
-    <section class="lx-lp-sec" aria-labelledby="lx-ads">
-      <div class="lx-lp-wrap">
-        <p class="lx-lp-eyebrow" data-lx-reveal><span>05</span>The ads</p>
-        <h2 id="lx-ads" class="lx-lp-h2" data-lx-reveal>Shot at real jobs. Not stock footage.</h2>
-        <p class="lx-lp-lede" data-lx-reveal>Real ads we filmed and edited for outdoor living clients. Cut for a phone, captions on so they work on mute, and the owner on camera when it helps.</p>
-        <p class="lx-lp-swipe" aria-hidden="true">Swipe for more →</p>
-        <div class="lx-lp-reel" role="list" aria-label="Example ads">
-          <figure role="listitem" class="lx-lp-reel__card" data-lx-reveal style="--lx-d:0.00s">
-            <div class="lx-lp-embed" data-lx-ratio="9/16" data-lx-label="Example ad: Before and after"
-                 data-lx-embed="https://call.luxonmarketing.com/video/ad-4.mp4"
-                 data-lx-poster="https://call.luxonmarketing.com/video/ad-4-poster.jpg"></div>
-            <figcaption><b>Before and after</b><span>Outdoor living · 41 sec</span></figcaption>
-          </figure>
-          <figure role="listitem" class="lx-lp-reel__card" data-lx-reveal style="--lx-d:0.06s">
-            <div class="lx-lp-embed" data-lx-ratio="9/16" data-lx-label="Example ad: Owner on camera"
-                 data-lx-embed="https://call.luxonmarketing.com/video/ad-6.mp4"
-                 data-lx-poster="https://call.luxonmarketing.com/video/ad-6-poster.jpg"></div>
-            <figcaption><b>Owner on camera</b><span>Outdoor living · 42 sec</span></figcaption>
-          </figure>
-          <figure role="listitem" class="lx-lp-reel__card" data-lx-reveal style="--lx-d:0.12s">
-            <div class="lx-lp-embed" data-lx-ratio="9/16" data-lx-label="Example ad: Show the finished yard"
-                 data-lx-embed="https://call.luxonmarketing.com/video/ad-5.mp4"
-                 data-lx-poster="https://call.luxonmarketing.com/video/ad-5-poster.jpg"></div>
-            <figcaption><b>Show the finished yard</b><span>Outdoor living · 30 sec</span></figcaption>
-          </figure>
-          <figure role="listitem" class="lx-lp-reel__card" data-lx-reveal style="--lx-d:0.18s">
-            <div class="lx-lp-embed" data-lx-ratio="9/16" data-lx-label="Example ad: Finished project walk"
-                 data-lx-embed="https://call.luxonmarketing.com/video/ad-2.mp4"
-                 data-lx-poster="https://call.luxonmarketing.com/video/ad-2-poster.jpg"></div>
-            <figcaption><b>Finished project walk</b><span>Outdoor living · 26 sec</span></figcaption>
-          </figure>
-        </div>
-        <div class="lx-lp-actions lx-lp-actions--center" data-lx-reveal>
-          <a class="lx-lp-btn" href="#apply" data-lx-cta>Get ads like these<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <div class="lx-lp-actions">
+            <a class="lx-lp-btn" href="/apply" data-lx-cta>See if you qualify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <ul class="lx-lp-trust" aria-label="What you keep">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Your ad account stays yours</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Filmed at your real jobs</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Every number shown is real</li>
+          </ul>
+          <p class="lx-lp-note">The guarantee covers leads. Booked jobs and revenue depend on your follow-up and your close rate, so they aren't part of it. Full terms are agreed in writing before launch.</p>
         </div>
       </div>
     </section>
 
-    <!-- 5 · STANDARDS -->
-    <section class="lx-lp-sec lx-lp-sec--card" aria-labelledby="lx-fit">
+    <!-- 8 · WHO WE WORK WITH -->
+    <section class="lx-lp-sec" aria-labelledby="lx-fit">
       <div class="lx-lp-wrap">
-        <p class="lx-lp-eyebrow" data-lx-reveal><span>06</span>Who we work with</p>
-        <h2 id="lx-fit" class="lx-lp-h2" data-lx-reveal>We turn people away on purpose.</h2>
+        <div class="lx-lp-head">
+          <p class="lx-lp-kicker" data-lx-reveal>Who we work with</p>
+          <h2 id="lx-fit" class="lx-lp-h2" data-lx-reveal>We turn people away <em class="lx-lp-gold">on purpose.</em></h2>
+        </div>
         <div class="lx-lp-fit">
-          <div class="lx-lp-fit__col lx-lp-fit__col--yes" data-lx-reveal>
+          <div class="lx-lp-fit__col lx-lp-fit__col--yes lx-lp-glass" data-lx-reveal>
             <h3 class="lx-lp-fit__title">Good fit</h3>
             <ul>
               <li>One job is worth $10,000 or more to you.</li>
@@ -634,7 +695,7 @@
               <li>You can spend at least $50 a day on ads.</li>
             </ul>
           </div>
-          <div class="lx-lp-fit__col lx-lp-fit__col--no" data-lx-reveal style="--lx-d:.08s">
+          <div class="lx-lp-fit__col lx-lp-fit__col--no lx-lp-glass" data-lx-reveal style="--lx-d:.08s">
             <h3 class="lx-lp-fit__title">Not a fit</h3>
             <ul>
               <li>Your average job is under $10,000.</li>
@@ -647,13 +708,13 @@
       </div>
     </section>
 
-
-
-    <!-- 8 · FAQ -->
-    <section class="lx-lp-sec lx-lp-sec--card" aria-labelledby="lx-faq">
+    <!-- 9 · FAQ -->
+    <section class="lx-lp-sec" aria-labelledby="lx-faq">
       <div class="lx-lp-wrap">
-        <p class="lx-lp-eyebrow" data-lx-reveal><span>07</span>Questions</p>
-        <h2 id="lx-faq" class="lx-lp-h2" data-lx-reveal>Straight answers.</h2>
+        <div class="lx-lp-head">
+          <p class="lx-lp-kicker" data-lx-reveal>Questions</p>
+          <h2 id="lx-faq" class="lx-lp-h2" data-lx-reveal>Straight <em class="lx-lp-gold">answers.</em></h2>
+        </div>
         <div class="lx-lp-faq" data-lx-reveal>
           <details><summary>How much does it cost?</summary><div class="lx-lp-faq__a"><p>Most clients invest from $1,200/month for management, plus ad spend paid directly to Meta from your own account (usually $1,000+/month). You'll know the exact numbers on the call, before you decide anything.</p></div></details>
           <details><summary>Do you guarantee results?</summary><div class="lx-lp-faq__a"><p>Yes. 15 qualified leads in your first 30 days, or we keep working for free until you get them. It holds as long as you spend at least $50 a day, call every lead within 5 minutes, and approve new ads within 48 hours. It covers leads, not booked jobs or revenue.</p></div></details>
@@ -665,38 +726,43 @@
       </div>
     </section>
 
-    <!-- 9 · FINAL CTA -->
+    <!-- 10 · FINAL CTA -->
     <section class="lx-lp-sec lx-lp-final" data-lx-final aria-labelledby="lx-close">
       <div class="lx-lp-wrap">
-        <h2 id="lx-close" class="lx-lp-h2" data-lx-reveal>Let's see if it works for your trade.</h2>
-        <div class="lx-lp-actions" data-lx-reveal style="--lx-d:.08s">
-          <a class="lx-lp-btn" href="/apply" data-lx-cta>See if you qualify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <div class="lx-lp-final__panel" data-lx-reveal>
+          <h2 id="lx-close" class="lx-lp-h2">Let's see if it works <em class="lx-lp-gold">for your trade.</em></h2>
+          <p class="lx-lp-lede">Five quick questions. If it's a fit, you'll see a live client ad account on the call.</p>
+          <div class="lx-lp-actions">
+            <a class="lx-lp-btn" href="/apply" data-lx-cta>See if you qualify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <p class="lx-lp-assure"><span class="lx-lp-dot" aria-hidden="true"></span>2 minutes · No pitch, no obligation</p>
         </div>
       </div>
     </section>
 
-    <!-- APPLY + BOOK. The survey lives here now; delete the separate survey element in GHL.
-         On a qualified submission GHL's survey reports the new contact to this page
-         (its own "set-sticky-contacts" message), and the calendar opens below. -->
+    <!-- APPLY + BOOK. On a qualified submission GHL's survey reports the new contact
+         to this page (its own "set-sticky-contacts" message), and the calendar opens below. -->
     <section id="apply" class="lx-lp-apply" data-moved="1" aria-labelledby="lx-apply-h">
       <div class="lx-lp-apply__in">
         <div class="lx-lp-apply__head">
-          <p class="lx-lp-eyebrow"><span>✓</span>2 minutes</p>
-          <h2 id="lx-apply-h" class="lx-lp-h2">See if you qualify.</h2>
+          <p class="lx-lp-kicker">2-minute application</p>
+          <h2 id="lx-apply-h" class="lx-lp-h2">See if you <em class="lx-lp-gold">qualify.</em></h2>
           <ol class="lx-lp-mini" aria-label="What happens">
             <li><b>1</b>Answer 5 quick questions</li>
             <li><b>2</b><span class="lx-if-book">Pick your call time</span><span class="lx-if-nobook">We call you to set a time</span></li>
             <li><b>3</b>See a live ad account on the call</li>
           </ol>
         </div>
-        <div class="lx-lp-survey-slot" data-lx-survey="https://api.leadconnectorhq.com/widget/survey/yLy9BhLLwTJb4NzB6blk" data-lx-survey-id="yLy9BhLLwTJb4NzB6blk">
-          <noscript><iframe class="lx-lp-survey" src="https://api.leadconnectorhq.com/widget/survey/yLy9BhLLwTJb4NzB6blk" scrolling="no" id="yLy9BhLLwTJb4NzB6blk" title="Luxon Client Application"></iframe></noscript>
+        <div class="lx-lp-apply__card">
+          <div class="lx-lp-survey-slot" data-lx-survey="https://api.leadconnectorhq.com/widget/survey/yLy9BhLLwTJb4NzB6blk" data-lx-survey-id="yLy9BhLLwTJb4NzB6blk">
+            <noscript><iframe class="lx-lp-survey" src="https://api.leadconnectorhq.com/widget/survey/yLy9BhLLwTJb4NzB6blk" scrolling="no" id="yLy9BhLLwTJb4NzB6blk" title="Luxon Client Application"></iframe></noscript>
+          </div>
         </div>
         <p class="lx-lp-consent">By submitting your information, you agree to receive calls and text messages from Luxon about your inquiry, including by automated means. Message frequency varies. Message &amp; data rates may apply. Reply STOP to opt out, HELP for help. We do not sell or share your mobile information with third parties for marketing purposes. See our <a href="/privacy">Privacy Policy</a> and <a href="/terms">Terms</a>.</p>
         <p class="lx-lp-already" data-lx-booktoggle hidden><button type="button">Already applied? Show call times</button></p>
         <div class="lx-lp-book" id="book" data-lx-book hidden tabindex="-1" aria-labelledby="lx-book-h">
-          <p class="lx-lp-eyebrow"><span>✓</span>Book your call</p>
-          <h2 id="lx-book-h" class="lx-lp-h2">Qualified? Pick your time below.</h2>
+          <p class="lx-lp-kicker">Book your call</p>
+          <h2 id="lx-book-h" class="lx-lp-h2">Qualified? <em class="lx-lp-gold">Pick your time.</em></h2>
           <p class="lx-lp-micro">We'll text you to confirm. 35 to 45 minutes. You'll see a live ad account on screen.</p>
           <div class="lx-lp-cal" data-lx-cal></div>
         </div>
@@ -1085,5 +1151,54 @@
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
+})();
+</script>
+
+<script>
+/* v3 interactions: sticky header tint, "tap what's true", timeline highlight. */
+(function () {
+  'use strict';
+  function go() {
+    var root = document.querySelector('.lx-lp[data-lx-root]');
+    if (!root || root.getAttribute('data-lx-v3')) return;
+    root.setAttribute('data-lx-v3', '1');
+    var top = root.querySelector('[data-lx-top]');
+    if (top) {
+      var onScroll = function () { top.classList.toggle('is-stuck', (window.scrollY || 0) > 12); };
+      window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+    }
+    var quiz = root.querySelector('[data-lx-quiz]');
+    if (quiz) {
+      var qs = quiz.querySelectorAll('.lx-lp-q'), n = quiz.querySelector('[data-lx-qn]'),
+          msg = quiz.querySelector('[data-lx-qmsg]'), cta = quiz.querySelector('[data-lx-qcta]');
+      var copy = ["Tap what's true for your business.",
+        "Then you're exactly who we built this for.",
+        "Two out of five. That's a fixable pipeline.",
+        "That's exactly what we fix.",
+        "That's exactly what we fix. Let's talk.",
+        "All five. You're who we built this for."];
+      Array.prototype.forEach.call(qs, function (b) {
+        b.addEventListener('click', function () {
+          b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+          var c = quiz.querySelectorAll('.lx-lp-q[aria-pressed="true"]').length;
+          n.innerHTML = c + '<small>/5</small>';
+          msg.textContent = copy[c];
+          if (cta) cta.hidden = c === 0;
+        });
+      });
+    }
+    var tl = root.querySelector('[data-lx-tl]');
+    if (tl && 'IntersectionObserver' in window) {
+      var items = tl.querySelectorAll('li');
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          Array.prototype.forEach.call(items, function (li) { li.classList.toggle('is-on', li === e.target); });
+        });
+      }, { rootMargin: '-45% 0px -45% 0px' });
+      Array.prototype.forEach.call(items, function (li) { io.observe(li); });
+    }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', go); else go();
 })();
 </script>

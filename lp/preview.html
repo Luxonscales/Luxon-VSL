@@ -1,0 +1,1208 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow"><title>Luxon landing preview</title><link rel="icon" href="data:,"></head><body style="margin:0;background:#0A0A0B">
+<!-- =====================================================================
+     LUXON LANDING PAGE · GHL funnel step 1 · paste into ONE "Custom
+     HTML/JS" element (full width, zero padding). See README.md.
+
+     Everything is scoped under .lx-lp. Nothing here styles html, body,
+     or any element outside the wrapper.
+
+     To configure without touching the markup below:
+       data-lx-apply  on the .lx-lp div  = the application URL. Every
+                      button reads it, and carries the visitor's
+                      utm_* and fbclid parameters through to it.
+       data-lx-embed  on a video box     = YouTube, Vimeo, GHL or .mp4 URL
+       data-lx-poster on a video box     = poster image URL
+       data-lx-src    on an image        = image URL
+     Anything still in [BRACKETS] is a placeholder. The browser console
+     lists every one left on the page. On the live page an unfilled image,
+     video or contact email hides itself; only preview.html (or adding
+     ?lx-preview=1 to the URL) shows the labelled empty boxes.
+     ===================================================================== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap"></noscript>
+
+<style>
+/* ---------- tokens and a reset that stops at the wrapper ---------- */
+.lx-lp{
+  --lx-bg:#0A0A0B; --lx-bg-2:#0F0F11; --lx-card:#141416; --lx-card-2:#1A1A1D;
+  --lx-glass:rgba(255,255,255,.035); --lx-glass-2:rgba(255,255,255,.06);
+  --lx-text:#F7F4EE; --lx-muted:#A5A29C; --lx-faint:#8E8B85;
+  --lx-gold:#C9A55C; --lx-gold-hi:#E8CB8A; --lx-gold-lo:#9C7C3C; --lx-ink:#0A0A0B;
+  --lx-line:rgba(255,255,255,.08); --lx-line-2:rgba(255,255,255,.14); --lx-gold-line:rgba(201,165,92,.38);
+  --lx-r:18px; --lx-r-sm:12px; --lx-pad:clamp(18px,5vw,40px); --lx-max:1180px;
+  --lx-display:"Plus Jakarta Sans","Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  --lx-body:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --lx-ease:cubic-bezier(.16,1,.3,1);
+  position:relative; isolation:isolate;
+  background:var(--lx-bg); color:var(--lx-text);
+  font-family:var(--lx-body); font-size:17px; line-height:1.6; font-weight:400;
+  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+  text-rendering:optimizeLegibility; text-align:left;
+  overflow-x:hidden; overflow-x:clip;
+}
+.lx-lp *,.lx-lp *::before,.lx-lp *::after{
+  box-sizing:border-box; margin:0; padding:0; border:0;
+  font:inherit; color:inherit; letter-spacing:inherit; text-transform:inherit;
+  background:transparent;
+}
+.lx-lp img,.lx-lp video,.lx-lp iframe{display:block;max-width:100%;height:auto}
+.lx-lp ul,.lx-lp ol{list-style:none}
+.lx-lp a{text-decoration:none;cursor:pointer}
+.lx-lp button{cursor:pointer;-webkit-appearance:none;appearance:none}
+.lx-lp strong,.lx-lp b{font-weight:600}
+.lx-lp em{font-style:normal}
+.lx-lp [hidden]{display:none !important}
+.lx-lp :focus{outline:none}
+.lx-lp :focus-visible{outline:3px solid var(--lx-gold);outline-offset:3px;border-radius:6px}
+.lx-lp .lx-lp-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- layout ---------- */
+.lx-lp .lx-lp-wrap{width:100%;max-width:var(--lx-max);margin-inline:auto;padding-inline:var(--lx-pad)}
+.lx-lp .lx-lp-sec{position:relative;padding-block:clamp(64px,8.5vw,108px)}
+.lx-lp .lx-lp-sec + .lx-lp-sec::before{content:"";position:absolute;top:0;left:50%;width:min(var(--lx-max),92%);height:1px;transform:translateX(-50%);
+  background:linear-gradient(90deg,transparent,var(--lx-line-2),transparent)}
+.lx-lp .lx-lp-head{text-align:center;max-width:820px;margin-inline:auto}
+.lx-lp .lx-lp-head .lx-lp-lede{margin-inline:auto}
+
+/* ---------- type ---------- */
+.lx-lp .lx-lp-kicker{display:inline-flex;align-items:center;justify-content:center;gap:14px;margin-bottom:22px;
+  font-size:12px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--lx-gold)}
+.lx-lp .lx-lp-kicker::before,.lx-lp .lx-lp-kicker::after{content:"";width:28px;height:1px;background:linear-gradient(90deg,transparent,var(--lx-gold))}
+.lx-lp .lx-lp-kicker::after{transform:scaleX(-1)}
+.lx-lp .lx-lp-h1,.lx-lp .lx-lp-h2{font-family:var(--lx-display);font-weight:800;letter-spacing:-.035em;text-wrap:balance;overflow-wrap:break-word}
+.lx-lp .lx-lp-h1{font-size:clamp(2.7rem,9.6vw,5.6rem);line-height:1.0}
+.lx-lp .lx-lp-h2{font-size:clamp(2rem,6.2vw,3.5rem);line-height:1.06}
+.lx-lp .lx-lp-h3{font-family:var(--lx-display);font-weight:700;font-size:1.12rem;line-height:1.35;letter-spacing:-.01em}
+.lx-lp .lx-lp-gold{display:inline;background:linear-gradient(100deg,var(--lx-gold-hi) 0%,var(--lx-gold) 45%,#B48A3E 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--lx-gold)}
+.lx-lp .lx-lp-lede{margin-top:22px;max-width:46ch;font-size:clamp(1.05rem,1.4vw,1.2rem);line-height:1.62;color:var(--lx-muted)}
+.lx-lp .lx-lp-lede b{color:var(--lx-text);font-weight:600}
+.lx-lp .lx-lp-micro{margin-top:14px;font-size:13.5px;color:var(--lx-faint)}
+.lx-lp .lx-lp-note{margin:28px auto 0;max-width:70ch;font-size:13.5px;color:var(--lx-faint);text-align:center}
+
+/* ---------- buttons: gold pill with an arrow chip ---------- */
+.lx-lp .lx-lp-btn{
+  position:relative;display:inline-flex;align-items:center;justify-content:center;gap:14px;
+  min-height:58px;padding:0 10px 0 28px;border-radius:999px;
+  background:linear-gradient(180deg,var(--lx-gold-hi),var(--lx-gold) 60%,#B8934B);color:var(--lx-ink);
+  font-family:var(--lx-display);font-weight:700;font-size:16.5px;line-height:1.2;letter-spacing:-.005em;text-align:center;
+  box-shadow:0 0 0 1px rgba(232,203,138,.5) inset,0 1px 0 rgba(255,255,255,.35) inset,0 14px 40px -12px rgba(201,165,92,.55),0 0 60px -10px rgba(201,165,92,.35);
+  transition:transform .35s var(--lx-ease),box-shadow .35s var(--lx-ease),filter .35s;
+}
+.lx-lp .lx-lp-btn svg{width:18px;height:18px;flex:none;transition:transform .35s var(--lx-ease)}
+.lx-lp .lx-lp-btn > svg{display:grid;box-sizing:content-box;width:18px;height:18px;padding:10px;border-radius:50%;background:var(--lx-ink);color:var(--lx-gold-hi)}
+.lx-lp .lx-lp-btn:hover{transform:translateY(-2px);filter:brightness(1.04);box-shadow:0 0 0 1px rgba(232,203,138,.6) inset,0 1px 0 rgba(255,255,255,.4) inset,0 20px 50px -12px rgba(201,165,92,.7),0 0 80px -6px rgba(201,165,92,.45)}
+.lx-lp .lx-lp-btn:hover svg{transform:translateX(3px)}
+.lx-lp .lx-lp-btn:active{transform:translateY(0)}
+.lx-lp .lx-lp-btn:focus-visible{outline-color:var(--lx-text)}
+.lx-lp .lx-lp-btn--sm{min-height:44px;padding:0 20px;font-size:14.5px;box-shadow:0 0 0 1px rgba(232,203,138,.5) inset,0 8px 24px -10px rgba(201,165,92,.6)}
+.lx-lp .lx-lp-actions{margin-top:36px;display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+@media (max-width:599px){.lx-lp .lx-lp-actions .lx-lp-btn{width:100%;justify-content:space-between}}
+.lx-lp .lx-lp-assure{display:flex;align-items:center;justify-content:center;gap:9px;margin-top:16px;font-size:13.5px;color:var(--lx-muted);text-align:center}
+.lx-lp .lx-lp-dot{flex:none;width:8px;height:8px;border-radius:50%;background:#3fbf6a;box-shadow:0 0 0 4px rgba(63,191,106,.16)}
+
+/* ---------- top bar ---------- */
+.lx-lp .lx-lp-top{position:sticky;top:0;z-index:50;border-bottom:1px solid transparent;transition:background-color .35s,border-color .35s,backdrop-filter .35s}
+.lx-lp .lx-lp-top.is-stuck{background:rgba(10,10,11,.72);border-bottom-color:var(--lx-line);-webkit-backdrop-filter:blur(14px) saturate(1.2);backdrop-filter:blur(14px) saturate(1.2)}
+.lx-lp .lx-lp-top__in{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px}
+.lx-lp .lx-lp-logo{height:24px;width:auto;display:block}
+.lx-lp .lx-lp-logo--sm{height:20px;opacity:.85}
+@media (max-width:599px){.lx-lp .lx-lp-top .lx-lp-btn--sm{display:none}.lx-lp .lx-lp-top__in{justify-content:center;min-height:64px}}
+
+/* ---------- 1 · hero ---------- */
+.lx-lp .lx-lp-hero{position:relative;padding-block:clamp(36px,7vw,88px) clamp(40px,6vw,72px);text-align:center;margin-top:-72px;padding-top:calc(72px + clamp(36px,7vw,88px))}
+.lx-lp .lx-lp-hero__bg{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.lx-lp .lx-lp-hero__bg::before{content:"";position:absolute;inset:0;
+  background-image:linear-gradient(var(--lx-line) 1px,transparent 1px),linear-gradient(90deg,var(--lx-line) 1px,transparent 1px);
+  background-size:64px 64px;background-position:center top;opacity:.55;
+  -webkit-mask-image:radial-gradient(ellipse 70% 55% at 50% 0%,#000 30%,transparent 75%);mask-image:radial-gradient(ellipse 70% 55% at 50% 0%,#000 30%,transparent 75%)}
+.lx-lp .lx-lp-hero__bg::after{content:"";position:absolute;left:50%;top:-38vmax;width:110vmax;height:70vmax;transform:translateX(-50%);
+  background:radial-gradient(closest-side,rgba(201,165,92,.22),rgba(201,165,92,.06) 55%,transparent 75%)}
+.lx-lp .lx-lp-hero__in{display:flex;flex-direction:column;align-items:center}
+/* headline and lede paint immediately (they are the LCP); the rest rises in */
+.lx-lp .lx-lp-hero__in > *:nth-child(n+4){animation:lx-rise 1s var(--lx-ease) both;animation-delay:.08s}
+.lx-lp .lx-lp-hero__in > *:nth-child(n+6){animation-delay:.18s}
+@keyframes lx-rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.lx-lp .lx-lp-hero .lx-lp-h1{max-width:13ch}
+.lx-lp .lx-lp-hero .lx-lp-lede{margin-inline:auto;max-width:52ch}
+.lx-lp .lx-lp-guar-pill{display:inline-flex;align-items:center;gap:10px;margin-top:22px;padding:10px 18px 10px 12px;border-radius:999px;
+  border:1px solid var(--lx-gold-line);background:linear-gradient(180deg,rgba(201,165,92,.12),rgba(201,165,92,.04));
+  font-size:14.5px;font-weight:600;line-height:1.35;color:var(--lx-gold-hi);text-align:left}
+.lx-lp .lx-lp-guar-pill svg{flex:none;width:22px;height:22px;padding:4px;border-radius:50%;background:rgba(201,165,92,.18);color:var(--lx-gold-hi);box-sizing:content-box}
+.lx-lp .lx-lp-hero__media{width:100%;max-width:420px;margin-top:44px}
+.lx-lp .lx-lp-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;width:100%;max-width:1040px;margin-top:56px;text-align:left}
+@media (min-width:900px){.lx-lp .lx-lp-stats{grid-template-columns:1.3fr 1fr 1fr 1fr;gap:14px}}
+.lx-lp .lx-lp-stat-card{position:relative;padding:20px 18px 18px;border-radius:var(--lx-r);border:1px solid var(--lx-line);
+  background:linear-gradient(180deg,var(--lx-glass-2),var(--lx-glass));-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.lx-lp .lx-lp-stat-card b{display:block;font-family:var(--lx-display);font-weight:800;font-size:clamp(1.75rem,5.4vw,2.35rem);line-height:1;letter-spacing:-.03em;color:var(--lx-gold-hi);font-variant-numeric:tabular-nums}
+.lx-lp .lx-lp-stat-card span{display:block;margin-top:10px;font-size:14px;font-weight:600;line-height:1.35}
+.lx-lp .lx-lp-stat-card i{display:block;margin-top:6px;font-style:normal;font-size:12px;line-height:1.4;color:var(--lx-faint)}
+.lx-lp .lx-lp-stat-card--hot{grid-column:1/-1;border-color:var(--lx-gold-line);
+  background:radial-gradient(120% 140% at 0% 0%,rgba(201,165,92,.18),transparent 55%),linear-gradient(180deg,var(--lx-glass-2),var(--lx-glass));
+  box-shadow:0 30px 80px -40px rgba(201,165,92,.45)}
+@media (min-width:900px){.lx-lp .lx-lp-stat-card--hot{grid-column:auto}}
+.lx-lp .lx-lp-stat-card--hot b{font-size:clamp(2.4rem,7vw,3rem)}
+.lx-lp .lx-lp-stats-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 18px;margin-top:18px;font-size:13px;color:var(--lx-faint)}
+.lx-lp .lx-lp-stats-foot a{color:var(--lx-text);font-weight:600;text-decoration:underline;text-decoration-color:rgba(201,165,92,.55);text-underline-offset:4px}
+.lx-lp .lx-lp-heroq{display:flex;align-items:center;gap:14px;margin-top:30px;max-width:560px;padding:12px 18px 12px 12px;border-radius:999px;
+  border:1px solid var(--lx-line);background:var(--lx-glass);text-align:left;transition:border-color .3s}
+.lx-lp .lx-lp-heroq:hover{border-color:var(--lx-gold-line)}
+.lx-lp .lx-lp-heroq__play{flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--lx-gold);color:var(--lx-ink)}
+.lx-lp .lx-lp-heroq__play svg{width:14px;height:14px;margin-left:2px}
+.lx-lp .lx-lp-heroq__t{display:block;font-size:14.5px;line-height:1.4;color:var(--lx-text)}
+.lx-lp .lx-lp-heroq__c{display:block;margin-top:2px;font-size:12px;color:var(--lx-muted)}
+
+/* ---------- video box ---------- */
+.lx-lp .lx-lp-embed{position:relative;width:100%;aspect-ratio:4/5;border-radius:var(--lx-r);overflow:hidden;
+  background:linear-gradient(160deg,#1b1b1e,#111113);border:1px solid var(--lx-line);
+  box-shadow:0 40px 90px -40px rgba(0,0,0,.9)}
+.lx-lp .lx-lp-embed[data-lx-ratio="16/9"]{aspect-ratio:16/9}
+.lx-lp .lx-lp-embed[data-lx-ratio="9/16"]{aspect-ratio:9/16}
+.lx-lp .lx-lp-embed[data-lx-ratio="1/1"]{aspect-ratio:1/1}
+.lx-lp .lx-lp-embed__play{position:absolute;inset:0;width:100%;height:100%;display:grid;place-items:center}
+.lx-lp .lx-lp-embed__poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s var(--lx-ease),filter .5s}
+.lx-lp .lx-lp-embed__play:hover .lx-lp-embed__poster{transform:scale(1.03);filter:brightness(.9)}
+.lx-lp .lx-lp-embed__icon{position:relative;width:68px;height:68px;border-radius:50%;
+  background:rgba(10,10,11,.45);border:1px solid rgba(255,255,255,.35);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  box-shadow:0 18px 44px -12px rgba(0,0,0,.7);transition:transform .4s var(--lx-ease),background-color .3s}
+.lx-lp .lx-lp-embed__icon::after{content:"";position:absolute;left:53%;top:50%;transform:translate(-40%,-50%);
+  border-style:solid;border-width:11px 0 11px 17px;border-color:transparent transparent transparent #fff}
+.lx-lp .lx-lp-embed__play:hover .lx-lp-embed__icon{transform:scale(1.08);background:var(--lx-gold);border-color:var(--lx-gold-hi)}
+.lx-lp .lx-lp-embed__play:hover .lx-lp-embed__icon::after{border-left-color:var(--lx-ink)}
+.lx-lp .lx-lp-embed__play:focus-visible{outline-offset:-4px}
+.lx-lp .lx-lp-embed__frame{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000;object-fit:contain}
+
+/* ---------- any slot still waiting for its media (preview only) ---------- */
+.lx-lp [data-lx-slot].is-empty,.lx-lp .lx-lp-embed.is-empty{
+  display:grid;place-items:center;text-align:center;padding:20px;
+  background:repeating-linear-gradient(135deg,rgba(255,255,255,.025) 0 12px,transparent 12px 24px),var(--lx-card);
+  border:1px dashed var(--lx-line-2)}
+.lx-lp [data-lx-slot].is-empty img{display:none}
+.lx-lp [data-lx-slot].is-empty::after,.lx-lp .lx-lp-embed.is-empty::after{
+  content:attr(data-lx-need);max-width:28ch;font-size:12px;line-height:1.5;letter-spacing:.12em;text-transform:uppercase;color:var(--lx-faint)}
+
+/* ---------- glass card, shared ---------- */
+.lx-lp .lx-lp-glass{border:1px solid var(--lx-line);border-radius:var(--lx-r);
+  background:linear-gradient(180deg,var(--lx-glass-2),var(--lx-glass));box-shadow:0 1px 0 rgba(255,255,255,.04) inset}
+
+/* ---------- testimonials ---------- */
+.lx-lp .lx-lp-testis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;max-width:720px;margin:44px auto 0}
+@media (min-width:900px){.lx-lp .lx-lp-testis{gap:24px}}
+.lx-lp .lx-lp-tcard{display:flex;flex-direction:column;padding:10px 10px 18px}
+.lx-lp .lx-lp-tcard .lx-lp-embed{border-radius:12px;border:0}
+.lx-lp .lx-lp-tcard figcaption{padding:16px 8px 0}
+.lx-lp .lx-lp-quote{font-family:var(--lx-display);font-weight:600;font-size:clamp(.95rem,2.6vw,1.2rem);line-height:1.4;letter-spacing:-.01em}
+.lx-lp .lx-lp-quote p::before{content:"\201C";color:var(--lx-gold)}
+.lx-lp .lx-lp-quote p::after{content:"\201D";color:var(--lx-gold)}
+.lx-lp .lx-lp-cite{margin-top:12px;font-size:12px;line-height:1.45;color:var(--lx-faint)}
+.lx-lp .lx-lp-cite b{display:block;color:var(--lx-muted);font-weight:600;font-size:13px}
+@media (max-width:599px){.lx-lp .lx-lp-tcard{padding:6px 6px 14px}.lx-lp .lx-lp-tcard figcaption{padding:12px 4px 0}}
+
+/* ---------- sound familiar? (tap what's true) ---------- */
+.lx-lp .lx-lp-quiz{display:grid;gap:40px;align-items:center}
+@media (min-width:960px){.lx-lp .lx-lp-quiz{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:72px}}
+.lx-lp .lx-lp-quiz .lx-lp-head{text-align:left;margin:0}
+@media (max-width:959px){.lx-lp .lx-lp-quiz .lx-lp-head{text-align:center;margin-inline:auto}.lx-lp .lx-lp-quiz .lx-lp-head .lx-lp-lede{margin-inline:auto}}
+.lx-lp .lx-lp-qlist{display:grid;gap:10px}
+.lx-lp .lx-lp-q{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;min-height:64px;padding:14px 16px 14px 18px;text-align:left;
+  border-radius:14px;border:1px solid var(--lx-line);background:linear-gradient(180deg,var(--lx-glass-2),var(--lx-glass));
+  font-size:15.5px;font-weight:500;line-height:1.4;transition:border-color .25s,background-color .25s,transform .25s var(--lx-ease)}
+.lx-lp .lx-lp-q:hover{border-color:var(--lx-line-2);transform:translateY(-1px)}
+.lx-lp .lx-lp-q em{color:var(--lx-gold-hi);font-weight:600}
+.lx-lp .lx-lp-q__box{flex:none;display:grid;place-items:center;width:26px;height:26px;border-radius:8px;border:1.5px solid var(--lx-line-2);transition:all .25s var(--lx-ease)}
+.lx-lp .lx-lp-q__box svg{width:15px;height:15px;opacity:0;transform:scale(.6);transition:all .25s var(--lx-ease);color:var(--lx-ink)}
+.lx-lp .lx-lp-q[aria-pressed="true"]{border-color:var(--lx-gold-line);background:linear-gradient(180deg,rgba(201,165,92,.14),rgba(201,165,92,.05))}
+.lx-lp .lx-lp-q[aria-pressed="true"] .lx-lp-q__box{background:var(--lx-gold);border-color:var(--lx-gold)}
+.lx-lp .lx-lp-q[aria-pressed="true"] .lx-lp-q__box svg{opacity:1;transform:none}
+.lx-lp .lx-lp-qscore{display:flex;align-items:center;gap:16px;margin-top:6px;padding:16px 18px;border-radius:14px;border:1px dashed var(--lx-line-2)}
+.lx-lp .lx-lp-qscore b{font-family:var(--lx-display);font-weight:800;font-size:2rem;line-height:1;color:var(--lx-gold-hi);font-variant-numeric:tabular-nums;min-width:2.6ch}
+.lx-lp .lx-lp-qscore b small{font-size:.9rem;color:var(--lx-faint)}
+.lx-lp .lx-lp-qscore p{font-size:15px;font-weight:600}
+.lx-lp .lx-lp-qcta{margin-top:14px;justify-content:flex-start}
+@media (max-width:959px){.lx-lp .lx-lp-qcta{justify-content:center}}
+
+/* ---------- how it works: timeline + phone ---------- */
+.lx-lp .lx-lp-flow{display:grid;gap:48px;margin-top:56px;align-items:start}
+@media (min-width:960px){.lx-lp .lx-lp-flow{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:72px}}
+.lx-lp .lx-lp-tl{position:relative;display:grid;gap:8px}
+.lx-lp .lx-lp-tl::before{content:"";position:absolute;left:27px;top:28px;bottom:28px;width:1px;background:linear-gradient(var(--lx-gold-line),var(--lx-line) 70%)}
+.lx-lp .lx-lp-tl li{position:relative;display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:center;padding:12px 16px 12px 0;border-radius:16px;border:1px solid transparent;transition:background-color .45s,border-color .45s}
+.lx-lp .lx-lp-tl__ico{position:relative;z-index:1;display:grid;place-items:center;width:56px;height:56px;border-radius:50%;border:1px solid var(--lx-line-2);background:var(--lx-bg-2);color:var(--lx-gold);transition:all .45s var(--lx-ease)}
+.lx-lp .lx-lp-tl__ico svg{width:22px;height:22px}
+.lx-lp .lx-lp-tl p{margin-top:3px;font-size:14.5px;color:var(--lx-muted)}
+.lx-lp .lx-lp-tl li.is-on{border-color:var(--lx-gold-line);background:linear-gradient(90deg,rgba(201,165,92,.12),rgba(201,165,92,.02))}
+.lx-lp .lx-lp-tl li.is-on .lx-lp-tl__ico{background:var(--lx-gold);color:var(--lx-ink);border-color:var(--lx-gold-hi);box-shadow:0 0 0 6px rgba(201,165,92,.14),0 10px 30px -8px rgba(201,165,92,.6)}
+.lx-lp .lx-lp-tl li:last-child .lx-lp-tl__ico{color:var(--lx-gold-hi)}
+.lx-lp .lx-lp-flow__phone{position:relative}
+@media (min-width:960px){.lx-lp .lx-lp-flow__phone{position:sticky;top:110px}}
+.lx-lp .lx-lp-flow__tag{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:14px;font-size:11.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--lx-muted)}
+.lx-lp .lx-lp-flow__tag .lx-lp-dot{background:#e5484d;box-shadow:0 0 0 4px rgba(229,72,77,.18)}
+.lx-lp .lx-lp-flow__cap{margin-top:14px;text-align:center;font-size:12.5px;color:var(--lx-faint)}
+
+/* ---------- phone frame ---------- */
+.lx-lp .lx-lp-phone{position:relative;width:100%;max-width:300px;margin-inline:auto;padding:9px;border-radius:40px;
+  background:linear-gradient(160deg,#2a2a2e,#121214 40%,#1c1c1f);
+  box-shadow:0 0 0 1px rgba(255,255,255,.08) inset,0 0 0 1px #000,0 50px 100px -40px rgba(0,0,0,.95),0 0 90px -30px rgba(201,165,92,.35)}
+.lx-lp .lx-lp-phone::before{content:"";position:absolute;top:18px;left:50%;z-index:3;width:30%;height:22px;transform:translateX(-50%);border-radius:999px;background:#000;pointer-events:none}
+.lx-lp .lx-lp-phone .lx-lp-embed{border-radius:32px;border:0;box-shadow:none}
+
+/* ---------- the ads ---------- */
+.lx-lp .lx-lp-reel{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;margin-top:52px}
+.lx-lp .lx-lp-reel__card{margin:0;display:flex;flex-direction:column;align-items:center;gap:16px}
+.lx-lp .lx-lp-reel__card .lx-lp-phone{max-width:260px;padding:7px;border-radius:34px}
+.lx-lp .lx-lp-reel__card .lx-lp-phone::before{top:14px;height:18px}
+.lx-lp .lx-lp-reel__card .lx-lp-phone .lx-lp-embed{border-radius:28px}
+.lx-lp .lx-lp-reel__card figcaption{text-align:center}
+.lx-lp .lx-lp-reel__card figcaption b{display:block;font-family:var(--lx-display);font-size:15px;font-weight:700}
+.lx-lp .lx-lp-reel__card figcaption span{display:block;margin-top:2px;font-size:12.5px;color:var(--lx-faint)}
+.lx-lp .lx-lp-swipe{display:none}
+@media (max-width:899px){
+  .lx-lp .lx-lp-reel{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin:28px calc(-1*var(--lx-pad)) 0;padding:0 var(--lx-pad) 10px;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-padding-inline:var(--lx-pad)}
+  .lx-lp .lx-lp-reel::-webkit-scrollbar{display:none}
+  .lx-lp .lx-lp-reel__card{flex:0 0 64%;scroll-snap-align:start}
+  .lx-lp .lx-lp-swipe{display:block;margin-top:20px;text-align:center;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--lx-gold)}
+}
+
+/* ---------- proof ---------- */
+.lx-lp .lx-lp-proof{display:grid;gap:16px;margin-top:52px}
+@media (min-width:768px){.lx-lp .lx-lp-proof{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1080px){.lx-lp .lx-lp-proof{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.lx-lp .lx-lp-card{display:flex;flex-direction:column;overflow:hidden;padding:8px}
+.lx-lp .lx-lp-shot{position:relative;display:block;width:100%;aspect-ratio:16/10;overflow:hidden;border-radius:12px;background:#0d0d0f}
+.lx-lp .lx-lp-shot img{width:100%;height:100%;object-fit:cover;object-position:center;transform:scale(var(--z,1));transition:transform .7s var(--lx-ease)}
+.lx-lp .lx-lp-shot:hover img{transform:scale(calc(var(--z,1) * 1.04))}
+.lx-lp .lx-lp-shot__hint{position:absolute;right:10px;bottom:10px;padding:6px 10px;border-radius:999px;
+  background:rgba(10,10,11,.75);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);font-size:11px;font-weight:600;letter-spacing:.06em;color:var(--lx-text)}
+.lx-lp .lx-lp-shot:disabled{cursor:default}
+.lx-lp .lx-lp-shot:disabled .lx-lp-shot__hint{display:none}
+.lx-lp .lx-lp-card__body{padding:20px 14px 14px}
+.lx-lp .lx-lp-stat{font-family:var(--lx-display);font-weight:800;font-size:clamp(2.1rem,7vw,2.8rem);line-height:1;letter-spacing:-.03em;color:var(--lx-gold-hi);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.lx-lp .lx-lp-stat-label{margin-top:10px;font-weight:600;font-size:15px}
+.lx-lp .lx-lp-rev{margin-top:6px;font-weight:600;font-size:14.5px;color:var(--lx-gold)}
+.lx-lp .lx-lp-context{margin-top:8px;font-size:13px;color:var(--lx-faint)}
+.lx-lp .lx-lp-walk{margin:20px auto 0;max-width:900px}
+.lx-lp .lx-lp-walk figcaption{margin-top:12px;font-size:14px;color:var(--lx-muted);text-align:center}
+
+/* lightbox: native dialog, so it sits in the top layer above anything GHL wraps around the page */
+.lx-lp .lx-lp-lightbox{width:min(96vw,1400px);max-width:none;max-height:92vh;margin:auto;padding:0;overflow:visible;background:transparent;color:var(--lx-text)}
+.lx-lp .lx-lp-lightbox::backdrop{background:rgba(5,5,6,.9);backdrop-filter:blur(4px)}
+.lx-lp .lx-lp-lightbox img{width:100%;height:auto;max-height:86vh;object-fit:contain;border-radius:14px;background:#0d0d0f}
+.lx-lp .lx-lp-lightbox__close{position:absolute;top:-52px;right:0;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--lx-card);border:1px solid var(--lx-line-2)}
+.lx-lp .lx-lp-lightbox__close svg{width:18px;height:18px}
+.lx-lp .lx-lp-lightbox[open]{animation:lx-fade .3s var(--lx-ease)}
+@keyframes lx-fade{from{opacity:0;transform:scale(.985)}to{opacity:1;transform:none}}
+
+/* ---------- guarantee ---------- */
+.lx-lp .lx-lp-guar{position:relative;max-width:980px;margin-inline:auto;padding:clamp(36px,6vw,64px) clamp(20px,5vw,56px);text-align:center;border-radius:28px;overflow:hidden;
+  border:1px solid var(--lx-gold-line);background:radial-gradient(90% 120% at 50% 0%,rgba(201,165,92,.16),transparent 60%),linear-gradient(180deg,var(--lx-glass-2),var(--lx-glass));
+  box-shadow:0 60px 120px -60px rgba(201,165,92,.4)}
+.lx-lp .lx-lp-guar__badge{display:grid;place-items:center;width:64px;height:64px;margin:0 auto 22px;border-radius:20px;background:linear-gradient(180deg,var(--lx-gold-hi),var(--lx-gold));color:var(--lx-ink);box-shadow:0 14px 40px -10px rgba(201,165,92,.7)}
+.lx-lp .lx-lp-guar__badge svg{width:30px;height:30px}
+.lx-lp .lx-lp-guar .lx-lp-h2{max-width:20ch;margin-inline:auto}
+.lx-lp .lx-lp-guar .lx-lp-lede{margin-inline:auto}
+.lx-lp .lx-lp-terms{display:grid;gap:10px;margin-top:34px;text-align:left}
+@media (min-width:768px){.lx-lp .lx-lp-terms{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.lx-lp .lx-lp-terms li{padding:18px;border-radius:14px;border:1px solid var(--lx-line);background:rgba(10,10,11,.4);font-size:14.5px;line-height:1.45;color:var(--lx-muted)}
+.lx-lp .lx-lp-terms b{display:block;margin-bottom:6px;font-family:var(--lx-display);font-size:1.05rem;font-weight:700;color:var(--lx-text)}
+.lx-lp .lx-lp-trust{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;margin-top:26px}
+.lx-lp .lx-lp-trust li{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;color:var(--lx-muted)}
+.lx-lp .lx-lp-trust svg{width:16px;height:16px;color:var(--lx-gold)}
+
+/* ---------- good fit / not a fit ---------- */
+.lx-lp .lx-lp-fit{display:grid;gap:16px;margin-top:52px}
+@media (min-width:768px){.lx-lp .lx-lp-fit{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.lx-lp .lx-lp-fit__col{padding:28px 24px}
+.lx-lp .lx-lp-fit__col--yes{border-color:var(--lx-gold-line);background:radial-gradient(100% 100% at 0% 0%,rgba(201,165,92,.1),transparent 60%),linear-gradient(180deg,var(--lx-glass-2),var(--lx-glass))}
+.lx-lp .lx-lp-fit__title{display:flex;align-items:center;gap:10px;margin-bottom:12px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase}
+.lx-lp .lx-lp-fit__col--yes .lx-lp-fit__title{color:var(--lx-gold)}
+.lx-lp .lx-lp-fit__col--no .lx-lp-fit__title{color:var(--lx-muted)}
+.lx-lp .lx-lp-fit li{position:relative;padding:13px 0 13px 34px;border-top:1px solid var(--lx-line);font-size:15.5px}
+.lx-lp .lx-lp-fit li:first-child{border-top:0}
+.lx-lp .lx-lp-fit__col--yes li::before{content:"";position:absolute;left:3px;top:20px;width:13px;height:7px;border-left:2px solid var(--lx-gold);border-bottom:2px solid var(--lx-gold);transform:rotate(-45deg)}
+.lx-lp .lx-lp-fit__col--no li{color:var(--lx-muted)}
+.lx-lp .lx-lp-fit__col--no li::before,.lx-lp .lx-lp-fit__col--no li::after{content:"";position:absolute;left:2px;top:24px;width:14px;height:2px;background:var(--lx-faint);transform:rotate(45deg)}
+.lx-lp .lx-lp-fit__col--no li::after{transform:rotate(-45deg)}
+
+/* ---------- FAQ ---------- */
+.lx-lp .lx-lp-faq{display:grid;gap:10px;max-width:820px;margin:48px auto 0}
+.lx-lp .lx-lp-faq details{border-radius:14px;border:1px solid var(--lx-line);background:linear-gradient(180deg,var(--lx-glass-2),var(--lx-glass));transition:border-color .3s}
+.lx-lp .lx-lp-faq details[open]{border-color:var(--lx-gold-line)}
+.lx-lp .lx-lp-faq summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:64px;padding:16px 18px 16px 22px;cursor:pointer;font-family:var(--lx-display);font-weight:600;font-size:16.5px;letter-spacing:-.01em}
+.lx-lp .lx-lp-faq summary::-webkit-details-marker{display:none}
+.lx-lp .lx-lp-faq summary::after{content:"";flex:none;width:30px;height:30px;border-radius:50%;border:1px solid var(--lx-line-2);
+  background:linear-gradient(var(--lx-gold),var(--lx-gold)) center/12px 2px no-repeat,linear-gradient(var(--lx-gold),var(--lx-gold)) center/2px 12px no-repeat;transition:transform .35s var(--lx-ease)}
+.lx-lp .lx-lp-faq details[open] summary::after{transform:rotate(45deg)}
+.lx-lp .lx-lp-faq__a{padding:0 60px 20px 22px;color:var(--lx-muted);font-size:15.5px}
+.lx-lp .lx-lp-faq details[open] .lx-lp-faq__a{animation:lx-rise .5s var(--lx-ease) both}
+
+/* ---------- final CTA ---------- */
+.lx-lp .lx-lp-final{text-align:center}
+.lx-lp .lx-lp-final__panel{position:relative;overflow:hidden;max-width:1040px;margin-inline:auto;padding:clamp(48px,8vw,88px) clamp(20px,5vw,48px);border-radius:32px;border:1px solid var(--lx-line-2);
+  background:radial-gradient(70% 90% at 50% 110%,rgba(201,165,92,.28),transparent 70%),linear-gradient(180deg,var(--lx-glass-2),var(--lx-glass))}
+.lx-lp .lx-lp-final__panel::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(var(--lx-line) 1px,transparent 1px),linear-gradient(90deg,var(--lx-line) 1px,transparent 1px);background-size:48px 48px;
+  -webkit-mask-image:radial-gradient(ellipse 60% 70% at 50% 100%,#000,transparent 70%);mask-image:radial-gradient(ellipse 60% 70% at 50% 100%,#000,transparent 70%)}
+.lx-lp .lx-lp-final .lx-lp-h2{position:relative;margin-inline:auto;max-width:16ch}
+.lx-lp .lx-lp-final .lx-lp-lede{position:relative;margin-inline:auto}
+
+/* ---------- apply + book ---------- */
+.lx-lp .lx-lp-apply{padding:clamp(72px,10vw,112px) var(--lx-pad) clamp(72px,10vw,112px);scroll-margin-top:72px}
+.lx-lp .lx-lp-apply__in{max-width:760px;margin:0 auto}
+.lx-lp .lx-lp-apply__head{text-align:center;margin-bottom:28px}
+.lx-lp .lx-lp-mini{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:24px}
+.lx-lp .lx-lp-mini li{display:inline-flex;align-items:center;gap:9px;padding:8px 14px 8px 8px;border-radius:999px;border:1px solid var(--lx-line);background:var(--lx-glass);font-size:13.5px;color:var(--lx-muted)}
+.lx-lp .lx-lp-mini b{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--lx-gold);color:var(--lx-ink);font-size:12px;font-weight:700}
+.lx-lp .lx-lp-apply__card{padding:clamp(10px,2.4vw,22px);border-radius:24px;border:1px solid var(--lx-gold-line);
+  background:radial-gradient(80% 60% at 50% 0%,rgba(201,165,92,.1),transparent 70%),linear-gradient(180deg,var(--lx-glass-2),var(--lx-glass));box-shadow:0 50px 120px -60px rgba(201,165,92,.45)}
+.lx-lp .lx-lp-consent{margin:16px auto 0;max-width:640px;font-size:12px;line-height:1.55;color:var(--lx-faint);text-align:center}
+.lx-lp .lx-lp-consent a{text-decoration:underline;text-underline-offset:3px}
+.lx-lp .lx-lp-survey{display:block;width:100%;min-height:340px;border:0;background:transparent}
+.lx-lp .lx-lp-survey-slot{min-height:340px}
+.lx-lp .lx-lp-already{margin-top:14px;text-align:center}
+.lx-lp .lx-lp-already button{min-height:44px;padding:0 10px;font-size:14px;color:var(--lx-muted);text-decoration:underline;text-underline-offset:4px}
+.lx-lp .lx-lp-already button:hover{color:var(--lx-text)}
+.lx-lp .lx-lp-book{margin-top:44px;padding-top:40px;border-top:1px solid var(--lx-line);scroll-margin-top:80px;text-align:center}
+.lx-lp .lx-lp-book:focus{outline:none}
+.lx-lp .lx-lp-cal{margin-top:26px;min-height:760px;border-radius:16px;overflow:hidden;background:#fff}
+.lx-lp .lx-lp-cal iframe{display:block;width:100%;min-height:760px;border:0}
+
+/* ---------- decided before paint, so nothing jumps once the script runs ---------- */
+.lx-lp .lx-if-nobook{display:none}
+.lx-lp[data-lx-calendar^="["] .lx-if-book{display:none}
+.lx-lp[data-lx-calendar^="["] .lx-if-nobook{display:inline}
+.lx-lp .lx-lp-hero__media:has(.lx-lp-embed[data-lx-embed^="["]){display:none}
+.lx-lp [data-lx-hide-if-empty]:has(.lx-lp-embed[data-lx-embed^="["]){display:none}
+
+/* ---------- footer ---------- */
+.lx-lp .lx-lp-foot{padding-block:40px 44px;border-top:1px solid var(--lx-line);font-size:14px;color:var(--lx-faint)}
+.lx-lp .lx-lp-foot__in{display:grid;gap:10px}
+.lx-lp .lx-lp-foot__brand{line-height:0}
+.lx-lp .lx-lp-foot nav{display:flex;flex-wrap:wrap;gap:0 22px}
+.lx-lp .lx-lp-foot a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:44px;transition:color .25s}
+.lx-lp .lx-lp-foot a:hover{color:var(--lx-text)}
+@media (min-width:768px){.lx-lp .lx-lp-foot__in{grid-template-columns:auto 1fr auto;align-items:center;gap:28px}.lx-lp .lx-lp-foot nav{justify-content:center}}
+.lx-lp.has-sticky .lx-lp-foot{padding-bottom:calc(112px + env(safe-area-inset-bottom))}
+
+/* ---------- sticky bar (phones only; moved to <body> by the script so a
+   transformed GHL container can never trap position:fixed) ---------- */
+.lx-lp.lx-lp-sticky{position:fixed;left:0;right:0;bottom:0;z-index:2147483000;
+  padding:12px var(--lx-pad) calc(12px + env(safe-area-inset-bottom));
+  background:rgba(10,10,11,.8);border-top:1px solid var(--lx-line-2);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  transform:translateY(110%);transition:transform .45s var(--lx-ease);overflow:visible}
+.lx-lp.lx-lp-sticky.is-up{transform:translateY(0)}
+.lx-lp.lx-lp-sticky .lx-lp-btn{width:100%;justify-content:space-between}
+@media (min-width:768px){.lx-lp.lx-lp-sticky{display:none}}
+
+/* ---------- scroll reveal: only once the script is running ---------- */
+.lx-lp.lx-js [data-lx-reveal]{opacity:0;transform:translateY(22px);
+  transition:opacity .9s var(--lx-ease),transform .9s var(--lx-ease);transition-delay:var(--lx-d,0s)}
+.lx-lp.lx-js [data-lx-reveal].is-in{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  .lx-lp *,.lx-lp *::before,.lx-lp *::after{animation:none !important;transition:none !important}
+  .lx-lp.lx-js [data-lx-reveal]{opacity:1;transform:none}
+}
+</style>
+
+<!-- CONFIG: fill these four, then flip SHOW_JZ_PROOF to "true" once the client approves.
+       data-lx-calendar = GHL booking widget URL, e.g. https://api.leadconnectorhq.com/widget/booking/XXXXXXXX
+       data-lx-pixel    = Meta Pixel ID (numbers only). Leave as-is if the pixel is in GHL funnel settings.
+       data-lx-email    = the contact address shown in the footer.
+       data-lx-show-jz  = "true" shows the outdoor living proof card (also needs its screenshot and dates). -->
+<div class="lx-lp" data-lx-root data-lx-apply="#apply" data-lx-copy2="1" data-lx-rev="1"
+     data-lx-calendar="[GHL_CALENDAR_EMBED_URL]"
+     data-lx-pixel="[META_PIXEL_ID]"
+     data-lx-email="luxon.ag3ncy@gmail.com"
+     data-lx-show-jz="false">
+
+  <header class="lx-lp-top" data-lx-top>
+    <div class="lx-lp-wrap lx-lp-top__in">
+      <img class="lx-lp-logo" src="https://call.luxonmarketing.com/brand/luxon-wordmark-gold-on-dark.png" alt="Luxon" width="900" height="195" decoding="async">
+      <a class="lx-lp-btn lx-lp-btn--sm" href="/apply" data-lx-cta>See if you qualify</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1 · HERO -->
+    <section class="lx-lp-hero" data-lx-hero aria-labelledby="lx-h1">
+      <div class="lx-lp-hero__bg" aria-hidden="true"></div>
+      <div class="lx-lp-wrap lx-lp-hero__in">
+        <p class="lx-lp-kicker">For outdoor living, remodeling &amp; roofing</p>
+        <h1 id="lx-h1" class="lx-lp-h1">Leads that only <em class="lx-lp-gold">called you.</em></h1>
+        <p class="lx-lp-lede">Meta ads filmed at your real jobs, for companies doing <b>$10,000+ projects</b>. Every number below is a real client's: ad results straight from Ads Manager, job values as they reported them.</p>
+        <div class="lx-lp-actions">
+          <a class="lx-lp-btn" href="/apply" data-lx-cta>See if you qualify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <p class="lx-lp-assure"><span class="lx-lp-dot" aria-hidden="true"></span><span class="lx-if-book">2-minute application · Pick your call time right away</span><span class="lx-if-nobook">2-minute application · No pitch, no obligation</span></p>
+        <p class="lx-lp-guar-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6l7-3z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg><span>15 qualified leads in 30 days, or we work free until you get them.</span></p>
+        <div class="lx-lp-hero__media">
+          <div class="lx-lp-embed" data-lx-eager data-lx-ratio="4/5" data-lx-label="Hero video"
+               data-lx-embed="[HERO VIDEO URL]"
+               data-lx-poster="[HERO POSTER URL, 1080x1350]"></div>
+        </div>
+        <ul class="lx-lp-stats" aria-label="Results from client accounts">
+          <li class="lx-lp-stat-card lx-lp-stat-card--hot"><b>$200K</b><span>in jobs closed off $300 in ad spend</span><i>Outdoor living, Fresno · so far · client reported</i></li>
+          <li class="lx-lp-stat-card"><b>$16.03</b><span>per lead</span><i>Landscaping · campaign rebuilt 4 Sep</i></li>
+          <li class="lx-lp-stat-card"><b>$80K+</b><span>of jobs in the pipeline</span><i>Same landscaping account · client reported</i></li>
+          <li class="lx-lp-stat-card"><b>243</b><span>leads at $10.95 each</span><i>Surrogacy agency · 24 Jul to 2 Sep 2026</i></li>
+        </ul>
+        <p class="lx-lp-stats-foot"><span>Straight from client accounts</span><a href="#lx-proof">See the screenshots</a></p>
+        <a class="lx-lp-heroq" href="#lx-testi">
+          <span class="lx-lp-heroq__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></span>
+          <span><span class="lx-lp-heroq__t">"I've received over 200 leads. They're good quality leads."</span>
+          <span class="lx-lp-heroq__c">Founder, surrogacy agency · about a month in · watch her video</span></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 2 · TESTIMONIALS -->
+    <section class="lx-lp-sec" aria-labelledby="lx-testi">
+      <div class="lx-lp-wrap">
+        <div class="lx-lp-head">
+          <p class="lx-lp-kicker" data-lx-reveal>In their words</p>
+          <h2 id="lx-testi" class="lx-lp-h2" data-lx-reveal>Hear it from them <em class="lx-lp-gold">first.</em></h2>
+        </div>
+        <div class="lx-lp-testis">
+          <figure class="lx-lp-tcard lx-lp-glass" data-lx-reveal>
+            <div class="lx-lp-embed" data-lx-ratio="9/16" data-lx-label="Surrogacy agency testimonial"
+                 data-lx-embed="https://call.luxonmarketing.com/video/surrogacy-founder-34s.mp4"
+                 data-lx-poster="https://call.luxonmarketing.com/video/surrogacy-founder-34s-poster.jpg"
+                 data-lx-captions="https://call.luxonmarketing.com/video/surrogacy-founder-34s.vtt"></div>
+            <figcaption>
+              <blockquote class="lx-lp-quote"><p>I've received over 200 leads. They're good quality leads. They're coming in every single day.</p></blockquote>
+              <p class="lx-lp-cite"><b>Founder, surrogacy agency</b>243 leads in 6 weeks · 34 sec</p>
+            </figcaption>
+          </figure>
+          <figure class="lx-lp-tcard lx-lp-glass" data-lx-reveal style="--lx-d:.08s">
+            <div class="lx-lp-embed" data-lx-ratio="9/16" data-lx-label="Landscaping owners testimonial"
+                 data-lx-embed="https://call.luxonmarketing.com/video/landscaping-client-720.mp4"
+                 data-lx-poster="https://call.luxonmarketing.com/lp/landscaping-owners-poster.jpg"
+                 data-lx-captions="https://call.luxonmarketing.com/video/landscaping-client.vtt"></div>
+            <figcaption>
+              <blockquote class="lx-lp-quote"><p>You truly got to know us. Got to know our vision. You were always involved, very communicative.</p></blockquote>
+              <p class="lx-lp-cite"><b>The two owners, landscaping</b>$16.03 per lead · 1 min 19</p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 · SOUND FAMILIAR? Tap what's true. -->
+    <section class="lx-lp-sec" aria-labelledby="lx-quiz">
+      <div class="lx-lp-wrap lx-lp-quiz">
+        <div class="lx-lp-head">
+          <p class="lx-lp-kicker" data-lx-reveal>Sound familiar?</p>
+          <h2 id="lx-quiz" class="lx-lp-h2" data-lx-reveal>Great work. <em class="lx-lp-gold">Unpredictable phone.</em></h2>
+          <p class="lx-lp-lede" data-lx-reveal>Most of the contractors we talk to aren't short on skill. They're short on a steady stream of homeowners who are ready to talk about a real project.</p>
+        </div>
+        <div data-lx-quiz data-lx-reveal style="--lx-d:.08s">
+          <div class="lx-lp-qlist" role="group" aria-label="Tap what's true for your business">
+            <button type="button" class="lx-lp-q" aria-pressed="false"><span>Most of our best jobs still come from <em>referrals</em>.</span><span class="lx-lp-q__box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></button>
+            <button type="button" class="lx-lp-q" aria-pressed="false"><span>We tried Facebook ads and got <em>tire kickers</em>.</span><span class="lx-lp-q__box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></button>
+            <button type="button" class="lx-lp-q" aria-pressed="false"><span>The leads we get are <em>shopping on price</em>.</span><span class="lx-lp-q__box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></button>
+            <button type="button" class="lx-lp-q" aria-pressed="false"><span>Our crew could handle <em>more work than we're booking</em>.</span><span class="lx-lp-q__box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></button>
+            <button type="button" class="lx-lp-q" aria-pressed="false"><span>I can't say where <em>next month's jobs</em> are coming from.</span><span class="lx-lp-q__box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></button>
+            <div class="lx-lp-qscore" aria-live="polite"><b data-lx-qn>0<small>/5</small></b><p data-lx-qmsg>Tap what's true for your business.</p></div>
+          </div>
+          <div class="lx-lp-actions lx-lp-qcta" data-lx-qcta hidden>
+            <a class="lx-lp-btn" href="/apply" data-lx-cta>See if you qualify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 · HOW IT WORKS -->
+    <section class="lx-lp-sec" aria-labelledby="lx-how">
+      <div class="lx-lp-wrap">
+        <div class="lx-lp-head">
+          <p class="lx-lp-kicker" data-lx-reveal>Clear roles</p>
+          <h2 id="lx-how" class="lx-lp-h2" data-lx-reveal>We handle the ads. <em class="lx-lp-gold">You handle the job.</em></h2>
+        </div>
+        <div class="lx-lp-flow">
+          <ol class="lx-lp-tl" data-lx-tl>
+            <li class="is-on" data-lx-reveal><span class="lx-lp-tl__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3"/></svg></span><div><h3 class="lx-lp-h3">We film at your jobs</h3><p>Scripts, filming and editing, done in one session at your real projects.</p></div></li>
+            <li data-lx-reveal><span class="lx-lp-tl__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg></span><div><h3 class="lx-lp-h3">We put them in front of the right homeowners</h3><p>Your service area, people planning the kind of project you do.</p></div></li>
+            <li data-lx-reveal><span class="lx-lp-tl__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 13V5.5a1.5 1.5 0 013 0V12m0-1.5a1.5 1.5 0 013 0V12m0-1a1.5 1.5 0 013 0v4a6 6 0 01-6 6h-1a6 6 0 01-5-2.7L3.5 15a1.6 1.6 0 012.6-1.8L8 15"/></svg></span><div><h3 class="lx-lp-h3">Interested homeowners raise their hand</h3><p>They send their details right from the ad, with a few questions that screen out tire kickers.</p></div></li>
+            <li data-lx-reveal><span class="lx-lp-tl__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg></span><div><h3 class="lx-lp-h3">Leads hit your phone instantly</h3><p>Name, project and number, sent straight to you the moment they come in.</p></div></li>
+            <li data-lx-reveal><span class="lx-lp-tl__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><h3 class="lx-lp-h3">You call within 5 minutes and book the estimate</h3><p>Speed is what turns a lead into a booked visit. That's your part.</p></div></li>
+            <li data-lx-reveal><span class="lx-lp-tl__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V9m6 10V5m6 14v-7m4 7H2"/></svg></span><div><h3 class="lx-lp-h3">We tell Meta who actually booked</h3><p>So it finds more homeowners like your best jobs, and the leads keep getting better.</p></div></li>
+          </ol>
+          <div class="lx-lp-flow__phone" data-lx-reveal style="--lx-d:.1s">
+            <p class="lx-lp-flow__tag"><span class="lx-lp-dot" aria-hidden="true"></span>Real campaign · outdoor living</p>
+            <div class="lx-lp-phone">
+              <div class="lx-lp-embed" data-lx-ratio="9/16" data-lx-label="Example ad: owner on camera"
+                   data-lx-embed="https://call.luxonmarketing.com/video/ad-6.mp4"
+                   data-lx-poster="https://call.luxonmarketing.com/video/ad-6-poster.jpg"></div>
+            </div>
+            <p class="lx-lp-flow__cap">Written, filmed, edited and launched by Luxon.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 · THE ADS -->
+    <section class="lx-lp-sec" aria-labelledby="lx-ads">
+      <div class="lx-lp-wrap">
+        <div class="lx-lp-head">
+          <p class="lx-lp-kicker" data-lx-reveal>The work</p>
+          <h2 id="lx-ads" class="lx-lp-h2" data-lx-reveal>Shot at real jobs. <em class="lx-lp-gold">Not stock footage.</em></h2>
+          <p class="lx-lp-lede" data-lx-reveal>Real ads we filmed and edited for outdoor living clients. Cut for a phone, captions on so they work on mute, and the owner on camera when it helps.</p>
+        </div>
+        <p class="lx-lp-swipe" aria-hidden="true">Swipe for more →</p>
+        <div class="lx-lp-reel" aria-label="Example ads">
+          <figure class="lx-lp-reel__card" data-lx-reveal>
+            <div class="lx-lp-phone"><div class="lx-lp-embed" data-lx-ratio="9/16" data-lx-label="Example ad: Before and after"
+                 data-lx-embed="https://call.luxonmarketing.com/video/ad-4.mp4"
+                 data-lx-poster="https://call.luxonmarketing.com/video/ad-4-poster.jpg"></div></div>
+            <figcaption><b>Before and after</b><span>Outdoor living · 41 sec</span></figcaption>
+          </figure>
+          <figure class="lx-lp-reel__card" data-lx-reveal style="--lx-d:.06s">
+            <div class="lx-lp-phone"><div class="lx-lp-embed" data-lx-ratio="9/16" data-lx-label="Example ad: Owner on camera"
+                 data-lx-embed="https://call.luxonmarketing.com/video/ad-6.mp4"
+                 data-lx-poster="https://call.luxonmarketing.com/video/ad-6-poster.jpg"></div></div>
+            <figcaption><b>Owner on camera</b><span>Outdoor living · 42 sec</span></figcaption>
+          </figure>
+          <figure class="lx-lp-reel__card" data-lx-reveal style="--lx-d:.12s">
+            <div class="lx-lp-phone"><div class="lx-lp-embed" data-lx-ratio="9/16" data-lx-label="Example ad: Show the finished yard"
+                 data-lx-embed="https://call.luxonmarketing.com/video/ad-5.mp4"
+                 data-lx-poster="https://call.luxonmarketing.com/video/ad-5-poster.jpg"></div></div>
+            <figcaption><b>Show the finished yard</b><span>Outdoor living · 30 sec</span></figcaption>
+          </figure>
+          <figure class="lx-lp-reel__card" data-lx-reveal style="--lx-d:.18s">
+            <div class="lx-lp-phone"><div class="lx-lp-embed" data-lx-ratio="9/16" data-lx-label="Example ad: Finished project walk"
+                 data-lx-embed="https://call.luxonmarketing.com/video/ad-2.mp4"
+                 data-lx-poster="https://call.luxonmarketing.com/video/ad-2-poster.jpg"></div></div>
+            <figcaption><b>Finished project walk</b><span>Outdoor living · 26 sec</span></figcaption>
+          </figure>
+        </div>
+        <div class="lx-lp-actions" data-lx-reveal>
+          <a class="lx-lp-btn" href="/apply" data-lx-cta>Get ads like these<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6 · PROOF -->
+    <section class="lx-lp-sec" aria-labelledby="lx-proof">
+      <div class="lx-lp-wrap">
+        <div class="lx-lp-head">
+          <p class="lx-lp-kicker" data-lx-reveal>Proof</p>
+          <h2 id="lx-proof" class="lx-lp-h2" data-lx-reveal>The numbers. <em class="lx-lp-gold">Not our version of them.</em></h2>
+        </div>
+        <div class="lx-lp-proof">
+          <!-- SHOW_JZ_PROOF: stays hidden until data-lx-show-jz="true" AND the screenshot and dates are filled. -->
+          <article class="lx-lp-card lx-lp-glass" data-lx-flag="jz" data-lx-reveal hidden>
+            <button class="lx-lp-shot" type="button" data-lx-zoom data-lx-slot aria-label="Enlarge the outdoor living ad account screenshot">
+              <img class="lx-lp-media" data-lx-src="[JZ_PROOF_SCREENSHOT]" alt="Meta Ads Manager, outdoor living account in Fresno: about $300 in ad spend behind $200K in closed jobs." width="1600" height="1000" loading="lazy" decoding="async">
+              <span class="lx-lp-shot__hint">Tap to enlarge</span>
+            </button>
+            <div class="lx-lp-card__body">
+              <p class="lx-lp-stat">$300 → $200K in closed jobs</p>
+              <p class="lx-lp-stat-label">Ad spend to closed jobs, so far</p>
+              <p class="lx-lp-context">Outdoor living, Fresno · [START DATE] to [END DATE] 2026</p>
+            </div>
+          </article>
+          <article class="lx-lp-card lx-lp-glass" data-lx-reveal>
+            <button class="lx-lp-shot" type="button" data-lx-zoom data-lx-slot aria-label="Enlarge the landscaping ad account screenshot">
+              <img class="lx-lp-media" data-lx-src="https://call.luxonmarketing.com/lp/proof-landscaping.png" style="--z:1.06" alt="Meta Ads Manager, landscaping account, 12 Aug to 10 Sep 2026: the campaign rebuilt on 4 Sep at 11 leads for $16.03 each, and the earlier campaign at 12 leads for $35.55 each." width="1600" height="1000" loading="lazy" decoding="async">
+              <span class="lx-lp-shot__hint">Tap to enlarge</span>
+            </button>
+            <div class="lx-lp-card__body">
+              <p class="lx-lp-stat">$16.03</p>
+              <p class="lx-lp-stat-label">Cost per lead, campaign rebuilt 4 Sep</p>
+              <p class="lx-lp-rev">$80K+ of jobs in the pipeline from those leads</p>
+              <p class="lx-lp-context">Landscaping · 12 Aug to 10 Sep 2026</p>
+            </div>
+          </article>
+          <article class="lx-lp-card lx-lp-glass" data-lx-reveal style="--lx-d:.08s">
+            <button class="lx-lp-shot" type="button" data-lx-zoom data-lx-slot aria-label="Enlarge the chimney sweep ad account screenshot">
+              <img class="lx-lp-media" data-lx-src="https://call.luxonmarketing.com/lp/proof-chimney.png" style="--z:1.32" alt="Meta Ads Manager, chimney sweep account, 13 Aug to 2 Sep 2026: 25 leads, $467.83 spent, $18.71 per lead." width="1600" height="1000" loading="lazy" decoding="async">
+              <span class="lx-lp-shot__hint">Tap to enlarge</span>
+            </button>
+            <div class="lx-lp-card__body">
+              <p class="lx-lp-stat">$18.71</p>
+              <p class="lx-lp-stat-label">Cost per lead, 25 leads</p>
+              <p class="lx-lp-rev">$14K in revenue so far</p>
+              <p class="lx-lp-context">Chimney sweep · 13 Aug to 2 Sep 2026</p>
+            </div>
+          </article>
+          <article class="lx-lp-card lx-lp-glass" data-lx-reveal style="--lx-d:.16s">
+            <button class="lx-lp-shot" type="button" data-lx-zoom data-lx-slot aria-label="Enlarge the surrogacy agency ad account screenshot">
+              <img class="lx-lp-media" data-lx-src="https://call.luxonmarketing.com/lp/proof-surrogacy.png" style="--z:1.4" alt="Meta Ads Manager, surrogacy agency account, 24 Jul to 2 Sep 2026: 243 leads, $2,661.13 spent, $10.95 per lead." width="1600" height="1000" loading="lazy" decoding="async">
+              <span class="lx-lp-shot__hint">Tap to enlarge</span>
+            </button>
+            <div class="lx-lp-card__body">
+              <p class="lx-lp-stat">243</p>
+              <p class="lx-lp-stat-label">Leads at $10.95 each</p>
+              <p class="lx-lp-rev">$28K in revenue in the first month</p>
+              <p class="lx-lp-context">Surrogacy agency · 24 Jul to 2 Sep 2026</p>
+            </div>
+          </article>
+        </div>
+        <!-- WALKTHROUGH: hides itself until data-lx-embed holds the 90 second cut. -->
+        <figure class="lx-lp-walk" data-lx-hide-if-empty data-lx-reveal>
+          <div class="lx-lp-embed" data-lx-ratio="16/9" data-lx-label="Ad account walkthrough"
+               data-lx-embed="[WALKTHROUGH_90S_URL]"
+               data-lx-poster="https://call.luxonmarketing.com/video/ad-walkthrough-poster.jpg"
+               data-lx-captions="[WALKTHROUGH_90S_VTT, optional]"></div>
+          <figcaption>Watch a live client account (90 sec). Real campaigns, real leads, real budgets. Client details blurred.</figcaption>
+        </figure>
+        <p class="lx-lp-note" data-lx-reveal>Each figure is one client's account over the dates shown, read straight off their Meta Ads Manager. Project values are reported by the client and shared with their permission.</p>
+      </div>
+    </section>
+
+    <!-- 7 · THE GUARANTEE -->
+    <section class="lx-lp-sec" aria-labelledby="lx-guar">
+      <div class="lx-lp-wrap">
+        <div class="lx-lp-guar" data-lx-reveal>
+          <div class="lx-lp-guar__badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6l7-3z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div>
+          <p class="lx-lp-kicker">The guarantee</p>
+          <h2 id="lx-guar" class="lx-lp-h2">15 qualified leads in 30 days. <em class="lx-lp-gold">Or we work free until you get them.</em></h2>
+          <p class="lx-lp-lede">A qualified lead is a real homeowner in your service area asking about the work you do. We agree that definition with you in writing before launch.</p>
+          <ol class="lx-lp-terms" aria-label="It holds as long as">
+            <li><b>$50 a day</b>You spend at least $50 a day on ads, paid straight to Meta.</li>
+            <li><b>5-minute calls</b>Every new lead gets a call within 5 minutes.</li>
+            <li><b>48-hour approvals</b>You approve new ads within 48 hours.</li>
+          </ol>
+          <div class="lx-lp-actions">
+            <a class="lx-lp-btn" href="/apply" data-lx-cta>See if you qualify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <ul class="lx-lp-trust" aria-label="What you keep">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Your ad account stays yours</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Filmed at your real jobs</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Every number shown is real</li>
+          </ul>
+          <p class="lx-lp-note">The guarantee covers leads. Booked jobs and revenue depend on your follow-up and your close rate, so they aren't part of it. Full terms are agreed in writing before launch.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8 · WHO WE WORK WITH -->
+    <section class="lx-lp-sec" aria-labelledby="lx-fit">
+      <div class="lx-lp-wrap">
+        <div class="lx-lp-head">
+          <p class="lx-lp-kicker" data-lx-reveal>Who we work with</p>
+          <h2 id="lx-fit" class="lx-lp-h2" data-lx-reveal>We turn people away <em class="lx-lp-gold">on purpose.</em></h2>
+        </div>
+        <div class="lx-lp-fit">
+          <div class="lx-lp-fit__col lx-lp-fit__col--yes lx-lp-glass" data-lx-reveal>
+            <h3 class="lx-lp-fit__title">Good fit</h3>
+            <ul>
+              <li>One job is worth $10,000 or more to you.</li>
+              <li>You do outdoor living, remodeling or roofing.</li>
+              <li>Someone can call every new lead within 5 minutes.</li>
+              <li>You can spend at least $50 a day on ads.</li>
+            </ul>
+          </div>
+          <div class="lx-lp-fit__col lx-lp-fit__col--no lx-lp-glass" data-lx-reveal style="--lx-d:.08s">
+            <h3 class="lx-lp-fit__title">Not a fit</h3>
+            <ul>
+              <li>Your average job is under $10,000.</li>
+              <li>Nobody can call a new lead within 5 minutes.</li>
+              <li>You can't put $50 a day into ads yet.</li>
+              <li>You're just looking, with no plan to start.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9 · FAQ -->
+    <section class="lx-lp-sec" aria-labelledby="lx-faq">
+      <div class="lx-lp-wrap">
+        <div class="lx-lp-head">
+          <p class="lx-lp-kicker" data-lx-reveal>Questions</p>
+          <h2 id="lx-faq" class="lx-lp-h2" data-lx-reveal>Straight <em class="lx-lp-gold">answers.</em></h2>
+        </div>
+        <div class="lx-lp-faq" data-lx-reveal>
+          <details><summary>How much does it cost?</summary><div class="lx-lp-faq__a"><p>Most clients invest from $1,200/month for management, plus ad spend paid directly to Meta from your own account (usually $1,000+/month). You'll know the exact numbers on the call, before you decide anything.</p></div></details>
+          <details><summary>Do you guarantee results?</summary><div class="lx-lp-faq__a"><p>Yes. 15 qualified leads in your first 30 days, or we keep working for free until you get them. It holds as long as you spend at least $50 a day, call every lead within 5 minutes, and approve new ads within 48 hours. It covers leads, not booked jobs or revenue.</p></div></details>
+          <details><summary>How fast will I see leads?</summary><div class="lx-lp-faq__a"><p>Most accounts start getting leads in the first week. The first 30 to 90 days are about finding the ads and audience that bring booked jobs, not just leads.</p></div></details>
+          <details><summary>Whose ad account is it?</summary><div class="lx-lp-faq__a"><p>Yours. The account, the ads and the data stay with you, whatever happens.</p></div></details>
+          <details><summary>Who makes the ads?</summary><div class="lx-lp-faq__a"><p>We film them at your real jobs. No stock footage.</p></div></details>
+          <details><summary>What happens after I apply?</summary><div class="lx-lp-faq__a"><p><span class="lx-if-book">If it looks like a fit, you'll pick a call time right away. We'll text you to confirm. On the call, you'll see a live ad account and what your competitors are running.</span><span class="lx-if-nobook">If it looks like a fit, someone from our team calls you to set a time. On the call, you'll see a live ad account and what your competitors are running.</span></p></div></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10 · FINAL CTA -->
+    <section class="lx-lp-sec lx-lp-final" data-lx-final aria-labelledby="lx-close">
+      <div class="lx-lp-wrap">
+        <div class="lx-lp-final__panel" data-lx-reveal>
+          <h2 id="lx-close" class="lx-lp-h2">Let's see if it works <em class="lx-lp-gold">for your trade.</em></h2>
+          <p class="lx-lp-lede">Five quick questions. If it's a fit, you'll see a live client ad account on the call.</p>
+          <div class="lx-lp-actions">
+            <a class="lx-lp-btn" href="/apply" data-lx-cta>See if you qualify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <p class="lx-lp-assure"><span class="lx-lp-dot" aria-hidden="true"></span>2 minutes · No pitch, no obligation</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- APPLY + BOOK. On a qualified submission GHL's survey reports the new contact
+         to this page (its own "set-sticky-contacts" message), and the calendar opens below. -->
+    <section id="apply" class="lx-lp-apply" data-moved="1" aria-labelledby="lx-apply-h">
+      <div class="lx-lp-apply__in">
+        <div class="lx-lp-apply__head">
+          <p class="lx-lp-kicker">2-minute application</p>
+          <h2 id="lx-apply-h" class="lx-lp-h2">See if you <em class="lx-lp-gold">qualify.</em></h2>
+          <ol class="lx-lp-mini" aria-label="What happens">
+            <li><b>1</b>Answer 5 quick questions</li>
+            <li><b>2</b><span class="lx-if-book">Pick your call time</span><span class="lx-if-nobook">We call you to set a time</span></li>
+            <li><b>3</b>See a live ad account on the call</li>
+          </ol>
+        </div>
+        <div class="lx-lp-apply__card">
+          <div class="lx-lp-survey-slot" data-lx-survey="https://api.leadconnectorhq.com/widget/survey/yLy9BhLLwTJb4NzB6blk" data-lx-survey-id="yLy9BhLLwTJb4NzB6blk">
+            <noscript><iframe class="lx-lp-survey" src="https://api.leadconnectorhq.com/widget/survey/yLy9BhLLwTJb4NzB6blk" scrolling="no" id="yLy9BhLLwTJb4NzB6blk" title="Luxon Client Application"></iframe></noscript>
+          </div>
+        </div>
+        <p class="lx-lp-consent">By submitting your information, you agree to receive calls and text messages from Luxon about your inquiry, including by automated means. Message frequency varies. Message &amp; data rates may apply. Reply STOP to opt out, HELP for help. We do not sell or share your mobile information with third parties for marketing purposes. See our <a href="/privacy">Privacy Policy</a> and <a href="/terms">Terms</a>.</p>
+        <p class="lx-lp-already" data-lx-booktoggle hidden><button type="button">Already applied? Show call times</button></p>
+        <div class="lx-lp-book" id="book" data-lx-book hidden tabindex="-1" aria-labelledby="lx-book-h">
+          <p class="lx-lp-kicker">Book your call</p>
+          <h2 id="lx-book-h" class="lx-lp-h2">Qualified? <em class="lx-lp-gold">Pick your time.</em></h2>
+          <p class="lx-lp-micro">We'll text you to confirm. 35 to 45 minutes. You'll see a live ad account on screen.</p>
+          <div class="lx-lp-cal" data-lx-cal></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 10 · FOOTER -->
+  <footer class="lx-lp-foot">
+    <div class="lx-lp-wrap lx-lp-foot__in">
+      <p class="lx-lp-foot__brand"><img class="lx-lp-logo lx-lp-logo--sm" src="https://call.luxonmarketing.com/brand/luxon-wordmark-gold-on-dark.png" alt="Luxon" width="900" height="195" loading="lazy" decoding="async"></p>
+      <nav aria-label="Legal">
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms</a>
+        <a href="#" data-lx-mail hidden></a>
+      </nav>
+      <p>&copy; <span data-lx-year>2026</span> Luxon. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- lightbox for the proof screenshots -->
+  <dialog class="lx-lp-lightbox" aria-label="Enlarged screenshot">
+    <button class="lx-lp-lightbox__close" type="button" aria-label="Close enlarged screenshot">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <img alt="">
+  </dialog>
+
+  <!-- sticky bar: phones only, after the hero leaves the screen -->
+  <div class="lx-lp lx-lp-sticky" data-lx-sticky aria-hidden="true" inert>
+    <a class="lx-lp-btn" href="/apply" data-lx-cta>See if you qualify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var each = function (list, fn) { Array.prototype.forEach.call(list, fn); };
+  var isPlaceholder = function (v) { return !v || /^\s*\[/.test(v); };
+
+  function init() {
+    var root = document.querySelector('.lx-lp[data-lx-root]');
+    if (!root || root.getAttribute('data-lx-ready')) return;
+    root.setAttribute('data-lx-ready', '1');
+    root.classList.add('lx-js');
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    /* A visitor must never see a placeholder. On the live page an unfilled
+       slot removes itself entirely; only the local preview (or ?lx-preview=1)
+       shows the labelled boxes, so you can see what is left to fill. */
+    var preview = window.LX_PREVIEW === true || /[?&]lx-preview=1(&|$)/.test(window.location.search);
+
+    /* 1. Every CTA goes to one URL, and carries the ad's tracking with it.
+          Only these keys are passed on, so nothing else in the address bar
+          leaks into the application. */
+    var KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'fbclid'];
+    var applyUrl = root.getAttribute('data-lx-apply') || '/apply';
+    function ctaHref() {
+      var here = new URLSearchParams(window.location.search), u;
+      try { u = new URL(applyUrl, window.location.href); } catch (e) { return applyUrl; }
+      KEYS.forEach(function (k) {
+        var v = here.get(k);
+        if (v !== null && v !== '' && !u.searchParams.has(k)) u.searchParams.set(k, v);
+      });
+      return u.origin === window.location.origin ? u.pathname + u.search + u.hash : u.toString();
+    }
+    function wireCtas(scope) {
+      var href = ctaHref();
+      each(scope.querySelectorAll('a[data-lx-cta]'), function (a) { a.setAttribute('href', href); });
+    }
+    wireCtas(root);
+
+    /* 2. Images: data-lx-src holds the URL. Anything still bracketed shows a
+          labelled empty slot instead of a broken image icon. */
+    each(root.querySelectorAll('img[data-lx-src]'), function (img) {
+      var src = img.getAttribute('data-lx-src');
+      var slot = img.closest('[data-lx-slot]') || img.parentNode;
+      if (isPlaceholder(src)) {
+        if (!preview) { (slot.closest('.lx-lp-card, .lx-lp-photo') || slot).hidden = true; return; }
+        slot.classList.add('is-empty');
+        slot.setAttribute('data-lx-need', src.replace(/^\s*\[|\]\s*$/g, ''));
+        if (slot.tagName === 'BUTTON') slot.disabled = true;
+        return;
+      }
+      if (img.closest('[data-lx-flag]')) return;   /* flagged cards load their image only when shown */
+      img.src = src;
+    });
+
+    /* 3. Video boxes: a poster and a play button until clicked, so no player
+          loads (and nothing is downloaded) unless someone asks for it. */
+    function toEmbed(url) {
+      var m;
+      if ((m = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{11})/)))
+        return { type: 'iframe', src: 'https://www.youtube-nocookie.com/embed/' + m[1] + '?autoplay=1&rel=0&modestbranding=1&playsinline=1' };
+      if ((m = url.match(/vimeo\.com\/(?:video\/)?(\d+)/)))
+        return { type: 'iframe', src: 'https://player.vimeo.com/video/' + m[1] + '?autoplay=1&title=0&byline=0&portrait=0' };
+      if (/\.(mp4|webm|mov|m4v)(\?|#|$)/i.test(url)) return { type: 'video', src: url };
+      return { type: 'iframe', src: url };
+    }
+    each(root.querySelectorAll('[data-lx-embed]'), function (box) {
+      var url = box.getAttribute('data-lx-embed');
+      var poster = box.getAttribute('data-lx-poster');
+      var label = box.getAttribute('data-lx-label') || 'Video';
+      if (box.querySelector('video,iframe')) return;
+      if (isPlaceholder(url)) {
+        if (!preview) {
+          var holder = box.closest('[data-lx-hide-if-empty]') || box.closest('.lx-lp-hero__media') || box;
+          holder.hidden = true;
+          var grid = box.closest('.lx-lp-hero__grid');
+          return;
+        }
+        box.classList.add('is-empty');
+        box.setAttribute('data-lx-need', label + ': paste a YouTube, Vimeo, GHL or .mp4 URL');
+        return;
+      }
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'lx-lp-embed__play';
+      btn.setAttribute('aria-label', 'Play the ' + label.toLowerCase());
+      if (!isPlaceholder(poster)) {
+        var p = document.createElement('img');
+        p.className = 'lx-lp-embed__poster';
+        p.alt = '';
+        p.decoding = 'async';
+        p.loading = box.hasAttribute('data-lx-eager') ? 'eager' : 'lazy';
+        p.src = poster;
+        btn.appendChild(p);
+      }
+      var ico = document.createElement('span');
+      ico.className = 'lx-lp-embed__icon';
+      ico.setAttribute('aria-hidden', 'true');
+      btn.appendChild(ico);
+      box.appendChild(btn);
+      btn.addEventListener('click', function () {
+        var e = toEmbed(url), el;
+        if (e.type === 'video') {
+          el = document.createElement('video');
+          el.controls = true; el.playsInline = true; el.setAttribute('playsinline', '');
+          if (!isPlaceholder(poster)) el.poster = poster;
+          var cap = box.getAttribute('data-lx-captions');
+          if (cap && !isPlaceholder(cap)) {
+            el.crossOrigin = 'anonymous';
+            var tr = document.createElement('track');
+            tr.kind = 'captions'; tr.srclang = 'en'; tr.label = 'English'; tr.src = cap; tr.default = true;
+            el.appendChild(tr);
+          }
+          el.src = e.src;
+        } else {
+          el = document.createElement('iframe');
+          el.title = label;
+          el.allow = 'autoplay; fullscreen; picture-in-picture; encrypted-media';
+          el.setAttribute('allowfullscreen', '');
+          el.src = e.src;
+        }
+        el.className = 'lx-lp-embed__frame';
+        box.replaceChild(el, btn);
+        if (e.type === 'video') { var pr = el.play && el.play(); if (pr && pr.catch) pr.catch(function () {}); }
+        try { el.focus(); } catch (_) {}
+      });
+    });
+
+    /* 4. Lightbox: native <dialog>, so Esc, focus trapping and the top layer
+          come from the browser rather than from code that can break. */
+    var dlg = root.querySelector('.lx-lp-lightbox');
+    var dimg = dlg && dlg.querySelector('img');
+    var lastFocus = null;
+    if (dlg) {
+      dlg.querySelector('.lx-lp-lightbox__close').addEventListener('click', function () { dlg.close(); });
+      dlg.addEventListener('click', function (ev) { if (ev.target === dlg) dlg.close(); });
+      dlg.addEventListener('close', function () { dimg.removeAttribute('src'); if (lastFocus) lastFocus.focus(); });
+    }
+    each(root.querySelectorAll('[data-lx-zoom]'), function (b) {
+      b.addEventListener('click', function () {
+        var img = b.querySelector('img');
+        var src = img && (img.currentSrc || img.getAttribute('src'));
+        if (!src) return;
+        if (!dlg || typeof dlg.showModal !== 'function') { window.open(src, '_blank', 'noopener'); return; }
+        lastFocus = b;
+        dimg.src = src; dimg.alt = img.alt;
+        dlg.showModal();
+      });
+    });
+
+    /* 5. Reveal on scroll. Skipped entirely for reduced motion. */
+    var items = root.querySelectorAll('[data-lx-reveal]');
+    if (reduce || !('IntersectionObserver' in window)) {
+      each(items, function (el) { el.classList.add('is-in'); });
+    } else {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); }
+        });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+      each(items, function (el) { io.observe(el); });
+    }
+
+    /* 6. Sticky bar: moved to <body> so position:fixed is never trapped by a
+          transformed GHL container. Up once the hero has left the screen,
+          down again from the final CTA onward, where the real button is. */
+    var sticky = root.querySelector('[data-lx-sticky]');
+    if (sticky) {
+      var old = document.getElementById('lx-lp-sticky');
+      if (old && old !== sticky && old.parentNode) old.parentNode.removeChild(old);
+      sticky.id = 'lx-lp-sticky';
+      document.body.appendChild(sticky);
+      wireCtas(sticky);
+      var heroGone = false, finalReached = false;
+      var sync = function () {
+        var on = heroGone && !finalReached;
+        sticky.classList.toggle('is-up', on);
+        root.classList.toggle('has-sticky', on);
+        if (on) { sticky.removeAttribute('inert'); sticky.setAttribute('aria-hidden', 'false'); }
+        else { sticky.setAttribute('inert', ''); sticky.setAttribute('aria-hidden', 'true'); }
+      };
+      var hero = root.querySelector('[data-lx-hero]');
+      var fin = root.querySelector('[data-lx-final]');
+      if ('IntersectionObserver' in window && hero) {
+        new IntersectionObserver(function (e) { heroGone = !e[0].isIntersecting && e[0].boundingClientRect.top < 0; sync(); }).observe(hero);
+        if (fin) new IntersectionObserver(function (e) {
+          finalReached = e[0].isIntersecting || e[0].boundingClientRect.top < 0; sync();
+        }).observe(fin);
+      } else { heroGone = true; sync(); }
+    }
+
+
+    /* ---------- BOOKING FLOW ----------------------------------------------
+       How a submission is detected, from GHL's own embed script
+       (link.msgsndr.com/js/form_embed.js): when a survey or calendar captures
+       a contact, the frame posts ["set-sticky-contacts", key, frameId, ...]
+       and GHL marks that frame "leadCollected". That is the only
+       submission-shaped message GHL sends; there is no "submit" or "booked"
+       event. We match it to OUR frames by window, never by guessing names.
+       Run one test with ?lx-debug=1 and the console shows every message. */
+    var debug = /[?&]lx-debug=1(&|$)/.test(window.location.search);
+    var calUrl = root.getAttribute('data-lx-calendar');
+    var hasCal = !isPlaceholder(calUrl) && /^https:\/\//.test(calUrl);
+    var slot = root.querySelector('[data-lx-survey]');
+    var survey = null;
+    function loadEmbedScript() {
+      if (window.__ghl_message_handler_registered__ || document.querySelector('script[data-lx-embed-script]')) return;
+      var sc = document.createElement('script'); sc.src = 'https://link.msgsndr.com/js/form_embed.js'; sc.async = true; sc.setAttribute('data-lx-embed-script', '1');
+      document.body.appendChild(sc);
+    }
+    /* The survey frame is created as the visitor nears it (or taps Apply),
+       so its ~2 MB of GHL bot-check code stays off the first load. */
+    function loadSurvey() {
+      if (survey || !slot) return;
+      survey = document.createElement('iframe');
+      survey.className = 'lx-lp-survey';
+      survey.id = slot.getAttribute('data-lx-survey-id');
+      survey.title = 'Luxon Client Application';
+      survey.setAttribute('scrolling', 'no');
+      survey.src = slot.getAttribute('data-lx-survey');
+      slot.appendChild(survey);
+      loadEmbedScript();
+    }
+    if (slot) {
+      if (location.hash === '#apply' || !('IntersectionObserver' in window)) loadSurvey();
+      else {
+        var so = new IntersectionObserver(function (en) { if (en[0].isIntersecting) { so.disconnect(); loadSurvey(); } }, { rootMargin: '1400px 0px' });
+        so.observe(slot);
+      }
+    }
+    var book = root.querySelector('[data-lx-book]');
+    var toggle = root.querySelector('[data-lx-booktoggle]');
+    var calIframe = null, leadSent = false, schedSent = false, opened = false;
+
+    /* Without a calendar the page never promises "pick a time". Those lines
+       come in two versions, switched by CSS on data-lx-calendar before paint. */
+
+    /* An older copy of the survey may sit in its own GHL element. Two live
+       copies would mean two surveys and duplicate ids, so drop the outside one. */
+    each(document.querySelectorAll('iframe[src*="/widget/survey/"]'), function (f) {
+      if (root.contains(f) || (f.parentNode && f.parentNode.tagName === 'NOSCRIPT')) return;
+      var holder = f.closest('section') || f.parentNode;
+      if (holder && holder.parentNode) holder.parentNode.removeChild(holder);
+    });
+
+    function openBooking(focus) {
+      if (!hasCal || !book) return;
+      if (!opened) {
+        opened = true;
+        calIframe = document.createElement('iframe');
+        var cid = (calUrl.split('/').filter(Boolean).pop() || 'cal').replace(/[^\w-]/g, '').slice(0, 40);
+        calIframe.id = 'lx-cal-' + cid;
+        calIframe.title = 'Pick a call time';
+        calIframe.setAttribute('scrolling', 'no');
+        calIframe.src = calUrl;
+        root.querySelector('[data-lx-cal]').appendChild(calIframe);
+      }
+      book.hidden = false;
+      if (toggle) toggle.hidden = true;
+      if (focus) {
+        book.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+        try { book.focus({ preventScroll: true }); } catch (_) {}
+      }
+    }
+    if (hasCal && toggle) {
+      toggle.hidden = false;
+      toggle.querySelector('button').addEventListener('click', function () { openBooking(true); });
+    }
+
+    /* Meta pixel. Loads only if an ID is set here AND no pixel is already on
+       the page (GHL funnel settings), so PageView is never counted twice. */
+    var pixelId = (root.getAttribute('data-lx-pixel') || '').replace(/\D/g, '');
+    if (pixelId && !window.fbq) {
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      window.fbq('init', pixelId); window.fbq('track', 'PageView');
+    }
+    function track(name) {
+      var id = 'lx-' + name.toLowerCase() + '-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 8);
+      window['lxEventId' + name] = id;                 /* for server-side CAPI dedupe */
+      if (typeof window.fbq === 'function') window.fbq('track', name, {}, { eventID: id });
+      if (debug && window.console) console.info('[Luxon booking] ' + name + ' fired, eventID ' + id);
+    }
+
+    var GHL = /(^|\.)(leadconnectorhq\.com|msgsndr\.com|gohighlevel\.com)$/;
+    window.addEventListener('message', function (e) {
+      var host = ''; try { host = new URL(e.origin).hostname; } catch (_) {}
+      var d = e.data;
+      var fromSurvey = survey && e.source === survey.contentWindow;
+      var fromCal = calIframe && e.source === calIframe.contentWindow;
+      if (debug && (fromSurvey || fromCal || GHL.test(host)) && window.console)
+        console.info('[Luxon booking] message from ' + (fromSurvey ? 'survey' : fromCal ? 'calendar' : host), d);
+      if (!(fromSurvey || fromCal)) return;
+      /* mirrors GHL's own "leadCollected" branch: a real key (not the "_ud"
+         user-data key) plus a frame id rather than a cookie payload */
+      var captured = Array.isArray(d) && d[0] === 'set-sticky-contacts' && d[1] && d[1] !== '_ud' &&
+                     typeof d[2] === 'string' && !/^[\[{]/.test(d[2]);
+      if (!captured) return;
+      /* Lead is NOT fired here: disqualified applicants also send this message.
+         Lead fires only on the qualified /application-received page. */
+      if (fromSurvey && !leadSent) { leadSent = true; openBooking(true); }
+      else if (fromCal && !schedSent) { schedSent = true; track('Schedule'); }
+    });
+
+    /* Proof card behind a flag: shows only when switched on AND fully filled. */
+    each(root.querySelectorAll('[data-lx-flag="jz"]'), function (card) {
+      var on = root.getAttribute('data-lx-show-jz') === 'true';
+      var img = card.querySelector('img[data-lx-src]');
+      var filled = img && !isPlaceholder(img.getAttribute('data-lx-src')) && !/\[/.test(card.textContent);
+      card.hidden = !(on && filled);
+      if (!card.hidden && img && !img.getAttribute('src')) img.src = img.getAttribute('data-lx-src');
+    });
+
+    /* Footer email from config. */
+    var mail = root.getAttribute('data-lx-email') || '';
+    var ml = root.querySelector('[data-lx-mail]');
+    if (ml && /^[^\s@\[\]]+@[^\s@\[\]]+\.[a-z]{2,}$/i.test(mail)) { ml.href = 'mailto:' + mail; ml.textContent = mail; ml.hidden = false; }
+
+    /* Every Apply button, the sticky one included, glides to the survey. */
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[data-lx-cta]');
+      if (!a) return;
+      var target = document.getElementById('apply');
+      if (!target || (a.getAttribute('href') || '').indexOf('#apply') === -1) return;
+      e.preventDefault();
+      loadSurvey();
+      target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+    });
+
+    /* Optional bits (the contact email) disappear on the live page while
+       they still hold a placeholder, instead of printing brackets. */
+    each(root.querySelectorAll('[data-lx-optional]'), function (el) {
+      if (!preview && /\[/.test(el.textContent + (el.getAttribute('href') || ''))) el.hidden = true;
+    });
+
+    /* 7. Footer year. */
+    each(root.querySelectorAll('[data-lx-year]'), function (el) { el.textContent = new Date().getFullYear(); });
+
+    /* 8. Anything still in [BRACKETS] gets listed in the console, so nothing
+          ships unfinished by accident. */
+    var left = [];
+    var walk = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    while (walk.nextNode()) { var t = walk.currentNode.nodeValue.match(/\[[^\]]{2,}\]/g); if (t) left = left.concat(t); }
+    ['data-lx-calendar', 'data-lx-pixel', 'data-lx-email'].forEach(function (a) { var v = root.getAttribute(a); if (v && /\[/.test(v)) left.push(a + ': ' + v); });
+    each(root.querySelectorAll('[data-lx-src],[data-lx-embed],[data-lx-poster],a[href^="mailto:["]'), function (el) {
+      ['data-lx-src', 'data-lx-embed', 'data-lx-poster', 'href'].forEach(function (a) {
+        var v = el.getAttribute(a); if (v && /\[/.test(v)) left.push(v);
+      });
+    });
+    if (left.length && window.console && console.warn) {
+      console.warn('[Luxon landing] ' + left.length + ' placeholder(s) still on this page:\n  ' +
+        left.filter(function (v, i) { return left.indexOf(v) === i; }).join('\n  '));
+    }
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
+
+<script>
+/* v3 interactions: sticky header tint, "tap what's true", timeline highlight. */
+(function () {
+  'use strict';
+  function go() {
+    var root = document.querySelector('.lx-lp[data-lx-root]');
+    if (!root || root.getAttribute('data-lx-v3')) return;
+    root.setAttribute('data-lx-v3', '1');
+    var top = root.querySelector('[data-lx-top]');
+    if (top) {
+      var onScroll = function () { top.classList.toggle('is-stuck', (window.scrollY || 0) > 12); };
+      window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+    }
+    var quiz = root.querySelector('[data-lx-quiz]');
+    if (quiz) {
+      var qs = quiz.querySelectorAll('.lx-lp-q'), n = quiz.querySelector('[data-lx-qn]'),
+          msg = quiz.querySelector('[data-lx-qmsg]'), cta = quiz.querySelector('[data-lx-qcta]');
+      var copy = ["Tap what's true for your business.",
+        "Then you're exactly who we built this for.",
+        "Two out of five. That's a fixable pipeline.",
+        "That's exactly what we fix.",
+        "That's exactly what we fix. Let's talk.",
+        "All five. You're who we built this for."];
+      Array.prototype.forEach.call(qs, function (b) {
+        b.addEventListener('click', function () {
+          b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+          var c = quiz.querySelectorAll('.lx-lp-q[aria-pressed="true"]').length;
+          n.innerHTML = c + '<small>/5</small>';
+          msg.textContent = copy[c];
+          if (cta) cta.hidden = c === 0;
+        });
+      });
+    }
+    var tl = root.querySelector('[data-lx-tl]');
+    if (tl && 'IntersectionObserver' in window) {
+      var items = tl.querySelectorAll('li');
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          Array.prototype.forEach.call(items, function (li) { li.classList.toggle('is-on', li === e.target); });
+        });
+      }, { rootMargin: '-45% 0px -45% 0px' });
+      Array.prototype.forEach.call(items, function (li) { io.observe(li); });
+    }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', go); else go();
+})();
+</script>
+
+</body></html>
