@@ -279,6 +279,22 @@
 .lx-lp .lx-lp-bio p + p{margin-top:14px}
 
 /* ---------- 4b · the ad example ---------- */
+.lx-lp .lx-lp-reel{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:40px}
+.lx-lp .lx-lp-reel__card{margin:0;display:flex;flex-direction:column;gap:12px}
+.lx-lp .lx-lp-reel__card figcaption{display:flex;flex-direction:column;gap:3px}
+.lx-lp .lx-lp-reel__card figcaption b{font-size:15px;color:var(--lx-text)}
+.lx-lp .lx-lp-reel__card figcaption span{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--lx-muted)}
+.lx-lp .lx-lp-swipe{display:none}
+@media (max-width:899px){
+  .lx-lp .lx-lp-reel{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:24px calc(-1*var(--lx-pad,16px)) 0;padding:0 var(--lx-pad,16px) 8px;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-padding-inline:var(--lx-pad,16px)}
+  .lx-lp .lx-lp-reel::-webkit-scrollbar{display:none}
+  .lx-lp .lx-lp-reel__card{flex:0 0 62%;scroll-snap-align:start}
+  .lx-lp .lx-lp-swipe{display:block;margin-top:18px;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--lx-gold)}
+}
+.lx-lp .lx-lp-heroq{display:block;margin-top:26px;padding:14px 16px;border:1px solid var(--lx-line-2);border-radius:var(--lx-r,12px);background:rgba(255,255,255,.03);text-decoration:none;color:inherit;max-width:520px;transition:border-color .2s}
+.lx-lp .lx-lp-heroq:hover{border-color:var(--lx-gold)}
+.lx-lp .lx-lp-heroq__t{display:block;font-size:15px;line-height:1.45;color:var(--lx-text)}
+.lx-lp .lx-lp-heroq__c{display:block;margin-top:6px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--lx-muted)}
 .lx-lp .lx-lp-ad{display:grid;gap:40px;align-items:center}
 .lx-lp .lx-lp-ad__media{width:100%;max-width:360px;margin-inline:auto}
 @media (min-width:900px){.lx-lp .lx-lp-ad{grid-template-columns:minmax(0,1fr) 360px;gap:72px}.lx-lp .lx-lp-ad__media{margin-inline:0}}
@@ -384,6 +400,10 @@
           </div>
           <p class="lx-lp-guar-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>15 qualified leads in 30 days, or we work free until you get them.</span></p>
           <p class="lx-lp-micro"><span class="lx-if-book">About 2 minutes. If it's a fit, you'll pick a call time right away.</span><span class="lx-if-nobook">About 2 minutes. If it's a fit, someone from our team calls you to set a time.</span></p>
+          <a class="lx-lp-heroq" href="#lx-testi">
+            <span class="lx-lp-heroq__t">"I've received over 200 leads. They're good quality leads."</span>
+            <span class="lx-lp-heroq__c">Founder, surrogacy agency · about a month in · watch ↓</span>
+          </a>
           <ul class="lx-lp-trust" aria-label="What you keep">
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Your ad account stays yours</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Filmed at your real jobs</li>
@@ -557,17 +577,39 @@
 
     <!-- 4b · THE ADS: one example of the work itself -->
     <section class="lx-lp-sec" aria-labelledby="lx-ads">
-      <div class="lx-lp-wrap lx-lp-ad">
-        <div class="lx-lp-ad__copy">
-          <p class="lx-lp-eyebrow" data-lx-reveal><span>05</span>The ads</p>
-          <h2 id="lx-ads" class="lx-lp-h2" data-lx-reveal>Shot at real jobs. Not stock footage.</h2>
-          <p class="lx-lp-lede" data-lx-reveal>Filmed on a finished outdoor living project. Cut for a phone. Captions on, so it works on mute.</p>
-          <p class="lx-lp-micro" data-lx-reveal>Outdoor living · 26 seconds</p>
+      <div class="lx-lp-wrap">
+        <p class="lx-lp-eyebrow" data-lx-reveal><span>05</span>The ads</p>
+        <h2 id="lx-ads" class="lx-lp-h2" data-lx-reveal>Shot at real jobs. Not stock footage.</h2>
+        <p class="lx-lp-lede" data-lx-reveal>Real ads we filmed and edited for outdoor living clients. Cut for a phone, captions on so they work on mute, and the owner on camera when it helps.</p>
+        <p class="lx-lp-swipe" aria-hidden="true">Swipe for more →</p>
+        <div class="lx-lp-reel" role="list" aria-label="Example ads">
+          <figure role="listitem" class="lx-lp-reel__card" data-lx-reveal style="--lx-d:0.00s">
+            <div class="lx-lp-embed" data-lx-ratio="9/16" data-lx-label="Example ad: Before and after"
+                 data-lx-embed="https://call.luxonmarketing.com/video/ad-4.mp4"
+                 data-lx-poster="https://call.luxonmarketing.com/video/ad-4-poster.jpg"></div>
+            <figcaption><b>Before and after</b><span>Outdoor living · 41 sec</span></figcaption>
+          </figure>
+          <figure role="listitem" class="lx-lp-reel__card" data-lx-reveal style="--lx-d:0.06s">
+            <div class="lx-lp-embed" data-lx-ratio="9/16" data-lx-label="Example ad: Owner on camera"
+                 data-lx-embed="https://call.luxonmarketing.com/video/ad-6.mp4"
+                 data-lx-poster="https://call.luxonmarketing.com/video/ad-6-poster.jpg"></div>
+            <figcaption><b>Owner on camera</b><span>Outdoor living · 42 sec</span></figcaption>
+          </figure>
+          <figure role="listitem" class="lx-lp-reel__card" data-lx-reveal style="--lx-d:0.12s">
+            <div class="lx-lp-embed" data-lx-ratio="9/16" data-lx-label="Example ad: Show the finished yard"
+                 data-lx-embed="https://call.luxonmarketing.com/video/ad-5.mp4"
+                 data-lx-poster="https://call.luxonmarketing.com/video/ad-5-poster.jpg"></div>
+            <figcaption><b>Show the finished yard</b><span>Outdoor living · 30 sec</span></figcaption>
+          </figure>
+          <figure role="listitem" class="lx-lp-reel__card" data-lx-reveal style="--lx-d:0.18s">
+            <div class="lx-lp-embed" data-lx-ratio="9/16" data-lx-label="Example ad: Finished project walk"
+                 data-lx-embed="https://call.luxonmarketing.com/video/ad-2.mp4"
+                 data-lx-poster="https://call.luxonmarketing.com/video/ad-2-poster.jpg"></div>
+            <figcaption><b>Finished project walk</b><span>Outdoor living · 26 sec</span></figcaption>
+          </figure>
         </div>
-        <div class="lx-lp-ad__media" data-lx-reveal style="--lx-d:.08s">
-          <div class="lx-lp-embed" data-lx-ratio="9/16" data-lx-label="Example ad"
-               data-lx-embed="https://call.luxonmarketing.com/video/ad-2.mp4"
-               data-lx-poster="https://call.luxonmarketing.com/video/ad-2-poster.jpg"></div>
+        <div class="lx-lp-actions lx-lp-actions--center" data-lx-reveal>
+          <a class="lx-lp-btn" href="#apply" data-lx-cta>Get ads like these<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
     </section>
