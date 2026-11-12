@@ -1,5 +1,5 @@
 <!-- LUXON PRIVACY POLICY · GHL funnel "Luxon Book", step path /privacy · paste into ONE full-width Custom HTML/JS element.
-     Scoped under .lx-legal; styles nothing outside it. Replace every [REAL_CONTACT_EMAIL] before publishing. -->
+     Scoped under .lx-legal; styles nothing outside it. Replace every luxon.ag3ncy@gmail.com before publishing. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,600..900&family=Inter:wght@400;500;600&display=swap">
@@ -70,7 +70,7 @@
 
     <h2>4. Text messages and calls</h2>
     <p class="lx-legal__sms">By submitting your information, you agree to receive calls and text messages from Luxon about your inquiry, including by automated means. Message frequency varies. Message &amp; data rates may apply. Reply STOP to opt out, HELP for help. We do not sell or share your mobile information with third parties for marketing purposes.</p>
-    <p>Consent to receive text messages is not a condition of buying any service. You can opt out at any time by replying STOP to any message, and reply HELP for help. You can also reach us at <a href="mailto:[REAL_CONTACT_EMAIL]">[REAL_CONTACT_EMAIL]</a>. Text messaging originator opt-in data and consent are never shared with third parties.</p>
+    <p>Consent to receive text messages is not a condition of buying any service. You can opt out at any time by replying STOP to any message, and reply HELP for help. You can also reach us at <a href="mailto:luxon.ag3ncy@gmail.com">luxon.ag3ncy@gmail.com</a>. Text messaging originator opt-in data and consent are never shared with third parties.</p>
 
     <h2>5. Meta Pixel, cookies and similar technologies</h2>
     <p>This site uses cookies and similar technologies, including the <strong>Meta Pixel</strong>. The Meta Pixel lets Meta Platforms, Inc. record that you visited, viewed a page, submitted an application or booked a call, so we can measure our ads and show ads to people who have visited. Meta may combine this with other information it holds about you under its own <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener">Data Policy</a>.</p>
@@ -89,7 +89,7 @@
     <p>We keep your information for as long as we need it for the purposes above, usually for the length of our conversation or working relationship and up to three years afterwards, unless the law requires us to keep it longer. You can ask us to delete it sooner.</p>
 
     <h2>8. Your choices and rights</h2>
-    <p>You can ask us to access, correct or delete the personal information we hold about you, or to stop contacting you, by emailing <a href="mailto:[REAL_CONTACT_EMAIL]">[REAL_CONTACT_EMAIL]</a>. California residents have rights under the California Consumer Privacy Act, including the right to know, delete and correct personal information and the right not to be discriminated against for using these rights. We do not sell or share personal information for cross-context behavioral advertising in exchange for money. We will respond within the time the law requires.</p>
+    <p>You can ask us to access, correct or delete the personal information we hold about you, or to stop contacting you, by emailing <a href="mailto:luxon.ag3ncy@gmail.com">luxon.ag3ncy@gmail.com</a>. California residents have rights under the California Consumer Privacy Act, including the right to know, delete and correct personal information and the right not to be discriminated against for using these rights. We do not sell or share personal information for cross-context behavioral advertising in exchange for money. We will respond within the time the law requires.</p>
 
     <h2>9. Security</h2>
     <p>We use reasonable technical and organizational measures to protect your information. No method of transmission or storage is completely secure, so we cannot guarantee absolute security.</p>
@@ -101,7 +101,7 @@
     <p>We may update this policy from time to time. The effective date at the top shows when it last changed. Material changes will be posted on this page.</p>
 
     <h2>12. Contact us</h2>
-    <p>Questions about this policy or your information: <a href="mailto:[REAL_CONTACT_EMAIL]">[REAL_CONTACT_EMAIL]</a>. Luxon, Clovis, California.</p>
+    <p>Questions about this policy or your information: <a href="mailto:luxon.ag3ncy@gmail.com">luxon.ag3ncy@gmail.com</a>. Luxon, Clovis, California.</p>
   </div></main>
   <footer><div class="lx-legal__wrap">
     <span>&copy; 2026 Luxon. All rights reserved.</span>

@@ -1,5 +1,5 @@
 <!-- LUXON TERMS OF SERVICE · GHL funnel "Luxon Book", step path /terms · paste into ONE full-width Custom HTML/JS element.
-     Scoped under .lx-legal; styles nothing outside it. Replace every [REAL_CONTACT_EMAIL] before publishing. -->
+     Scoped under .lx-legal; styles nothing outside it. Replace every luxon.ag3ncy@gmail.com before publishing. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,600..900&family=Inter:wght@400;500;600&display=swap">
@@ -90,7 +90,7 @@
     <p>We may update these terms from time to time. The effective date at the top shows when they last changed. Continuing to use the site after a change means you accept the updated terms.</p>
 
     <h2>14. Contact</h2>
-    <p>Questions about these terms: <a href="mailto:[REAL_CONTACT_EMAIL]">[REAL_CONTACT_EMAIL]</a>. Luxon, Clovis, California.</p>
+    <p>Questions about these terms: <a href="mailto:luxon.ag3ncy@gmail.com">luxon.ag3ncy@gmail.com</a>. Luxon, Clovis, California.</p>
   </div></main>
   <footer><div class="lx-legal__wrap">
     <span>&copy; 2026 Luxon. All rights reserved.</span>

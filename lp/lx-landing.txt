@@ -384,7 +384,7 @@
 <div class="lx-lp" data-lx-root data-lx-apply="#apply" data-lx-copy2="1" data-lx-rev="1"
      data-lx-calendar="[GHL_CALENDAR_EMBED_URL]"
      data-lx-pixel="[META_PIXEL_ID]"
-     data-lx-email="[REAL_CONTACT_EMAIL]"
+     data-lx-email="luxon.ag3ncy@gmail.com"
      data-lx-show-jz="false">
 
   <header class="lx-lp-top">
@@ -1026,7 +1026,9 @@
       var captured = Array.isArray(d) && d[0] === 'set-sticky-contacts' && d[1] && d[1] !== '_ud' &&
                      typeof d[2] === 'string' && !/^[\[{]/.test(d[2]);
       if (!captured) return;
-      if (fromSurvey && !leadSent) { leadSent = true; track('Lead'); openBooking(true); }
+      /* Lead is NOT fired here: disqualified applicants also send this message.
+         Lead fires only on the qualified /application-received page. */
+      if (fromSurvey && !leadSent) { leadSent = true; openBooking(true); }
       else if (fromCal && !schedSent) { schedSent = true; track('Schedule'); }
     });
 
