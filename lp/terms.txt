@@ -1,0 +1,99 @@
+<!-- LUXON TERMS OF SERVICE · GHL funnel "Luxon Book", step path /terms · paste into ONE full-width Custom HTML/JS element.
+     Scoped under .lx-legal; styles nothing outside it. Replace every [REAL_CONTACT_EMAIL] before publishing. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,600..900&family=Inter:wght@400;500;600&display=swap">
+<style>
+.lx-legal{--bg:#141210;--card:#1C1917;--text:#F5F0E8;--muted:#A8A29E;--faint:#8C8580;--gold:#C9A55C;--line:rgba(245,240,232,.10);
+  --display:"Archivo","Arial Narrow","Helvetica Neue",Arial,sans-serif;--body:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  background:var(--bg);color:var(--text);font-family:var(--body);font-size:16.5px;line-height:1.7;-webkit-font-smoothing:antialiased;text-align:left;min-height:100vh}
+.lx-legal *,.lx-legal *::before,.lx-legal *::after{box-sizing:border-box;margin:0;padding:0;border:0;font:inherit;color:inherit;background:transparent}
+.lx-legal a{color:var(--gold);text-decoration:underline;text-underline-offset:3px}
+.lx-legal a:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:3px}
+.lx-legal__top{border-bottom:1px solid var(--line)}
+.lx-legal__wrap{max-width:760px;margin:0 auto;padding-inline:clamp(16px,5vw,32px)}
+.lx-legal__top .lx-legal__wrap{display:flex;align-items:center;justify-content:space-between;min-height:72px;max-width:1120px}
+.lx-legal__top img{display:block;height:22px;width:auto}
+.lx-legal__top a.lx-legal__back{font-size:14px;font-weight:600;color:var(--text);text-decoration:none}
+.lx-legal__top a.lx-legal__back:hover{color:var(--gold)}
+.lx-legal main{padding-block:clamp(48px,8vw,88px) 72px}
+.lx-legal__eyebrow{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.lx-legal h1{margin-top:14px;font-family:var(--display);font-weight:800;font-stretch:80%;font-variation-settings:"wdth" 80;text-transform:uppercase;font-size:clamp(2.4rem,8vw,3.6rem);line-height:.95;letter-spacing:-.01em}
+.lx-legal__date{margin-top:16px;color:var(--faint);font-size:14px}
+.lx-legal__intro{margin-top:28px;color:var(--muted);font-size:17.5px}
+.lx-legal h2{margin-top:48px;padding-top:28px;border-top:1px solid var(--line);font-family:var(--display);font-weight:700;font-size:1.3rem;line-height:1.25;letter-spacing:.01em}
+.lx-legal p,.lx-legal ul{margin-top:14px;color:var(--muted)}
+.lx-legal ul{padding-left:1.2em;list-style:disc}
+.lx-legal li{margin-top:6px}
+.lx-legal li::marker{color:var(--gold)}
+.lx-legal strong{color:var(--text);font-weight:600}
+.lx-legal__sms{margin-top:18px;padding:18px 20px;border:1px solid rgba(201,165,92,.35);border-left:3px solid var(--gold);border-radius:8px;background:var(--card);color:var(--text)}
+.lx-legal footer{border-top:1px solid var(--line);padding-block:28px 36px;font-size:14px;color:var(--faint)}
+.lx-legal footer .lx-legal__wrap{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-between;max-width:1120px}
+.lx-legal footer nav{display:flex;gap:22px}
+.lx-legal footer a{color:var(--faint);text-decoration:none}
+.lx-legal footer a:hover,.lx-legal footer a[aria-current]{color:var(--text)}
+</style>
+<div class="lx-legal">
+  <header class="lx-legal__top"><div class="lx-legal__wrap">
+    <a href="/" aria-label="Luxon home"><img src="https://call.luxonmarketing.com/brand/luxon-wordmark-gold-on-dark.png" alt="Luxon" width="900" height="195"></a>
+    <a class="lx-legal__back" href="/">&larr; Back to Luxon</a>
+  </div></header>
+  <main><div class="lx-legal__wrap">
+    <p class="lx-legal__eyebrow">Legal</p>
+    <h1>Terms of Service</h1>
+    <p class="lx-legal__date">Effective date: November 11, 2026</p>
+    <p class="lx-legal__intro">These terms govern your use of this website and any application, booking or communication you make through it. By using the site, you agree to them.</p>
+    <h2>1. About these terms</h2>
+    <p>This website is operated by Luxon, a marketing agency based in Clovis, California ("Luxon", "we", "us"). If you do not agree to these terms, please do not use the site. Any services we provide to clients are governed by a separate written service agreement. If that agreement conflicts with these terms, the agreement controls.</p>
+
+    <h2>2. Use of the site</h2>
+    <p>You may use this site only for lawful purposes and in line with these terms. You agree not to:</p>
+    <ul>
+      <li>Submit false or misleading information, or apply on behalf of someone without their permission</li>
+      <li>Interfere with the site's security or operation, or try to access systems you are not authorized to use</li>
+      <li>Copy, scrape or reuse the site's content for commercial purposes without our written permission</li>
+    </ul>
+
+    <h2>3. Applications and calls</h2>
+    <p>Submitting an application or booking a call does not create a client relationship and does not guarantee that we will accept you as a client. We may decline to work with anyone for any lawful reason.</p>
+
+    <h2>4. Results and guarantees</h2>
+    <p>Results shown on this site come from specific client accounts over the dates shown. They are not a promise of what you will achieve. Advertising results depend on many factors outside our control, including your market, offer, budget, follow-up and Meta's platform. Any performance guarantee applies only as written in your signed service agreement, under the conditions stated there.</p>
+
+    <h2>5. Fees and payment</h2>
+    <p>Fees, billing terms and cancellation terms for our services are set out in your service agreement. Advertising spend is paid directly by you to the advertising platform unless the agreement says otherwise.</p>
+
+    <h2>6. Text messages</h2>
+    <p class="lx-legal__sms">By submitting your information, you agree to receive calls and text messages from Luxon about your inquiry, including by automated means. Message frequency varies. Message &amp; data rates may apply. Reply STOP to opt out, HELP for help. We do not sell or share your mobile information with third parties for marketing purposes.</p>
+    <p>Consent to receive text messages is not a condition of purchase. Carriers are not liable for delayed or undelivered messages. See our <a href="/privacy">Privacy Policy</a> for how we handle your information.</p>
+
+    <h2>7. Intellectual property</h2>
+    <p>The content of this site, including text, graphics, logos, videos and design, belongs to Luxon or its licensors and is protected by law. Client work shown here is used with permission. Nothing in these terms gives you a right to use our name, logo or content without our written permission.</p>
+
+    <h2>8. Third-party services and links</h2>
+    <p>The site uses and links to third-party services, such as Meta, GoHighLevel and video hosts. We are not responsible for their content, policies or availability, and your use of them is governed by their own terms.</p>
+
+    <h2>9. Disclaimer</h2>
+    <p>The site and its content are provided "as is" and "as available", without warranties of any kind, express or implied, including warranties of merchantability, fitness for a particular purpose and non-infringement. We do not warrant that the site will be uninterrupted or error-free. Nothing on this site is legal, tax or financial advice.</p>
+
+    <h2>10. Limitation of liability</h2>
+    <p>To the fullest extent the law allows, Luxon will not be liable for any indirect, incidental, special, consequential or punitive damages, or for lost profits, revenue or data, arising from your use of the site. Our total liability for any claim relating to the site is limited to one hundred US dollars ($100).</p>
+
+    <h2>11. Indemnity</h2>
+    <p>You agree to indemnify and hold Luxon harmless from claims, losses and expenses, including reasonable attorneys' fees, arising from your misuse of the site or your breach of these terms.</p>
+
+    <h2>12. Governing law</h2>
+    <p>These terms are governed by the laws of the State of California, without regard to its conflict of law rules. Any dispute will be brought in the state or federal courts located in Fresno County, California, and you consent to their jurisdiction.</p>
+
+    <h2>13. Changes</h2>
+    <p>We may update these terms from time to time. The effective date at the top shows when they last changed. Continuing to use the site after a change means you accept the updated terms.</p>
+
+    <h2>14. Contact</h2>
+    <p>Questions about these terms: <a href="mailto:[REAL_CONTACT_EMAIL]">[REAL_CONTACT_EMAIL]</a>. Luxon, Clovis, California.</p>
+  </div></main>
+  <footer><div class="lx-legal__wrap">
+    <span>&copy; 2026 Luxon. All rights reserved.</span>
+    <nav aria-label="Legal"><a href="/privacy">Privacy Policy</a><a href="/terms" aria-current="page">Terms</a></nav>
+  </div></footer>
+</div>

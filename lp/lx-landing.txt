@@ -201,6 +201,8 @@
 .lx-lp .lx-lp-mini li{display:flex;align-items:center;gap:8px}
 .lx-lp .lx-lp-mini b{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--lx-gold);color:#14110d;font-size:12px;font-weight:700}
 @media (max-width:599px){.lx-lp .lx-lp-mini{flex-direction:column;align-items:flex-start;width:max-content;margin-inline:auto}}
+.lx-lp .lx-lp-consent{margin:14px auto 0;max-width:620px;font-size:12.5px;line-height:1.55;color:var(--lx-faint);text-align:center}
+.lx-lp .lx-lp-consent a{text-decoration:underline;text-underline-offset:3px}
 .lx-lp .lx-lp-apply{padding:56px 16px 72px;scroll-margin-top:24px}
 .lx-lp .lx-lp-apply__in{max-width:720px;margin:0 auto}
 .lx-lp .lx-lp-survey{display:block;width:100%;min-height:470px;border:0;background:transparent}
@@ -690,6 +692,7 @@
         <div class="lx-lp-survey-slot" data-lx-survey="https://api.leadconnectorhq.com/widget/survey/yLy9BhLLwTJb4NzB6blk" data-lx-survey-id="yLy9BhLLwTJb4NzB6blk">
           <noscript><iframe class="lx-lp-survey" src="https://api.leadconnectorhq.com/widget/survey/yLy9BhLLwTJb4NzB6blk" scrolling="no" id="yLy9BhLLwTJb4NzB6blk" title="Luxon Client Application"></iframe></noscript>
         </div>
+        <p class="lx-lp-consent">By submitting your information, you agree to receive calls and text messages from Luxon about your inquiry, including by automated means. Message frequency varies. Message &amp; data rates may apply. Reply STOP to opt out, HELP for help. We do not sell or share your mobile information with third parties for marketing purposes. See our <a href="/privacy">Privacy Policy</a> and <a href="/terms">Terms</a>.</p>
         <p class="lx-lp-already" data-lx-booktoggle hidden><button type="button">Already applied? Show call times</button></p>
         <div class="lx-lp-book" id="book" data-lx-book hidden tabindex="-1" aria-labelledby="lx-book-h">
           <p class="lx-lp-eyebrow"><span>✓</span>Book your call</p>
@@ -706,7 +709,7 @@
     <div class="lx-lp-wrap lx-lp-foot__in">
       <p class="lx-lp-foot__brand"><img class="lx-lp-logo lx-lp-logo--sm" src="https://call.luxonmarketing.com/brand/luxon-wordmark-gold-on-dark.png" alt="Luxon" width="900" height="195" loading="lazy" decoding="async"></p>
       <nav aria-label="Legal">
-        <a href="/privacy-policy">Privacy Policy</a>
+        <a href="/privacy">Privacy Policy</a>
         <a href="/terms">Terms</a>
         <a href="#" data-lx-mail hidden></a>
       </nav>
